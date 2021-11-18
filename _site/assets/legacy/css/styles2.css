@@ -195,27 +195,67 @@ a,button,input,label,select,summary,textarea {
 }
 
 @font-face {
-	font-family:"Electra Lt Std";src:url(/css/type/electra-lt-std/electra-lt-std.eot);src:url(/css/type/electra-lt-std/electra-lt-std.eot?#iefix) format("embedded-opentype"),url(/css/type/electra-lt-std/electra-lt-std.woff2) format("woff2"),url(/css/type/electra-lt-std/electra-lt-std.woff) format("woff"),url(/css/type/electra-lt-std/electra-lt-std.ttf) format("truetype"),url(/css/type/electra-lt-std/electra-lt-std.svg#electra-lt-std) format("svg");font-weight:400;font-style:normal
+	font-family: "Source Sans Pro";
+	font-weight: 300;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/fonts/source-sans-pro/source-sans-pro-light.woff") format("woff"),
+		url("/assets/fonts/source-sans-pro/source-sans-pro-light.woff2") format("woff2");
+}
+
+
+@font-face {
+	font-family:"Electra Lt Std";
+	font-weight: 400;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/electra-lt-std/electra-lt-std.woff") format("woff"),
+	url("/assets/legacy/css/type/electra-lt-std/electra-lt-std.woff2") format("woff2");
 }
 
 @font-face {
-	font-family:"Electra Lt Std";src:url(/css/type/electra-lt-std-cursive/electra-lt-std-cursive.eot);src:url(/css/type/electra-lt-std-cursive/electra-lt-std-cursive.eot?#iefix) format("embedded-opentype"),url(/css/type/electra-lt-std-cursive/electra-lt-std-cursive.woff2) format("woff2"),url(/css/type/electra-lt-std-cursive/electra-lt-std-cursive.woff) format("woff"),url(/css/type/electra-lt-std-cursive/electra-lt-std-cursive.ttf) format("truetype"),url(/css/type/electra-lt-std-cursive/electra-lt-std-cursive.svg#electra-lt-std-cursive) format("svg");font-weight:400;font-style:italic
+	font-family: "Electra Lt Std";
+	font-weight: 400;
+	font-style: italic;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/electra-lt-std-cursive/electra-lt-std-cursive.woff") format("woff"),
+	url("/assets/legacy/css/type/electra-lt-std-cursive/electra-lt-std-cursive.woff2") format("woff2");
 }
 
 @font-face {
-	font-family:"Electra Lt Std";src:url(/css/type/electra-lt-std-bold/electra-lt-std-bold.eot);src:url(/css/type/electra-lt-std-bold/electra-lt-std-bold.eot?#iefix) format("embedded-opentype"),url(/css/type/electra-lt-std-bold/electra-lt-std-bold.woff2) format("woff2"),url(/css/type/electra-lt-std-bold/electra-lt-std-bold.woff) format("woff"),url(/css/type/electra-lt-std-bold/electra-lt-std-bold.ttf) format("truetype"),url(/css/type/electra-lt-std-bold/electra-lt-std-bold.svg#electra-lt-std-bold) format("svg");font-weight:700;font-style:normal
+	font-family: "Electra Lt Std";
+	font-weight: 700;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/electra-lt-std-bold/electra-lt-std-bold.woff") format("woff"),
+	url("/assets/legacy/css/type/electra-lt-std-bold/electra-lt-std-bold.woff2") format("woff2");
 }
 
 @font-face {
-	font-family:"Foundry Sans";src:url(/css/type/foundry-sans-normal/foundry-sans-normal.eot);src:url(/css/type/foundry-sans-normal/foundry-sans-normal.eot?#iefix) format("embedded-opentype"),url(/css/type/foundry-sans-normal/foundry-sans-normal.woff2) format("woff2"),url(/css/type/foundry-sans-normal/foundry-sans-normal.woff) format("woff"),url(/css/type/foundry-sans-normal/foundry-sans-normal.ttf) format("truetype"),url(/css/type/foundry-sans-normal/foundry-sans-normal.svg#foundry-sans-normal) format("svg");font-weight:400;font-style:normal
+	font-family: "Foundry Sans"; 
+	font-weight: 400;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/foundry-sans-normal/foundry-sans-normal.woff") format("woff"),
+	url("/assets/legacy/css/type/foundry-sans-normal/foundry-sans-normal.woff2") format("woff2");
 }
 
 @font-face {
-	font-family:"Foundry Sans";src:url(/css/type/foundry-sans-medium/foundry-sans-medium.eot);src:url(/css/type/foundry-sans-medium/foundry-sans-medium.eot?#iefix) format("embedded-opentype"),url(/css/type/foundry-sans-medium/foundry-sans-medium.woff2) format("woff2"),url(/css/type/foundry-sans-medium/foundry-sans-medium.woff) format("woff"),url(/css/type/foundry-sans-medium/foundry-sans-medium.ttf) format("truetype"),url(/css/type/foundry-sans-medium/foundry-sans-medium.svg#foundry-sans-medium) format("svg");font-weight:700;font-style:normal
+	font-family: "Foundry Sans";
+	font-weight: 700;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/foundry-sans-medium/foundry-sans-medium.woff") format("woff"),
+	url("/assets/legacy/css/type/foundry-sans-medium/foundry-sans-medium.woff2") format("woff2");
 }
 
 @font-face {
-	font-family:"Foundry Sans";src:url(/css/type/foundry-sans-demi/foundry-sans-demi.eot);src:url(/css/type/foundry-sans-demi/foundry-sans-demi.eot?#iefix) format("embedded-opentype"),url(/css/type/foundry-sans-demi/foundry-sans-demi.woff2) format("woff2"),url(/css/type/foundry-sans-demi/foundry-sans-demi.woff) format("woff"),url(/css/type/foundry-sans-demi/foundry-sans-demi.ttf) format("truetype"),url(/css/type/foundry-sans-demi/foundry-sans-demi.svg#foundry-sans-demi) format("svg");font-weight:900;font-style:normal
+	font-family: "Foundry Sans";
+	font-weight: 900;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/foundry-sans-demi/foundry-sans-demi.woff2") format("woff2"),	
+	url("/assets/legacy/css/type/foundry-sans-demi/foundry-sans-demi.woff") format("woff");
 }
 
 html {

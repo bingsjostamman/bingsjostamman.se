@@ -1,16 +1,16 @@
 /* the humans responsible & colophon */
-/* humanstxt.org */
+/* https://humanstxt.org/ */
 
 
 /* TEAM */
 
-  Official web site of Bingsjöstämman:
+  Official web site of Bingsjostamman:
   www.bingsjostamman.se
 
-  Jonas Päckos
+  Jonas Packos
   Contact: hello [at] pekkos.com
   Twitter: @pekkos
-  From: Bingsjö, Sweden
+  From: Bingsjo, Sweden
 
 
 /* THANKS */
@@ -19,12 +19,12 @@
 
 /* SITE */
 
-	Last update: 2016/03/01
-	Language: English
-
-	Doctype: HTML5
+  Last site update: 2021/11/18
+  Language: Swedish
+  
+  Doctype: HTML5
   Standards: HTML, CSS, Javascript
-  Components/Tools:
 
-  Software: Jekyll, GitHub Pages
-  IDE: Atom, Octapage
+  Software: 11ty, Fractal
+  Services: Github, Netlify, Cloudflare, Cloudinary
+  IDE: VS Code, Octapage

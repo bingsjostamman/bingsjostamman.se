@@ -19,7 +19,7 @@
 
 /* SITE */
 
-  Last site update: 2021/11/18
+  Last site update: 2022/02/22
   Language: Swedish
   
   Doctype: HTML5

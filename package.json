@@ -1,0 +1,11 @@
+{
+	"name": "bingsjostamman.se",
+	"version": "0.1.0",
+	"description": "Build scripts for website and styleguide",
+	"repository": "https://github.com/bingsjostamman/bingsjostamman.se",
+	"license": "UNLICENSED",
+	"devDependencies": {
+		"gulp": "^4.0.2"
+	},
+	"dependencies": {}
+}

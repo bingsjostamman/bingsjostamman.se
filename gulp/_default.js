@@ -14,8 +14,9 @@ const gulp = require('gulp');
 
 module.exports = function () {
 
-	gulp.task('default', function () {
+	gulp.task('default', function (done) {
 		console.log('Gulp had nothing to do today.');
+		done();
 	});
 
 };

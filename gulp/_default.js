@@ -26,7 +26,7 @@ module.exports = function () {
 };
 
 
-/* WHat's the weather like on location? */
+/* What's the weather like on location? */
 
 gulp.task('weather', shell.task('curl -s http://wttr.in/Bingsjo | head -7'));
 

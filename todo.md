@@ -4,7 +4,7 @@
 [x] Add basic gulp workflow
 [x] Copy legacy pages to _site folder
 [x] Set up Netlify account
-[ ] Set up build process at Netlify
+[x] Set up build process at Netlify
 [ ] Let bingsjostamman.se run from Netlify
 [ ] Set up Fractal styleguide
 [ ] Set up Eleventy static site structure

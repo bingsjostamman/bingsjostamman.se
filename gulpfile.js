@@ -27,11 +27,49 @@ https://gulpjs.com/
 */
 
 
-/**
- * Place all gulp modules in the /gulp/ folder and include (require) them here
- */
+/* Base gulp requirements */
+const gulp = require('gulp');
+const { src, dest, watch, series, parallel } = require('gulp');
+var exec = require('child_process').exec;
 
-/* Default task */
-require('./gulp/_default')();
+/* Fetch required plugins */
+const copy = require('gulp-copy');
+
+
+
+function defaultTask(cb) {
+	console.log('place code for your default task here');
+	cb();
+}
+
+function copy_legacy_site(cb) {
+	return src(['root/*', 'legacy2021/**/*'])
+		.pipe(copy('_site', { prefix: 1 }));
+}
+
+function weather(cb) {
+	exec('curl -s http://wttr.in/Bingsjo | head -7', function (err, stdout, stderr) {
+		console.log(stdout);
+		console.log(stderr);
+		cb(err);
+	});
+}
+
+
+/* Public tasks */
+
+/* $ gulp */
+exports.default = series(
+	copy_legacy_site,
+	weather
+);
+
+/* $ gulp deploy */
+exports.deploy = series(
+	copy_legacy_site
+);
+
+/* $ gulp weather */
+exports.weather = weather;
 
 

@@ -2,7 +2,8 @@
 
 [x] Basic dot-files (e.g. editorconfig, gitignore etc)
 [x] Add basic gulp workflow
-[ ] Copy legacy pages to _site folder
+[x] Copy legacy pages to _site folder
+[ ] Set up Netlify account
 [ ] Set up build process at Netlify
 [ ] Let bingsjostamman.se run from Netlify
 [ ] Set up Fractal styleguide

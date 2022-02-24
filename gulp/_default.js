@@ -9,12 +9,12 @@
  */
 
 const gulp = require('gulp');
-const shell = require('gulp-shell')
+const shell = require('gulp-shell');
 
 
 
 
-/* This is run with the '$ gulp' command */
+/* Run the default task with the '$ gulp' command */
 
 module.exports = function () {
 

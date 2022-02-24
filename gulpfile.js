@@ -65,9 +65,11 @@ function weather(cb) {
 }
 
 
+
+
 /* Public tasks */
 
-/* $ gulp */
+/* Default */
 exports.default = series(
 	clean_site,
 	copy_root,
@@ -75,14 +77,16 @@ exports.default = series(
 	weather
 );
 
-/* $ gulp deploy */
+
+/* Deploy */
 exports.deploy = series(
 	clean_site,
 	copy_root,
 	copy_legacy_site
 );
 
-/* $ gulp weather */
+
+/* Single tasks */
 exports.weather = weather;
 exports.clean = clean_site;
 exports.legacy = copy_legacy_site;

@@ -30,20 +30,29 @@ https://gulpjs.com/
 /* Base gulp requirements */
 const gulp = require('gulp');
 const { src, dest, watch, series, parallel } = require('gulp');
-var exec = require('child_process').exec;
+const exec = require('child_process').exec;
+const clean = require('gulp-clean');
 
 /* Fetch required plugins */
 const copy = require('gulp-copy');
-
-
 
 function defaultTask(cb) {
 	console.log('place code for your default task here');
 	cb();
 }
 
+function clean_site(cb) {
+	return src('_site/*', { read: false })
+		.pipe(clean());
+}
+
+function copy_root(cb) {
+	return src('root/*')
+		.pipe(copy('_site', { prefix: 1 }));
+}
+
 function copy_legacy_site(cb) {
-	return src(['root/*', 'legacy2021/**/*'])
+	return src('legacy2021/**/*')
 		.pipe(copy('_site', { prefix: 1 }));
 }
 
@@ -60,16 +69,23 @@ function weather(cb) {
 
 /* $ gulp */
 exports.default = series(
+	clean_site,
+	copy_root,
 	copy_legacy_site,
 	weather
 );
 
 /* $ gulp deploy */
 exports.deploy = series(
+	clean_site,
+	copy_root,
 	copy_legacy_site
 );
 
 /* $ gulp weather */
 exports.weather = weather;
+exports.clean = clean_site;
+exports.legacy = copy_legacy_site;
+exports.root = copy_root;
 
 

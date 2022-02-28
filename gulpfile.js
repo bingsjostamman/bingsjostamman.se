@@ -28,8 +28,11 @@ https://gulpjs.com/
 
 /* Exported / Public tasks
 
-	'$ gulp' 			[Runs through all build steps, use it locally]
-	'$ gulp deploy'		[Deploys the legacy github.io site, use it on Main/www]
+	'$ gulp' 					[Runs through all build steps, use it locally]
+	'$ gulp deploy'				[Deploys the legacy github.io site, use it on Main/www]
+	'$ gulp deploy_styleguide	[Cleanup and build a static styleguide]
+	'$ gulp fractal_start 		[Start a local fractal web server with browser sync]
+	'$ gulp fractal_build 		[Build a static styleguide]
 
 */
 
@@ -62,7 +65,7 @@ function clean_site(cb) {
 		.pipe(clean());
 }
 
-function clean_site_styleguide(cb) {
+function clean_dest_styleguide(cb) {
 	return src('_styleguide/*', { read: false })
 		.pipe(clean());
 }
@@ -92,33 +95,140 @@ function weather(cb) {
 
 
 
+/* -----------------------------------------------------------------------------
+ * Fractal configuration and tasks
+ *
+ * Fractal settings documentation can be found here:
+ * https://fractal.build/guide/project-settings.html#the-fractal-js-file
+ * -------------------------------------------------------------------------- */
+
+/**
+ * Base Fractal requirements
+ */
+
+const fractal = require('@frctl/fractal').create();
+const logger = fractal.cli.console;
+
+
+
+/**
+ * Fractal configuration
+ */
+
+/* Set the title of the project */
+fractal.set('project.title', 'bingsjostamman.se styleguide');
+
+/* Tell Fractal where the components will live */
+fractal.components.set('path', __dirname + '/src/fractal/patterns');
+fractal.components.set('label', 'Patterns');
+fractal.components.set('title', 'Patterns');
+
+/* Tell Fractal where the documentation pages will live */
+fractal.docs.set('path', __dirname + '/src/fractal/docs');
+
+/* Specify a directory of static assets */
+fractal.web.set('static.path', __dirname + '/src/fractal/static');
+
+/* Set the static HTML build destination */
+fractal.web.set('builder.dest', __dirname + '/_styleguide');
+
+/* Preview */
+fractal.components.set('default.preview', '@preview');
+fractal.components.set('collate.preview', '@collate');
+
+
+
+/**
+ * Customized Styleguide theme
+ */
+
+/* Require the Mandelbrot theme module */
+const mandelbrot = require('@frctl/mandelbrot');
+
+/* Create a new instance with custom config options */
+const myCustomisedTheme = mandelbrot({
+	"styles": [
+		"/styleguide.css",
+		"default"
+	]
+});
+
+/* Tell Fractal to use the configured theme by default */
+fractal.web.theme(myCustomisedTheme);
+
+
+/**
+ * Adding a SVG inline helper
+ */
+
+const hbs = require('@frctl/handlebars')({});
+const instance = fractal.components.engine(hbs);
+
+var fs = require('fs');
+instance.handlebars.registerHelper('svg', function (iconName) {
+	let path = __dirname + '/project/static/icons/' + iconName + '.svg';
+	let content = fs.readFileSync(path, 'utf8');
+	return content;
+});
+
+
+
+/**
+ * Fractal tasks
+ */
+
+/* Start a localhost:3000 web server with browser sync */
+function fractal_start() {
+	const server = fractal.web.server({
+		sync: true
+	});
+	server.on('error', err => logger.error(err.message));
+	return server.start().then(() => {
+		logger.success(`Fractal server is now running at ${server.url}`);
+	});
+}
+
+/* Build a static web site */
+function fractal_build() {
+	const builder = fractal.web.builder();
+	builder.on('progress', (completed, total) => logger.update(`Exported ${completed} of ${total} items`, 'info'));
+	builder.on('error', err => logger.error(err.message));
+	return builder.build().then(() => {
+		logger.success('Fractal build completed!');
+	});
+}
+
+
+
 
 /* -----------------------------------------------------------------------------
  * Public Gulp tasks
  * -------------------------------------------------------------------------- */
 
 /* Default */
-
 exports.default = series(
-	clean_site,
-	copy_root,
-	copy_site_legacy,
+	clean_dest_styleguide,
+	fractal_build,
 	weather
 );
 
 
 /* Deploy */
-
 exports.deploy = series(
 	clean_site,
 	copy_root,
 	copy_site_legacy
 );
 
+/* Deploy Styleguide */
 exports.deploy_styleguide = series(
-	clean_site_styleguide,
-	copy_site_styleguide
+	clean_dest_styleguide,
+	fractal_build
 );
+
+/* Fractal */
+exports.fractal_start = fractal_start;
+exports.fractal_build = fractal_build;
 
 
 /* Single tasks */

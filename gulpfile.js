@@ -46,14 +46,24 @@ function clean_site(cb) {
 		.pipe(clean());
 }
 
+function clean_site_styleguide(cb) {
+	return src('_styleguide/*', { read: false })
+		.pipe(clean());
+}
+
 function copy_root(cb) {
 	return src('root/*')
 		.pipe(copy('_site', { prefix: 1 }));
 }
 
-function copy_legacy_site(cb) {
+function copy_site_legacy(cb) {
 	return src('legacy2021/**/*')
 		.pipe(copy('_site', { prefix: 1 }));
+}
+
+function copy_site_styleguide(cb) {
+	return src('src/_styleguide/**/*')
+		.pipe(copy('_styleguide', { prefix: 2 }));
 }
 
 function weather(cb) {
@@ -73,7 +83,7 @@ function weather(cb) {
 exports.default = series(
 	clean_site,
 	copy_root,
-	copy_legacy_site,
+	copy_site_legacy,
 	weather
 );
 
@@ -82,14 +92,19 @@ exports.default = series(
 exports.deploy = series(
 	clean_site,
 	copy_root,
-	copy_legacy_site
+	copy_site_legacy
+);
+
+exports.deploy_styleguide = series(
+	clean_site_styleguide,
+	copy_site_styleguide
 );
 
 
 /* Single tasks */
 exports.weather = weather;
 exports.clean = clean_site;
-exports.legacy = copy_legacy_site;
+exports.legacy = copy_site_legacy;
 exports.root = copy_root;
 
 

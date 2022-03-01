@@ -29,10 +29,11 @@ https://gulpjs.com/
 /* Exported / Public tasks
 
 	'$ gulp' 					[Runs through all build steps, use it locally]
-	'$ gulp deploy'				[Deploys the legacy github.io site, use it on Main/www]
-	'$ gulp deploy_styleguide	[Cleanup and build a static styleguide]
+	'$ gulp css'				[Process Sass and CSS to files]
 	'$ gulp fractal_start 		[Start a local fractal web server with browser sync]
 	'$ gulp fractal_build 		[Build a static styleguide]
+	'$ gulp deploy'				[Deploys the legacy github.io site, use it on Main/www]
+	'$ gulp deploy_styleguide	[Cleanup and build a static styleguide]
 
 */
 
@@ -46,6 +47,8 @@ const gulp = require('gulp');
 const { src, dest, watch, series, parallel } = require('gulp');
 const exec = require('child_process').exec;
 const clean = require('gulp-clean');
+const sass = require('gulp-dart-sass');
+const sassGlob = require('gulp-sass-glob');
 
 /* Fetch required plugins */
 const copy = require('gulp-copy');
@@ -91,6 +94,40 @@ function weather(cb) {
 		console.log(stderr);
 		cb(err);
 	});
+}
+
+
+
+/* -----------------------------------------------------------------------------
+ * CSS tasks
+ * -------------------------------------------------------------------------- */
+
+// Stylelint of Sass files
+// BEM lint of Sass files
+// Sass to css
+// PostCSS css files
+// Minify to css.min
+// copy css files
+
+/**
+ * Process Sass files to CSS
+ */
+
+function processSass() {
+	return gulp
+		.src([
+			'src/css/sass/*.scss'
+		])
+		.pipe(sassGlob())
+		.pipe(sass({
+			outputStyle: 'expanded'
+		})
+			.on('error', sass.logError))
+		.pipe(gulp.dest('src/css'))
+		.on('end', function () {
+			console.log('SCSS compiled to CSS.');
+		}
+		)
 }
 
 

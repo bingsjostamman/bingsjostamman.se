@@ -2,6 +2,7 @@
 <html class="no-js" lang="sv" itemscope itemtype="http://schema.org/Article">
 
 <head>
+	<script>performance.mark('HEAD Start');</script>
     <meta charset="UTF-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
@@ -14,7 +15,12 @@
     <title>Bingsjöstämman</title>
     <link rel="author" href="humans.txt" />
 
+	<script>performance.mark('CSS Start');</script>
     <link rel="stylesheet" href="/assets/legacy/css/styles2.css" />
+	<script>
+		performance.mark('CSS End');
+		performance.measure('CSS Time', 'CSS Start', 'CSS End');
+	</script>
 
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
@@ -43,6 +49,10 @@
     <meta property="fb:app_id" content="786656114801883" />
 
     <meta name="twitter:image" property="og:image" itemprop="image" content="https://res.cloudinary.com/bingsjostamman/image/upload/v1637226597/legacy/logo_hhwojd.png">
+	<script>
+		performance.mark('HEAD End');
+		performance.measure('HEAD Time', 'HEAD Start', 'HEAD End');
+	</script>
 </head>
 
 <body class="y2015">

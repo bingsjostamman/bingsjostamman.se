@@ -1044,7 +1044,6 @@ body {
 	h1+p:first-of-type::first-letter {
 		-webkit-initial-letter: 3;
 		initial-letter: 3;
-		margin-top: 1em;
 		margin-right: .5em;
 		color: #9a1a1a
 	}

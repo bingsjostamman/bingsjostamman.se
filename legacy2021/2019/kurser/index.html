@@ -28,8 +28,8 @@
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#9a1a1a">
+
+
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-TileImage" content="/mstile-144x144.png">
     <meta name="theme-color" content="#9a1a1a">
@@ -208,63 +208,10 @@
                 <img src="https://res.cloudinary.com/bingsjostamman/image/upload/v1637226633/legacy/unatyjfy60ybzlgm8pyz_uk81wt_ebdbrt.jpg"
                     alt="">
             </p>
-            <p><small><a href="/om-cookies">Om cookies</a></small></p>
+            <!-- <p><small><a href="/om-cookies">Om cookies</a></small></p> -->
         </div>
     </footer>
-    <div class="cookie-wrap hidden" id="cookie-wrap">
-        <p>Genom att fortsätta använda den här webbplatsen godkänner jag att cookies används.<br><button id="cookie-btn"
-                href="#">Jag godkänner</button><a href="/om-cookies">Läs mer här</a></p>
-    </div>
-    <script async="" src="//www.google-analytics.com/analytics.js"></script>
-    <script>
 
-        function createCookie(name, value, days) {
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                var expires = "; expires=" + date.toGMTString();
-            }
-            else var expires = "";
-            document.cookie = name + "=" + value + expires + "; path=/";
-        }
-
-        function readCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-
-        var cookieexist = readCookie('bingsjostamman')
-        if (cookieexist) {
-            var cookiewrap = document.getElementById('cookie-wrap');
-            cookiewrap.classList.add("hidden");
-        }
-
-        document.getElementById('cookie-btn').onclick = function (e) {
-            createCookie('bingsjostamman', 'cookies accepted', 100);
-            var cookiewrap = document.getElementById('cookie-wrap');
-            cookiewrap.classList.add("hidden");
-        }
-
-    </script>
-
-
-    <script>
-            (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date(); a = s.createElement(o),
-                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-78200800-1', 'auto');
-        ga('send', 'pageview');
-    </script>
 
 
 

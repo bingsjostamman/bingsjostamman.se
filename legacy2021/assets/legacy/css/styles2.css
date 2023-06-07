@@ -232,7 +232,7 @@ a,button,input,label,select,summary,textarea {
 }
 
 @font-face {
-	font-family: "Foundry Sans"; 
+	font-family: "Foundry Sans";
 	font-weight: 400;
 	font-style: normal;
 	font-display: fallback;
@@ -254,7 +254,7 @@ a,button,input,label,select,summary,textarea {
 	font-weight: 900;
 	font-style: normal;
 	font-display: fallback;
-	src: url("/assets/legacy/css/type/foundry-sans-demi/foundry-sans-demi.woff2") format("woff2"),	
+	src: url("/assets/legacy/css/type/foundry-sans-demi/foundry-sans-demi.woff2") format("woff2"),
 	url("/assets/legacy/css/type/foundry-sans-demi/foundry-sans-demi.woff") format("woff");
 }
 
@@ -702,6 +702,10 @@ main a:hover {
 	display: inline-block
 }
 
+main p a {
+	text-decoration: underline;
+}
+
 hr {
 	margin-top: 48px;
 	margin-top: 2rem;
@@ -1040,7 +1044,6 @@ body {
 	h1+p:first-of-type::first-letter {
 		-webkit-initial-letter: 3;
 		initial-letter: 3;
-		margin-top: 1em;
 		margin-right: .5em;
 		color: #9a1a1a
 	}

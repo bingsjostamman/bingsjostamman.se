@@ -68,6 +68,11 @@ function clean_site(cb) {
 		.pipe(clean());
 }
 
+function clean_site_legacy(cb) {
+	return src('_site_legacy/*', { read: false })
+		.pipe(clean());
+}
+
 function clean_dest_styleguide(cb) {
 	return src('_styleguide/*', { read: false })
 		.pipe(clean());
@@ -80,7 +85,7 @@ function copy_root(cb) {
 
 function copy_site_legacy(cb) {
 	return src('legacy2021/**/*')
-		.pipe(copy('_site', { prefix: 1 }));
+		.pipe(copy('_site_legacy', { prefix: 1 }));
 }
 
 function copy_site_styleguide(cb) {
@@ -250,9 +255,9 @@ exports.default = series(
 );
 
 
-/* Deploy */
-exports.deploy = series(
-	clean_site,
+/* Deploy Legacy Site */
+exports.deploy_legacy = series(
+	clean_site_legacy,
 	copy_root,
 	copy_site_legacy
 );
@@ -272,6 +277,7 @@ exports.fractal_build = fractal_build;
 
 exports.weather = weather;
 exports.clean = clean_site;
+exports.clean_legacy = clean_site_legacy;
 exports.legacy = copy_site_legacy;
 exports.root = copy_root;
 

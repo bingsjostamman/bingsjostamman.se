@@ -5,10 +5,10 @@
 	"repository": "https://github.com/bingsjostamman/bingsjostamman.se",
 	"license": "UNLICENSED",
 	"scripts": {
-		"preinstall": "npx npm-force-resolutions"
+		"preinstall": "npx force-resolutions"
 	},
 	"resolutions": {
-		"glob-parent": "^6.0.1"
+		"glob-parent": "^6.0.2"
 	},
 	"devDependencies": {
 		"gulp": "^4.0.2",

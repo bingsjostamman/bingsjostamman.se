@@ -79,8 +79,8 @@ function clean_dest_styleguide(cb) {
 }
 
 function copy_root(cb) {
-	return src('root/*')
-		.pipe(copy('_site', { prefix: 1 }));
+	return src('root_legacy/*')
+		.pipe(copy('_site_legacy', { prefix: 1 }));
 }
 
 function copy_site_legacy(cb) {

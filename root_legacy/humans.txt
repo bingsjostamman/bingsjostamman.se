@@ -7,6 +7,8 @@
   Official web site of Bingsjostamman:
   www.bingsjostamman.se
 
+  On facebook: https://www.facebook.com/bingsjostamman/
+
   Jonas Packos
   Contact: hello [at] pekkos.com
   Twitter: @pekkos
@@ -19,9 +21,9 @@
 
 /* SITE */
 
-  Last site update: 2022/02/22
+  Last site update: 2023/06/07
   Language: Swedish
-  
+
   Doctype: HTML5
   Standards: HTML, CSS, Javascript
 

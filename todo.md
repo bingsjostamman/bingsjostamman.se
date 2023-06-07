@@ -8,8 +8,8 @@
 [x] Let bingsjostamman.se run from Netlify
 [ ] Set up Fractal styleguide
 [ ] Set up Eleventy static site structure
-[ ] Set up dev domain
-[ ] Set up styleguide domain
+[x] Set up dev domain
+[x] Set up styleguide domain
 [ ] Move PDF files to dropbox or other CDN
 [ ] XML sitemap
 

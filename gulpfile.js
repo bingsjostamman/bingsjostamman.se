@@ -79,8 +79,8 @@ function clean_dest_styleguide(cb) {
 }
 
 function copy_root(cb) {
-	return src('root/_legacy/*')
-		.pipe(copy('_site_legacy', { prefix: 2 }));
+	return src('root_legacy/*')
+		.pipe(copy('_site_legacy', { prefix: 1 }));
 }
 
 function copy_root_dev(cb) {
@@ -89,8 +89,8 @@ function copy_root_dev(cb) {
 }
 
 function copy_site_legacy(cb) {
-	return src('src/_legacy/**/*')
-		.pipe(copy('_site_legacy', { prefix: 2 }));
+	return src('legacy2021/**/*')
+		.pipe(copy('_site_legacy', { prefix: 1 }));
 }
 
 function copy_site_styleguide(cb) {

@@ -1,6 +1,6 @@
 node_modules
 .npmrc
 _site
+_site_legacy
 _styleguide
-package-lock.json
-package-lock.json
+

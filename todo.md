@@ -12,6 +12,7 @@
 [x] Set up styleguide domain
 [ ] Move PDF files to dropbox or other CDN
 [ ] XML sitemap
+[ ] shame.css addon for 11ty site
 
 
 

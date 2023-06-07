@@ -5,12 +5,13 @@
 [x] Copy legacy pages to _site folder
 [x] Set up Netlify account
 [x] Set up build process at Netlify
-[ ] Let bingsjostamman.se run from Netlify
+[x] Let bingsjostamman.se run from Netlify
 [ ] Set up Fractal styleguide
 [ ] Set up Eleventy static site structure
 [ ] Set up dev domain
 [ ] Set up styleguide domain
 [ ] Move PDF files to dropbox or other CDN
+[ ] XML sitemap
 
 
 

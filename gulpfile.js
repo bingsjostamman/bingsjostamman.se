@@ -83,6 +83,11 @@ function copy_root(cb) {
 		.pipe(copy('_site_legacy', { prefix: 1 }));
 }
 
+function copy_root_dev(cb) {
+	return src('root/dev/*')
+		.pipe(copy('_site', { prefix: 2 }));
+}
+
 function copy_site_legacy(cb) {
 	return src('legacy2021/**/*')
 		.pipe(copy('_site_legacy', { prefix: 1 }));
@@ -249,11 +254,19 @@ function fractal_build() {
 
 /* Default */
 exports.default = series(
+	clean_site,
+	copy_root_dev,
 	clean_dest_styleguide,
 	fractal_build,
 	weather
 );
 
+
+/* Deploy Site */
+exports.deploy = series(
+	clean_site,
+	copy_root_dev
+);
 
 /* Deploy Legacy Site */
 exports.deploy_legacy = series(

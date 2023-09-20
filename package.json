@@ -5,7 +5,8 @@
 	"repository": "https://github.com/bingsjostamman/bingsjostamman.se",
 	"license": "UNLICENSED",
 	"scripts": {
-		"preinstall": "npx force-resolutions"
+		"preinstall": "npx force-resolutions",
+		"11ty": "gulp pre_11ty && npx @11ty/eleventy && gulp post_11ty"
 	},
 	"resolutions": {
 		"glob-parent": "^6.0.2"
@@ -18,6 +19,8 @@
 		"gulp-sass-glob": "^1.1.0"
 	},
 	"dependencies": {
+		"@11ty/eleventy": "^2.0.1",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
 		"@frctl/fractal": "^1.5.14"
 	}
 }

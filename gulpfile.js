@@ -63,6 +63,16 @@ function defaultTask(cb) {
 	cb();
 }
 
+function copy_site_assets(cb) {
+	return src('src/_static/assets/**/*')
+		.pipe(copy('_site', { prefix: 2 })
+		.on('end', function () {
+			console.log('Assets folder copied from styleguide to site.')
+		})
+	);
+}
+/* --- */
+
 function clean_site(cb) {
 	return src('_site/*', { read: false })
 		.pipe(clean());
@@ -284,6 +294,18 @@ exports.deploy_styleguide = series(
 /* Fractal */
 exports.fractal_start = fractal_start;
 exports.fractal_build = fractal_build;
+
+
+/* Eleventy pre pipeline */
+exports.pre_11ty = series(
+	clean_site,
+	copy_site_assets
+);
+
+/* Eleventy post pipeline */
+exports.post_11ty = series(
+	weather
+);
 
 
 /* Single tasks */

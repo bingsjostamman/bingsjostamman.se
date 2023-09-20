@@ -108,14 +108,6 @@ function copy_site_styleguide(cb) {
 		.pipe(copy('_styleguide', { prefix: 2 }));
 }
 
-function weather(cb) {
-	exec('curl -s http://wttr.in/Bingsjo | head -7', function (err, stdout, stderr) {
-		console.log(stdout);
-		console.log(stderr);
-		cb(err);
-	});
-}
-
 
 
 /* -----------------------------------------------------------------------------
@@ -267,8 +259,7 @@ exports.default = series(
 	clean_site,
 	copy_root_dev,
 	clean_dest_styleguide,
-	fractal_build,
-	weather
+	fractal_build
 );
 
 
@@ -302,15 +293,9 @@ exports.pre_11ty = series(
 	copy_site_assets
 );
 
-/* Eleventy post pipeline */
-exports.post_11ty = series(
-	weather
-);
-
 
 /* Single tasks */
 
-exports.weather = weather;
 exports.clean = clean_site;
 exports.clean_legacy = clean_site_legacy;
 exports.legacy = copy_site_legacy;

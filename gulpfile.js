@@ -1,4 +1,3 @@
-
 /*                                    lllllll
 									  l:::::l
 									  l:::::l
@@ -37,78 +36,75 @@ https://gulpjs.com/
 
 */
 
-
 /* -----------------------------------------------------------------------------
  * Gulp requirements and plugins
  * -------------------------------------------------------------------------- */
 
 /* Base gulp requirements */
-const gulp = require('gulp');
-const { src, dest, watch, series, parallel } = require('gulp');
-const exec = require('child_process').exec;
-const clean = require('gulp-clean');
-const sass = require('gulp-dart-sass');
-const sassGlob = require('gulp-sass-glob');
+const gulp = require("gulp");
+const { src, dest, watch, series, parallel } = require("gulp");
+const exec = require("child_process").exec;
 
 /* Fetch required plugins */
-const copy = require('gulp-copy');
-
+const copy = require("gulp-copy");
+const clean = require("gulp-clean");
+const sass = require("gulp-dart-sass");
+const sassGlob = require("gulp-sass-glob");
 
 /* -----------------------------------------------------------------------------
  * Gulp tasks
  * -------------------------------------------------------------------------- */
 
-function defaultTask(cb) {
-	console.log('place code for your default task here');
-	cb();
+/* Clean destination folders */
+
+function clean_site(cb) {
+	return src("_site/*", { read: false }).pipe(clean());
+}
+
+function clean_site_legacy(cb) {
+	return src("_site_legacy/*", { read: false }).pipe(clean());
+}
+
+function clean_dest_styleguide(cb) {
+	return src("_styleguide/*", { read: false }).pipe(clean());
+}
+
+/* Copy common root files */
+
+function copy_root_legacy() {
+	return src("root/_legacy/*").pipe(copy("_site_legacy", { prefix: 2 }));
+}
+
+function copy_root_common() {
+	return src("root/common/*").pipe(copy("_site", { prefix: 2 }));
+}
+
+function copy_root_dev() {
+	return src("root/dev/*").pipe(copy("_site", { prefix: 2 }));
+}
+
+function copy_root_www() {
+	return src("root/www/*").pipe(copy("_site", { prefix: 2 }));
+}
+
+/* Copy site */
+
+function copy_site_legacy() {
+	return src("src/_legacy/**/*").pipe(copy("_site_legacy", { prefix: 2 }));
 }
 
 function copy_site_assets(cb) {
-	return src('src/_static/assets/**/*')
-		.pipe(copy('_site', { prefix: 2 })
-		.on('end', function () {
-			console.log('Assets folder copied from styleguide to site.')
+	return src("src/_static/assets/**/*").pipe(
+		copy("_site", { prefix: 2 }).on("end", function () {
+			console.log("Assets folder copied from styleguide to site.");
 		})
 	);
 }
 /* --- */
 
-function clean_site(cb) {
-	return src('_site/*', { read: false })
-		.pipe(clean());
-}
-
-function clean_site_legacy(cb) {
-	return src('_site_legacy/*', { read: false })
-		.pipe(clean());
-}
-
-function clean_dest_styleguide(cb) {
-	return src('_styleguide/*', { read: false })
-		.pipe(clean());
-}
-
-function copy_root(cb) {
-	return src('root/_legacy/*')
-		.pipe(copy('_site_legacy', { prefix: 2 }));
-}
-
-function copy_root_dev(cb) {
-	return src('root/dev/*')
-		.pipe(copy('_site', { prefix: 2 }));
-}
-
-function copy_site_legacy(cb) {
-	return src('src/_legacy/**/*')
-		.pipe(copy('_site_legacy', { prefix: 2 }));
-}
-
 function copy_site_styleguide(cb) {
-	return src('src/_styleguide/**/*')
-		.pipe(copy('_styleguide', { prefix: 2 }));
+	return src("src/_styleguide/**/*").pipe(copy("_styleguide", { prefix: 2 }));
 }
-
-
 
 /* -----------------------------------------------------------------------------
  * CSS tasks
@@ -127,22 +123,18 @@ function copy_site_styleguide(cb) {
 
 function processSass() {
 	return gulp
-		.src([
-			'src/css/sass/*.scss'
-		])
+		.src(["src/css/sass/*.scss"])
 		.pipe(sassGlob())
-		.pipe(sass({
-			outputStyle: 'expanded'
-		})
-			.on('error', sass.logError))
-		.pipe(gulp.dest('src/css'))
-		.on('end', function () {
-			console.log('SCSS compiled to CSS.');
-		}
+		.pipe(
+			sass({
+				outputStyle: "expanded",
+			}).on("error", sass.logError)
 		)
+		.pipe(gulp.dest("src/css"))
+		.on("end", function () {
+			console.log("SCSS compiled to CSS.");
+		});
 }
-
-
 
 /* -----------------------------------------------------------------------------
  * Fractal configuration and tasks
@@ -155,72 +147,62 @@ function processSass() {
  * Base Fractal requirements
  */
 
-const fractal = require('@frctl/fractal').create();
+const fractal = require("@frctl/fractal").create();
 const logger = fractal.cli.console;
-
-
 
 /**
  * Fractal configuration
  */
 
 /* Set the title of the project */
-fractal.set('project.title', 'bingsjostamman.se styleguide');
+fractal.set("project.title", "bingsjostamman.se styleguide");
 
 /* Tell Fractal where the components will live */
-fractal.components.set('path', __dirname + '/src/fractal/patterns');
-fractal.components.set('label', 'Patterns');
-fractal.components.set('title', 'Patterns');
+fractal.components.set("path", __dirname + "/src/fractal/patterns");
+fractal.components.set("label", "Patterns");
+fractal.components.set("title", "Patterns");
 
 /* Tell Fractal where the documentation pages will live */
-fractal.docs.set('path', __dirname + '/src/fractal/docs');
+fractal.docs.set("path", __dirname + "/src/fractal/docs");
 
 /* Specify a directory of static assets */
-fractal.web.set('static.path', __dirname + '/src/fractal/static');
+fractal.web.set("static.path", __dirname + "/src/fractal/static");
 
 /* Set the static HTML build destination */
-fractal.web.set('builder.dest', __dirname + '/_styleguide');
+fractal.web.set("builder.dest", __dirname + "/_styleguide");
 
 /* Preview */
-fractal.components.set('default.preview', '@preview');
-fractal.components.set('collate.preview', '@collate');
-
-
+fractal.components.set("default.preview", "@preview");
+fractal.components.set("collate.preview", "@collate");
 
 /**
  * Customized Styleguide theme
  */
 
 /* Require the Mandelbrot theme module */
-const mandelbrot = require('@frctl/mandelbrot');
+const mandelbrot = require("@frctl/mandelbrot");
 
 /* Create a new instance with custom config options */
 const myCustomisedTheme = mandelbrot({
-	"styles": [
-		"/styleguide.css",
-		"default"
-	]
+	styles: ["/styleguide.css", "default"],
 });
 
 /* Tell Fractal to use the configured theme by default */
 fractal.web.theme(myCustomisedTheme);
 
-
 /**
  * Adding a SVG inline helper
  */
 
-const hbs = require('@frctl/handlebars')({});
+const hbs = require("@frctl/handlebars")({});
 const instance = fractal.components.engine(hbs);
 
-var fs = require('fs');
-instance.handlebars.registerHelper('svg', function (iconName) {
-	let path = __dirname + '/project/static/icons/' + iconName + '.svg';
-	let content = fs.readFileSync(path, 'utf8');
+var fs = require("fs");
+instance.handlebars.registerHelper("svg", function (iconName) {
+	let path = __dirname + "/project/static/icons/" + iconName + ".svg";
+	let content = fs.readFileSync(path, "utf8");
 	return content;
 });
-
-
 
 /**
  * Fractal tasks
@@ -229,9 +211,9 @@ instance.handlebars.registerHelper('svg', function (iconName) {
 /* Start a localhost:3000 web server with browser sync */
 function fractal_start() {
 	const server = fractal.web.server({
-		sync: true
+		sync: true,
 	});
-	server.on('error', err => logger.error(err.message));
+	server.on("error", (err) => logger.error(err.message));
 	return server.start().then(() => {
 		logger.success(`Fractal server is now running at ${server.url}`);
 	});
@@ -240,15 +222,14 @@ function fractal_start() {
 /* Build a static web site */
 function fractal_build() {
 	const builder = fractal.web.builder();
-	builder.on('progress', (completed, total) => logger.update(`Exported ${completed} of ${total} items`, 'info'));
-	builder.on('error', err => logger.error(err.message));
+	builder.on("progress", (completed, total) =>
+		logger.update(`Exported ${completed} of ${total} items`, "info")
+	);
+	builder.on("error", (err) => logger.error(err.message));
 	return builder.build().then(() => {
-		logger.success('Fractal build completed!');
+		logger.success("Fractal build completed!");
 	});
 }
-
-
-
 
 /* -----------------------------------------------------------------------------
  * Public Gulp tasks
@@ -262,43 +243,30 @@ exports.default = series(
 	fractal_build
 );
 
-
 /* Deploy Site */
-exports.deploy = series(
-	clean_site,
-	copy_root_dev
-);
+exports.deploy = series(clean_site, copy_root_dev);
 
 /* Deploy Legacy Site */
 exports.deploy_legacy = series(
 	clean_site_legacy,
-	copy_root,
+	copy_root_common,
 	copy_site_legacy
 );
 
 /* Deploy Styleguide */
-exports.deploy_styleguide = series(
-	clean_dest_styleguide,
-	fractal_build
-);
+exports.deploy_styleguide = series(clean_dest_styleguide, fractal_build);
 
 /* Fractal */
 exports.fractal_start = fractal_start;
 exports.fractal_build = fractal_build;
 
-
 /* Eleventy pre pipeline */
-exports.pre_11ty = series(
-	clean_site,
-	copy_site_assets
-);
-
+exports.pre_11ty = series(clean_site, copy_site_assets);
 
 /* Single tasks */
 
 exports.clean = clean_site;
 exports.clean_legacy = clean_site_legacy;
-exports.legacy = copy_site_legacy;
-exports.root = copy_root;
-
-
+exports.root_common = copy_root_common;
+exports.root_legacy = copy_root_legacy;
+exports.site_legacy = copy_site_legacy;

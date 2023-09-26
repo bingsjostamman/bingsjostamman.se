@@ -101,14 +101,9 @@ function copy_site_legacy() {
 function copy_site_assets(cb) {
 	return src("src/_static/assets/**/*").pipe(
 		copy("_site", { prefix: 2 }).on("end", function () {
-			console.log("Assets folder copied from styleguide to site.");
+			console.log("Assets folder copied from src to site.");
 		})
 	);
-}
-/* --- */
-
-function copy_site_styleguide(cb) {
-	return src("src/_styleguide/**/*").pipe(copy("_styleguide", { prefix: 2 }));
 }
 
 /* -----------------------------------------------------------------------------
@@ -171,7 +166,7 @@ fractal.components.set("title", "Patterns");
 fractal.docs.set("path", __dirname + "/src/fractal/docs");
 
 /* Specify a directory of static assets */
-fractal.web.set("static.path", __dirname + "/src/_/static");
+fractal.web.set("static.path", __dirname + "/src/_static");
 
 /* Set the static HTML build destination */
 fractal.web.set("builder.dest", __dirname + "/_styleguide");
@@ -243,27 +238,42 @@ function fractal_build() {
 /* Default */
 exports.default = defaultTask;
 
-/* Deploy Legacy Site */
+/**
+ * Deploy Legacy Site
+ */
+
 exports.deploy_legacy = series(
 	clean_site_legacy,
 	copy_root_legacy,
 	copy_site_legacy
 );
 
-/* Deploy Site */
-exports.deploy = series(clean_site, copy_root_dev);
+/**
+ * Deploy Eleventy Site
+ */
 
-/* Deploy Styleguide */
-exports.deploy_styleguide = series(clean_dest_styleguide, fractal_build);
+exports.pre_11ty_dev = series(
+	clean_site,
+	copy_root_common,
+	copy_root_dev,
+	copy_site_assets
+);
 
-/* Fractal */
+exports.pre_11ty_www = series(
+	clean_site,
+	copy_root_common,
+	copy_root_www,
+	copy_site_assets
+);
+
+/**
+ * Deploy Fractal Styleguide
+ */
+
 exports.fractal_start = fractal_start;
 exports.fractal_build = fractal_build;
 
-/* Eleventy pre pipeline */
-exports.pre_11ty = series(clean_site, copy_site_assets);
+exports.deploy_styleguide = series(clean_dest_styleguide, fractal_build);
 
 /* Single tasks */
-
-exports.clean = clean_site;
-exports.root_common = copy_root_common;
+// exports.clean = clean_site;

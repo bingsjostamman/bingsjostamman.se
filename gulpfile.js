@@ -243,15 +243,15 @@ function fractal_build() {
 /* Default */
 exports.default = defaultTask;
 
-/* Deploy Site */
-exports.deploy = series(clean_site, copy_root_dev);
-
 /* Deploy Legacy Site */
 exports.deploy_legacy = series(
 	clean_site_legacy,
-	copy_root_common,
+	copy_root_legacy,
 	copy_site_legacy
 );
+
+/* Deploy Site */
+exports.deploy = series(clean_site, copy_root_dev);
 
 /* Deploy Styleguide */
 exports.deploy_styleguide = series(clean_dest_styleguide, fractal_build);

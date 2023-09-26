@@ -55,17 +55,22 @@ const sassGlob = require("gulp-sass-glob");
  * Gulp tasks
  * -------------------------------------------------------------------------- */
 
+function defaultTask(cb) {
+	console.log("No default task defined");
+	cb();
+}
+
 /* Clean destination folders */
 
-function clean_site(cb) {
+function clean_site() {
 	return src("_site/*", { read: false }).pipe(clean());
 }
 
-function clean_site_legacy(cb) {
+function clean_site_legacy() {
 	return src("_site_legacy/*", { read: false }).pipe(clean());
 }
 
-function clean_dest_styleguide(cb) {
+function clean_dest_styleguide() {
 	return src("_styleguide/*", { read: false }).pipe(clean());
 }
 
@@ -236,12 +241,7 @@ function fractal_build() {
  * -------------------------------------------------------------------------- */
 
 /* Default */
-exports.default = series(
-	clean_site,
-	copy_root_dev,
-	clean_dest_styleguide,
-	fractal_build
-);
+exports.default = defaultTask;
 
 /* Deploy Site */
 exports.deploy = series(clean_site, copy_root_dev);

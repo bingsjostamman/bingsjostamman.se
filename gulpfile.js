@@ -266,7 +266,4 @@ exports.pre_11ty = series(clean_site, copy_site_assets);
 /* Single tasks */
 
 exports.clean = clean_site;
-exports.clean_legacy = clean_site_legacy;
 exports.root_common = copy_root_common;
-exports.root_legacy = copy_root_legacy;
-exports.site_legacy = copy_site_legacy;

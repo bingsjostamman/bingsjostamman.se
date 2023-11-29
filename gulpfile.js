@@ -63,6 +63,9 @@ const cleanCSS = require("gulp-clean-css");
 
 /* Fetch PostCSS plugins */
 const postcssNormalize = require("postcss-normalize");
+//  Autoprefixer - base on .browserslistrc
+// https://github.com/postcss/autoprefixer
+const autoprefixer = require("autoprefixer");
 
 /* -----------------------------------------------------------------------------
  * Gulp tasks

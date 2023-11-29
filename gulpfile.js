@@ -52,10 +52,13 @@ const { src, dest, watch, series, parallel } = require("gulp");
 const exec = require("child_process").exec;
 
 /* Fetch required plugins */
-const copy = require("gulp-copy");
 const clean = require("gulp-clean");
+const cleanCSS = require("gulp-clean-css");
+const copy = require("gulp-copy");
+const rename = require("gulp-rename");
 const sass = require("gulp-dart-sass");
 const sassGlob = require("gulp-sass-glob");
+const size = require("gulp-size");
 
 /* -----------------------------------------------------------------------------
  * Gulp tasks
@@ -137,6 +140,12 @@ function processSass() {
 			}).on("error", sass.logError)
 		)
 		.pipe(gulp.dest("src/css"))
+		.pipe(
+			size({
+				title: "Processed",
+				showFiles: true,
+			})
+		)
 		.on("end", function () {
 			console.log("SCSS compiled to CSS.");
 		});
@@ -283,3 +292,6 @@ exports.deploy_styleguide = series(clean_dest_styleguide, fractal_build);
 
 /* Single tasks */
 // exports.clean = clean_site;
+
+/* Verified */
+exports.css_sass = processSass;

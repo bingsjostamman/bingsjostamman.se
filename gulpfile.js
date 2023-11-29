@@ -50,15 +50,15 @@ https://gulpjs.com/
 const gulp = require("gulp");
 const { src, dest, watch, series, parallel } = require("gulp");
 const exec = require("child_process").exec;
-
-/* Fetch required plugins */
 const clean = require("gulp-clean");
-const cleanCSS = require("gulp-clean-css");
 const copy = require("gulp-copy");
 const rename = require("gulp-rename");
+const size = require("gulp-size");
+
+/* Fetch required modules */
 const sass = require("gulp-dart-sass");
 const sassGlob = require("gulp-sass-glob");
-const size = require("gulp-size");
+const cleanCSS = require("gulp-clean-css");
 
 /* -----------------------------------------------------------------------------
  * Gulp tasks

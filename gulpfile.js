@@ -177,6 +177,24 @@ function postCSSnormalize(cb) {
 		});
 }
 
+/**
+ * Minify processed CSS
+ */
+
+function minifyCSS(cb) {
+	return gulp
+		.src(["src/css/*.css", "!src/css/*.min.css"])
+		.pipe(
+			cleanCSS({ debug: true }, (details) => {
+				console.log(
+					`${details.name} minified from ${details.stats.originalSize} to ${details.stats.minifiedSize}`
+				);
+			})
+		)
+		.pipe(rename({ suffix: ".min" }))
+		.pipe(gulp.dest("src/css"));
+}
+
 /* -----------------------------------------------------------------------------
  * Fractal configuration and tasks
  *
@@ -285,10 +303,10 @@ exports.default = defaultTask;
 
 exports.css = series(
 	processSass,
-	postCSSnormalize
+	postCSSnormalize,
+	minifyCSS
 	// postcss plus
 	// postcss minus
-	// css minify
 );
 
 /**
@@ -334,3 +352,4 @@ exports.deploy_styleguide = series(clean_dest_styleguide, fractal_build);
 /* Verified */
 exports.css_sass = processSass;
 exports.css_norm = postCSSnormalize;
+exports.css_min = minifyCSS;

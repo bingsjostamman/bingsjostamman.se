@@ -178,6 +178,30 @@ function postCSSnormalize(cb) {
 }
 
 /**
+ * Inject vendor prefixes based on Browserslist uring PostCSS
+ */
+
+function postCSSautoprefixer(cb) {
+	const plugins = [autoprefixer()];
+
+	return gulp
+		.src(["src/css/*.css", "!src/css/*.min.css"])
+		.pipe(postcss(plugins))
+		.pipe(gulp.dest("src/css"))
+		.pipe(
+			size({
+				title: "Inject vendor prefixer to",
+				showFiles: true,
+			})
+		)
+		.on("end", function () {
+			console.log(
+				"Vendor prefixes auto injected using PostCSS and Browserslist."
+			);
+		});
+}
+
+/**
  * Minify processed CSS
  */
 
@@ -324,6 +348,7 @@ exports.default = defaultTask;
 exports.css = series(
 	processSass,
 	postCSSnormalize,
+	postCSSautoprefixer,
 	minifyCSS,
 	copyCssAssets
 	// postcss plus
@@ -375,3 +400,4 @@ exports.css_sass = processSass;
 exports.css_norm = postCSSnormalize;
 exports.css_min = minifyCSS;
 exports.css_assets = copyCssAssets;
+exports.css_prefix = postCSSautoprefixer;

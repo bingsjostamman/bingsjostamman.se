@@ -195,6 +195,16 @@ function minifyCSS(cb) {
 		.pipe(gulp.dest("src/css"));
 }
 
+/**
+ * Copy post-processed and minified CSS to static assets folder
+ */
+
+function copyCssAssets() {
+	return src(["src/css/*.css", "src/css/*.min.css"]).pipe(
+		copy("src/_static/assets/css", { prefix: 2 })
+	);
+}
+
 /* -----------------------------------------------------------------------------
  * Fractal configuration and tasks
  *
@@ -304,7 +314,8 @@ exports.default = defaultTask;
 exports.css = series(
 	processSass,
 	postCSSnormalize,
-	minifyCSS
+	minifyCSS,
+	copyCssAssets
 	// postcss plus
 	// postcss minus
 );
@@ -353,3 +364,4 @@ exports.deploy_styleguide = series(clean_dest_styleguide, fractal_build);
 exports.css_sass = processSass;
 exports.css_norm = postCSSnormalize;
 exports.css_min = minifyCSS;
+exports.css_assets = copyCssAssets;

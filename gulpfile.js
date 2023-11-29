@@ -146,7 +146,7 @@ function processSass() {
 		.pipe(gulp.dest("src/css"))
 		.pipe(
 			size({
-				title: "Processed Sass to",
+				title: "Process Sass to",
 				showFiles: true,
 			})
 		)
@@ -278,6 +278,18 @@ function fractal_build() {
 
 /* Default */
 exports.default = defaultTask;
+
+/**
+ * CSS
+ */
+
+exports.css = series(
+	processSass,
+	postCSSnormalize
+	// postcss plus
+	// postcss minus
+	// css minify
+);
 
 /**
  * Deploy Legacy Site

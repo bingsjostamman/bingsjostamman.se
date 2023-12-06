@@ -45,6 +45,8 @@
 
 // @import "base/**/*.scss";
 
+@import "base/base.styleguide.scss";
+
 
 /*! No CSS before this comment! */
 
@@ -53,7 +55,8 @@
  * CONFIG
  */
 
-@import "config/**/*.scss";
+//@import "config/**/*.scss";
+@import "config/config.colors.scss";
 
 
 /**
@@ -73,8 +76,9 @@
  * PATTERNS
  */
 
-@import "../../fractal/patterns/**/*.scss";
-
+//@import "../../fractal/patterns/**/*.scss";
+@import "../../fractal/patterns/button/button.scss";
+@import "../../fractal/patterns/skip/skip.scss";
 
 /**
  * SHAME

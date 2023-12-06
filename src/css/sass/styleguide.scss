@@ -2,4 +2,40 @@
 
 $sg: true;
 
-@import 'styles';
+/**
+ * BASE
+ */
+
+@import 'base/**/*';
+
+/*! No CSS before this comment! */
+
+/**
+ * CONFIG
+ */
+
+@import 'config/**/*.scss';
+
+/**
+ * ELEMENTS
+ */
+
+@import 'elements/elements.normalize';
+
+/**
+ * LAYOUT
+ */
+
+/**
+ * PATTERNS
+ */
+
+@import '../../fractal/patterns/**/*';
+
+/**
+ * SHAME
+ */
+
+/**
+ * UTILITIES
+ */

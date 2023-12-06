@@ -272,10 +272,29 @@
  * PATTERNS
  */
 button {
-  font-weight: bold;
-  color: white;
   border: 1px solid blue;
   background: rebeccapurple;
+  color: white;
+  font-weight: bold;
+}
+
+.skip {
+  /* Styles for skip link */
+}
+
+.skip:not(:focus) {
+  background: pink;
+}
+
+.skop {
+  background: black;
+}
+
+button {
+  border: 1px solid blue;
+  background: rebeccapurple;
+  color: white;
+  font-weight: bold;
 }
 
 .skip {

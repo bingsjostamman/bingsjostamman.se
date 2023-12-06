@@ -5,7 +5,7 @@
 	"repository": "https://github.com/bingsjostamman/bingsjostamman.se",
 	"license": "UNLICENSED",
 	"scripts": {
-		"preinstall": "npx force-resolutions",
+		"preinstall": "npx npm-force-resolutions",
 		"11ty_www": "gulp pre_11ty_www && npx @11ty/eleventy",
 		"11ty_dev": "gulp pre_11ty_dev && npx @11ty/eleventy"
 	},

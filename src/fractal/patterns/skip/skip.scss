@@ -12,12 +12,14 @@
 }
 
 @include sg {
+
 	.skip.sg-focus {
 		font-style: italic;
 	}
 
 	.skop.sg-focus {
 		@extend .skop;
+
 		background: red;
 	}
 }

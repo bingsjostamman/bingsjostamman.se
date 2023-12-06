@@ -66,6 +66,9 @@ const postcssNormalize = require("postcss-normalize");
 //  Autoprefixer - base on .browserslistrc
 // https://github.com/postcss/autoprefixer
 const autoprefixer = require("autoprefixer");
+const stylelint = require("stylelint");
+const reporter = require("postcss-reporter");
+const scssParser = require("postcss-scss");
 
 /* -----------------------------------------------------------------------------
  * Gulp tasks
@@ -118,7 +121,7 @@ function copy_site_assets(cb) {
 	return src("src/_static/assets/**/*").pipe(
 		copy("_site", { prefix: 2 }).on("end", function () {
 			console.log("Assets folder copied from src to site.");
-		})
+		}),
 	);
 }
 
@@ -134,7 +137,29 @@ function copy_site_assets(cb) {
 // copy css files
 
 /**
- * Process Sass files to CSS
+ * Lint Sass using Stylelint
+ */
+
+function postCSSstylelint(cb) {
+	const plugins = [stylelint(), reporter({ clearReportedMessages: true })];
+
+	return (
+		gulp
+			.src(["src/**/*.scss"])
+			.pipe(postcss(plugins))
+			.pipe(gulp.dest("src/"))
+			// .pipe(size({
+			// 	title: 'Linted',
+			// 	showFiles: true
+			// }))
+			.on("end", function () {
+				console.log("Sass partials linted");
+			})
+	);
+}
+
+/**
+ * Pre-process Sass files to CSS
  */
 
 function processSass() {
@@ -144,14 +169,14 @@ function processSass() {
 		.pipe(
 			sass({
 				outputStyle: "expanded",
-			}).on("error", sass.logError)
+			}).on("error", sass.logError),
 		)
 		.pipe(gulp.dest("src/css"))
 		.pipe(
 			size({
 				title: "Process Sass to",
 				showFiles: true,
-			})
+			}),
 		)
 		.on("end", function () {
 			console.log("Sass pre-processed to CSS.");
@@ -173,7 +198,7 @@ function postCSSnormalize(cb) {
 			size({
 				title: "Inject Normalize to",
 				showFiles: true,
-			})
+			}),
 		)
 		.on("end", function () {
 			console.log("Normalized injected using PostCSS and Browserslist.");
@@ -195,11 +220,11 @@ function postCSSautoprefixer(cb) {
 			size({
 				title: "Inject vendor prefixer to",
 				showFiles: true,
-			})
+			}),
 		)
 		.on("end", function () {
 			console.log(
-				"Vendor prefixes auto injected using PostCSS and Browserslist."
+				"Vendor prefixes auto injected using PostCSS and Browserslist.",
 			);
 		});
 }
@@ -214,9 +239,9 @@ function minifyCSS(cb) {
 		.pipe(
 			cleanCSS({ debug: true }, (details) => {
 				console.log(
-					`${details.name} minified from ${details.stats.originalSize} to ${details.stats.minifiedSize}`
+					`${details.name} minified from ${details.stats.originalSize} to ${details.stats.minifiedSize}`,
 				);
-			})
+			}),
 		)
 		.pipe(rename({ suffix: ".min" }))
 		.pipe(gulp.dest("src/css"));
@@ -233,11 +258,11 @@ function copyCssAssets() {
 			size({
 				title: "Copy processed CSS file:",
 				showFiles: true,
-			})
+			}),
 		)
 		.on("end", function () {
 			console.log(
-				"Post-processed CSS files copied to the static assets folder"
+				"Post-processed CSS files copied to the static assets folder",
 			);
 		});
 }
@@ -329,7 +354,7 @@ function fractal_start() {
 function fractal_build() {
 	const builder = fractal.web.builder();
 	builder.on("progress", (completed, total) =>
-		logger.update(`Exported ${completed} of ${total} items`, "info")
+		logger.update(`Exported ${completed} of ${total} items`, "info"),
 	);
 	builder.on("error", (err) => logger.error(err.message));
 	return builder.start().then(() => {
@@ -353,7 +378,7 @@ exports.css = series(
 	postCSSnormalize,
 	postCSSautoprefixer,
 	minifyCSS,
-	copyCssAssets
+	copyCssAssets,
 	// postcss plus
 	// postcss minus
 );
@@ -365,7 +390,7 @@ exports.css = series(
 exports.deploy_legacy = series(
 	clean_site_legacy,
 	copy_root_legacy,
-	copy_site_legacy
+	copy_site_legacy,
 );
 
 /**
@@ -376,14 +401,14 @@ exports.pre_11ty_dev = series(
 	clean_site,
 	copy_root_common,
 	copy_root_dev,
-	copy_site_assets
+	copy_site_assets,
 );
 
 exports.pre_11ty_www = series(
 	clean_site,
 	copy_root_common,
 	copy_root_www,
-	copy_site_assets
+	copy_site_assets,
 );
 
 /**
@@ -399,6 +424,7 @@ exports.deploy_styleguide = series(clean_dest_styleguide, fractal_build);
 // exports.clean = clean_site;
 
 /* Verified */
+exports.css_lint = postCSSstylelint;
 exports.css_sass = processSass;
 exports.css_norm = postCSSnormalize;
 exports.css_min = minifyCSS;

@@ -38,52 +38,40 @@
  *
  */
 
-
 /**
  * BASE
  */
 
-// @import "base/**/*.scss";
-
-@import "base/base.styleguide.scss";
-
+@import url("base/**/*.scss");
 
 /*! No CSS before this comment! */
-
 
 /**
  * CONFIG
  */
 
-//@import "config/**/*.scss";
-@import "config/config.colors.scss";
-
+@import url("config/**/*.scss");
 
 /**
  * ELEMENTS
  */
 
-@import "elements/elements.normalize.scss";
-// @import "elements/elements.box-sizing.scss";
-
+@import url("elements/elements.normalize.scss");
 
 /**
  * LAYOUT
  */
 
-
 /**
  * PATTERNS
  */
 
-//@import "../../fractal/patterns/**/*.scss";
-@import "../../fractal/patterns/button/button.scss";
-@import "../../fractal/patterns/skip/skip.scss";
+@import url("../../fractal/patterns/button/button.scss");
+@import url("../../fractal/patterns/skip/skip.scss");
 
 /**
  * SHAME
  */
-
 
 /**
  * UTILITIES

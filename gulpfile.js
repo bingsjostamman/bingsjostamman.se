@@ -60,6 +60,7 @@ const sass = require("gulp-dart-sass");
 const sassGlob = require("gulp-sass-glob");
 const postcss = require("gulp-postcss");
 const cleanCSS = require("gulp-clean-css");
+const csscomb = require('gulp-csscomb'); /* https://github.com/csscomb/csscomb.js */
 
 /* Fetch PostCSS plugins */
 const postcssNormalize = require("postcss-normalize");
@@ -135,6 +136,27 @@ function copy_site_assets(cb) {
 // PostCSS css files
 // Minify to css.min
 // copy css files
+
+/**
+ * Tidy upp Sass using CombCSS
+ */
+
+function combCSS(cb) {
+	return gulp
+		.src([
+			'src/**/*.scss'
+		])
+		.pipe(csscomb())
+		.pipe(gulp.dest('src/'))
+		.pipe(size({
+			title: 'Combed',
+			showFiles: true
+		}))
+		.on('end', function () {
+			console.log('Sass partials sorted and combed')
+		});
+}
+
 
 /**
  * Lint Sass using Stylelint
@@ -374,13 +396,13 @@ exports.default = defaultTask;
  */
 
 exports.css = series(
+	combCSS,
+	postCSSstylelint,
 	processSass,
 	postCSSnormalize,
 	postCSSautoprefixer,
 	minifyCSS,
-	copyCssAssets,
-	// postcss plus
-	// postcss minus
+	copyCssAssets
 );
 
 /**
@@ -424,6 +446,7 @@ exports.deploy_styleguide = series(clean_dest_styleguide, fractal_build);
 // exports.clean = clean_site;
 
 /* Verified */
+exports.css_comb = combCSS;
 exports.css_lint = postCSSstylelint;
 exports.css_sass = processSass;
 exports.css_norm = postCSSnormalize;

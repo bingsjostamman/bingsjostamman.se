@@ -272,10 +272,10 @@
  * PATTERNS
  */
 button {
-  background: rebeccapurple;
-  color: white;
   font-weight: bold;
+  color: white;
   border: 1px solid blue;
+  background: rebeccapurple;
 }
 
 .skip {

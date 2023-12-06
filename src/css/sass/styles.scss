@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 /**
  * STYLES
@@ -42,7 +42,7 @@
  * BASE
  */
 
-@import url("base/**/*.scss");
+@import 'base/**/*.scss';
 
 /*! No CSS before this comment! */
 
@@ -50,13 +50,13 @@
  * CONFIG
  */
 
-@import url("config/**/*.scss");
+@import 'config/**/*.scss';
 
 /**
  * ELEMENTS
  */
 
-@import url("elements/elements.normalize.scss");
+@import 'elements/elements.normalize';
 
 /**
  * LAYOUT
@@ -66,8 +66,8 @@
  * PATTERNS
  */
 
-@import url("../../fractal/patterns/button/button.scss");
-@import url("../../fractal/patterns/skip/skip.scss");
+@import '../../fractal/patterns/button/button';
+@import '../../fractal/patterns/skip/skip';
 
 /**
  * SHAME

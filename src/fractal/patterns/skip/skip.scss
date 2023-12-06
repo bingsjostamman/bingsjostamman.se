@@ -1,25 +1,24 @@
 .skip {
-	/* Styles for skip link */
+    /* Styles for skip link */
 }
 
 .skip:not(:focus) {
-	background: pink;
+    background: pink;
 }
 
 
 .skop {
-	background: black;
+    background: black;
 }
 
 @include sg {
+    .skip.sg-focus {
+        font-style: italic;
+    }
 
-	.skip.sg-focus {
-		font-style: italic;
-	}
+    .skop.sg-focus {
+        background: red;
 
-	.skop.sg-focus {
-		@extend .skop;
-
-		background: red;
-	}
+        @extend .skop;
+    }
 }

@@ -3,8 +3,7 @@
 $sg: false !default;
 
 @mixin sg {
-	@if $sg {
-		@content;
-	}
+    @if $sg {
+        @content;
+    }
 }
-

@@ -6,8 +6,8 @@
 	"license": "UNLICENSED",
 	"scripts": {
 		"preinstall": "npx npm-force-resolutions",
-		"11ty_www": "gulp pre_11ty_www && npx @11ty/eleventy",
-		"11ty_dev": "gulp pre_11ty_dev && npx @11ty/eleventy"
+		"11ty_www": "gulp css && gulp pre_11ty_www && npx @11ty/eleventy",
+		"11ty_dev": "gulp css && gulp pre_11ty_dev && npx @11ty/eleventy"
 	},
 	"resolutions": {
 		"glob-parent": "^6.0.2"

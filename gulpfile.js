@@ -257,7 +257,11 @@ function postCSSautoprefixer(cb) {
 
 function minifyCSS(cb) {
 	return gulp
-		.src(["src/css/*.css", "!src/css/*.min.css"])
+		.src([
+			"src/css/*.css",
+			"!src/css/*.min.css",
+			"!src/css/styleguide.css"
+		])
 		.pipe(
 			cleanCSS({ debug: true }, (details) => {
 				console.log(
@@ -287,6 +291,24 @@ function copyCssAssets() {
 				"Post-processed CSS files copied to the static assets folder",
 			);
 		});
+}
+
+
+/**
+ * Replace styles in 11ty dev
+ */
+
+function replace_styles() {
+	return src(["src/css/styleguide.css"])
+		.pipe(
+			cleanCSS({ debug: true }, (details) => {
+				console.log(
+					`${details.name} minified from ${details.stats.originalSize} to ${details.stats.minifiedSize}`,
+				);
+			}),
+		)
+		.pipe(rename({ basename: "styles", suffix: ".min" }))
+		.pipe(gulp.dest("src/_static/assets/css/"))
 }
 
 /* -----------------------------------------------------------------------------
@@ -424,6 +446,7 @@ exports.pre_11ty_dev = series(
 	copy_root_common,
 	copy_root_dev,
 	copy_site_assets,
+	replace_styles,
 );
 
 exports.pre_11ty_www = series(
@@ -453,3 +476,5 @@ exports.css_norm = postCSSnormalize;
 exports.css_min = minifyCSS;
 exports.css_assets = copyCssAssets;
 exports.css_prefix = postCSSautoprefixer;
+
+exports.replace_styles = replace_styles;

@@ -1,0 +1,29 @@
+/**
+ * SKIP
+ *
+ */
+
+.skip {
+    padding: 7px 16px;
+    border-radius: 50px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .24);
+    line-height: 1.2;
+    opacity: .01;
+    transition: transform .2s ease-out, opacity 0ms linear .2s;
+    transform: translateY(-200%);
+}
+
+.skip:focus-visible {
+    opacity: 1;
+    transition: transform .2s ease-out;
+    transform: translateY(0);
+}
+
+
+@include sg {
+    .skip.sg-focus {
+        opacity: 1;
+        transition: transform .2s ease-out;
+        transform: translateY(0);
+    }
+}

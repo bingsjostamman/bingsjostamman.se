@@ -1,0 +1,14 @@
+{
+	"context": {
+		"global": {
+			"skip-to-main": {
+				"skip": {
+					"text": "Hoppa till innehåll",
+					"target": "#main"
+				}
+			}
+		},
+		"start-page": {
+		}
+	}
+}

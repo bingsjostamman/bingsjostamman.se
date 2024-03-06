@@ -278,16 +278,33 @@ button {
   font-weight: bold;
 }
 
+/**
+ * SKIP
+ *
+ */
 .skip {
-  /* Styles for skip link */
+  padding: 7px 16px;
+  border-radius: 50px;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.24);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.24);
+  line-height: 1.2;
+  opacity: 0.01;
+  -webkit-transition: opacity 0ms linear 0.2s, -webkit-transform 0.2s ease-out;
+  transition: opacity 0ms linear 0.2s, -webkit-transform 0.2s ease-out;
+  transition: transform 0.2s ease-out, opacity 0ms linear 0.2s;
+  transition: transform 0.2s ease-out, opacity 0ms linear 0.2s, -webkit-transform 0.2s ease-out;
+  -webkit-transform: translateY(-200%);
+          transform: translateY(-200%);
 }
 
-.skip:not(:focus) {
-  background: pink;
-}
-
-.skop {
-  background: black;
+.skip:focus-visible {
+  opacity: 1;
+  -webkit-transition: -webkit-transform 0.2s ease-out;
+  transition: -webkit-transform 0.2s ease-out;
+  transition: transform 0.2s ease-out;
+  transition: transform 0.2s ease-out, -webkit-transform 0.2s ease-out;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 /**

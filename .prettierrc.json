@@ -59,7 +59,7 @@
 	"selector-type-case": "lower",
 	"selector-list-comma-newline-after": "always",
 	"selector-list-comma-newline-before": "never-multi-line",
-	"rule-empty-line-before": "always-multi-line",
+	"rule-empty-line-before": ["always", { "except": "inside-block-and-after-rule" }],
 	"media-feature-colon-space-after": "always",
 	"media-feature-colon-space-before": "never",
 	"media-feature-name-no-vendor-prefix": true,

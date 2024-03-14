@@ -9,7 +9,8 @@
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .24);
     line-height: 1.2;
     opacity: .01;
-    transition: transform .2s ease-out, opacity 0ms linear .2s;
+    transition: transform .2s ease-out,
+    opacity 0ms linear .2s;
     transform: translateY(-200%);
 }
 
@@ -18,7 +19,6 @@
     transition: transform .2s ease-out;
     transform: translateY(0);
 }
-
 
 @include sg {
     .skip.sg-focus {

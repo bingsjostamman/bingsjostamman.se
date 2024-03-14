@@ -26,7 +26,7 @@
 		"selector-no-qualifying-type": true,
 		"selector-no-vendor-prefix": true,
 		"selector-type-case": "lower",
-		"rule-empty-line-before": "always-multi-line",
+		"rule-empty-line-before": ["always", { "except": "first-nested" }],
 		"media-feature-name-no-vendor-prefix": true,
 		"at-rule-no-vendor-prefix": true,
 		"comment-whitespace-inside": "always",

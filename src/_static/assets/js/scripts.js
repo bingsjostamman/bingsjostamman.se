@@ -1,0 +1,1 @@
+!function(){"use strict";console.log("this stuff is console logged again and again.")}();

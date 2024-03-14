@@ -1,12 +1,12 @@
 button {
-    border: 1px solid blue;
-    background: $buttoncolor;
-    color: $white;
-    font-weight: bold;
+	border: 1px solid blue;
+	background: $buttoncolor;
+	color: $white;
+	font-weight: bold;
 }
 
 @include sg {
-    button {
-        font-style: italic;
-    }
+	button {
+		font-style: italic;
+	}
 }

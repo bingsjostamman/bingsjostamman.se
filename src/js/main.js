@@ -1,3 +1,6 @@
-import { consoleLog } from './console-log.js';
+// TODO: Comment about this file here.
 
-consoleLog('stuff');
+import { menu } from './menu.js';
+
+// TODO: initialize stuff
+menu();

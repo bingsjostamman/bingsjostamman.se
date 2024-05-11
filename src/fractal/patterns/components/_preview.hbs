@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 
 <head>
 	<meta charset="utf-8">
 	<link media="all" rel="stylesheet" href="{{ path '/assets/css/styleguide.css' }}">
 	<title>{{ _target.label }} | Blocks by Bingsjöstämman</title>
 	{{ render '@head' }}
+
+	<script>document.querySelector('html').classList.replace('no-js', 'js');</script>
 </head>
 
 </head>

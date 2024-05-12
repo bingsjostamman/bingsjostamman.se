@@ -15,12 +15,14 @@ $sg: true;
  */
 
 @import 'config/**/*';
+@import 'config/config.fonts';
 
 /**
  * ELEMENTS
  */
 
 @import 'elements/elements.normalize';
+@import 'elements/elements.root';
 
 /**
  * LAYOUT

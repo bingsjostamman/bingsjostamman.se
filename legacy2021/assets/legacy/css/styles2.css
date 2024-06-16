@@ -46,7 +46,7 @@ a:active,a:hover {
 }
 
 strong {
-	font-weight: 700
+	font-weight: 600
 }
 
 b {
@@ -58,7 +58,8 @@ i {
 }
 
 dfn,em {
-	font-style: italic
+	font-family: "Alegreya";
+	font-style: italic;
 }
 
 h1 {
@@ -258,110 +259,125 @@ a,button,input,label,select,summary,textarea {
 	url("/assets/legacy/css/type/foundry-sans-demi/foundry-sans-demi.woff") format("woff");
 }
 
-/* --------- Allegreya fonts ----------- */
+/* --------- Alegreya fonts ----------- */
 
 @font-face {
-	font-family: "Allegreya";
+	font-family: "Alegreya";
 	font-weight: 900;
 	font-style: normal;
 	font-display: fallback;
-	src: url("/assets/legacy/css/type/allegreya/Allegreya-Black.woff2") format("woff2");
+	src: url("/assets/legacy/css/type/alegreya/Alegreya-Black.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Allegreya";
+	font-family: "Alegreya";
 	font-weight: 800;
 	font-style: normal;
 	font-display: fallback;
-	src: url("/assets/legacy/css/type/allegreya/Allegreya-ExtraBold.woff2") format("woff2");
+	src: url("/assets/legacy/css/type/alegreya/Alegreya-ExtraBold.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Allegreya";
+	font-family: "Alegreya";
 	font-weight: 700;
 	font-style: normal;
 	font-display: fallback;
-	src: url("/assets/legacy/css/type/allegreya/Allegreya-Bold.woff2") format("woff2");
+	src: url("/assets/legacy/css/type/alegreya/Alegreya-Bold.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Allegreya";
+	font-family: "Alegreya";
 	font-weight: 600;
 	font-style: normal;
 	font-display: fallback;
-	src: url("/assets/legacy/css/type/allegreya/Allegreya-SemiBold.woff2") format("woff2");
+	src: url("/assets/legacy/css/type/alegreya/Alegreya-SemiBold.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Allegreya";
+	font-family: "Alegreya";
 	font-weight: 500;
 	font-style: normal;
 	font-display: fallback;
-	src: url("/assets/legacy/css/type/allegreya/Allegreya-Medium.woff2") format("woff2");
+	src: url("/assets/legacy/css/type/alegreya/Alegreya-Medium.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Allegreya";
+	font-family: "Alegreya";
+	font-weight: 500;
+	font-style: italic;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/alegreya/Alegreya-MediumItalic.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Alegreya";
 	font-weight: 400;
 	font-style: normal;
 	font-display: fallback;
-	src: url("/assets/legacy/css/type/allegreya/Allegreya-Regular.woff2") format("woff2");
+	src: url("/assets/legacy/css/type/alegreya/Alegreya-Regular.woff2") format("woff2");
+}
+@font-face {
+	font-family: "Alegreya";
+	font-weight: 400;
+	font-style: italic;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/alegreya/Alegreya-Italic.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Allegreya Sans";
+	font-family: "Alegreya Sans";
 	font-weight: 900;
 	font-style: normal;
 	font-display: fallback;
-	src: url("/assets/legacy/css/type/allegreya/AllegreyaSans-Black.woff2") format("woff2");
+	src: url("/assets/legacy/css/type/alegreya/AlegreyaSans-Black.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Allegreya Sans";
+	font-family: "Alegreya Sans";
 	font-weight: 800;
 	font-style: normal;
 	font-display: fallback;
-	src: url("/assets/legacy/css/type/allegreya/AllegreyaSans-ExtraBold.woff2") format("woff2");
+	src: url("/assets/legacy/css/type/alegreya/AlegreyaSans-ExtraBold.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Allegreya Sans";
+	font-family: "Alegreya Sans";
 	font-weight: 700;
 	font-style: normal;
 	font-display: fallback;
-	src: url("/assets/legacy/css/type/allegreya/AllegreyaSans-Bold.woff2") format("woff2");
+	src: url("/assets/legacy/css/type/alegreya/AlegreyaSans-Bold.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Allegreya Sans";
+	font-family: "Alegreya Sans";
 	font-weight: 500;
 	font-style: normal;
 	font-display: fallback;
-	src: url("/assets/legacy/css/type/allegreya/AllegreyaSans-Medium.woff2") format("woff2");
+	src: url("/assets/legacy/css/type/alegreya/AlegreyaSans-Medium.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Allegreya Sans";
+	font-family: "Alegreya Sans";
 	font-weight: 400;
 	font-style: normal;
 	font-display: fallback;
-	src: url("/assets/legacy/css/type/allegreya/AllegreyaSans-Regular.woff2") format("woff2");
+	src: url("/assets/legacy/css/type/alegreya/AlegreyaSans-Regular.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Allegreya Sans";
+	font-family: "Alegreya Sans";
 	font-weight: 300;
 	font-style: normal;
 	font-display: fallback;
-	src: url("/assets/legacy/css/type/allegreya/AllegreyaSans-Light.woff2") format("woff2");
+	src: url("/assets/legacy/css/type/alegreya/AlegreyaSans-Light.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "Allegreya Sans";
+	font-family: "Alegreya Sans";
 	font-weight: 100;
 	font-style: normal;
 	font-display: fallback;
-	src: url("/assets/legacy/css/type/allegreya/AllegreyaSans-Thin.woff2") format("woff2");
+	src: url("/assets/legacy/css/type/alegreya/AlegreyaSans-Thin.woff2") format("woff2");
 }
 
 /* ------------------------------------- */
@@ -374,7 +390,8 @@ html {
 
 body {
 	color: #000;
-	font-family: "Electra Lt Std",Georgia,Times,"Times New Roman",serif;
+	font-family: "Alegreya Sans", "Electra Lt Std",Georgia,Times,"Times New Roman",serif;
+	font-weight: 400;
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale
@@ -396,8 +413,8 @@ body {
 	margin-bottom: 18px;
 	margin-bottom: 18px;
 	margin-bottom: .75rem;
-	font-family: "Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
-	font-weight: 900
+	font-family: "Alegreya Sans","Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
+	font-weight: 600
 }
 
 .h2,h2 {
@@ -414,38 +431,38 @@ body {
 	margin-top: 3.666rem;
 	font-size: 34.56px;
 	font-size: 1.44rem;
-	font-weight: 900
+	font-weight: 600;
 }
 
 .h3,.h4,h3,h4 {
 	margin-bottom: 18px;
 	margin-bottom: 18px;
 	margin-bottom: .75rem;
-	font-family: "Foundry Sans",Arial,Helvetica,Verdana,sans-serif
+	font-family: "Alegreya Sans", "Foundry Sans", Arial, Helvetica, Verdana, sans-serif;
+	font-weight: 600;
 }
 
 .h4,h4 {
 	margin-top: 58.32px;
 	margin-top: 58.32px;
-	margin-top: 2.43rem
+	margin-top: 2.43rem;
 }
 
 .h4,.h5,h4,h5 {
 	font-size: 28.799px;
 	font-size: 1.2rem;
-	font-weight: 700
+	font-weight: 600;
 }
 
 .h5,.h6,h5,h6 {
 	margin-bottom: 0;
-	font-family: "Electra Lt Std",Arial,Helvetica,Verdana,sans-serif
+	font-family: "Alegreya Sans","Electra Lt Std",Arial,Helvetica,Verdana,sans-serif;
+	font-weight: 500;
 }
 
 .h6,h6 {
 	font-size: 24px;
 	font-size: 1rem;
-	font-weight: 400;
-	font-style: italic
 }
 
 small {
@@ -522,8 +539,8 @@ small {
 
 .header__nav {
 	margin: 0 auto;
-	font-family: "Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
-	font-weight: 700;
+	font-family: "Alegreya Sans","Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
+	font-weight: 500;
 	-webkit-box-flex: 1;
 	-ms-flex-positive: 1;
 	flex-grow: 1
@@ -655,8 +672,8 @@ footer {
 	margin-top: 0;
 	font-size: 13.888px;
 	font-size: .5787037037rem;
-	font-family: "Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
-	font-style: normal
+	font-family: "Alegreya","Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
+	font-style: italic;
 }
 
 .hero {
@@ -726,8 +743,9 @@ footer {
 	list-style: none;
 	font-size: 0;
 	letter-spacing: -1em;
-	font-family: "Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
-	color: #888
+	font-family: "Alegreya Sans","Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
+	color: #888;
+	font-weight: 300;
 }
 
 .breadcrumbs>* {
@@ -790,7 +808,7 @@ footer {
 }
 
 .nav-secondary__links ul {
-	font-family: "Foundry Sans";
+	font-family: "Alegreya Sans","Foundry Sans";
 	font-size: 19.999px;
 	font-size: .83333rem
 }
@@ -853,7 +871,7 @@ hr.light {
 }
 
 .time-location {
-	font-weight: 700
+	font-weight: 600
 }
 
 main dt {
@@ -880,7 +898,7 @@ body {
 }
 
 .island {
-	font-family: "Foundry Sans";
+	font-family: "Alegreya Sans","Foundry Sans";
 	color: #fff;
 	margin: 0;
 	padding: 12px;
@@ -923,7 +941,7 @@ body {
 }
 
 .island p:first-child {
-	font-weight: 900
+	font-weight: 600
 }
 
 .island p {
@@ -954,8 +972,8 @@ body {
 	text-decoration: none;
 	display: block;
 	padding: .5em 1em;
-	font-family: "Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
-	font-weight: 900;
+	font-family: "Alegreya Sans","Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
+	font-weight: 600;
 	border-radius: 1.5em;
 	font-size: 16.666px;
 	font-size: .6944444444rem;
@@ -1011,8 +1029,8 @@ body {
 	padding: .5em 1em;
 	border-radius: 1em;
 	text-decoration: none;
-	font-family: "Foundry Sans";
-	font-weight: 900;
+	font-family: "Alegreya Sans","Foundry Sans";
+	font-weight: 600;
 	font-size: 16.666px;
 	font-size: .6944444444rem;
 	text-transform: uppercase;
@@ -1064,7 +1082,7 @@ body {
 .note {
 	font-size: 16.666px;
 	font-size: .6944444444rem;
-	font-weight: 700;
+	font-weight: 600;
 	text-transform: uppercase
 }
 
@@ -1079,8 +1097,8 @@ body {
 }
 
 .footer {
-	font-family: "Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
-	font-weight: 700;
+	font-family: "Alegreya Sans","Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
+	font-weight: 600;
 	color: #a1a1a1
 }
 
@@ -1093,8 +1111,8 @@ body {
 	text-align: center;
 	bottom: 0;
 	width: 100%;
-	font-family: "Foundry Sans";
-	font-weight: 700;
+	font-family: "Alegreya Sans","Foundry Sans";
+	font-weight: 600;
 	font-size: 16.666px;
 	font-size: .6944444444rem;
 	-webkit-transition: all .3s ease-in-out;
@@ -1136,10 +1154,10 @@ body {
 }
 
 .next,.previous {
-	font-family: "Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
+	font-family: "Alegreya Sans","Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
 	font-size: 19.999px;
 	font-size: .8333333333rem;
-	font-weight: 700
+	font-weight: 600
 }
 
 .previous+.next {
@@ -1363,12 +1381,12 @@ body {
 .header__subheading360 {
   display: block;
   font-size: 1rem;
-  font-family: "Electra Lt Std",Georgia,Times,"Times New Roman",serif;
+  font-family: "Alegreya Sans","Electra Lt Std",Georgia,Times,"Times New Roman",serif;
 }
 
 .header__logo360 {
   font-size: 2.0736rem;
-  font-family: "Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
+  font-family: "Alegrey Sans","Foundry Sans",Arial,Helvetica,Verdana,sans-serif;
   line-height: 1.1;
 }
 

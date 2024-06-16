@@ -258,6 +258,116 @@ a,button,input,label,select,summary,textarea {
 	url("/assets/legacy/css/type/foundry-sans-demi/foundry-sans-demi.woff") format("woff");
 }
 
+/* --------- Allegreya fonts ----------- */
+
+@font-face {
+	font-family: "Allegreya";
+	font-weight: 900;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/allegreya/Allegreya-Black.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Allegreya";
+	font-weight: 800;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/allegreya/Allegreya-ExtraBold.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Allegreya";
+	font-weight: 700;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/allegreya/Allegreya-Bold.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Allegreya";
+	font-weight: 600;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/allegreya/Allegreya-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Allegreya";
+	font-weight: 500;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/allegreya/Allegreya-Medium.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Allegreya";
+	font-weight: 400;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/allegreya/Allegreya-Regular.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Allegreya Sans";
+	font-weight: 900;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/allegreya/AllegreyaSans-Black.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Allegreya Sans";
+	font-weight: 800;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/allegreya/AllegreyaSans-ExtraBold.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Allegreya Sans";
+	font-weight: 700;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/allegreya/AllegreyaSans-Bold.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Allegreya Sans";
+	font-weight: 500;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/allegreya/AllegreyaSans-Medium.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Allegreya Sans";
+	font-weight: 400;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/allegreya/AllegreyaSans-Regular.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Allegreya Sans";
+	font-weight: 300;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/allegreya/AllegreyaSans-Light.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Allegreya Sans";
+	font-weight: 100;
+	font-style: normal;
+	font-display: fallback;
+	src: url("/assets/legacy/css/type/allegreya/AllegreyaSans-Thin.woff2") format("woff2");
+}
+
+/* ------------------------------------- */
+
+
+
 html {
 	font-size: 150%
 }

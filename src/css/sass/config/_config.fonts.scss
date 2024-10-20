@@ -212,13 +212,84 @@
     src: url('/assets/fonts/AlegreyaSans-ThinItalic.woff2') format('woff2');
 }
 
+@font-face {
+    font-family: 'Playfair';
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url('/assets/fonts/subset-PlayfairDisplay-Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Playfair';
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+    src: url('/assets/fonts/subset-PlayfairDisplay-BoldItalic.woff2')
+    format('woff2');
+}
+
+@font-face {
+    font-family: 'Playfair';
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src: url('/assets/fonts/subset-PlayfairDisplay-SemiBold.woff2')
+    format('woff2');
+}
+
+@font-face {
+    font-family: 'Playfair';
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+    src: url('/assets/fonts/subset-PlayfairDisplay-SemiBoldItalic.woff2')
+    format('woff2');
+}
+
+@font-face {
+    font-family: 'Playfair';
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+    src: url('/assets/fonts/subset-PlayfairDisplay-Medium.woff2')
+    format('woff2');
+}
+
+@font-face {
+    font-family: 'Playfair';
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+    src: url('/assets/fonts/subset-PlayfairDisplayMediumItalic.woff2')
+    format('woff2');
+}
+
+@font-face {
+    font-family: 'Playfair';
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url('/assets/fonts/subset-PlayfairDisplay-Regular.woff2')
+    format('woff2');
+}
+
+@font-face {
+    font-family: 'Playfair';
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+    src: url('/assets/fonts/subset-PlayfairDisplay-Italic.woff2')
+    format('woff2');
+}
+
 body {
-    font-family: 'Alegreya Sans';
+    font-family: Playfair, 'Alegreya Sans';
 }
 h1,
 h2,
 h3 {
-    font-family: Alegreya;
+    font-family: Playfair, Alegreya;
 }
 
 h1 {

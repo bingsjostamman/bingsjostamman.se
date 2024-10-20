@@ -1,0 +1,19 @@
+---
+pagination:
+  data: posts.lineup.2024
+  size: 1
+  alias: artist
+permalink: "lineup/{{ artist.name | slugify }}/"
+layout: "layouts/default.hbs"
+---
+
+{{ artist.name }} plays on {{ artist.venue }}
+
+<p>.</p>
+<ul>
+  {% for key, val in spots %}
+    {% for entry in val %}
+    <li>Ok, {{ entry.name }} is booked to play on {{ entry.venue }}$</li>
+    {% endfor %}
+  {% endfor %}
+</ul>

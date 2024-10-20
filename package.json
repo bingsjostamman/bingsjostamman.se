@@ -8,8 +8,8 @@
 		"preinstall": "npx npm-force-resolutions",
 		"11ty_www": "gulp css && gulp pre_11ty_www && npx @11ty/eleventy",
 		"11ty_dev": "gulp css && gulp pre_11ty_dev && npx @11ty/eleventy",
-		"do": "gulp css && webpack",
-		"1js": "webpack --watch",
+		"assets": "gulp css && webpack",
+		"js": "webpack --watch",
 		"fb": "gulp css && webpack && gulp fractal_build"
 	},
 	"resolutions": {

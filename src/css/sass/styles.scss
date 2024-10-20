@@ -22,6 +22,9 @@
  * Box-sizing .............. Default 'box-sizing'
  *
  *
+ * GLOBAL
+ * Layout
+ *
  * LAYOUT
  *
  * PATTERNS
@@ -62,6 +65,12 @@
 html {
     content: 'yeah?';
 }
+
+/**
+ * GLOBAL
+ */
+
+@import 'global/global.layout';
 
 /**
  * LAYOUT

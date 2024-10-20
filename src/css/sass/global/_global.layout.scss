@@ -1,0 +1,54 @@
+:root {
+    --layout-container-gap: 30px;
+    --layout-container-maxwidth: 1000px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: [full-start] 1fr [page-start] var(--layout-container-gap)
+    [main-start] minmax(0, var(--layout-container-maxwidth)) [main-end] var(
+    --layout-container-gap
+    )
+    [page-end] 1fr auto[full-end];
+}
+
+.container > * {
+    grid-column: main;
+}
+
+.container__page {
+    grid-column: page;
+}
+
+.container__breakout {
+    grid-column: full;
+}
+
+.compound {
+    max-width: 65ch;
+    width: 100%;
+
+    margin-inline: auto;
+}
+
+.compound {
+    display: grid;
+    grid-template-columns: [stretch-start] 1fr [compound-start] minmax(
+    0,
+    var(--layout-compound-maxwidth)
+    )
+    [compound-end] 1fr [stretch-end];
+    max-width: calc(65ch + var(--layout-container-gap) * 4);
+    width: 100%;
+
+    --layout-compound-maxwidth: 65ch;
+    margin-inline: auto;
+}
+
+.compound > * {
+    grid-column: compound;
+}
+
+.compound__stretch {
+    grid-column: stretch;
+}

@@ -1,7 +1,18 @@
 [
 	{
 		"name": "fiolerna",
-		"venue": "kapellet"
+		"venue": "kapellet",
+		"text": [
+			{
+				"p": "Lorem ipsum dolor sit amet"
+			},
+			{
+				"p": "Adipiscing elit"
+			},
+			{
+				"p": "Nonummy"
+			}
+		]
 	},
 	{
 		"name": "basarna",

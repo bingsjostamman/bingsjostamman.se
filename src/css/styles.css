@@ -1,50 +1,22 @@
 /**
  * STYLES
  *
- * [about this file]
+ * This file @imports bits and pieces. The css are written to SCSS files,
+ * but in reality very little is actually Sass code. Most of the styling
+ * is written in pure CSS. Some foundation stuff needs advanced calculations,
+ * and is this written as Sass functions and mixins.
  *
- *
- * Table of Contents
  *
  * BASE
  * All ..................... The Base layer consists of tools and helpers and
  *                           since they don't produce any CSS they can be glob
  *                           imported.
- *
- * CONFIG
- *
- *
- * ELEMENTS
- * Normalize ............... Levels out browser differences based on a
- *                           browserslist config file
- * Box-sizing .............. Default 'box-sizing'
- *
- *
- * GLOBAL
- * Layout
- *
- * LAYOUT
- *
- * PATTERNS
- * All ..................... Patterns should be componentized and un-independent
- *                           from each other. Thus, it should be safe to glob
- *                           import all patterns.
- *
- * UTILITIES
- * Shame ................... The place to put hacks and quick fixes. Just make
- *                           sure to refactor and distribute this shameful code
- *                           to where it really should reside.
- *
- * WELLNESS
- *
- */
-/**
- * BASE
  */
 /* Styleguide styles */
 /*! No CSS before this comment! */
-/**
- * CONFIG
+/* CONFIG
+ * All ..................... The Config layer consists of design tokens and
+ *                           properties.
  */
 /* @font-face */
 /* Alegreya */
@@ -313,8 +285,12 @@ h3 {
   font-size: var(--font-size--1);
 }
 
-/**
+/*
  * ELEMENTS
+ * Normalize ............... Levels out browser differences based on a
+ *                           browserslist config file
+ * Box-sizing .............. Default 'box-sizing'
+ * Root .................... Root elements
  */
 /**
  * NORMALIZE
@@ -580,12 +556,10 @@ body {
   font-size: var(--font-size-0);
 }
 
-html {
-  content: "yeah?";
-}
-
-/**
+/*
  * GLOBAL
+ * Container Layout ........ The main page container
+ * Compound Layout ......... Text container with limited line length
  */
 :root {
   --layout-container-gap: 30px;
@@ -632,11 +606,11 @@ html {
   grid-column: stretch;
 }
 
-/**
- * LAYOUT
- */
-/**
+/*
  * PATTERNS
+ * All ..................... Patterns should be componentized and un-independent
+ *                           from each other. Thus, it should be safe to glob
+ *                           import all patterns.
  */
 button {
   border: 1px solid blue;
@@ -674,9 +648,21 @@ button {
           transform: translateY(0);
 }
 
-/**
- * SHAME
- */
-/**
+/* SHAME
+ * Shame ................... The place to put hacks and quick fixes. Just make
+ *                           sure to refactor and distribute this shameful code
+ *                           to where it really should reside.
+ *
+ *
  * UTILITIES
+ * All ..................... The Utility layer consists of utility helpers that
+ *							 should be independent from each other. Thus they
+ *							 can be glob imported.
+ *
+ *
+ *
+ * WELLNESS
+ * ......................... The Wellness diagnostics are not meant to be
+ *                           included in production CSS, only in the Styleguide
+ *
  */

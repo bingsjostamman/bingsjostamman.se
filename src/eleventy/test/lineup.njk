@@ -9,11 +9,11 @@ layout: "layouts/default.hbs"
 
 {{ artist.name }} plays on {{ artist.venue }}
 
-<p>.</p>
 <ul>
-  {% for key, val in spots %}
-    {% for entry in val %}
-    <li>Ok, {{ entry.name }} is booked to play on {{ entry.venue }}$</li>
-    {% endfor %}
-  {% endfor %}
+	<li>This should be fun!</li>
+	<li>And here is some information about {{ artist.name }}:	</li>
+  	{% for item in artist.text %}
+    <li>{{ item.p }}</li>
+  	{% endfor %}
+
 </ul>

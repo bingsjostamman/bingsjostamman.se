@@ -7,7 +7,7 @@ This is the font.
 <div class="awesome">This should be rendered as a div</div>
 
 ```html
-<p>here is a pice of code</p>
+<p>here is a piece of code</p>
 ```
 
 ## Button component

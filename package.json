@@ -6,11 +6,15 @@
 	"license": "UNLICENSED",
 	"scripts": {
 		"preinstall": "npx npm-force-resolutions",
-		"11ty_www": "gulp css && gulp pre_11ty_www && npx @11ty/eleventy",
-		"11ty_dev": "gulp css && gulp pre_11ty_dev && npx @11ty/eleventy",
+		"11ty_www": "gulp css && webpack && gulp pre_11ty_www && npx @11ty/eleventy",
+		"11ty_dev": "gulp css && webpack && gulp pre_11ty_dev && npx @11ty/eleventy",
+		"sg": "gulp fractal_build",
 		"assets": "gulp css && webpack",
-		"js": "webpack --watch",
-		"fb": "gulp css && webpack && gulp fractal_build"
+		"css": "gulp css",
+		"js": "webpack",
+		"js_w": "webpack --watch",
+		"fb": "gulp css && webpack && gulp fractal_build",
+		"legacy": "gulp deploy_legacy"
 	},
 	"resolutions": {
 		"glob-parent": "^6.0.2"

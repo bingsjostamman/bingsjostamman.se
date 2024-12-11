@@ -466,16 +466,13 @@ exports.fractal_build = fractal_build;
 exports.deploy_styleguide = series(clean_dest_styleguide, fractal_build);
 
 /* Single tasks */
-// exports.clean = clean_site;
+exports.clean = clean_site;
+exports.copy_rc = copy_root_common;
+exports.copy_rd = copy_root_dev;
+exports.assets = copy_site_assets;
+exports.replace = replace_styles;
 
 /* Verified */
-exports.css_comb = combCSS;
-exports.css_lint = postCSSstylelint;
-exports.css_sass = processSass;
-exports.css_norm = postCSSnormalize;
-exports.css_min = minifyCSS;
-exports.css_assets = copyCssAssets;
-exports.css_prefix = postCSSautoprefixer;
 
 exports.replace_styles = replace_styles;
 

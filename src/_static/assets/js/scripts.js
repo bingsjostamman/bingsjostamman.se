@@ -1,1 +1,0 @@
-!function(){"use strict";document.querySelector("#menu")?console.log("menu."):console.log("found no menu.")}();

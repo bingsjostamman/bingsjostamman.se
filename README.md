@@ -1,1 +1,0 @@
-# bingsjostamman.se

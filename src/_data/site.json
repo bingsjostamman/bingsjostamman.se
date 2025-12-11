@@ -1,0 +1,6 @@
+{
+  "name": "Bingsjöstämman",
+  "lang": "sv",
+  "baseUrl": "https://bingsjostamman.se",
+  "defaultImage": "/static/default.jpg"
+}

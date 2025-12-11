@@ -1,0 +1,46 @@
+{# structured-data.njk #}
+
+{% set currentYear = editions.current %}
+
+{# Find the current edition manually #}
+{% set currentEdition = null %}
+{% for e in collections.editionsList %}
+  {% if e.data.year == currentYear %}
+    {% set currentEdition = e %}
+  {% endif %}
+{% endfor %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Festival",
+  "name": "Bingsjöstämmans",
+  "url": "{{ site.url | trimTrailingSlash }}",
+  "location": {
+    "@type": "Place",
+    "name": "Bingsjö",
+    "address": "Bingsjö, Sweden"
+  },
+  "event": {
+    "@type": "Event",
+    "name": "Bingsjöstämmans {{ currentYear }}",
+    "startDate": "{{ currentEdition.data.start }}",
+    "endDate": "{{ currentEdition.data.end }}",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "Bingsjö",
+      "address": "Bingsjö, Sweden"
+    },
+    "performer": [
+      {%- for artist in currentEdition.data.artists -%}
+        {
+          "@type": "MusicGroup",
+          "name": "{{ artist.name }}"
+        }{%- if not loop.last %},{% endif -%}
+      {%- endfor -%}
+    ]
+  }
+}
+</script>

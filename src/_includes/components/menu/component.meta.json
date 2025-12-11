@@ -1,0 +1,11 @@
+{
+  "title": "Components/Menu",
+  "description": "Main site navigation menu, static HTML version for Storybook.",
+  "status": "ready",
+  "tags": ["UI", "navigation", "interactive"],
+  "class": "menu",
+  "examples": {
+    "Default": {},
+    "Open": { "state": "Menu rendered in open state for visual testing" }
+  }
+}

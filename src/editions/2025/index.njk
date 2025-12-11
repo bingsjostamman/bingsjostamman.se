@@ -1,0 +1,43 @@
+---
+layout: layouts/base
+year: 2025
+eleventyComputed:
+  title: "Bingsjöstämman {{ year }}"
+  permalink: "{% if year | string == editions.current %}/index.html{% else %}/{{ year }}/index.html{% endif %}"
+  isArchive: "{{ year | string != editions.current }}"  
+---
+
+<h1>Bingsjöstämman {{ year }}</h1>
+<p>Välkommen till festivalen! {{editions.current }} {{ isArchive }}</p>
+
+<ul>
+  <li>
+    <a href="{% if year == editions.current %}/lineup/{% else %}/{{ year }}/lineup/{% endif %}">
+      Artister {{ year }}
+    </a>
+  </li>
+</ul>
+
+{% if isArchive == "true" %}
+<div class="archive-banner">
+  This is an archive from {{ year }}.
+  <a href="/">View current festival →</a>
+</div>
+<meta name="robots" content="noindex">
+{% endif %}
+
+{% if isArchive == "true" %}
+  <p class="ticket-info">
+    Detta är en arkiverad utgåva. Aktuella biljettpriser visas inte.
+  </p>
+{% else %}
+  <p class="ticket-info">
+    <strong>Biljettpriser {{ year }}:</strong><br>
+    {% price "Vuxen", "general" %}
+    {% price "Ungdom", "youth" %}
+    {% price "Camping", "camping" %}
+  </p>
+{% endif %}
+
+
+

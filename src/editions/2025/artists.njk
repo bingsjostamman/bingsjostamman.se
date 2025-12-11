@@ -1,0 +1,31 @@
+---
+layout: layouts/base
+title: "{{ artist.name }}"
+year: 2025
+pagination:
+  data: lineup
+  size: 1
+  alias: artist
+  addAllPagesToCollections: true
+eleventyComputed:
+  permalink: "{% if year == editions.current %}/scen/{{ artist.name | slugify }}/{% else %}/{{ year }}/scen/{{ artist.name | slugify }}/{% endif %}"
+---
+
+<h1>{{ artist.name }}</h1>
+<p><strong>Dag:</strong> {{ artist.day }}</p>
+<p><strong>Scen:</strong> {{ artist.stage }}</p>
+<p><strong>Tid:</strong> {{ artist.starttime }} – {{ artist.endtime }}</p>
+
+{% if dates[artist.day] %}
+  <p><strong>Datum:</strong> {{ dates[artist.day] }}</p>
+{% endif %}
+
+<p>{{ artist.description }}</p>
+
+{% if year != editions.current %}
+<div class="archive-banner">
+  This is an archive from {{ year }}.
+  <a href="/">View current festival →</a>
+</div>
+<meta name="robots" content="noindex">
+{% endif %}

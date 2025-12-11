@@ -1,0 +1,12 @@
+node_modules/
+_site/
+_styleguide/
+.DS_Store
+.vscode/
+prebuilt/
+processed/
+*storybook.log
+storybook-static
+public/assets/css/styles.css
+.env
+.env.*

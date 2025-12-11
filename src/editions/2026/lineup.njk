@@ -1,0 +1,19 @@
+---
+layout: layouts/base
+title: "Artister {{ year }}"
+year: 2026
+eleventyComputed:
+  permalink: "{% if year == editions.current %}/lineup/index.html{% else %}/{{ year }}/lineup/index.html{% endif %}"
+---
+
+<h1>Artister {{ year }}</h1>
+
+<ul>
+{% for artist in lineup %}
+  <li>
+    <a href="{% if year == editions.current %}/scen/{{ artist.name | slugify }}/{% else %}/{{ year }}/scen/{{ artist.name | slugify }}/{% endif %}">
+      {{ artist.name }}
+    </a>
+  </li>
+{% endfor %}
+</ul>

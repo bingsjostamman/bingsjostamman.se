@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ title or site.name }}</title>
+
+    <meta name="description" content="{{ description or '' }}">
+    <link rel="canonical" href="{{ canonical or site.baseUrl ~ page.url }}">
+
+    <meta property="og:title" content="{{ title or site.title }}">
+    <meta property="og:description" content="{{ description or '' }}">
+    <meta property="og:image" content="{{ image or site.defaultImage }}">
+
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/changes.css">
+    
+    {% if not env.isProd %}
+        <link rel="stylesheet" href="/assets/css/debug.css">
+    {% endif %}
+
+    {% if isArchive or false %}
+    <meta name="robots" content="noindex, follow">
+    {% endif %}
+{% include "structured-data.njk" %}
+</head>
+<body>
+
+{% include "components/menu/menu.njk" %}
+
+
+<hr>
+
+    <main>
+        {{ content | safe }}
+    </main>
+
+    <hr>
+    <p><a href="/components/">Components</a></p>
+    <p><a href="/start/">Start</a></p>
+    <p><a href="/tickets/">Entré & biljetter</a></p>
+    <p><a href="/photos/">Photos</a></p>
+    <p><a href="/schedule/">Schedule</a></p>
+    <p><a href="/scen/">Scen</a></p>
+    <p><a href="/past-editions/">Editions</a></p>
+    <p><a href="/2024/">2024</a></p>
+    <p><a href="/2026/">2026</a></p>
+    <p><a href="/sitemap.xml">sitemap</a></p>
+
+<footer>
+  <p>&copy; {{ "now" | date("yyyy") }} {{ site.name }}</p>
+
+  {% if not env.isProd %}
+    <p>env.isProd = {{ env.isProd }} | env.name = {{ env.name }}</p>
+  {% endif %}
+
+</footer>
+
+<script type="module" src="/assets/js/main.js"></script>
+
+</body>
+</html>

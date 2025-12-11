@@ -1,0 +1,213 @@
+---
+layout: layouts/base
+title: "PageSpeed Insights"
+permalink: /test/pagespeed/
+---
+
+<style>
+  .psi-container {
+    max-width: 48rem;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    font-family: system-ui, sans-serif;
+  }
+
+  .psi-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .psi-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .psi-card {
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    background: #fafafa;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .psi-score-ring {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .psi--good { background: #0cce6b; }
+  .psi--ok { background: #ffa400; color: black; }
+  .psi--poor { background: #ff4e42; }
+
+  .psi-metrics {
+    width: 100%;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .psi-metric {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .psi-metric-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .psi-bar-container {
+    width: 100%;
+    height: 0.75rem;
+    border-radius: 0.5rem;
+    background: #eee;
+    position: relative;
+    overflow: visible;
+  }
+
+  .psi-bar {
+    height: 100%;
+    border-radius: 0.5rem;
+  }
+
+  .psi-bar--good { background: #0cce6b; }
+  .psi-bar--ok { background: #ffa400; }
+  .psi-bar--poor { background: #ff4e42; }
+
+  .psi-threshold {
+    position: absolute;
+    right: 0;
+/*    top: -1.2rem; */
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #555;
+  }
+
+  .psi-ticks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .psi-tick {
+    width: 1px;
+    background: #999;
+    height: 100%;
+  }
+
+  .psi-raw {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #111;
+    color: #eee;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    overflow-x: auto;
+  }
+</style>
+
+<div class="psi-container">
+  <div class="psi-header">
+    <h1>PageSpeed Insights</h1>
+    <p>Data fetched during build; reflects the last published version.</p>
+  </div>
+
+  <div class="psi-cards">
+    {% for device in ["mobile", "desktop"] %}
+      {% set data = psi[device] %}
+      {% set score = data.lighthouseResult.categories.performance.score * 100 %}
+      {% set audits = data.lighthouseResult.audits %}
+
+      {% set scoreClass %}
+        {% if score >= 90 %}psi--good
+        {% elif score >= 50 %}psi--ok
+        {% else %}psi--poor
+        {% endif %}
+      {% endset %}
+
+      <div class="psi-card">
+        <h2 style="margin:0; text-transform: capitalize;">{{ device }}</h2>
+        <div class="psi-score-ring {{ scoreClass | trim }}">{{ score | round }}</div>
+
+        <div class="psi-metrics">
+
+          {% set metrics = [
+            { "name": "LCP", "value": audits['largest-contentful-paint'].numericValue },
+            { "name": "CLS", "value": audits['cumulative-layout-shift'].numericValue },
+            { "name": "FCP", "value": audits['first-contentful-paint'].numericValue },
+            { "name": "TBT", "value": audits['total-blocking-time'].numericValue }
+          ] %}
+
+          {% for m in metrics %}
+            {% if m.name == "FCP" or m.name == "LCP" %}
+              {% if m.value <= 1800 %} {% set color = "psi-bar--good" %} {% set threshold = "Good" %}
+              {% elif m.value <= 3000 %} {% set color = "psi-bar--ok" %} {% set threshold = "Needs Improvement" %}
+              {% else %} {% set color = "psi-bar--poor" %} {% set threshold = "Poor" %} {% endif %}
+            {% elif m.name == "TBT" %}
+              {% if m.value <= 200 %} {% set color = "psi-bar--good" %} {% set threshold = "Good" %}
+              {% elif m.value <= 600 %} {% set color = "psi-bar--ok" %} {% set threshold = "Needs Improvement" %}
+              {% else %} {% set color = "psi-bar--poor" %} {% set threshold = "Poor" %} {% endif %}
+            {% elif m.name == "CLS" %}
+              {% if m.value <= 0.1 %} {% set color = "psi-bar--good" %} {% set threshold = "Good" %}
+              {% elif m.value <= 0.25 %} {% set color = "psi-bar--ok" %} {% set threshold = "Needs Improvement" %}
+              {% else %} {% set color = "psi-bar--poor" %} {% set threshold = "Poor" %} {% endif %}
+            {% endif %}
+
+            {% set barWidth = 0 %}
+            {% if m.name == "FCP" or m.name == "LCP" %}
+              {% set barWidth = m.value / 4000 * 100 %}
+            {% elif m.name == "TBT" %}
+              {% set barWidth = m.value / 1000 * 100 %}
+            {% elif m.name == "CLS" %}
+              {% set barWidth = m.value / 1 * 100 %}
+            {% endif %}
+            {% if barWidth > 100 %} {% set barWidth = 100 %} {% endif %}
+
+            <div class="psi-metric">
+              <div class="psi-metric-label">
+                <span>{{ m.name }}</span>
+                <span>
+                  {% if m.name == "CLS" %}
+                    {{ m.value | round(2) }}
+                  {% else %}
+                    {{ (m.value / 1000) | round(2) }} s
+                  {% endif %}
+                </span>
+              </div>
+              <div class="psi-bar-container">
+                <div class="psi-ticks">
+                  <span class="psi-tick"></span>
+                  <span class="psi-tick"></span>
+                  <span class="psi-tick"></span>
+                  <span class="psi-tick"></span>
+                </div>
+                <div class="psi-bar {{ color }}" style="width: {{ barWidth }}%;"></div>
+                <div class="psi-threshold">{{ threshold }}</div>
+              </div>
+            </div>
+
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <h2>Raw data</h2>
+  <pre class="psi-raw">{{ psi | dump(2) }}</pre>
+</div>

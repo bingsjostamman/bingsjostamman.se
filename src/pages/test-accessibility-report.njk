@@ -1,0 +1,110 @@
+---
+title: Accessibility Report
+permalink: /test/accessibility/
+eleventyExcludeFromCollections: true
+---
+
+{% if accessibility and accessibility.summary %}
+  <h1>{{ title }}</h1>
+
+  <section class="report-summary">
+    <h2>Summary</h2>
+    <ul>
+      <li><strong>Pages tested:</strong> {{ accessibility.summary.pages }}</li>
+      <li><strong>Total violations:</strong> {{ accessibility.summary.violations }}</li>
+      <li><strong>Warnings:</strong> {{ accessibility.summary.incomplete }}</li>
+      <li><strong>Passed tests:</strong> {{ accessibility.summary.passes }}</li>
+    </ul>
+  </section>
+
+  <section class="report-details">
+    {% for page in accessibility.pages %}
+      {% if page.violations and page.violations.length %}
+        <article class="page-report">
+          <h2>{{ page.url }}</h2>
+
+          <p>
+          <strong>{{ page.violations.length }}</strong>
+          issue{% if page.violations.length > 1 %}s{% endif %} found
+          </p>
+
+          <ul class="issues">
+            {% for issue in page.violations %}
+              <li class="impact-{{ issue.impact or 'unknown' }}">
+                <h3>{{ issue.help }}</h3>
+
+                {% if issue.description %}
+                  <p>{{ issue.description }}</p>
+                {% endif %}
+
+                {% if issue.helpUrl %}
+                  <p><a href="{{ issue.helpUrl }}" target="_blank">Learn more about this rule</a></p>
+                {% endif %}
+
+                {% if issue.nodes and issue.nodes.length %}
+                  <details>
+                    <summary>Affected elements ({{ issue.nodes.length }})</summary>
+                    <ul class="nodes">
+                      {% for node in issue.nodes %}
+                        <li>
+                          <code>{{ node.target | join(', ') | safe }}</code>
+                          {% if node.failureSummary %}
+                            <p>{{ node.failureSummary | safe }}</p>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </details>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </article>
+      {% endif %}
+    {% endfor %}
+  </section>
+{% else %}
+  <p>No accessibility report found or invalid data format.</p>
+{% endif %}
+
+<style>
+  .report-summary {
+    background: #f6f8fa;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .issues {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .issues li {
+    border-left: 4px solid #ccc;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+  }
+
+  /* Severity color coding */
+  .impact-minor { border-color: #8bc34a; }
+  .impact-moderate { border-color: #ffb300; }
+  .impact-serious { border-color: #f57c00; }
+  .impact-critical { border-color: #e53935; }
+
+  .page-report h2 {
+    margin-top: 2rem;
+  }
+
+  details summary {
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  code {
+    background: #eee;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+  }
+</style>

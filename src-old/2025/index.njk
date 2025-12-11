@@ -1,0 +1,16 @@
+---
+title: "Bingsjöstämman {{ edition }}"
+layout: "layouts/base"
+---
+
+<h1>Bingsjöstämman {{ edition }}</h1>
+
+<ul>
+{% for artist in lineup %}
+  <li>
+    <a href="/{{ edition }}/scen/{{ artist.name | slugify }}/">
+      {{ artist.name }} – {{ artist.stage }}
+    </a>
+  </li>
+{% endfor %}
+</ul>

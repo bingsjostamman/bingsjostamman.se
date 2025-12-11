@@ -1,0 +1,28 @@
+---
+pagination:
+  data: lineup2025
+  size: 1
+  alias: artist
+  addAllPagesToCollections: true
+layout: "layouts/base"
+eleventyComputed:
+  permalink: "/scen/{{ artist.name | slugify }}/"
+  # Compute the date from the artist's 'day'
+  date: |
+    {% if artist.day == "tisdag" %}
+      2025-07-01
+    {% elif artist.day == "onsdag" %}
+      2025-07-02
+    {% elif artist.day == "torsdag" %}
+      2025-07-03
+    {% else %}
+      2025-07-01
+    {% endif %}
+---
+
+<h1>{{ artist.name }}</h1>
+<p><strong>Stage:</strong> {{ artist.stage }}</p>
+<p><strong>Day:</strong> {{ artist.day }}</p>
+<p><strong>Time:</strong> {{ artist.starttime }} – {{ artist.endtime }}</p>
+
+<p>{{ artist.description }}</p>

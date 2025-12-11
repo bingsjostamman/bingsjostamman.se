@@ -1,0 +1,39 @@
+---
+layout: layouts/base
+title: Photos
+permalink: /photos/
+---
+
+{% from "components/image/image-hero.njk" import heroImage %}
+{% from "components/image/image-card.njk" import cardImage %}
+{% from "components/image/image-thumbnail.njk" import thumbnailImage %}
+
+<h2>Hero Image</h2>
+{{ heroImage("dimma_u2vigg", "Sunny beach at sunset") }}
+
+<h2>Hero Image with optional mobile</h2>
+{{ heroImage(
+    "dimma_u2vigg",
+    "Sunny beach at sunset",
+    "legacy/bingsjoberget_njblcc_fxcspu"
+) }}
+
+<h2>Hero Image with custom sizes</h2>
+{{ heroImage(
+    "dimma_u2vigg",
+    "Sunny beach at sunset",
+    null,
+    "(max-width: 768px) 100vw, 50vw"
+) }}
+
+<h2>Card Image</h2>
+{{ cardImage("dimma_u2vigg", "Mountain view") }}
+
+<h2>Card Image with custom sizes</h2>
+{{ cardImage("dimma_u2vigg", "Mountain view", {sizes: "43vw"}) }}
+
+<h2>Thumbnail</h2>
+{{ thumbnailImage("dimma_u2vigg", null, {sizes: "15vw"}) }}
+
+<h2>Thumbnail with custom sizes</h2>
+{{ thumbnailImage("dimma_u2vigg", "Forest path", "99px") }}

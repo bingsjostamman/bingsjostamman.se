@@ -115,12 +115,13 @@ bingsjostamman.se ([current edition]/)
 ├── 2023... (ej i sitemap, indexeras ej av google)
 │
 ├── biljetter (menu link)
-├── camping (menu link)
+├── camping/boende (menu link)
 ├── parkering (menu link)
 ├── servering (menu link)
 ├── sakerhet (menu link)
+├── tillganglighet (menu link)
 ├── kontakt (footer link)
-├── om oss (footer link) (beskrivning, kort historia, tidigare stämmor på webben)
+├── om-bingsjostamman (footer link) (beskrivning, kort historia, tidigare stämmor på webben)
 │ ├── styrelsen
 │ ├── historia
 │ └── miljopolicy

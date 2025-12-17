@@ -1,6 +1,7 @@
 # TODO
 
 ## Dev TODO
+
 - automatically take care of new edition
 - responsive image component
 - width / height
@@ -9,8 +10,7 @@
 - skippa priser på kurser, tydlig länk till webbshop och kurs-sida på FMH
 - Göm test-sidor från sitemap
 - Göm test-sidor från bottar
-
-
+- Placeholder-sidor att publicera innan nya programmet är klart: start, tisdag, onsdag, kurser, allspel, schema, scen - dölj länkar i menyn, dölj menyn?
 
 ## Dev DONE
 
@@ -22,6 +22,6 @@
 
 - Ta ned senaste main
 - Generera site
-- Ta ned alla bilder från Cloudinary och lägg i en assets/images folder i _site
+- Ta ned alla bilder från Cloudinary och lägg i en assets/images folder i \_site
 - Redigera alla bildreferenser så att de pekar på assets/images/
-alternativt, använd typ site sucker?
+  alternativt, använd typ site sucker?

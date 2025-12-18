@@ -1,0 +1,15 @@
+# -----------------------------
+# Site redirects
+# -----------------------------
+
+# Renamed pages
+/program-tisdag/       /tisdag/        301
+/program-onsdag/       /onsdag/        301
+/lineup-2025/          /2025/lineup/   301
+/schedule-2025/        /2025/schedule/ 301
+
+# Add any other old → new mappings here
+# /old-url/            /new-url/       301
+
+# Catch-all 404 for anything else
+/*                     /404.html       404

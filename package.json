@@ -1,23 +1,69 @@
 {
-	"name": "bingsjostamman.se",
-	"version": "0.1.0",
-	"description": "Build scripts for website and styleguide",
-	"repository": "https://github.com/bingsjostamman/bingsjostamman.se",
-	"license": "UNLICENSED",
-	"scripts": {
-		"preinstall": "npx force-resolutions"
-	},
-	"resolutions": {
-		"glob-parent": "^6.0.2"
-	},
-	"devDependencies": {
-		"gulp": "^4.0.2",
-		"gulp-clean": "^0.4.0",
-		"gulp-copy": "^4.0.1",
-		"gulp-dart-sass": "^1.0.2",
-		"gulp-sass-glob": "^1.1.0"
-	},
-	"dependencies": {
-		"@frctl/fractal": "^1.5.14"
-	}
+  "name": "bingsjostamman.se",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev:11ty": "cross-env ELEVENTY_ENV=development eleventy --serve",
+    "dev:vite": "npm run css:generate && vite build --watch --mode development",
+    "dev:prebuild": "node scripts/watch-prebuild.js",
+    "dev": "concurrently \"npm run dev:vite\" \"npm run dev:11ty\" \"npm run dev:prebuild\"",
+    "css:generate": "node scripts/generate-entry-css.js",
+    "lint:css": "stylelint 'src/css/**/*.css' 'src/_includes/components/**/*.css' --fix",
+    "lint:css:netlify": "node ./scripts/lint-css-netlify.js",
+    "build:vite": "npm run css:generate && vite build --config vite.config.js --mode production",
+    "build:11ty": "cross-env ELEVENTY_ENV=production eleventy",
+    "build:stories": "node scripts/prebuild-stories.js",
+    "build": "npm run prebuild && npm run build:vite && npm run build:11ty",
+    "storybook": "storybook dev -p 6008",
+    "storybook:build": "storybook build -o _styleguide",
+    "styleguide": "npm run prebuild && npm run storybook:build",
+    "prebuild": "node scripts/prebuild-stories.js && node scripts/scan-used-components.js",
+    "psi": "NODE_ENV=production node scripts/fetch-psi.js",
+    "test:a11y": "node scripts/test-accessibility.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postbuild": "npm run test:a11y"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bingsjostamman/bingsjostamman.se.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bingsjostamman/bingsjostamman.se/issues"
+  },
+  "homepage": "https://github.com/bingsjostamman/bingsjostamman.se#readme",
+  "description": "",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "fs-extra": "^11.3.2"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@storybook/addon-docs": "^9.1.15",
+    "@storybook/html-vite": "^9.1.15",
+    "@stylistic/stylelint-config": "^3.0.1",
+    "axe-core": "^4.11.0",
+    "chokidar": "^3.6.0",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.2.3",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "fast-glob": "^3.3.3",
+    "glob": "^11.0.3",
+    "globby": "^15.0.0",
+    "http-proxy": "^1.18.1",
+    "luxon": "^3.7.2",
+    "npm-run-all": "^4.1.5",
+    "puppeteer": "^24.27.0",
+    "storybook": "^9.1.15",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard": "^39.0.1",
+    "vite": "^7.2.4",
+    "xlsx": "^0.18.5"
+  }
 }

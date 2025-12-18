@@ -1,0 +1,7 @@
+/* config goes here */
+:root {
+  --color: orange;
+  --old: cyan;
+  --new: blue;
+  --great: maroon;
+}

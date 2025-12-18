@@ -1,0 +1,13 @@
+{% from "components/image/image.njk" import cloudinaryPicture %}
+
+{% macro heroImage(id, alt=null, mobileId=null, options={}) %}
+  {{ cloudinaryPicture(id, alt, {
+    mobileId: mobileId,
+    widths: options.widths or [800, 1600, 2400],
+    sizes: options.sizes or "(max-width: 768px) 100vw, 50vw",
+    aspect: options.aspect or "16:9",
+    lqipId: options.lqipId or id,
+    loading: options.loading or "eager",
+    decoding: options.decoding or "async"
+  }) }}
+{% endmacro %}

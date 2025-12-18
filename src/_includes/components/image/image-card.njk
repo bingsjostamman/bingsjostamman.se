@@ -1,0 +1,12 @@
+{% from "components/image/image.njk" import cloudinaryPicture %}
+
+{% macro cardImage(id, alt=null, options={}) %}
+  {{ cloudinaryPicture(id, alt, {
+    widths: options.widths or [400, 800, 1200],
+    sizes: options.sizes or "33vw",
+    aspect: options.aspect or "4:3",
+    lqipId: options.lqipId or null,
+    loading: options.loading or "lazy",
+    decoding: options.decoding or "async"
+  }) }}
+{% endmacro %}

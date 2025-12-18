@@ -1,0 +1,47 @@
+import { Meta, Canvas, Story } from "@storybook/addon-docs/blocks";
+import * as MenuStories from "./menu.stories.js";
+
+<Meta
+  title="Components/Menu"
+  parameters={{
+    status: "ready",
+    tags: ["UI", "navigation", "interactive"],
+  }}
+/>
+
+# Menu Component
+
+Main site navigation panel (Eleventy markup).
+
+---
+
+## Features
+
+- No-JS fallback: toggle is an `<a>` linking to nav
+- With JS: toggle becomes a `<button>` opening/closing panel
+- Backdrop click closes menu
+- Escape key closes menu
+- Focus trapped inside menu (toggle + links)
+- Keyboard accessible (tab through links)
+- Active link highlighting for current page
+
+---
+
+## Eleventy Markup
+
+```html
+<header data-menu class="menu">
+  <a href="#main-nav" data-menu-toggle class="menu-toggle">
+    ☰ <span class="visually-hidden">Meny</span>
+  </a>
+  <div class="menu-backdrop" aria-hidden="true"></div>
+  <nav id="main-nav" data-menu-panel class="menu-panel">
+    <a href="/">Hem</a>
+    <a href="/start/">Start</a>
+    <a href="/program/">Program</a>
+    <a href="/biljetter/">Biljetter</a>
+    <a href="/editions/2025/lineup/">Lineup</a>
+    <a href="/past-editions/">Past editions</a>
+  </nav>
+</header>
+```

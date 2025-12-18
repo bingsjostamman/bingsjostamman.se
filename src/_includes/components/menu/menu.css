@@ -1,0 +1,124 @@
+/* src/components/menu/menu.css */
+
+.menu {
+  position: relative;
+}
+
+/* Generic reset */
+.menu-panel[hidden],
+.menu-backdrop[hidden] {
+  display: none;
+}
+
+/* :target fallback for no JS */
+.menu-panel {
+  display: none;
+  /* position: absolute; */
+  inset: 0 auto auto 0;
+  /* transform: translateY(-100%); */
+  background: white;
+  /* transition: transform 0.3s ease; */
+  z-index: 100;
+}
+
+:target.menu-panel {
+  /* transform: translateY(0%); */
+  display: block;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .menu-panel,
+  .menu-backdrop {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* =============== */
+/* JS-enhanced 🟢 */
+/* =============== */
+[data-js] .menu-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80vw;
+  max-width: 320px;
+  height: 100vh;
+  transform: translateX(100%);
+  background: white;
+  padding: 2rem;
+  overflow-y: auto;
+  z-index: 1100;
+  transition: transform 0.3s ease;
+}
+
+[data-js] .menu-panel[data-open="true"] {
+  transform: translateX(0);
+  display: block;
+}
+
+/* Backdrop */
+[data-js] .menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 45%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 1000;
+}
+
+[data-js] .menu-backdrop[data-open="true"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Desktop */
+@media (width >= 820px) {
+  [data-js] .menu-panel {
+    position: absolute;
+    height: auto;
+    width: auto;
+    max-width: none;
+    inset: auto auto auto 0;
+    top: 100%;
+    right: auto;
+    transform: translateY(-20%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  [data-js] .menu-panel[data-open="true"] {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  [data-js] .menu-backdrop {
+    display: none;
+  }
+}
+
+.menu-panel a.active {
+  font-weight: bold;
+  text-decoration: underline;
+  color: #07c;
+}
+
+/* Visually hidden utility */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.menuu {
+  zoom: 1;
+}

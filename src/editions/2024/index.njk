@@ -1,24 +1,20 @@
 ---
 layout: layouts/base
-year: 2025
+title: "Bingsjöstämmans {{ year }}"
+year: 2024
 eleventyComputed:
-  title: "Bingsjöstämman {{ year }}"
-  permalink: "{% if year | string == editions.current %}/index.html{% else %}/{{ year }}/index.html{% endif %}"
-  isArchive: "{{ year | string != editions.current }}"  
+  permalink: "{% if year == editions.current %}/index.html{% else %}/{{ year }}/index.html{% endif %}"
+  isArchive: "{{ year != editions.current }}"
 ---
 
-<h1>Bingsjöstämman {{ year }}</h1>
-<p>Välkommen till festivalen! {{editions.current }} {{ isArchive }}</p>
+<h1>Bingsjöstämmans {{ year }}</h1>
+<p>Välkommen till festivalen!</p>
 
 <ul>
-  <li>
-    <a href="{% if year == editions.current %}/lineup/{% else %}/{{ year }}/lineup/{% endif %}">
-      Artister {{ year }}
-    </a>
-  </li>
+  <li><a href="{% if year == editions.current %}/lineup/{% else %}/{{ year }}/lineup/{% endif %}">Artister {{ year }}</a></li>
 </ul>
 
-{% if isArchive == "true" %}
+{% if isArchive %}
 <div class="archive-banner">
   This is an archive from {{ year }}.
   <a href="/">View current festival →</a>
@@ -38,6 +34,4 @@ eleventyComputed:
     {% price "Camping", "camping" %}
   </p>
 {% endif %}
-
-
 

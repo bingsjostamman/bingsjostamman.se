@@ -1,0 +1,77 @@
+@use "sass:math";
+@use "../02-tools/fluid.utils" as utils;
+@use "sass:map";
+
+@mixin fluid-font-scale($config) {
+  $bp: map.get($config, bp);
+  $font: map.get($config, font);
+  $scale: map.get($config, scale);
+
+  $min-bp: map.get($bp, min);
+  $max-bp: map.get($bp, max);
+  $min-font: map.get($font, min);
+  $max-font: map.get($font, max);
+
+  $neg-step: map.get($scale, neg-steps);
+  $pos-step: map.get($scale, pos-steps);
+  $min-scale: map.get($scale, min);
+  $max-scale: map.get($scale, max);
+
+  // initialize maps
+  $min-values: ();
+  $max-values: ();
+  $prefer-vw-values: ();
+  $prefer-rem-values: ();
+
+  // positive steps
+  $min-step: 1;
+  $max-step: math.div($max-font, $min-font);
+
+  @for $i from 0 through $pos-step {
+    $min-values: map.set($min-values, $i, $min-step);
+    $max-values: map.set($max-values, $i, $max-step);
+
+    $prefer-vw: math.div(100 * ($max-step - $min-step), $max-bp - $min-bp);
+    $prefer-vw-values: map.set($prefer-vw-values, $i, $prefer-vw);
+
+    $prefer-rem: math.div(
+      (($min-bp * $max-step) - ($max-bp * $min-step)),
+      $min-bp - $max-bp
+    );
+    $prefer-rem-values: map.set($prefer-rem-values, $i, $prefer-rem);
+
+    $min-step: $min-step * $min-scale;
+    $max-step: $max-step * $max-scale;
+  }
+
+  // negative steps
+  $min-step: 1;
+  $max-step: math.div($max-font, $min-font);
+
+  @for $i from -$neg-step through -1 {
+    $min-step: math.div($min-step, $min-scale);
+    $max-step: math.div($max-step, $max-scale);
+
+    $min-values: map.set($min-values, $i, $min-step);
+    $max-values: map.set($max-values, $i, $max-step);
+
+    $prefer-vw: math.div(100 * ($max-step - $min-step), $max-bp - $min-bp);
+    $prefer-vw-values: map.set($prefer-vw-values, $i, $prefer-vw);
+
+    $prefer-rem: math.div(
+      (($min-bp * $max-step) - ($max-bp * $min-step)),
+      $min-bp - $max-bp
+    );
+    $prefer-rem-values: map.set($prefer-rem-values, $i, $prefer-rem);
+  }
+
+  // output
+  @for $i from -$neg-step through $pos-step {
+    --font-size-#{$i}: clamp(
+      #{utils.to-fixed(map.get($min-values, $i))}rem,
+      #{utils.to-fixed(map.get($prefer-vw-values, $i))}vw +
+        #{utils.to-fixed(map.get($prefer-rem-values, $i))}rem,
+      #{utils.to-fixed(map.get($max-values, $i))}rem
+    );
+  }
+}

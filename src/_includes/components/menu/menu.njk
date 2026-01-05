@@ -1,3 +1,4 @@
+{# src/_includes/components/menu.njk #}
 <div data-menu class="c-menu">
   <!-- Starts as an <a> for no-JS fallback -->
   <a href="#main-nav" data-menu-toggle class="c-menu-toggle">
@@ -7,13 +8,24 @@
   <!-- Backdrop only used when JS is active -->
   <div class="c-menu-backdrop" aria-hidden="true"></div>
 
+  {% set menuLinks = [
+    { url: "/", label: "Hem" },
+    { url: "/start/", label: "Start" },
+    { url: "/program/", label: "Program" },
+    { url: "/tickets/", label: "Biljetter" },
+    { url: "/editions/2025/lineup/", label: "Lineup" },
+    { url: "/past-editions/", label: "Past editions" }
+  ] %}
+
   <nav id="main-nav" data-menu-panel class="c-menu-panel">
-    <a href="/">Hem</a>
-    <a href="/start/">Start</a>
-    <a href="/program/">Program</a>
-    <a href="/biljetter/">Biljetter</a>
-    <a href="/editions/2025/lineup/">Lineup</a>
-    <a href="/past-editions/">Past editions</a>
+    {% for link in menuLinks %}
+      <a 
+        href="{{ link.url }}" 
+        {% if page.url == link.url %}aria-current="page"{% endif %}
+      >
+        {{ link.label }}
+      </a>
+    {% endfor %}
   </nav>
 </div>
 

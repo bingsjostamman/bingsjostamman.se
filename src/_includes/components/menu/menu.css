@@ -1,17 +1,17 @@
 /* src/components/menu/menu.css */
 
-.menu {
+.c-menu {
   position: relative;
 }
 
 /* Generic reset */
-.menu-panel[hidden],
-.menu-backdrop[hidden] {
+.c-menu-panel[hidden],
+.c-menu-backdrop[hidden] {
   display: none;
 }
 
 /* :target fallback for no JS */
-.menu-panel {
+.c-menu-panel {
   display: none;
   /* position: absolute; */
   inset: 0 auto auto 0;
@@ -21,15 +21,15 @@
   z-index: 100;
 }
 
-:target.menu-panel {
+:target.c-menu-panel {
   /* transform: translateY(0%); */
   display: block;
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .menu-panel,
-  .menu-backdrop {
+  .c-menu-panel,
+  .c-menu-backdrop {
     transition: none !important;
     animation: none !important;
   }
@@ -38,7 +38,7 @@
 /* =============== */
 /* JS-enhanced 🟢 */
 /* =============== */
-[data-js] .menu-panel {
+[data-js] .c-menu-panel {
   position: fixed;
   top: 0;
   right: 0;
@@ -53,13 +53,13 @@
   transition: transform 0.3s ease;
 }
 
-[data-js] .menu-panel[data-open="true"] {
+[data-js] .c-menu-panel[data-open="true"] {
   transform: translateX(0);
   display: block;
 }
 
 /* Backdrop */
-[data-js] .menu-backdrop {
+[data-js] .c-menu-backdrop {
   position: fixed;
   inset: 0;
   background: rgb(0 0 0 / 45%);
@@ -69,14 +69,14 @@
   z-index: 1000;
 }
 
-[data-js] .menu-backdrop[data-open="true"] {
+[data-js] .c-menu-backdrop[data-open="true"] {
   opacity: 1;
   pointer-events: auto;
 }
 
 /* Desktop */
 @media (width >= 820px) {
-  [data-js] .menu-panel {
+  [data-js] .c-menu-panel {
     position: absolute;
     height: auto;
     width: auto;
@@ -89,25 +89,25 @@
     pointer-events: none;
   }
 
-  [data-js] .menu-panel[data-open="true"] {
+  [data-js] .c-menu-panel[data-open="true"] {
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
   }
 
-  [data-js] .menu-backdrop {
+  [data-js] .c-menu-backdrop {
     display: none;
   }
 }
 
-.menu-panel a.active {
+.c-menu-panel a.active {
   font-weight: bold;
   text-decoration: underline;
   color: #07c;
 }
 
 /* Visually hidden utility */
-.visually-hidden {
+.u-visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -117,8 +117,4 @@
   clip: rect(0 0 0 0);
   white-space: nowrap;
   border: 0;
-}
-
-.menuu {
-  zoom: 1;
 }

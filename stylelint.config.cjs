@@ -22,6 +22,9 @@ module.exports = {
     // Force lowercase for hex colors
     "color-hex-case": "lower",
 
+    // Allow single and double hyphens, numbers, and modifier-style names
+    "custom-property-pattern": null,
+
     // Enforce empty line before each new block except first in file
     "rule-empty-line-before": [
       "always",

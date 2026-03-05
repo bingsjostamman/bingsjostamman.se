@@ -81,7 +81,7 @@
 {%- set totalSlots = ((gridEnd - gridStart) / inc) | round(0, "ceil") -%}
 
 {# ── 4. Render ─────────────────────────────────────────── #}
-<div class="c-timeline" style="--timeline-cols: {{ stageNames.length }}; --timeline-rows: {{ totalSlots }};">
+<div class="c-timeline" aria-hidden="true" style="--timeline-cols: {{ stageNames.length }}; --timeline-rows: {{ totalSlots }};">
   {# Column headers #}
   <div class="c-timeline__header" style="grid-row: 1;">
     <div class="c-timeline__corner"></div>

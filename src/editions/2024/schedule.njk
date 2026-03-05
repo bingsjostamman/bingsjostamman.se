@@ -9,6 +9,8 @@ eleventyComputed:
 
 <h1>Översikt {{ year }}</h1>
 
+<p>Visuell översikt över programmet. Se fullständigt program under <a href="{% if year == editions.current %}/tisdag/{% else %}/{{ year }}/tisdag/{% endif %}">Tisdag</a> och <a href="{% if year == editions.current %}/onsdag/{% else %}/{{ year }}/onsdag/{% endif %}">Onsdag</a>.</p>
+
 <h2>Tisdag</h2>
 {{ timeline(lineup, { day: "tisdag" }) }}
 

@@ -1,0 +1,36 @@
+{#
+  Stage schedule list component
+  Usage:
+    {% from "components/stage-list/stage-list.njk" import stageList %}
+    {{ stageList("Låttältet", lineup, "onsdag") }}
+
+  Parameters:
+    - stageName: string – the stage to filter on
+    - lineup: array – the full lineup data
+    - day: string – "tisdag" or "onsdag"
+#}
+
+{%- macro stageList(stageName, lineup, day) -%}
+{%- set acts = [] -%}
+{%- for act in lineup -%}
+  {%- if act.day == day and act.stage == stageName -%}
+    {%- set acts = (acts.push(act), acts) -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if acts.length -%}
+<section class="c-stage-list">
+  <h2 class="c-stage-list__heading">{{ stageName }}</h2>
+  <ul class="c-stage-list__list">
+    {%- for act in acts %}
+    <li class="c-stage-list__item">
+      <span class="c-stage-list__time">{{ act.starttime }}{% if act.endtime %}–{{ act.endtime }}{% endif %}</span>
+      <strong class="c-stage-list__name">{{ act.name }}</strong>
+      {%- if act.description %}
+      <span class="c-stage-list__description">{{ act.description }}</span>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif -%}
+{%- endmacro -%}

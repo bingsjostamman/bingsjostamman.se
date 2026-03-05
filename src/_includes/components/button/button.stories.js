@@ -12,6 +12,8 @@ export default {
 export const Default = () => `<button class="button" >
   Click me
 </button>`;
+Default.storyName = "Default";
 export const Primary = () => `<button class="button primary" >
   Submit
 </button>`;
+Primary.storyName = "Primary";

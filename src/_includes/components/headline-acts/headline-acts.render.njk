@@ -1,0 +1,32 @@
+{#- Render wrapper for prebuild-stories.js
+    Cannot use the real template because it imports cardImage which depends
+    on Cloudinary. Instead, reproduce the same HTML structure with placeholder
+    images so stories stay in sync with the component markup. -#}
+{%- set headlines = [] -%}
+{%- for act in lineup -%}
+  {%- if act.placement == "headline" -%}
+    {%- set headlines = (headlines.push(act), headlines) -%}
+  {%- endif -%}
+{%- endfor -%}
+{% if headlines.length %}
+<section class="c-headline-acts">
+  <h2 class="c-headline-acts__heading">Huvudakter</h2>
+  <ul class="c-headline-acts__list">
+    {% for act in headlines %}
+      <li class="c-headline-acts__item">
+        {% if act.image %}
+          <div class="c-headline-acts__image">
+            <img src="https://placehold.co/800x600?text={{ act.name | urlencode }}" alt="{{ act.name }}" loading="lazy" width="800" height="600">
+          </div>
+        {% endif %}
+        <div class="c-headline-acts__body">
+          <h3 class="c-headline-acts__name">{{ act.name }}</h3>
+          <p class="c-headline-acts__meta">
+            {{ act.day | capitalize }} · {{ act.starttime }}–{{ act.endtime }} · {{ act.stage }}
+          </p>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

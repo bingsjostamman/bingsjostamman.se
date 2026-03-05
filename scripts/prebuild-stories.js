@@ -20,7 +20,7 @@ function getComponentFiles(dir) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       files.push(...getComponentFiles(fullPath));
-    } else if (entry.name.endsWith(".njk")) {
+    } else if (entry.name.endsWith(".njk") && !entry.name.endsWith(".render.njk")) {
       files.push(fullPath);
     }
   }
@@ -46,14 +46,32 @@ function generateStories() {
     const componentName = path.basename(file, ".njk");
     const componentDir = path.dirname(file);
 
-    // --- SKIP macro-only image components ---
+    // Load metadata (optional examples)
+    const meta = getMetadata(componentDir) || {};
+
+    // --- SKIP macro-only components without a render wrapper ---
     if (componentName.startsWith("image")) {
       console.log(`⚠️ Skipping macro-only component: ${componentName}`);
       return;
     }
 
-    // Load metadata (optional examples)
-    const meta = getMetadata(componentDir) || {};
+    // For macro components, use .render.njk wrapper if available
+    const renderWrapper = path.join(
+      componentDir,
+      `${componentName}.render.njk`
+    );
+    const isMacro = !!meta.macro;
+    if (isMacro && !fs.existsSync(renderWrapper)) {
+      console.log(
+        `⚠️ Skipping macro component without render wrapper: ${componentName}`
+      );
+      return;
+    }
+
+    const renderPath = isMacro
+      ? path.relative(componentsDir, renderWrapper).replace(/\\/g, "/")
+      : relPath;
+
     const examples = meta.examples || { Default: {} };
 
     // Track used components
@@ -65,7 +83,7 @@ function generateStories() {
 
     for (const [exampleName, props] of Object.entries(examples)) {
       const mergedProps = { ...meta, ...props };
-      const rendered = env.render(relPath, mergedProps);
+      const rendered = env.render(renderPath, mergedProps);
       const outPath = path.join(componentPrebuildDir, `${exampleName}.html`);
       fs.writeFileSync(outPath, rendered);
     }
@@ -101,8 +119,9 @@ ${importLines}export default {
 ${Object.entries(examples)
   .map(([name, props]) => {
     const mergedProps = { ...meta, ...props };
-    const html = env.render(relPath, mergedProps).replace(/`/g, "\\`");
-    return `export const ${name} = () => \`${html}\`;`;
+    const html = env.render(renderPath, mergedProps).replace(/`/g, "\\`");
+    const safeName = name.replace(/[^a-zA-Z0-9_$]/g, "_");
+    return `export const ${safeName} = () => \`${html}\`;\n${safeName}.storyName = ${JSON.stringify(name)};`;
   })
   .join("\n")}
 `;

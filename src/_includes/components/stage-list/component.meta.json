@@ -1,0 +1,37 @@
+{
+  "title": "Components/Stage List",
+  "description": "A schedule list for a single stage, showing acts with times and descriptions. Used on day program pages via a Nunjucks macro.",
+  "status": "ready",
+  "tags": ["UI", "schedule", "content"],
+  "class": "stage-list",
+  "macro": true,
+  "examples": {
+    "Default": {
+      "stageName": "Låttältet",
+      "day": "onsdag",
+      "lineup": [
+        { "day": "onsdag", "stage": "Låttältet", "name": "Bingsjölåtar med Täby spelmansgille", "starttime": "19:00", "endtime": "20:00", "description": "" },
+        { "day": "onsdag", "stage": "Låttältet", "name": "Orelåtar med Ore spelmän", "starttime": "20:00", "endtime": "21:00", "description": "" },
+        { "day": "onsdag", "stage": "Låttältet", "name": "Norra Hälsingland med Nordanstigs spelmanslag", "starttime": "21:00", "endtime": "22:00", "description": "" },
+        { "day": "onsdag", "stage": "Låttältet", "name": "Södra Dalarna med Korsmora spelmän", "starttime": "22:00", "endtime": "23:00", "description": "" },
+        { "day": "onsdag", "stage": "Låttältet", "name": "Rättvikslåtar med Rättviks spelmanslag", "starttime": "23:00", "endtime": "", "description": "" }
+      ]
+    },
+    "With descriptions": {
+      "stageName": "Bystugubanan",
+      "day": "tisdag",
+      "lineup": [
+        { "day": "tisdag", "stage": "Bystugubanan", "name": "Täby Spelmansgille", "starttime": "19:00", "endtime": "20:30", "description": "Täby Spelmansgille spelar polskor efter Peckos helmer" },
+        { "day": "tisdag", "stage": "Bystugubanan", "name": "Nordanstigs spelmanslag", "starttime": "20:30", "endtime": "21:00", "description": "" },
+        { "day": "tisdag", "stage": "Bystugubanan", "name": "Malungs folkhögskola", "starttime": "21:00", "endtime": "22:00", "description": "Gamla och nya Malungselever hälsas välkomna att spela till dans" }
+      ]
+    },
+    "Single act": {
+      "stageName": "Nygårdsgården",
+      "day": "onsdag",
+      "lineup": [
+        { "day": "onsdag", "stage": "Nygårdsgården", "name": "Spelmansmöte", "starttime": "13:00", "endtime": "14:00", "description": "Sofia Sandén och Ulrika Bodén träffas i årets spelmansmöte." }
+      ]
+    }
+  }
+}

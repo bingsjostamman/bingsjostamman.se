@@ -11,3 +11,4 @@ export default {
 export const Default = () => `<div class="card">
   House of cards
 </div>`;
+Default.storyName = "Default";

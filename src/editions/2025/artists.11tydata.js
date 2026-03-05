@@ -14,9 +14,9 @@ const lineup = require("./lineup.json");
 const dates = require("./dates.json");
 
 // Only generate artist pages for entries with page == "artist"
-// and that have enough content to warrant a dedicated page
+// and that have a long description to warrant a dedicated page
 const artists = lineup.filter(
-  (act) => act.page === "artist" && (act.image || act.longdescription)
+  (act) => act.page === "artist" && act.longdescription
 );
 
 export default {

@@ -1,17 +1,19 @@
 ---
 layout: layouts/base
-title: "Bingsjöstämmans {{ year }}"
 year: 2024
 eleventyComputed:
+  title: "Bingsjöstämmans {{ year }}"
   permalink: "{% if year == editions.current %}/index.html{% else %}/{{ year }}/index.html{% endif %}"
   isArchive: "{{ year != editions.current }}"
 ---
 
 <h1>Bingsjöstämmans {{ year }}</h1>
-<p>Välkommen till festivalen!</p>
+<p>Välkommen till festivalen! {{editions.current }} {{ isArchive }}</p>
+
+{% include "components/headline-acts/headline-acts.njk" %}
 
 <ul>
-  <li><a href="{% if year == editions.current %}/lineup/{% else %}/{{ year }}/lineup/{% endif %}">Artister {{ year }}</a></li>
+  <li><a href="{% if year == editions.current %}/scen/{% else %}/{{ year }}/scen/{% endif %}">Artister {{ year }}</a></li>
 </ul>
 
 {% if isArchive %}

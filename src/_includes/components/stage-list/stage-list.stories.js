@@ -10,7 +10,7 @@ export default {
 export const Default = () => `
 <section class="c-stage-list">
   <h2 class="c-stage-list__heading">Låttältet</h2>
-  <ul class="c-stage-list__list">
+  <ol class="c-stage-list__list">
     <li class="c-stage-list__item">
       <span class="c-stage-list__time">19:00–20:00</span>
       <strong class="c-stage-list__name">Bingsjölåtar med Täby spelmansgille</strong>
@@ -31,14 +31,14 @@ export const Default = () => `
       <span class="c-stage-list__time">23:00</span>
       <strong class="c-stage-list__name">Rättvikslåtar med Rättviks spelmanslag</strong>
     </li>
-  </ul>
+  </ol>
 </section>
 `;
 Default.storyName = "Default";
 export const With_descriptions = () => `
 <section class="c-stage-list">
   <h2 class="c-stage-list__heading">Bystugubanan</h2>
-  <ul class="c-stage-list__list">
+  <ol class="c-stage-list__list">
     <li class="c-stage-list__item">
       <span class="c-stage-list__time">19:00–20:30</span>
       <strong class="c-stage-list__name">Täby Spelmansgille</strong>
@@ -53,20 +53,20 @@ export const With_descriptions = () => `
       <strong class="c-stage-list__name">Malungs folkhögskola</strong>
       <span class="c-stage-list__description">Gamla och nya Malungselever hälsas välkomna att spela till dans</span>
     </li>
-  </ul>
+  </ol>
 </section>
 `;
 With_descriptions.storyName = "With descriptions";
 export const Single_act = () => `
 <section class="c-stage-list">
   <h2 class="c-stage-list__heading">Nygårdsgården</h2>
-  <ul class="c-stage-list__list">
+  <ol class="c-stage-list__list">
     <li class="c-stage-list__item">
       <span class="c-stage-list__time">13:00–14:00</span>
       <strong class="c-stage-list__name">Spelmansmöte</strong>
       <span class="c-stage-list__description">Sofia Sandén och Ulrika Bodén träffas i årets spelmansmöte.</span>
     </li>
-  </ul>
+  </ol>
 </section>
 `;
 Single_act.storyName = "Single act";

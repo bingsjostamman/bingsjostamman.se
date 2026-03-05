@@ -20,7 +20,7 @@
 {%- if acts.length -%}
 <section class="c-stage-list">
   <h2 class="c-stage-list__heading">{{ stageName }}</h2>
-  <ul class="c-stage-list__list">
+  <ol class="c-stage-list__list">
     {%- for act in acts %}
     <li class="c-stage-list__item">
       <span class="c-stage-list__time">{{ act.starttime }}{% if act.endtime %}–{{ act.endtime }}{% endif %}</span>
@@ -30,7 +30,7 @@
       {%- endif %}
     </li>
     {%- endfor %}
-  </ul>
+  </ol>
 </section>
 {%- endif -%}
 {%- endmacro -%}

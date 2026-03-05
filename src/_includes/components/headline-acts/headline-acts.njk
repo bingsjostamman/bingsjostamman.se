@@ -24,7 +24,13 @@
           </div>
         {% endif %}
         <div class="c-headline-acts__body">
-          <h3 class="c-headline-acts__name">{{ act.name }}</h3>
+          <h3 class="c-headline-acts__name">
+            {%- if act.longdescription %}
+            <a href="{% if year == editions.current %}/scen/{{ act.name | slugify }}/{% else %}/{{ year }}/scen/{{ act.name | slugify }}/{% endif %}">{{ act.name }}</a>
+            {%- else %}
+            {{ act.name }}
+            {%- endif %}
+          </h3>
           <p class="c-headline-acts__meta">
             {{ act.day | capitalize }} · {{ act.starttime }}–{{ act.endtime }} · {{ act.stage }}
           </p>

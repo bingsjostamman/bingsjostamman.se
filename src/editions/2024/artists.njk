@@ -1,6 +1,5 @@
 ---
 layout: layouts/base
-title: "{{ artist.name }}"
 year: 2024
 pagination:
   data: lineup
@@ -8,19 +7,70 @@ pagination:
   alias: artist
   addAllPagesToCollections: true
 eleventyComputed:
+  title: "{{ artist.name }}"
   permalink: "{% if year == editions.current %}/scen/{{ artist.name | slugify }}/{% else %}/{{ year }}/scen/{{ artist.name | slugify }}/{% endif %}"
 ---
 
-<h1>{{ artist.name }}</h1>
-<p><strong>Dag:</strong> {{ artist.day }}</p>
-<p><strong>Scen:</strong> {{ artist.stage }}</p>
-<p><strong>Tid:</strong> {{ artist.starttime }} – {{ artist.endtime }}</p>
+{% from "components/image/image-hero.njk" import heroImage %}
 
-{% if dates[artist.day] %}
-  <p><strong>Datum:</strong> {{ dates[artist.day] }}</p>
-{% endif %}
+<article>
+  <h1>{{ artist.name }}</h1>
 
-<p>{{ artist.description }}</p>
+  {% if artist.image %}
+    <div class="artist-image">
+      {{ heroImage(artist.image | replace(".jpg", "") | replace(".png", ""), artist.name) }}
+    </div>
+  {% endif %}
+
+  <dl class="artist-meta">
+    <dt>Dag</dt>
+    <dd>{{ artist.day | capitalize }}{% if dates[artist.day] %}, {{ dates[artist.day] }}{% endif %}</dd>
+    <dt>Scen</dt>
+    <dd>{{ artist.stage }}</dd>
+    <dt>Tid</dt>
+    <dd>{{ artist.starttime }}–{{ artist.endtime }}</dd>
+  </dl>
+
+  {% if artist.description %}
+    <p>{{ artist.description }}</p>
+  {% endif %}
+
+  {% if artist.longdescription %}
+    <div class="artist-longdescription">
+      {{ artist.longdescription }}
+    </div>
+  {% endif %}
+
+  {% if artist.link %}
+    <p><a href="{{ artist.link }}" target="_blank" rel="noopener noreferrer">Besök webbplats ↗</a></p>
+  {% endif %}
+
+  {%- if artist.ref %}
+    {% set relatedSlots = [] %}
+    {% for slot in fullLineup %}
+      {% if slot.ref == artist.ref and slot.name != artist.name %}
+        {% set relatedSlots = (relatedSlots.push(slot), relatedSlots) %}
+      {% endif %}
+    {% endfor %}
+
+    {% if relatedSlots.length %}
+    <section class="artist-related">
+      <h2>Fler spelningar</h2>
+      <ul>
+        {% for slot in relatedSlots %}
+          <li>
+            <strong>{{ slot.name }}</strong><br>
+            {{ slot.day | capitalize }}{% if dates[slot.day] %}, {{ dates[slot.day] }}{% endif %}
+            · {{ slot.starttime }}–{{ slot.endtime }}
+            · {{ slot.stage }}
+            {% if slot.description %}<p>{{ slot.description }}</p>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  {%- endif %}
+</article>
 
 {% if year != editions.current %}
 <div class="archive-banner">

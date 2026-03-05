@@ -1,12 +1,13 @@
 /**
  * Convert lineup Excel file (e.g. lineup.xlsx) to JSON for Eleventy.
  * ---------------------------------------------------------------
- * Usage: node tools/convert-lineup.js lineup-2025.xlsx
+ * Usage: node scripts/convert-lineup.js data/lineup-2025.xlsx
  *
  * Creates: src/_data/lineup2025.json
  */
 
 import fs from "fs-extra";
+import { type } from "os";
 import path from "path";
 import xlsx from "xlsx";
 
@@ -56,10 +57,14 @@ const cleaned = rows
     return {
       day: row.day || "",
       stage: row.stage || "",
+      type: row.type || "",
+      placement: row.placement || "",
+      page: row.page || "",
       name: row.name.trim(),
-      url: row.url || "",
+      ref: row.ref || "",
       description: row.description || "",
       link: row.link || "",
+      longdescription: row.longdescription || "",
       image: row.image || "",
       starttime,
       endtime,

@@ -1,19 +1,37 @@
 ---
 layout: layouts/base
-title: "Artister {{ year }}"
 year: 2025
 eleventyComputed:
-  permalink: "{% if year == editions.current %}/lineup/index.html{% else %}/{{ year }}/lineup/index.html{% endif %}"
+  title: "Artister {{ year }}"
+  permalink: "{% if year == editions.current %}/scen/index.html{% else %}/{{ year }}/scen/index.html{% endif %}"
 ---
 
 <h1>Artister {{ year }}</h1>
 
-<ul>
-{% for artist in lineup %}
-  <li>
-    <a href="{% if year == editions.current %}/scen/{{ artist.name | slugify }}/{% else %}/{{ year }}/scen/{{ artist.name | slugify }}/{% endif %}">
-      {{ artist.name }}
-    </a>
-  </li>
-{% endfor %}
-</ul>
+{#- Filter to only non-headline acts with an artist page -#}
+{%- set others = [] -%}
+{%- for act in lineup -%}
+  {%- if act.page == "artist" and act.placement != "headline" -%}
+    {%- set others = (others.push(act), others) -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{% include "components/headline-acts/headline-acts.njk" %}
+
+{% if others.length %}
+<section>
+  <h2>Övriga artister</h2>
+  <ul>
+    {% for act in others | sort(false, false, 'name') %}
+      <li>
+        {% if act.image or act.longdescription %}
+          <a href="{% if year == editions.current %}/scen/{{ act.name | slugify }}/{% else %}/{{ year }}/scen/{{ act.name | slugify }}/{% endif %}">{{ act.name }}</a>
+        {% else %}
+          <span>{{ act.name }}</span>
+        {% endif %}
+        <span>{{ act.day | capitalize }} · {{ act.starttime }}–{{ act.endtime }} · {{ act.stage }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

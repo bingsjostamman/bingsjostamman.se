@@ -1,0 +1,36 @@
+{#- Component: Headline Acts
+   Expects `lineup` (array of act objects) in context.
+   Filters for acts where placement == "headline".
+-#}
+
+{% from "components/image/image-card.njk" import cardImage %}
+
+{%- set headlines = [] -%}
+{%- for act in lineup -%}
+  {%- if act.placement == "headline" -%}
+    {%- set headlines = (headlines.push(act), headlines) -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{% if headlines.length %}
+<section class="c-headline-acts">
+  <h2 class="c-headline-acts__heading">Huvudakter</h2>
+  <ul class="c-headline-acts__list">
+    {% for act in headlines %}
+      <li class="c-headline-acts__item">
+        {% if act.image %}
+          <div class="c-headline-acts__image">
+            {{ cardImage(act.image | replace(".jpg", "") | replace(".png", ""), act.name) }}
+          </div>
+        {% endif %}
+        <div class="c-headline-acts__body">
+          <h3 class="c-headline-acts__name">{{ act.name }}</h3>
+          <p class="c-headline-acts__meta">
+            {{ act.day | capitalize }} · {{ act.starttime }}–{{ act.endtime }} · {{ act.stage }}
+          </p>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

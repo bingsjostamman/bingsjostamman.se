@@ -10,9 +10,11 @@ eleventyComputed:
 <h1>Bingsjöstämman {{ year }}</h1>
 <p>Välkommen till festivalen! {{editions.current }} {{ isArchive }}</p>
 
+{% include "components/headline-acts/headline-acts.njk" %}
+
 <ul>
   <li>
-    <a href="{% if year == editions.current %}/lineup/{% else %}/{{ year }}/lineup/{% endif %}">
+    <a href="{% if year == editions.current %}/scen/{% else %}/{{ year }}/scen/{% endif %}">
       Artister {{ year }}
     </a>
   </li>

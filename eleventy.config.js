@@ -62,6 +62,13 @@ export default async function (eleventyConfig) {
       .replace(/^-+|-+$/g, "");
   });
 
+  /* Swedish date filter – "2025-07-01" → "1 juli" */
+  eleventyConfig.addFilter("swedishDate", function (dateInput) {
+    const dt = DateTime.fromISO(dateInput, { zone: "Europe/Stockholm" });
+    if (!dt.isValid) return dateInput;
+    return dt.setLocale("sv").toFormat("d MMMM");
+  });
+
   /* Date filter */
   eleventyConfig.addFilter("date", function (dateInput, format = "yyyy-MM-dd") {
     let dateObj;

@@ -1,0 +1,131 @@
+{#
+  Timeline schedule component
+  Renders a CSS Grid visual timeline with stages as columns and time as rows.
+
+  Usage:
+    {% from "components/timeline/timeline.njk" import timeline %}
+    {{ timeline(lineup, { day: "onsdag" }) }}
+    {{ timeline(lineup, { day: "onsdag", stages: ["Logen", "Tunet", "Låttältet"] }) }}
+    {{ timeline(lineup, { type: "dansa" }) }}
+
+  Parameters:
+    - lineup:  array – the full lineup data (needs startMinutes / endMinutes)
+    - options: object with optional keys:
+        day      – "tisdag" | "onsdag"  (required in practice)
+        stages   – array of stage names to include (default: auto-detect from filtered acts)
+        type     – filter by act type, e.g. "dansa", "lyssna"
+        startHour – first visible hour (default: auto from earliest act, rounded down)
+        endHour   – last visible hour  (default: auto from latest act, rounded up)
+        increment – grid resolution in minutes (default: 15)
+#}
+
+{%- macro timeline(lineup, options) -%}
+{# ── 1. Filter acts ────────────────────────────────────── #}
+{%- set filtered = [] -%}
+{%- for act in lineup -%}
+  {%- set dominated = true -%}
+  {%- if options.day and act.day != options.day -%}{%- set dominated = false -%}{%- endif -%}
+  {%- if options.type and act.type != options.type -%}{%- set dominated = false -%}{%- endif -%}
+  {%- if options.stages and options.stages.length -%}
+    {%- set stageMatch = false -%}
+    {%- for s in options.stages -%}
+      {%- if s == act.stage -%}{%- set stageMatch = true -%}{%- endif -%}
+    {%- endfor -%}
+    {%- if not stageMatch -%}{%- set dominated = false -%}{%- endif -%}
+  {%- endif -%}
+  {%- if dominated -%}
+    {%- set filtered = (filtered.push(act), filtered) -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if filtered.length -%}
+{# ── 2. Derive stage list (preserve order from options, or sort by first appearance) ── #}
+{%- if options.stages and options.stages.length -%}
+  {%- set stageNames = options.stages -%}
+{%- else -%}
+  {%- set stageNames = [] -%}
+  {%- for act in filtered -%}
+    {%- set already = false -%}
+    {%- for s in stageNames -%}
+      {%- if s == act.stage -%}{%- set already = true -%}{%- endif -%}
+    {%- endfor -%}
+    {%- if not already -%}
+      {%- set stageNames = (stageNames.push(act.stage), stageNames) -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{# ── 3. Compute time bounds ────────────────────────────── #}
+{%- set inc = options.increment if options.increment else 15 -%}
+
+{%- set minMin = 9999 -%}
+{%- set maxMin = 0 -%}
+{%- for act in filtered -%}
+  {%- if act.startMinutes < minMin -%}{%- set minMin = act.startMinutes -%}{%- endif -%}
+  {%- if act.endMinutes > maxMin -%}{%- set maxMin = act.endMinutes -%}{%- endif -%}
+{%- endfor -%}
+
+{# Round down to nearest hour for start, up for end #}
+{%- if options.startHour -%}
+  {%- set gridStart = options.startHour * 60 -%}
+{%- else -%}
+  {%- set gridStart = (minMin / 60) | round(0, "floor") * 60 -%}
+{%- endif -%}
+
+{%- if options.endHour -%}
+  {%- set gridEnd = options.endHour * 60 -%}
+{%- else -%}
+  {%- set gridEnd = (maxMin / 60) | round(0, "ceil") * 60 -%}
+{%- endif -%}
+
+{%- set totalSlots = ((gridEnd - gridStart) / inc) | round(0, "ceil") -%}
+
+{# ── 4. Render ─────────────────────────────────────────── #}
+<div class="c-timeline" style="--timeline-cols: {{ stageNames.length }}; --timeline-rows: {{ totalSlots }};">
+  {# Column headers #}
+  <div class="c-timeline__header" style="grid-row: 1;">
+    <div class="c-timeline__corner"></div>
+    {%- for stage in stageNames %}
+    <div class="c-timeline__stage-label" style="grid-column: {{ loop.index + 1 }};">{{ stage }}</div>
+    {%- endfor %}
+  </div>
+
+  {# Time labels along left edge #}
+  {%- for i in range(0, totalSlots) -%}
+    {%- set mins = gridStart + (i * inc) -%}
+    {%- if mins % 60 == 0 -%}
+    <div class="c-timeline__time" style="grid-row: {{ i + 2 }}; grid-column: 1;">
+      {{ (mins / 60) | round(0, "floor") }}:00
+    </div>
+    {%- endif -%}
+  {%- endfor -%}
+
+  {# Hour grid lines #}
+  {%- for i in range(0, totalSlots) -%}
+    {%- set mins = gridStart + (i * inc) -%}
+    {%- if mins % 60 == 0 -%}
+    <div class="c-timeline__hour-line" style="grid-row: {{ i + 2 }}; grid-column: 1 / -1;" aria-hidden="true"></div>
+    {%- endif -%}
+  {%- endfor -%}
+
+  {# Act blocks #}
+  {%- for act in filtered -%}
+    {# Find stage column index #}
+    {%- set colIdx = 0 -%}
+    {%- for s in stageNames -%}
+      {%- if s == act.stage -%}{%- set colIdx = loop.index -%}{%- endif -%}
+    {%- endfor -%}
+
+    {# Compute grid rows (+2 because row 1 is the header) #}
+    {%- set rowStart = ((act.startMinutes - gridStart) / inc) | round(0, "floor") + 2 -%}
+    {%- set rowEnd   = ((act.endMinutes   - gridStart) / inc) | round(0, "ceil")  + 2 -%}
+
+    <div class="c-timeline__act c-timeline__act--{{ act.type }}"
+         style="grid-row: {{ rowStart }} / {{ rowEnd }}; grid-column: {{ colIdx + 1 }};">
+      <span class="c-timeline__act-time">{{ act.starttime }}–{{ act.endtime }}</span>
+      <span class="c-timeline__act-name">{{ act.name }}</span>
+    </div>
+  {%- endfor -%}
+</div>
+{%- endif -%}
+{%- endmacro -%}

@@ -13,7 +13,16 @@ eleventyComputed:
 {% include "components/headline-acts/headline-acts.njk" %}
 
 <ul>
-  <li><a href="{% if year == editions.current %}/scen/{% else %}/{{ year }}/scen/{% endif %}">Artister {{ year }}</a></li>
+  <li>
+    <a href="{% if year == editions.current %}/scen/{% else %}/{{ year }}/scen/{% endif %}">
+      Artister {{ year }}
+    </a>
+  </li>
+  <li>
+      <a href="{% if year == editions.current %}/oversikt/{% else %}/{{ year }}/oversikt/{% endif %}">
+      Översikt {{ year }}
+    </a>
+  </li>
 </ul>
 
 {% if isArchive %}

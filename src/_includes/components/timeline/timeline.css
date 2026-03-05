@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Component: Timeline
+   Visual schedule grid – stages as columns, time as rows.
+   ========================================================================== */
+
+.c-timeline {
+  --_cols: var(--timeline-cols, 3);
+  --_rows: var(--timeline-rows, 24);
+  --_row-h: 1rem;
+
+  display: grid;
+  /* col 1 = time labels, remaining = one per stage */
+  grid-template-columns: 4rem repeat(var(--_cols), 1fr);
+  grid-template-rows: auto repeat(var(--_rows), var(--_row-h));
+  gap: 0;
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  min-width: 0;
+}
+
+/* ── Header row ──────────────────────────────────────────── */
+
+.c-timeline__header {
+  display: contents;
+}
+
+.c-timeline__corner {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.c-timeline__stage-label {
+  grid-row: 1;
+  padding: 0.25rem 0.5rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: center;
+  border-bottom: 2px solid currentColor;
+  position: sticky;
+  top: 0;
+  background: var(--color-bg, #fff);
+  z-index: 2;
+}
+
+/* ── Time labels (left column) ───────────────────────────── */
+
+.c-timeline__time {
+  grid-column: 1;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  padding-right: 0.5rem;
+  transform: translateY(-0.5em);
+  color: var(--color-muted, #666);
+  z-index: 1;
+}
+
+/* ── Hour grid lines ─────────────────────────────────────── */
+
+.c-timeline__hour-line {
+  border-top: 1px solid var(--color-border, #ddd);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Act blocks ──────────────────────────────────────────── */
+
+.c-timeline__act {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.15rem 0.35rem;
+  margin: 1px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  overflow: hidden;
+  z-index: 1;
+  background: var(--color-act-bg, #e8e4df);
+  border-left: 3px solid var(--color-act-accent, #8b7355);
+}
+
+.c-timeline__act-time {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.65rem;
+  opacity: 0.7;
+}
+
+.c-timeline__act-name {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Type modifiers ──────────────────────────────────────── */
+
+.c-timeline__act--dansa {
+  --color-act-bg: #fce4ec;
+  --color-act-accent: #c62828;
+}
+
+.c-timeline__act--lyssna {
+  --color-act-bg: #e3f2fd;
+  --color-act-accent: #1565c0;
+}
+
+.c-timeline__act--spela {
+  --color-act-bg: #e8f5e9;
+  --color-act-accent: #2e7d32;
+}
+
+.c-timeline__act--sjung {
+  --color-act-bg: #fff3e0;
+  --color-act-accent: #e65100;
+}
+
+.c-timeline__act--utställning {
+  --color-act-bg: #f3e5f5;
+  --color-act-accent: #6a1b9a;
+}
+
+/* ── Responsive: ensure minimum column width ─────────────── */
+
+@media (max-width: 40rem) {
+  .c-timeline {
+    --_row-h: 0.85rem;
+    grid-template-columns: 3rem repeat(var(--_cols), minmax(5rem, 1fr));
+  }
+
+  .c-timeline__act-name {
+    font-size: 0.65rem;
+  }
+}

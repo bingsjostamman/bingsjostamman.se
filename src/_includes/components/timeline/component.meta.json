@@ -1,0 +1,45 @@
+{
+  "title": "Components/Timeline",
+  "description": "A visual CSS Grid timeline showing stage slots as blocks. Stages on columns, time on rows. Supports filtering by day, stage, and type.",
+  "status": "ready",
+  "tags": ["UI", "schedule", "timeline"],
+  "class": "timeline",
+  "macro": true,
+  "examples": {
+    "Tuesday Bystugubanan": {
+      "lineup": [
+        { "day": "tisdag", "stage": "Bystugubanan", "type": "dansa", "name": "Täby Spelmansgille", "starttime": "19:00", "endtime": "20:30", "startMinutes": 1140, "endMinutes": 1230 },
+        { "day": "tisdag", "stage": "Bystugubanan", "type": "dansa", "name": "Nordanstigs spelmanslag", "starttime": "20:30", "endtime": "21:00", "startMinutes": 1230, "endMinutes": 1260 },
+        { "day": "tisdag", "stage": "Bystugubanan", "type": "dansa", "name": "Malungs folkhögskola", "starttime": "21:00", "endtime": "22:00", "startMinutes": 1260, "endMinutes": 1320 }
+      ],
+      "options": { "day": "tisdag" }
+    },
+    "Wednesday three stages": {
+      "lineup": [
+        { "day": "onsdag", "stage": "Logen", "type": "lyssna", "name": "Dalarnas ungdomsspelmanslag", "starttime": "19:30", "endtime": "20:00", "startMinutes": 1170, "endMinutes": 1200 },
+        { "day": "onsdag", "stage": "Logen", "type": "lyssna", "name": "Ungtfolk på logen", "starttime": "20:00", "endtime": "21:00", "startMinutes": 1200, "endMinutes": 1260 },
+        { "day": "onsdag", "stage": "Logen", "type": "lyssna", "name": "Dragkroka", "starttime": "21:00", "endtime": "21:30", "startMinutes": 1260, "endMinutes": 1290 },
+        { "day": "onsdag", "stage": "Tunet", "type": "lyssna", "name": "Bröderna", "starttime": "19:15", "endtime": "19:45", "startMinutes": 1155, "endMinutes": 1185 },
+        { "day": "onsdag", "stage": "Tunet", "type": "lyssna", "name": "Vallmusik", "starttime": "19:45", "endtime": "20:15", "startMinutes": 1185, "endMinutes": 1215 },
+        { "day": "onsdag", "stage": "Tunet", "type": "lyssna", "name": "Ethno", "starttime": "20:15", "endtime": "20:45", "startMinutes": 1215, "endMinutes": 1245 },
+        { "day": "onsdag", "stage": "Låttältet", "type": "spela", "name": "Ore spelmän", "starttime": "20:00", "endtime": "21:00", "startMinutes": 1200, "endMinutes": 1260 },
+        { "day": "onsdag", "stage": "Låttältet", "type": "spela", "name": "Nordanstigs spelmanslag", "starttime": "21:00", "endtime": "22:00", "startMinutes": 1260, "endMinutes": 1320 }
+      ],
+      "options": { "day": "onsdag", "stages": ["Logen", "Tunet", "Låttältet"] }
+    },
+    "Wednesday all stages": {
+      "lineup": [
+        { "day": "onsdag", "stage": "Nygårdsgården", "type": "spela", "name": "Spelmansmöte", "starttime": "13:00", "endtime": "14:00", "startMinutes": 780, "endMinutes": 840, "placement": "headline" },
+        { "day": "onsdag", "stage": "Bagarstugan", "type": "utställning", "name": "Dräktskick i Bingsjö", "starttime": "13:30", "endtime": "15:30", "startMinutes": 810, "endMinutes": 930 },
+        { "day": "onsdag", "stage": "Dansbanan", "type": "dansa", "name": "Hoven Droven", "starttime": "16:45", "endtime": "17:45", "startMinutes": 1005, "endMinutes": 1065, "placement": "headline" },
+        { "day": "onsdag", "stage": "Kapellet", "type": "lyssna", "name": "Ellika Frisell och Emma Reid", "starttime": "20:00", "endtime": "21:00", "startMinutes": 1200, "endMinutes": 1260, "placement": "headline" },
+        { "day": "onsdag", "stage": "Logen", "type": "lyssna", "name": "Ungtfolk på logen", "starttime": "20:00", "endtime": "21:00", "startMinutes": 1200, "endMinutes": 1260 },
+        { "day": "onsdag", "stage": "Logen", "type": "lyssna", "name": "Dragkroka", "starttime": "21:00", "endtime": "21:30", "startMinutes": 1260, "endMinutes": 1290 },
+        { "day": "onsdag", "stage": "Tunet", "type": "lyssna", "name": "Bröderna", "starttime": "19:15", "endtime": "19:45", "startMinutes": 1155, "endMinutes": 1185 },
+        { "day": "onsdag", "stage": "Tunet", "type": "lyssna", "name": "Ethno", "starttime": "20:15", "endtime": "20:45", "startMinutes": 1215, "endMinutes": 1245 },
+        { "day": "onsdag", "stage": "Låttältet", "type": "spela", "name": "Ore spelmän", "starttime": "20:00", "endtime": "21:00", "startMinutes": 1200, "endMinutes": 1260 }
+      ],
+      "options": { "day": "onsdag" }
+    }
+  }
+}

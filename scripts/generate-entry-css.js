@@ -45,8 +45,6 @@ function getUsedComponentCss() {
     const cssPath = path.resolve(componentsDir, name, `${name}.css`);
     if (fs.existsSync(cssPath)) {
       cssFiles.push(cssPath);
-    } else {
-      console.warn(`⚠️ Component CSS missing: ${cssPath}`);
     }
   });
   return cssFiles;

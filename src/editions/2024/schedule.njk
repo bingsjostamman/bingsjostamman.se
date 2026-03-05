@@ -1,0 +1,16 @@
+---
+layout: layouts/base
+year: 2024
+eleventyComputed:
+  title: "Översikt – Bingsjöstämman {{ year }}"
+  permalink: "{% if year == editions.current %}/oversikt/index.html{% else %}/{{ year }}/oversikt/index.html{% endif %}"
+---
+{% from "components/timeline/timeline.njk" import timeline %}
+
+<h1>Översikt {{ year }}</h1>
+
+<h2>Tisdag</h2>
+{{ timeline(lineup, { day: "tisdag" }) }}
+
+<h2>Onsdag – alla scener</h2>
+{{ timeline(lineup, { day: "onsdag" }) }}

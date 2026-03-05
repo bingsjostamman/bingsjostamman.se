@@ -20,10 +20,9 @@ function detectUsedComponents() {
   const templates = getAllTemplates(srcDir);
   const used = new Set();
 
-  const includeRegex = /include ["']components\/([\w-]+)\/\1\.njk["']/g;
-
   templates.forEach((file) => {
     const content = fs.readFileSync(file, "utf-8");
+    const includeRegex = /(?:include|from)\s+["']components\/([\w-]+)\/[\w-]+\.njk["']/g;
     let match;
     while ((match = includeRegex.exec(content))) {
       used.add(match[1]);

@@ -1,0 +1,22 @@
+.o-container {
+  --container-main-maxwidth: 1200px;
+  --container-main-gap: var(--size-half);
+
+  display: grid;
+  grid-template-columns:
+    [full-start] 1fr [page-start] var(--container-main-gap)
+    [main-start] minmax(0, var(--container-main-maxwidth)) [main-end]
+    var(--container-main-gap) [page-end] 1fr auto[full-end];
+}
+
+.o-container > * {
+  grid-column: main;
+}
+
+.o-container__page {
+  grid-column: page;
+}
+
+.o-container__breakout {
+  grid-column: full;
+}

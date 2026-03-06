@@ -262,7 +262,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addWatchTarget("src/pages/");
   eleventyConfig.addWatchTarget("src/_data/");
 
-  // Watch Vite output
+  // Vite output + static assets (copied into public/assets after Vite build)
   eleventyConfig.addPassthroughCopy({ "public/assets": "assets" });
 
   // Root folders

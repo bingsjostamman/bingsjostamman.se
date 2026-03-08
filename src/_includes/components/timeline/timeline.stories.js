@@ -10,7 +10,7 @@ export default {
 
 export const Tuesday_Bystugubanan = () => `
 
-<div class="c-timeline" style="--timeline-cols: 1; --timeline-rows: 12;">
+<div class="c-timeline" aria-hidden="true" style="--timeline-cols: 1; --timeline-rows: 12;">
   
   <div class="c-timeline__header" style="grid-row: 1;">
     <div class="c-timeline__corner"></div>
@@ -40,7 +40,7 @@ export const Tuesday_Bystugubanan = () => `
 Tuesday_Bystugubanan.storyName = "Tuesday Bystugubanan";
 export const Wednesday_three_stages = () => `
 
-<div class="c-timeline" style="--timeline-cols: 3; --timeline-rows: 12;">
+<div class="c-timeline" aria-hidden="true" style="--timeline-cols: 3; --timeline-rows: 12;">
   
   <div class="c-timeline__header" style="grid-row: 1;">
     <div class="c-timeline__corner"></div>
@@ -92,7 +92,7 @@ export const Wednesday_three_stages = () => `
 Wednesday_three_stages.storyName = "Wednesday three stages";
 export const Wednesday_all_stages = () => `
 
-<div class="c-timeline" style="--timeline-cols: 7; --timeline-rows: 36;">
+<div class="c-timeline" aria-hidden="true" style="--timeline-cols: 7; --timeline-rows: 36;">
   
   <div class="c-timeline__header" style="grid-row: 1;">
     <div class="c-timeline__corner"></div>

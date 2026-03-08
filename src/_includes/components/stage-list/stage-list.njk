@@ -3,18 +3,22 @@
   Usage:
     {% from "components/stage-list/stage-list.njk" import stageList %}
     {{ stageList("Låttältet", lineup, "onsdag") }}
+    {{ stageList("Dansbanan", lineup, "onsdag", "invigning") }}
 
   Parameters:
     - stageName: string – the stage to filter on
     - lineup: array – the full lineup data
     - day: string – "tisdag" or "onsdag"
+    - excludeType: string (optional) – exclude acts of this type
 #}
 
-{%- macro stageList(stageName, lineup, day) -%}
+{%- macro stageList(stageName, lineup, day, excludeType) -%}
 {%- set acts = [] -%}
 {%- for act in lineup -%}
   {%- if act.day == day and act.stage == stageName -%}
-    {%- set acts = (acts.push(act), acts) -%}
+    {%- if not excludeType or act.type != excludeType -%}
+      {%- set acts = (acts.push(act), acts) -%}
+    {%- endif -%}
   {%- endif -%}
 {%- endfor -%}
 {%- if acts.length -%}

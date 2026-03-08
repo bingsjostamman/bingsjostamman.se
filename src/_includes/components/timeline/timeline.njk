@@ -94,8 +94,9 @@
   {%- for i in range(0, totalSlots) -%}
     {%- set mins = gridStart + (i * inc) -%}
     {%- if mins % 60 == 0 -%}
+    {%- set displayHour = ((mins / 60) | round(0, "floor")) % 24 -%}
     <div class="c-timeline__time" style="grid-row: {{ i + 2 }}; grid-column: 1;">
-      {{ (mins / 60) | round(0, "floor") }}:00
+      {{ displayHour }}:00
     </div>
     {%- endif -%}
   {%- endfor -%}

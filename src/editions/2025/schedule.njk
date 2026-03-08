@@ -14,7 +14,11 @@ eleventyComputed:
 <h2>Tisdag</h2>
 {{ timeline(lineup, { day: "tisdag" }) }}
 
+
+<h2>Onsdag – Vandra & upplev</h2>
+{{ timeline(lineup, { day: "onsdag", stages: ["Tunet", "Logen", "Levande ladan", "Bagarstugan", "Danielsgården", "Bystugan", "Lanthandeln", "Kapellet", "Nygårdsgården"] }) }}
+
 <h2>Onsdag – alla scener</h2>
 <section class="o-container__breakout">
-{{ timeline(lineup, { day: "onsdag" }) }}
+{{ timeline(lineup, { day: "onsdag", stages: ["Bystugubanan", "Låttältet", "Dansbanan", "Dansladu"] }) }}
 </section>

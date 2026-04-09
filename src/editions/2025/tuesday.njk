@@ -9,6 +9,14 @@ eleventyComputed:
 
 <h1>Tisdag {{ dates.tisdag | swedishDate }}</h1>
 
+<div class="page-intro">
+  {{ copy.intro | markdown | safe }}
+</div>
+
 <h2>Bystugubanan</h2>
+
+<div class="stage-intro">
+  {{ copy.bystugubanan | markdown | safe }}
+</div>
 
 {{ stageList("Bystugubanan", lineup, "tisdag") }}

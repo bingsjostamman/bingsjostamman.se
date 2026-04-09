@@ -155,6 +155,13 @@ export default async function (eleventyConfig) {
     }));
   });
 
+  /* Markdown filter */
+  eleventyConfig.addFilter("markdown", (content) => {
+    if (!content) return "";
+    const markdownIt = require("markdown-it")({ html: true });
+    return markdownIt.render(content);
+  });
+
   /* ----------------------------------------------------------------------
    * Shortcodes
    * -------------------------------------------------------------------- */
@@ -221,7 +228,8 @@ export default async function (eleventyConfig) {
           scanTemplates(fullPath);
         } else if (/\.(njk|md|html)$/.test(entry.name)) {
           const content = fs.readFileSync(fullPath, "utf-8");
-          const regex = /\{%\s*include\s+["']components\/([^\/]+)\//g;
+          const regex =
+            /(?:include|from)\s+["']components\/([\w-]+)\/[\w-]+\.njk["']/g;
           let match;
           while ((match = regex.exec(content)) !== null) {
             usedComponents.add(match[1]);

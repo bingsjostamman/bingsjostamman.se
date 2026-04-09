@@ -8,7 +8,7 @@ import { createRequire } from "module";
 dotenv.config();
 console.log(
   "🔍 Eleventy environment:",
-  process.env.ELEVENTY_ENV || "development"
+  process.env.ELEVENTY_ENV || "development",
 );
 
 export default async function (eleventyConfig) {
@@ -137,7 +137,7 @@ export default async function (eleventyConfig) {
     (value, length = 2, char = "0") => {
       if (value === undefined || value === null) return "";
       return String(value).padStart(length, char);
-    }
+    },
   );
 
   /* GroupBy filter */
@@ -244,10 +244,10 @@ export default async function (eleventyConfig) {
       fs.mkdirSync(prebuildDir, { recursive: true });
     fs.writeFileSync(
       usedComponentsFile,
-      JSON.stringify([...usedComponents], null, 2)
+      JSON.stringify([...usedComponents], null, 2),
     );
     console.log(
-      `✅ Updated used components: ${[...usedComponents].join(", ")}`
+      `✅ Updated used components: ${[...usedComponents].join(", ")}`,
     );
   });
 
@@ -263,6 +263,13 @@ export default async function (eleventyConfig) {
   eleventyConfig.ignores.add("src/css/**");
   eleventyConfig.watchIgnores.add("src/js/**");
   eleventyConfig.watchIgnores.add("src/css/**");
+
+  // Prevent watch loops: prebuilt/ is written by beforeBuild each run;
+  // without this, setUseGitIgnore(false) means the .gitignore exclusion
+  // for prebuilt/ is gone and every write re-triggers a build.
+  // .stories.js files are generated artefacts that don't affect Eleventy output.
+  eleventyConfig.watchIgnores.add("prebuilt/**");
+  eleventyConfig.watchIgnores.add("src/_includes/components/**/*.stories.js");
 
   // Watch only content + templates
   eleventyConfig.addWatchTarget("src/_includes/");

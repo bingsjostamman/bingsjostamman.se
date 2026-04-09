@@ -1,0 +1,53 @@
+{
+  "title": "Components/Allspel Table",
+  "description": "Table of allspelslåtar with support for multiple sheet music and audio links per tune.",
+  "status": "ready",
+  "tags": ["UI", "content", "table", "allspel"],
+  "class": "allspel-table",
+  "macro": true,
+  "examples": {
+    "Default": {
+      "tunes": [
+        {
+          "name": "Bingsjöpolskan",
+          "note": "Melodi + andrastämma",
+          "sheetMusic": [
+            {
+              "label": "Melodi (PDF)",
+              "url": "https://example.com/bingsjopolskan-melodi.pdf"
+            },
+            {
+              "label": "Andrastämma (PDF)",
+              "url": "https://example.com/bingsjopolskan-andrastamma.pdf"
+            }
+          ],
+          "audio": [
+            {
+              "label": "Melodi (MP3)",
+              "url": "https://example.com/bingsjopolskan-melodi.mp3"
+            }
+          ]
+        },
+        {
+          "name": "Gammelvals",
+          "sheetMusic": [
+            {
+              "label": "Notblad (PDF)",
+              "url": "https://example.com/gammelvals.pdf"
+            }
+          ],
+          "audio": [
+            {
+              "label": "Ljudfil (MP3)",
+              "url": "https://example.com/gammelvals.mp3"
+            },
+            {
+              "label": "Andrastämma (MP3)",
+              "url": "https://example.com/gammelvals-andrastamma.mp3"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

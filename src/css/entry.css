@@ -3,6 +3,7 @@
 @import "./04-elements/_html-elements.css";
 @import "./04-elements/_root.css";
 @import "./05-objects/container.css";
+@import "./../_includes/components/allspel-table/allspel-table.css";
 @import "./../_includes/components/timeline/timeline.css";
 @import "./../_includes/components/menu/menu.css";
 @import "./../_includes/components/headline-acts/headline-acts.css";

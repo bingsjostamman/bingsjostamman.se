@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Exempellåt",
+    "note": "Byt ut med årets allspelslåtar",
+    "sheetMusic": [
+      {
+        "label": "Melodi (PDF)",
+        "url": "https://example.com/exempellat-melodi.pdf"
+      }
+    ],
+    "audio": [
+      {
+        "label": "Melodi (MP3)",
+        "url": "https://example.com/exempellat-melodi.mp3"
+      },
+      {
+        "label": "Andrastämma (MP3)",
+        "url": "https://example.com/exempellat-andrastamma.mp3"
+      }
+    ]
+  }
+]

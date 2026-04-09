@@ -45,6 +45,13 @@ export const Default = () => `
       </a>
     
       <a 
+        href="/allspel/" 
+        
+      >
+        Allspel
+      </a>
+    
+      <a 
         href="/scen/" 
         
       >
@@ -97,6 +104,13 @@ export const Open = () => `
         
       >
         Onsdag
+      </a>
+    
+      <a 
+        href="/allspel/" 
+        
+      >
+        Allspel
       </a>
     
       <a 

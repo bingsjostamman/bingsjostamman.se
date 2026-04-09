@@ -1,22 +1,29 @@
 [
   {
-    "name": "Exempellåt",
+    "name": "Farmors brudpolska",
     "note": "Byt ut med årets allspelslåtar",
     "sheetMusic": [
       {
         "label": "Melodi (PDF)",
-        "url": "https://example.com/exempellat-melodi.pdf"
+        "url": "https://www.dropbox.com/scl/fi/bwfejh6yizeei7juvr70i/farmors.pdf?rlkey=en3r1kbdrxd5ibhotl6l43530&st=zp8hofe1&raw=1"
       }
     ],
     "audio": [
       {
         "label": "Melodi (MP3)",
-        "url": "https://example.com/exempellat-melodi.mp3"
-      },
-      {
-        "label": "Andrastämma (MP3)",
-        "url": "https://example.com/exempellat-andrastamma.mp3"
+        "url": "https://www.dropbox.com/scl/fi/4n7nkzjd17e3egu8kvmyp/Farmors_brudpolska_Alvdalen.mp3?rlkey=90dm21yn8azc0ogattwopfciy&st=qcl8dx69&raw=1"
       }
     ]
+  },
+  {
+    "name": "Trettondagsmarschen",
+    "note": "av Hjort Anders Olsson",
+    "sheetMusic": [
+      {
+        "label": "Melodi (PDF)",
+        "url": "https://www.dropbox.com/scl/fi/3erzrnqzdbvlxzc0zvkkn/trettondagsmarschen.pdf?rlkey=p8fooxo8ha7f9a2c7avzprq12&st=9y5vokg9&raw=1"
+      }
+    ],
+    "audio": []
   }
 ]

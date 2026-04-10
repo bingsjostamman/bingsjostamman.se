@@ -24,13 +24,6 @@ export const Default = () => `
   <nav id="main-nav" data-menu-panel class="c-menu-panel">
     
       <a 
-        href="/" 
-        
-      >
-        Hem
-      </a>
-    
-      <a 
         href="/tisdag/" 
         
       >
@@ -84,13 +77,6 @@ export const Open = () => `
   
 
   <nav id="main-nav" data-menu-panel class="c-menu-panel">
-    
-      <a 
-        href="/" 
-        
-      >
-        Hem
-      </a>
     
       <a 
         href="/tisdag/" 

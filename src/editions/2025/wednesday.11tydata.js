@@ -1,6 +1,7 @@
 import { createRequire } from "module";
 import path from "path";
 import { fileURLToPath } from "url";
+import wednesdayContent from "./wednesday-content.js";
 
 const require = createRequire(import.meta.url);
 const __filename = fileURLToPath(import.meta.url);
@@ -13,5 +14,6 @@ const dates = require("./dates.json");
 export default {
   lineup,
   dates,
+  copy: wednesdayContent,
   year,
 };

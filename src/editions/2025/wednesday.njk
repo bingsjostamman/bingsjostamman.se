@@ -9,6 +9,10 @@ eleventyComputed:
 
 <h1>Onsdag {{ dates.onsdag | swedishDate }}</h1>
 
+<div class="page-intro">
+  {{ copy.intro | markdown | safe }}
+</div>
+
 <h2>Nygårdsgården</h2>
 {{ stageList("Nygårdsgården", lineup, "onsdag") }}
 
@@ -27,6 +31,10 @@ eleventyComputed:
 {{ stageList("Danielsgården", lineup, "onsdag") }}
 
 <h2>Bystugubanan</h2>
+<div class="stage-intro">
+  {{ copy.bystugubanan | markdown | safe }}
+</div>
+
 {{ stageList("Bystugubanan", lineup, "onsdag") }}
 
 <h2>Kapellet</h2>

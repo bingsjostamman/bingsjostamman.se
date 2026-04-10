@@ -52,12 +52,12 @@ export const With_descriptions = () => `
 `;
 With_descriptions.storyName = "With descriptions";
 export const Single_act = () => `
-<ol class="c-stage-list">
-    <li class="c-stage-list__item">
+<div class="c-stage-list">
+    <div class="c-stage-list__item">
       <span class="c-stage-list__time">13:00–14:00</span>
       <strong class="c-stage-list__name">Spelmansmöte</strong>
       <span class="c-stage-list__description">Sofia Sandén och Ulrika Bodén träffas i årets spelmansmöte.</span>
-    </li>
-  </ol>
+    </div>
+  </div>
 `;
 Single_act.storyName = "Single act";

@@ -35,27 +35,7 @@
         {{ content | safe }}
     </main>
 
-    <hr>
-    <h4>Sidfot</h4>
-    <p><a href="/kontakt/">Kontakta oss</a></p>
-    <p><a href="/upplagor/">Tidigare upplagor av stämman</a></p>
-    <p><a href="/sitemap.xml">sitemap</a></p>
-
-    <hr>
-    <h4>Testsidor</h4>
-    <p><a href="/components/">Components</a></p>
-    <p><a href="/start/">Start</a></p>
-    <p><a href="/photos/">Photos</a></p>
-    <p><a href="/schedule/">Schedule</a></p>
-
-<footer>
-  <p>&copy; {{ "now" | date("yyyy") }} {{ site.name }}</p>
-
-  {% if not env.isProd %}
-    <p>env.isProd = {{ env.isProd }} | env.name = {{ env.name }}</p>
-  {% endif %}
-
-</footer>
+{% include "components/footer/footer.njk" %}
 
 <script type="module" src="/assets/js/main.js"></script>
 

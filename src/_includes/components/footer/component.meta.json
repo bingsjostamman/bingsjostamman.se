@@ -1,0 +1,11 @@
+{
+  "title": "Components/Footer",
+  "description": "Site footer with navigation links and copyright. Skeleton — real content and design to be added.",
+  "status": "wip",
+  "tags": ["UI", "navigation", "layout"],
+  "class": "footer",
+  "macro": true,
+  "examples": {
+    "Default": {}
+  }
+}

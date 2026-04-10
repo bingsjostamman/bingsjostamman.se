@@ -1,0 +1,24 @@
+<footer class="c-footer">
+
+  <nav class="c-footer__links" aria-label="Sidfotslänkar">
+    <a href="/kontakt/">Kontakta oss</a>
+    <a href="/upplagor/">Tidigare upplagor av stämman</a>
+    <a href="/sitemap.xml">Sitemap</a>
+  </nav>
+
+  {% if not env.isProd %}
+  <nav class="c-footer__dev-links" aria-label="Testsidor">
+    <a href="/components/">Components</a>
+    <a href="/start/">Start</a>
+    <a href="/photos/">Photos</a>
+    <a href="/schedule/">Schedule</a>
+  </nav>
+  {% endif %}
+
+  <p class="c-footer__copyright">&copy; {{ "now" | date("yyyy") }} {{ site.name }}</p>
+
+  {% if not env.isProd %}
+  <p class="c-footer__debug">env.isProd = {{ env.isProd }} | env.name = {{ env.name }}</p>
+  {% endif %}
+
+</footer>

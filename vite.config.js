@@ -44,7 +44,7 @@ export default ({ mode }) => {
         generateBundle(options, bundle) {
           console.log("📦 Bundled files:");
           Object.keys(bundle).forEach((fileName) =>
-            console.log(" -", fileName)
+            console.log(" -", fileName),
           );
         },
       },
@@ -69,10 +69,22 @@ export default ({ mode }) => {
           if (imports.length) {
             console.log(`📄 entry.css imports (${imports.length} files):`);
             imports.forEach((f) =>
-              console.log(`  ${fs.existsSync(f) ? "✅" : "⚠️"} ${f}`)
+              console.log(`  ${fs.existsSync(f) ? "✅" : "⚠️"} ${f}`),
             );
           } else {
             console.log("⚠️ No imports found in entry.css");
+          }
+        },
+      },
+      {
+        name: "copy-svg-assets",
+        closeBundle() {
+          for (const dir of ["gfx", "icons", "logos"]) {
+            const src = resolve(`src/assets/${dir}`);
+            const dest = resolve(`public/assets/${dir}`);
+            if (fs.existsSync(src)) {
+              fs.cpSync(src, dest, { recursive: true });
+            }
           }
         },
       },

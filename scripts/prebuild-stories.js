@@ -94,8 +94,16 @@ function generateStories() {
     const jsFile = path.join(componentDir, `${componentName}.js`);
     if (fs.existsSync(cssFile))
       importLines += `import './${componentName}.css';\n`;
-    if (fs.existsSync(jsFile))
-      importLines += `import './${componentName}.js';\n`;
+
+    // If meta.init is set, import the named function; otherwise side-effect import
+    const initFn = meta.init || null;
+    if (fs.existsSync(jsFile)) {
+      if (initFn) {
+        importLines += `import { ${initFn} } from './${componentName}.js';\n`;
+      } else {
+        importLines += `import './${componentName}.js';\n`;
+      }
+    }
 
     // Generate Storybook story
     const storyFile = path.join(componentDir, `${componentName}.stories.js`);
@@ -106,13 +114,18 @@ function generateStories() {
       tags = [],
     } = meta;
 
+    // Build decorator that calls init function after render
+    const decoratorBlock = initFn
+      ? `\n  decorators: [\n    (storyFn) => {\n      const container = document.createElement('div');\n      container.innerHTML = storyFn();\n      ${initFn}(container);\n      return container;\n    },\n  ],`
+      : "";
+
     const storyContent = `
 ${importLines}export default {
   title: ${JSON.stringify(title)},
   parameters: {
     docs: { description: { component: ${JSON.stringify(description)} } },
     status: ${JSON.stringify(status)},
-  },
+  },${decoratorBlock}
   tags: ${JSON.stringify(tags)},
 };
 

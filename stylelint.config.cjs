@@ -16,12 +16,6 @@ module.exports = {
 
   // Customize rules if desired
   rules: {
-    // Ensure 2-space indentation
-    indentation: 2,
-
-    // Force lowercase for hex colors
-    "color-hex-case": "lower",
-
     // Allow single and double hyphens, numbers, and modifier-style names
     "custom-property-pattern": null,
 
@@ -37,14 +31,8 @@ module.exports = {
     // Disallow duplicate properties
     "declaration-block-no-duplicate-properties": true,
 
-    // Require a newline after each block for readability
-    "block-closing-brace-newline-after": "always",
-
-    // Require lowercase for properties
-    "property-case": "lower",
-
-    // Require class selectors to follow ITCSS pattern (e.g., objects/components/utilities)
-    "selector-class-pattern": "^(o|c|u|l|t|f|is|has)-[a-z0-9\\-]+$",
+    // Require class selectors to follow ITCSS + BEM pattern (e.g., c-block__element--modifier)
+    "selector-class-pattern": "^(o|c|u|l|t|f|is|has)-[a-z0-9]+(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
 
     // Allow single-line comments (//) if needed
     "comment-empty-line-before": null,
@@ -52,18 +40,11 @@ module.exports = {
     // Allow vendor prefixes if handled via PostCSS
     "property-no-vendor-prefix": null,
 
-    // Optional: restrict units to only those you actually use
-    "unit-whitelist": ["px", "em", "rem", "%", "deg", "s", "vh", "vw"],
+    // Restrict units to only those we use
+    "unit-allowed-list": ["px", "em", "rem", "%", "deg", "s", "vh", "vw"],
 
-    "string-quotes": "double",
     "color-no-invalid-hex": true,
     "max-nesting-depth": 3,
-    "unit-whitelist": ["em", "rem", "%", "px", "deg", "s"],
-    // Allow using single-line comments (//) if needed
-    "comment-empty-line-before": null,
-    // Disable vendor-prefix warnings if you handle them via PostCSS
-    "property-no-vendor-prefix": null,
-    // ...add any stylistic rules you want
   },
 
   // Enable autofix when running CLI

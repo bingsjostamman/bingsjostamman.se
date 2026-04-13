@@ -1,0 +1,44 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* --- Per-logo dimensions --- */
+
+.logo--bilda {
+  width: 105px;
+  aspect-ratio: 105 / 50;
+}
+
+.logo--bingsjo {
+  width: 120px;
+  aspect-ratio: 544 / 496;
+}
+
+.logo--bingsjostamman-color,
+.logo--bingsjostamman {
+  width: 200px;
+  aspect-ratio: 400 / 246;
+}
+
+.logo--dsf {
+  width: 140px;
+  aspect-ratio: 420 / 150;
+}
+
+.logo--fmh {
+  width: 120px;
+  aspect-ratio: 1393 / 753;
+}
+
+.logo--leksands-sparbank {
+  width: 144px;
+  aspect-ratio: 144 / 54;
+}

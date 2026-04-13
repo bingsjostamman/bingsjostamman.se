@@ -1,0 +1,11 @@
+{
+  "title": "Components/Logo",
+  "description": "Inline SVG logo component with per-logo sizing via BEM modifiers.",
+  "status": "ready",
+  "tags": ["UI", "branding"],
+  "class": "logo",
+  "macro": true,
+  "examples": {
+    "Default": { "name": "bingsjostamman-color" }
+  }
+}

@@ -5,6 +5,7 @@ title: Kontakt
 ---
 
 {% from "components/icon/icon.njk" import icon %}
+{% from "components/logo/logo.njk" import logo %}
 
 <div class="glacier">
 				<h1 id="kontakt">Kontakt</h1>
@@ -24,10 +25,22 @@ title: Kontakt
 				<p>Dalagatan 7, 791 31 RÄTTVIK</p>
 				<p>Tel: 0248-797050</p>
 				<p>E-post: bingsjo@folkmusikenshus.se</p>
-				<p class="logos">
-					<img src="https://res.cloudinary.com/bingsjostamman/image/upload/v1637226634/legacy/dsf_zihftm.png" alt="">
-					<img src="https://res.cloudinary.com/bingsjostamman/image/upload/v1637226633/legacy/fmh_mpf3kw.png" alt="">
-					<img src="https://res.cloudinary.com/bingsjostamman/image/upload/v1637226596/legacy/bingsjo_joi90d.png" alt="">
-					<img src="https://res.cloudinary.com/bingsjostamman/image/upload/v1637226596/legacy/bilda_g9t6qj.png" alt="">
+				<p class="logos" style="background-color: white; color: black; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; padding: 1rem;">
+    {{ logo("dsf") }}
+{{ logo("fmh") }}
+{{ logo("bingsjo") }}
+{{ logo("bilda") }}
+{{ logo("bingsjostamman") }}
+{{ logo("leksands-sparbank") }}
+				</p>
+				<p class="logos" style="background-color: #111D1D; color: white; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; padding: 1rem;">
+    {{ logo("dsf") }}
+{{ logo("fmh") }}
+{{ logo("bingsjo") }}
+{{ logo("bilda") }}
+{{ logo("bingsjostamman") }}
+{{ logo("leksands-sparbank") }}
 				</p>
 			</div>
+			
+

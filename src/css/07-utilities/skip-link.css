@@ -1,22 +1,22 @@
 .u-skip-link {
-	position: absolute;
-	left: -10000px;
-	top: auto;
-	width: 1px;
-	height: 1px;
-	overflow: hidden;
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .u-skip-link:focus {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: auto;
-	height: auto;
-	overflow: visible;
-	z-index: 1000;
-	padding: var(--size-half) var(--size-full);
-	background: #fff;
-	color: rebeccapurple;
-	font-weight: 700;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  z-index: 1000;
+  padding: var(--size-half) var(--size-full);
+  background: #fff;
+  color: rebeccapurple;
+  font-weight: 700;
 }

@@ -6,13 +6,17 @@ const fonts = [
     role: "Headings & display",
     weights: [
       { label: "Regular", value: 400 },
-      { label: "Italic", value: 400, italic: true },
+      { label: "Regular Italic", value: 400, italic: true },
       { label: "Medium", value: 500 },
       { label: "Medium Italic", value: 500, italic: true },
       { label: "SemiBold", value: 600 },
+      { label: "SemiBold Italic", value: 600, italic: true },
       { label: "Bold", value: 700 },
+      { label: "Bold Italic", value: 700, italic: true },
       { label: "ExtraBold", value: 800 },
+      { label: "ExtraBold Italic", value: 800, italic: true },
       { label: "Black", value: 900 },
+      { label: "Black Italic", value: 900, italic: true },
     ],
   },
   {
@@ -20,12 +24,19 @@ const fonts = [
     role: "Primary body font",
     weights: [
       { label: "Thin", value: 100 },
+      { label: "Thin Italic", value: 100, italic: true },
       { label: "Light", value: 300 },
+      { label: "Light Italic", value: 300, italic: true },
       { label: "Regular", value: 400 },
+      { label: "Regular Italic", value: 400, italic: true },
       { label: "Medium", value: 500 },
+      { label: "Medium Italic", value: 500, italic: true },
       { label: "Bold", value: 700 },
+      { label: "Bold Italic", value: 700, italic: true },
       { label: "ExtraBold", value: 800 },
+      { label: "ExtraBold Italic", value: 800, italic: true },
       { label: "Black", value: 900 },
+      { label: "Black Italic", value: 900, italic: true },
     ],
   },
   {
@@ -34,13 +45,17 @@ const fonts = [
     role: "Decorative (& ampersand)",
     weights: [
       { label: "Regular", value: 400 },
-      { label: "Italic", value: 400, italic: true },
+      { label: "Regular Italic", value: 400, italic: true },
       { label: "Medium", value: 500 },
       { label: "Medium Italic", value: 500, italic: true },
       { label: "SemiBold", value: 600 },
       { label: "SemiBold Italic", value: 600, italic: true },
       { label: "Bold", value: 700 },
       { label: "Bold Italic", value: 700, italic: true },
+      { label: "ExtraBold", value: 800 },
+      { label: "ExtraBold Italic", value: 800, italic: true },
+      { label: "Black", value: 900 },
+      { label: "Black Italic", value: 900, italic: true },
     ],
   },
 ];
@@ -84,14 +99,15 @@ export const FontSpecimen = () => {
         Playfair Display is used exclusively for the ampersand character.
       </p>
       <div style="display: flex; gap: 2rem; align-items: baseline; flex-wrap: wrap;">
-        ${[400, 500, 600, 700]
+        ${[400, 500, 600, 700, 800, 900]
           .map(
             (w) => `
           <span style="font-family: 'Playfair Display'; font-weight: ${w}; font-size: 4rem; line-height: 1;">&amp;</span>
         `,
           )
           .join("")}
-        ${[400, 500, 600, 700]
+          </div><div style="display: flex; gap: 2rem; align-items: baseline; flex-wrap: wrap;">
+        ${[400, 500, 600, 700, 800, 900]
           .map(
             (w) => `
           <span style="font-family: 'Playfair Display'; font-weight: ${w}; font-style: italic; font-size: 4rem; line-height: 1;">&amp;</span>

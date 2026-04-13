@@ -1,8 +1,10 @@
 {% from "components/logo/logo.njk" import logo %}
-<header class="c-header">
-  <a href="/" class="c-header__logo" aria-label="Bingsjöstämman – startsida">
-    {{ logo("bingsjostamman-color") }}
-  </a>
+<header class="c-header o-container">
+  <div class="c-header__inner">
+    <a href="/" class="c-header__logo" aria-label="Bingsjöstämman startsida">
+      {{ logo("bingsjostamman-color") }}
+    </a>
 
-  {% include "components/menu/menu.njk" %}
+    {% include "components/menu/menu.njk" %}
+  </div>
 </header>

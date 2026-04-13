@@ -13,7 +13,7 @@ import { qs } from "../../../js/helpers/dom.js"; // update path as needed
 export function initMenu(root = document) {
   const link = qs("[data-menu-toggle]", root);
   const nav = qs("[data-menu-panel]", root);
-  const backdrop = qs(".menu-backdrop", root);
+  const backdrop = qs("[data-menu-backdrop]", root);
 
   if (!link || !nav || !backdrop) return;
 

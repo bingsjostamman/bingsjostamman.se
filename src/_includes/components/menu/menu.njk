@@ -1,12 +1,14 @@
 {# src/_includes/components/menu.njk #}
+{% from "components/icon/icon.njk" import icon %}
 <div data-menu class="c-menu">
   <!-- Starts as an <a> for no-JS fallback -->
-  <a href="#main-nav" data-menu-toggle class="c-menu-toggle">
-    ☰ <span class="u-visually-hidden">Meny</span>
+  <a href="#main-nav" data-menu-toggle class="c-menu__toggle">
+    {{ icon("menu") }}
+    <span class="u-visually-hidden">Meny</span>
   </a>
 
   <!-- Backdrop only used when JS is active -->
-  <div class="c-menu-backdrop" aria-hidden="true"></div>
+  <div class="c-menu__backdrop" data-menu-backdrop aria-hidden="true"></div>
 
   {% set menuLinks = [
     { url: "/tisdag/", label: "Tisdag" },
@@ -16,15 +18,20 @@
     { url: "/biljetter/", label: "Entré och biljetter" }
   ] %}
 
-  <nav id="main-nav" data-menu-panel class="c-menu-panel">
-    {% for link in menuLinks %}
-      <a 
-        href="{{ link.url }}" 
-        {% if page.url == link.url %}aria-current="page"{% endif %}
-      >
-        {{ link.label }}
-      </a>
-    {% endfor %}
+  <nav id="main-nav" data-menu-panel class="c-menu__panel">
+    <ul class="c-menu__items">
+      {% for link in menuLinks %}
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="{{ link.url }}" 
+            {% if page.url == link.url %}aria-current="page"{% endif %}
+          >
+            {{ link.label }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
   </nav>
 </div>
 

@@ -6,7 +6,7 @@ const qsa = (sel, parent = document) => [
 function initMenu(root = document) {
   const link = qs("[data-menu-toggle]", root);
   const nav = qs("[data-menu-panel]", root);
-  const backdrop = qs(".menu-backdrop", root);
+  const backdrop = qs("[data-menu-backdrop]", root);
   if (!link || !nav || !backdrop) return;
   document.documentElement.setAttribute("data-js", "");
   const btn = document.createElement("button");

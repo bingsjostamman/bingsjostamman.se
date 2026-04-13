@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev:11ty": "cross-env ELEVENTY_ENV=development eleventy --serve",
+    "dev:11ty": "npm run copy:assets && cross-env ELEVENTY_ENV=development eleventy --serve",
     "dev:vite": "npm run css:generate && vite build --watch --mode development",
     "dev:prebuild": "node scripts/watch-prebuild.js",
     "dev": "concurrently \"npm run dev:vite\" \"npm run dev:11ty\" \"npm run dev:prebuild\"",

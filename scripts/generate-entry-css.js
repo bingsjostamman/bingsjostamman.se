@@ -66,11 +66,16 @@ const allCssFiles = [...globalCss, ...componentCss];
 
 const imports = allCssFiles.map((f) => `@import "${toRelative(f)}";`);
 
-fs.writeFileSync(entryPath, imports.join("\n"));
-
-console.log(
-  `✅ entry.css generated with ${globalCss.length} global + ${componentCss.length} component CSS imports`
-);
+const newContent = imports.join("\n");
+const existing = fs.existsSync(entryPath) ? fs.readFileSync(entryPath, "utf-8") : null;
+if (newContent === existing) {
+  console.log("✅ entry.css unchanged, skipping write");
+} else {
+  fs.writeFileSync(entryPath, newContent);
+  console.log(
+    `✅ entry.css generated with ${globalCss.length} global + ${componentCss.length} component CSS imports`
+  );
+}
 
 // ----------------------
 // Stylelint auto-fix

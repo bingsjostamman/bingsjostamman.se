@@ -3,6 +3,7 @@ import { exec } from "child_process";
 
 // Watch patterns
 const watchCss = ["src/css/**/*.css", "src/_includes/components/**/*.css"];
+const ignoredCss = ["**/entry.css"];
 
 const watchTemplates = ["src/_includes/**/*.njk", "src/**/*.njk"];
 
@@ -15,7 +16,7 @@ function run(cmd) {
 // ----------------------
 // When CSS changes → regenerate entry.css
 // ----------------------
-chokidar.watch(watchCss).on("change", (file) => {
+chokidar.watch(watchCss, { ignored: ignoredCss }).on("change", (file) => {
   console.log(`🔄 CSS changed: ${file}`);
   run("node scripts/generate-entry-css.js");
 });

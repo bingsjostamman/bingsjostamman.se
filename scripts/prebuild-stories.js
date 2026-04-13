@@ -9,7 +9,7 @@ const usedComponentsFile = path.join(prebuildDir, "used-components.json");
 // Ensure prebuild folder exists
 if (!fs.existsSync(prebuildDir)) fs.mkdirSync(prebuildDir, { recursive: true });
 
-const env = nunjucks.configure(componentsDir, { autoescape: true });
+const env = nunjucks.configure([componentsDir, "src/_includes"], { autoescape: true });
 
 // Recursively get all component files
 function getComponentFiles(dir) {

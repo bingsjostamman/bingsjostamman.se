@@ -280,11 +280,6 @@ export default async function (eleventyConfig) {
   // Vite output + static assets (copied into public/assets after Vite build)
   eleventyConfig.addPassthroughCopy({ "public/assets": "assets" });
 
-  // SVG assets — passed through directly from source (works in dev without copy:assets)
-  eleventyConfig.addPassthroughCopy({ "src/assets/gfx": "assets/gfx" });
-  eleventyConfig.addPassthroughCopy({ "src/assets/icons": "assets/icons" });
-  eleventyConfig.addPassthroughCopy({ "src/assets/logos": "assets/logos" });
-
   // Root folders
   const rootFolder = isProd ? "src/root-prod" : "src/root-dev";
   eleventyConfig.addPassthroughCopy({ [rootFolder]: "/" });

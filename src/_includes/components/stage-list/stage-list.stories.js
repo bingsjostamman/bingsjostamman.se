@@ -1,15 +1,10 @@
 export default {
   title: "Components/Stage List",
   parameters: {
-    docs: {
-      description: {
-        component:
-          "A schedule list for a single stage, showing acts with times and descriptions. Used on day program pages via a Nunjucks macro.",
-      },
-    },
+    docs: { description: { component: "A schedule list for a single stage, showing acts with times and descriptions. Used on day program pages via a Nunjucks macro." } },
     status: "ready",
   },
-  tags: ["UI", "schedule", "content"],
+  tags: ["UI","schedule","content"],
 };
 
 export const Default = () => `

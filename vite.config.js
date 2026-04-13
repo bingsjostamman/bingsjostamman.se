@@ -77,14 +77,12 @@ export default ({ mode }) => {
         },
       },
       {
-        name: "copy-svg-assets",
+        name: "copy-fonts",
         closeBundle() {
-          for (const dir of ["gfx", "icons", "logos"]) {
-            const src = resolve(`src/assets/${dir}`);
-            const dest = resolve(`public/assets/${dir}`);
-            if (fs.existsSync(src)) {
-              fs.cpSync(src, dest, { recursive: true });
-            }
+          const src = resolve("src/assets/fonts");
+          const dest = resolve("public/assets/fonts");
+          if (fs.existsSync(src)) {
+            fs.cpSync(src, dest, { recursive: true });
           }
         },
       },

@@ -8,9 +8,6 @@ export default {
     options: {},
   },
   staticDirs: ["../public"], //👈 Configures the static asset folder in Storybook
-  docs: {
-    autodocs: true,
-  },
   viteFinal: async (config) => {
     // Optional: tweak Vite config to handle Eleventy-style includes
     return mergeConfig(config, {

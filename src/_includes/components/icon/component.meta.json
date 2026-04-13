@@ -1,0 +1,11 @@
+{
+  "title": "Components/Icon",
+  "description": "Inline SVG icon component. Pass the icon name to render the corresponding SVG.",
+  "status": "ready",
+  "tags": ["UI", "icon"],
+  "class": "icon",
+  "macro": true,
+  "examples": {
+    "Default": { "name": "store" }
+  }
+}

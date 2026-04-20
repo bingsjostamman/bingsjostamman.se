@@ -108,3 +108,14 @@
   text-decoration: underline;
   color: #07c;
 }
+
+.c-menu__toggle {
+  appearance: none;
+  border: none;
+  background: none;
+}
+
+.c-menu__toggle .icon {
+  width: var(--size-full);
+  height: var(--size-full);
+}

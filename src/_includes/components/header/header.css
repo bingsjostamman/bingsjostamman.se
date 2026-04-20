@@ -4,7 +4,7 @@
    ========================================================================== */
 
 :root {
-  --header-height: calc(var(--size-full) * 2 + 3rem);
+  --header-height: calc(var(--size-half) * 2 + 3rem);
 }
 
 .c-header {
@@ -12,8 +12,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 900;
-  background-color: rgb(255 101 230 / 0.7);
+  z-index: 2;
+  background-color: rgb(255 255 255 / 0.9);
 }
 
 /* Push main content below the fixed header */
@@ -31,7 +31,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--size-full);
-  padding: var(--size-full);
+  padding-block: var(--size-half);
 }
 
 .c-header__logo {

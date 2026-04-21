@@ -9,6 +9,7 @@ h4 {
 
 p {
   color: var(--color);
+  margin-block: 0;
 }
 
 .day-grid {

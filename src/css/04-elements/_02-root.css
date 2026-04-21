@@ -1,0 +1,13 @@
+/* root css */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  position: relative; /* Menu panel anchoring */
+  color: rebeccapurple;
+  font-family: "Playfair Display", "Alegreya Sans", sans-serif;
+}

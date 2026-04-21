@@ -1,29 +1,12 @@
 /* ==========================================================================
    Header
-   Component: Fixed site header with logo and navigation
+   Component: Site header with logo and navigation
    ========================================================================== */
 
-:root {
-  --header-height: calc(var(--size-half) * 2 + 3rem);
-}
-
 .c-header {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  z-index: 2;
   background-color: rgb(255 255 255 / 0.9);
-}
-
-/* Push main content below the fixed header */
-.c-header + * {
-  padding-block-start: var(--header-height);
-}
-
-/* Allow hero pages to pull content back behind the header */
-.c-header + .has-hero {
-  padding-block-start: 0;
+  background-color: hotpink;
 }
 
 .c-header__inner {
@@ -34,10 +17,15 @@
   padding-block: var(--size-half);
 }
 
+@media (width >= 820px) {
+  .c-header__inner {
+    position: relative;
+    z-index: 1;
+  }
+}
 .c-header__logo {
   display: inline-flex;
   flex-shrink: 0;
-  text-decoration: none;
 }
 
 .c-header__logo-img {

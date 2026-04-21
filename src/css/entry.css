@@ -1,8 +1,10 @@
 @import "./01-settings/_config.css";
 @import "./03-generic/_fonts.css";
 @import "./03-generic/_tokens.fluid.css";
+@import "./04-elements/_00-normalize.css";
+@import "./04-elements/_01-reset.css";
+@import "./04-elements/_02-root.css";
 @import "./04-elements/_html-elements.css";
-@import "./04-elements/_root.css";
 @import "./05-objects/container.css";
 @import "./07-utilities/skip-link.css";
 @import "./07-utilities/visually-hidden.css";

@@ -4,7 +4,7 @@
    ========================================================================== */
 
 .c-menu {
-  position: relative;
+  /* position: relative; */
 }
 
 /* Generic reset */
@@ -17,11 +17,11 @@
 .c-menu__panel {
   display: none;
   /* position: absolute; */
-  inset: 0 auto auto 0;
+  /* inset: 0 auto auto 0; */
   /* transform: translateY(-100%); */
   background: white;
-  /* transition: transform 0.3s ease; */
-  z-index: 100;
+  transition: transform 0.3s ease;
+  z-index: 10;
 }
 
 :target.c-menu__panel {
@@ -41,24 +41,107 @@
 /* =============== */
 /* JS-enhanced 🟢 */
 /* =============== */
+
+.c-menu__toggle {
+  appearance: none;
+  border: none;
+  background: none;
+
+  position: relative;
+    z-index: 11;
+
+  display: flex;
+    align-items: center;
+    gap: var(--size-quarter);  
+}
+
+.c-menu__toggle .icon {
+  width: var(--size-full);
+  height: var(--size-full);
+}
+
+.c-menu__toggle-label {
+  text-transform: uppercase
+}
+
+/* Menu panel */
 [data-js] .c-menu__panel {
-  position: fixed;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30em;
+  max-width: 80vw;
+  height: 100%;
+  /* transform: translateX(100%); */
+  /* transition: transform 0.3s ease; */
+
+  background-color: lightgreen;
+
+  /* position: fixed;
   top: 0;
   right: 0;
   width: 80vw;
   max-width: 320px;
   height: 100vh;
-  transform: translateX(100%);
   background: white;
   padding: 2rem;
   overflow-y: auto;
   z-index: 1100;
-  transition: transform 0.3s ease;
+
+    background: lightgreen;
+ */
+}
+
+[data-js] .c-menu__panel[data-open="false"] {
+  display: none;
 }
 
 [data-js] .c-menu__panel[data-open="true"] {
-  transform: translateX(0);
   display: block;
+}
+
+@media (width <= 819px) {
+  [data-js] .c-menu__panel {
+    transform: translateX(100%);
+  }
+
+  [data-js] .c-menu__panel[data-open="true"] {
+    transform: translateX(0);
+  }
+
+}
+
+.c-menu__panel a.active {
+  /* font-weight: bold;
+  text-decoration: underline;
+  color: #07c; */
+}
+
+@media (width >= 820px) {
+  [data-js] .c-menu__panel {
+    height: auto;
+    top: 100%;
+    /* position: absolute;
+    height: auto;
+    width: auto;
+    max-width: none;
+    inset: auto auto auto 0;
+    top: 100%;
+    right: auto;
+    transform: translateY(-20%);
+    opacity: 0;
+    pointer-events: none; */
+  }
+
+  [data-js] .c-menu__panel[data-open="true"] {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+      z-index: -1;
+
+  }
+
 }
 
 /* Backdrop */
@@ -69,7 +152,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
-  z-index: 1000;
+  z-index: 9;
 }
 
 [data-js] .c-menu__backdrop[data-open="true"] {
@@ -77,45 +160,13 @@
   pointer-events: auto;
 }
 
-/* Desktop */
 @media (width >= 820px) {
-  [data-js] .c-menu__panel {
-    position: absolute;
-    height: auto;
-    width: auto;
-    max-width: none;
-    inset: auto auto auto 0;
-    top: 100%;
-    right: auto;
-    transform: translateY(-20%);
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  [data-js] .c-menu__panel[data-open="true"] {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-
   [data-js] .c-menu__backdrop {
     display: none;
   }
 }
 
-.c-menu__panel a.active {
-  font-weight: bold;
-  text-decoration: underline;
-  color: #07c;
-}
 
-.c-menu__toggle {
-  appearance: none;
-  border: none;
-  background: none;
-}
 
-.c-menu__toggle .icon {
-  width: var(--size-full);
-  height: var(--size-full);
-}
+
+

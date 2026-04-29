@@ -21,9 +21,9 @@ export const Default = () => `
         
         <div class="c-headline-acts__body">
           <h3 class="c-headline-acts__name">Spelmansmöte</h3>
-          <p class="c-headline-acts__meta">
+          <div class="c-headline-acts__meta">
             Onsdag · 13:00–14:00 · Nygårdsgården
-          </p>
+          </div>
         </div>
       </li>
     
@@ -35,9 +35,9 @@ export const Default = () => `
         
         <div class="c-headline-acts__body">
           <h3 class="c-headline-acts__name">Hoven Droven</h3>
-          <p class="c-headline-acts__meta">
+          <div class="c-headline-acts__meta">
             Onsdag · 16:45–17:45 · Dansbanan
-          </p>
+          </div>
         </div>
       </li>
     
@@ -49,9 +49,9 @@ export const Default = () => `
         
         <div class="c-headline-acts__body">
           <h3 class="c-headline-acts__name">Ellika Frisell och Emma Reid</h3>
-          <p class="c-headline-acts__meta">
+          <div class="c-headline-acts__meta">
             Onsdag · 20:00–21:00 · Kapellet
-          </p>
+          </div>
         </div>
       </li>
     
@@ -69,9 +69,9 @@ export const Without_images = () => `
         
         <div class="c-headline-acts__body">
           <h3 class="c-headline-acts__name">Spelmansmöte</h3>
-          <p class="c-headline-acts__meta">
+          <div class="c-headline-acts__meta">
             Onsdag · 13:00–14:00 · Nygårdsgården
-          </p>
+          </div>
         </div>
       </li>
     
@@ -79,9 +79,9 @@ export const Without_images = () => `
         
         <div class="c-headline-acts__body">
           <h3 class="c-headline-acts__name">Hoven Droven</h3>
-          <p class="c-headline-acts__meta">
+          <div class="c-headline-acts__meta">
             Onsdag · 16:45–17:45 · Dansbanan
-          </p>
+          </div>
         </div>
       </li>
     
@@ -103,9 +103,9 @@ export const Single_headline = () => `
         
         <div class="c-headline-acts__body">
           <h3 class="c-headline-acts__name">Hoven Droven</h3>
-          <p class="c-headline-acts__meta">
+          <div class="c-headline-acts__meta">
             Onsdag · 16:45–17:45 · Dansbanan
-          </p>
+          </div>
         </div>
       </li>
     

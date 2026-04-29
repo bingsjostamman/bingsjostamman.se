@@ -4,6 +4,7 @@
 -#}
 
 {% from "components/image/image-card.njk" import cardImage %}
+{% from "components/icon/icon.njk" import icon %}
 
 {%- set headlines = [] -%}
 {%- for act in lineup -%}
@@ -15,6 +16,7 @@
 {% if headlines.length %}
 <section class="c-headline-acts">
   <h2 class="c-headline-acts__heading">Huvudakter</h2>
+
   <ul class="c-headline-acts__list">
     {% for act in headlines %}
       <li class="c-headline-acts__item">
@@ -26,17 +28,24 @@
         <div class="c-headline-acts__body">
           <h3 class="c-headline-acts__name">
             {%- if act.longdescription %}
-            <a href="{% if year == editions.current %}/scen/{{ act.name | slugify }}/{% else %}/{{ year }}/scen/{{ act.name | slugify }}/{% endif %}">{{ act.name }}</a>
+            <a class="c-headline-acts__link" href="{% if year == editions.current %}/scen/{{ act.name | slugify }}/{% else %}/{{ year }}/scen/{{ act.name | slugify }}/{% endif %}">{{ act.name }}</a>
             {%- else %}
             {{ act.name }}
             {%- endif %}
           </h3>
-          <p class="c-headline-acts__meta">
+          <div class="c-headline-acts__meta">
             {{ act.day | capitalize }} · {{ act.starttime }}–{{ act.endtime }} · {{ act.stage }}
-          </p>
+          </div>
+
+          {% if act.longdescription %}
+            <div class="c-headline-acts__cue" aria-hidden="true">
+              {{ icon("close", "c-headline-acts__cue-icon") }}
+            </div>
+          {% endif %}
         </div>
       </li>
     {% endfor %}
+
   </ul>
 </section>
 {% endif %}

@@ -21,9 +21,9 @@
         {% endif %}
         <div class="c-headline-acts__body">
           <h3 class="c-headline-acts__name">{{ act.name }}</h3>
-          <p class="c-headline-acts__meta">
+          <div class="c-headline-acts__meta">
             {{ act.day | capitalize }} · {{ act.starttime }}–{{ act.endtime }} · {{ act.stage }}
-          </p>
+          </div>
         </div>
       </li>
     {% endfor %}

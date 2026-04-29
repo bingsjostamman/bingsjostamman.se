@@ -7,8 +7,21 @@ eleventyComputed:
   isArchive: "{{ year | string != editions.current }}"  
 ---
 
+{% from "components/hero/hero.njk" import hero %}
+
+
+
+{{ hero({
+  imageId: "2026/Bingsjo_2025-38_xvzbt6",
+  imageAlt: "",
+  eyebrow: "Bingsjöstämman",
+  title: "Välkommen till årets festival",
+  text: "Här kan du lägga en kort introtext ovanpå hero-bilden."
+}) }}
+
+
 <h1>Bingsjöstämman {{ year }}</h1>
-<p>Välkommen till festivalen! {{editions.current }} {{ isArchive }}</p>
+<p>Välkommen till festivalen! {{editions.current }} (Archive is {{ isArchive }})</p>
 
 {% include "components/headline-acts/headline-acts.njk" %}
 

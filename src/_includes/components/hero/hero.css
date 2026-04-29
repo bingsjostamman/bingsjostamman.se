@@ -29,7 +29,11 @@
 
 .c-hero__content {
   width: 100%;
-  color: #fff;
+  background: transparent;
+}
+
+.c-hero__content * {
+  background: inherit;
 }
 
 .c-hero__eyebrow {

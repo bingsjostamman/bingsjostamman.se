@@ -1,0 +1,45 @@
+@define-mixin scheme-white {
+  --color-background: var(--token-color-white);
+  --color-primary: var(--token-color-prairie-sand);
+  --color-secondary: var(--token-color-brandy-punch);
+  --color-link: var(--token-color-prairie-sand);
+  --color-font--display: var(--token-color-black);
+  --color-font--heading: var(--token-color-black);
+  --color-font--text: var(--token-color-black);
+  --color-font--primary: var(--token-color-white);
+  --color-font--secondary: var(--token-color-white);
+  --color-font--diminish: rgb(from var(--token-color-black) r g b / 0.56);
+  --color-font--link: var(--token-color-prairie-sand);
+  --color-icon-background: var(--token-color-prairie-sand);
+  --color-icon: var(--token-color-white);
+  --color-border--percieve: rgb(from var(--token-color-black) r g b / 0.45);
+  --color-border--outline: rgb(from var(--token-color-black) r g b / 0.25);
+  --color-border--decorate: rgb(from var(--token-color-black) r g b / 0.1);
+  --color-background--hover: rgb(from var(--token-color-black) r g b / 0.04);
+  --color-background--set: rgb(from var(--token-color-black) r g b / 0.085);
+  --color-elevation-box-shadow: rgb(from var(--token-color-black) r g b / 0.1);
+  --color-elevation-box-shadow--level-2: rgb(from var(--token-color-black) r g b / 0.25);
+}
+
+@define-mixin scheme-pampas {
+  --color-background: var(--token-color-pampas);
+  --color-primary: var(--token-color-prairie-sand);
+  --color-secondary: var(--token-color-brandy-punch);
+  --color-link: var(--token-color-prairie-sand);
+  --color-font--display: var(--token-color-black);
+  --color-font--heading: var(--token-color-black);
+  --color-font--text: var(--token-color-log-cabin);
+  --color-font--primary: var(--token-color-white);
+  --color-font--secondary: var(--token-color-black);
+  --color-font--diminish: rgb(from var(--token-color-black) r g b / 0.62);
+  --color-font--link: var(--token-color-prairie-sand);
+  --color-icon-background: var(--token-color-brandy-punch);
+  --color-icon: var(--token-color-black);
+  --color-border--percieve: rgb(from var(--token-color-black) r g b / 0.35);
+  --color-border--outline: rgb(from var(--token-color-black) r g b / 0.18);
+  --color-border--decorate: rgb(from var(--token-color-black) r g b / 0.08);
+  --color-background--hover: rgb(from var(--token-color-white) r g b / 0.45);
+  --color-background--set: rgb(from var(--token-color-black) r g b / 0.06);
+  --color-elevation-box-shadow: rgb(from var(--token-color-black) r g b / 0.08);
+  --color-elevation-box-shadow--level-2: rgb(from var(--token-color-black) r g b / 0.16);
+}

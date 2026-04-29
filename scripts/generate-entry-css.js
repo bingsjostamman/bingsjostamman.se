@@ -8,9 +8,10 @@ const layers = [
   "02-tools",
   "03-generic",
   "04-elements",
-  "05-objects",
-  "06-components",
-  "07-utilities",
+  "05-themes",
+  "06-objects",
+  "07-components",
+  "08-utilities",
 ];
 const prebuildDir = "prebuilt";
 const entryPath = path.resolve("src/css/entry.css");

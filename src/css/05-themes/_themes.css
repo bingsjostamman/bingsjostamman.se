@@ -1,0 +1,7 @@
+:where(.t-shade-page) {
+  @mixin scheme-white;
+}
+
+:where(.t-shade-highlight) {
+  @mixin scheme-pampas;
+}

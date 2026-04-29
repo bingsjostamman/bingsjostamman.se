@@ -1,4 +1,11 @@
-/* root css */
+/**
+ * ROOT
+ *
+ * Global settings for the root elements
+ *
+ * 2. Set background and text color defaults for everything, to be overridden
+ *    by themes or in-context rules
+ */
 
 html, body {
   margin: 0;
@@ -8,6 +15,11 @@ html, body {
 
 body {
   position: relative; /* Menu panel anchoring */
-  color: rebeccapurple;
   font-family: "Playfair Display", "Alegreya Sans", sans-serif;
 }
+
+* {
+  background: var(--color-background); /* 2. */
+  color: var(--color-font--text); /* 2. */
+}
+

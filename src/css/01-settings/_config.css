@@ -5,3 +5,31 @@
   --new: blue;
   --great: maroon;
 }
+
+/* Colors */
+
+:root {
+  /* Greyscale */
+  --token-color-black: rgb(0 0 0); /* #000000 */
+  --token-color-log-cabin: rgb(28 28 25); /* #1C1C19 */
+  --token-color-tuatara: rgb(49 48 45); /* #31302D */
+  --token-color-fuscous: rgb(71 71 67); /* #474743 */
+  --token-color-chicago: rgb(95 94 91); /* #5F5E5B */
+  --token-color-tapa: rgb(120 119 115); /* #787773 */
+  --token-color-lemon-grass: rgb(146 145 140); /* #92918C */
+  --token-color-cloudy: rgb(173 171 167); /* #ADABA7 */
+  --token-color-cloud: rgb(200 198 194); /* #C8C6C2 */
+  --token-color-westar: rgb(229 226 221); /* #E5E2DD */
+  --token-color-pampas: rgb(243 240 235); /* #F3F0EB */
+  --token-color-white: rgb(255 255 255); /* #FFFFFF */
+
+  /* Colors */
+  --token-color-prairie-sand: rgb(157 54 38); /* #9D3626 */
+  --token-color-brandy-punch: rgb(205 135 42); /* #CD872A */
+  --token-color-spring-wood: rgb(248 246 240); /* #F8F6F0 */
+}
+
+:root {
+  --color-background: var(--token-color-white);
+  --color-font--text: var(--token-color-black);
+}

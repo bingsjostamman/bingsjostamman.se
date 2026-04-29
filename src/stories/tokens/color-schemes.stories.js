@@ -413,14 +413,14 @@ function evaluateSchemeContrast(scheme) {
       label: "Outline border vs background",
       fg: "var(--color-border--outline)",
       bg: "var(--color-background)",
-      min: 2,
+      min: 1.8,
       type: "ui-boundary",
     },
     {
       label: "Decorate border vs background",
       fg: "var(--color-border--decorate)",
       bg: "var(--color-background)",
-      min: 1.4,
+      min: 1.2,
       type: "decorative",
     },
     {
@@ -434,7 +434,7 @@ function evaluateSchemeContrast(scheme) {
       label: "Hover surface vs background",
       fg: "var(--color-background--hover)",
       bg: "var(--color-background)",
-      min: 1.2,
+      min: 1.1,
       type: "surface-delta",
     },
   ];

@@ -37,6 +37,7 @@ export default ({ mode }) => {
     },
     css: {
       devSourcemap: true,
+      postcss: "./postcss.config.js",
     },
     plugins: [
       {

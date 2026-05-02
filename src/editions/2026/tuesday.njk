@@ -4,6 +4,7 @@ year: 2026
 eleventyComputed:
   title: "Tisdag {{ dates.tisdag | swedishDate }} – Bingsjöstämman {{ year }}"
   permalink: "{% if year == editions.current %}/tisdag/index.html{% else %}/{{ year }}/tisdag/index.html{% endif %}"
+eleventyExcludeFromCollections: true
 ---
 {% from "components/stage-list/stage-list.njk" import stageList %}
 

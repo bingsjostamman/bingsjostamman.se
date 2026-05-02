@@ -3,6 +3,7 @@ layout: layouts/base
 title: Eleventy
 permalink: /start/
 templateEngineOverride: njk
+eleventyExcludeFromCollections: true
 ---
 
 <h1>Welcome to {{ title }}</h1>

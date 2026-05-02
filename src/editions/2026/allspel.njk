@@ -1,0 +1,19 @@
+---
+layout: layouts/base
+year: 2026
+eleventyComputed:
+  title: "Allspel – Bingsjöstämman {{ year }}"
+  permalink: "{% if year == editions.current %}/allspel/index.html{% else %}/{{ year }}/allspel/index.html{% endif %}"
+---
+{% from "components/allspel-tunes/allspel-tunes.njk" import allspelTunes %}
+{% set regularTunes = tunes | rejectattr("barnens") | list %}
+{% set barnensTunes = tunes | selectattr("barnens") | list %}
+
+<h1>Allspelslåtar 2026</h1>
+
+<div class="page-intro">
+  {{ copy.intro | markdown | safe }}
+</div>
+
+{{ allspelTunes(regularTunes) }}
+

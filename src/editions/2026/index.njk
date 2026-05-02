@@ -7,41 +7,27 @@ eleventyComputed:
   isArchive: "{{ year != editions.current }}"
 ---
 
-<h1>Bingsjöstämmans {{ year }}</h1>
-<p>Välkommen till festivalen! {{editions.current }} {{ isArchive }}</p>
+{% from "components/hero/hero.njk" import hero %}
 
-{% include "components/headline-acts/headline-acts.njk" %}
 
-<ul>
-  <li>
-    <a href="{% if year == editions.current %}/scen/{% else %}/{{ year }}/scen/{% endif %}">
-      Artister {{ year }}
-    </a>
-  </li>
-  <li>
-      <a href="{% if year == editions.current %}/oversikt/{% else %}/{{ year }}/oversikt/{% endif %}">
-      Översikt {{ year }}
-    </a>
-  </li>
-</ul>
 
-{% if isArchive %}
+{{ hero({
+  imageId: "2026/Bingsjo_2025-38_xvzbt6",
+  imageAlt: "",
+  title: "Bingsjöstämman",
+  text: "1 juli 2026"
+}) }}
+
+
+<h2>Välkommen till Bingsjöstämman {{ year }}</h2>
+<p>Onsdagen den 1 juli samlas vi åter i Bingsjö för årets Bingsjöstämma. Men som vanligt tjuvstartar vi redan på tisdagkvällen. Programmet är klart och kommer att presentera här inom kort.</p>
+<p>Passa på att träna in <a href="{% if year == editions.current %}/allspel/{% else %}/{{ year }}/allspel/{% endif %}">årets allspelslåtar</a> så länge!</p>
+
+
+{% if isArchive == "true" %}
 <div class="archive-banner">
   This is an archive from {{ year }}.
   <a href="/">View current festival →</a>
 </div>
 <meta name="robots" content="noindex">
-{% endif %}
-
-{% if isArchive %}
-  <p class="ticket-info">
-    Detta är en arkiverad utgåva. Aktuella biljettpriser visas inte.
-  </p>
-{% else %}
-  <p class="ticket-info">
-    <strong>Biljettpriser {{ prices.year }}:</strong><br>
-    Vuxen: {{ prices.adult }} kr<br>
-    Ungdom: {{ prices.youth }} kr<br>
-    {{ prices.note }}
-  </p>
 {% endif %}

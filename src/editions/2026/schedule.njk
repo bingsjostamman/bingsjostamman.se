@@ -4,6 +4,7 @@ year: 2026
 eleventyComputed:
   title: "Översikt – Bingsjöstämman {{ year }}"
   permalink: "{% if year == editions.current %}/oversikt/index.html{% else %}/{{ year }}/oversikt/index.html{% endif %}"
+eleventyExcludeFromCollections: true
 ---
 {% from "components/timeline/timeline.njk" import timeline %}
 

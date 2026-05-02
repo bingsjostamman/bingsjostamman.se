@@ -22,14 +22,15 @@
   grid-area: intrinsic-content;
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: flex-end;
+  /* display: flex; */
+  align-items: center;
   background: linear-gradient(to top, rgb(0 0 0 / 60%), rgb(0 0 0 / 15%) 50%, transparent);
 }
 
 .c-hero__content {
   width: 100%;
   background: transparent;
+  text-align: center;
 }
 
 .c-hero__content * {
@@ -46,10 +47,17 @@
 
 .c-hero__title {
   margin: 0;
+  font-size: var(--font-size-6);
+  color: var(--token-color-white-linen);
+  font-family: 'Alegreya Sans', sans-serif;
+  text-transform: uppercase;
 }
 
 .c-hero__text {
   margin: 0.5rem 0 0;
+  color: var(--color);
+  font-size: var(--font-size-4);
+  font-weight: 500;
 }
 
 .c-hero__cta {

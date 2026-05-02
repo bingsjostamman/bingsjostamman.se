@@ -32,14 +32,14 @@ function parseSchemes(source) {
   return schemes;
 }
 
-function parseShadeBindings(source) {
+function parseIntentBindings(source) {
   const bindings = [];
   const bindingRegex = /:where\((\.[a-z0-9-]+)\)\s*\{\s*@mixin\s+([a-z0-9-]+);\s*\}/gi;
   let match;
 
   while ((match = bindingRegex.exec(source)) !== null) {
     bindings.push({
-      shade: match[1].slice(1),
+      intent: match[1].slice(1),
       scheme: match[2],
     });
   }
@@ -289,7 +289,7 @@ function renderSchemeShowcase(scheme) {
 function renderBindingRow(binding) {
   return `
     <tr>
-      <td style="padding: 0.75rem 0.85rem; border-bottom: 1px solid #ece7e0;"><code>.${binding.shade}</code></td>
+      <td style="padding: 0.75rem 0.85rem; border-bottom: 1px solid #ece7e0;"><code>.${binding.intent}</code></td>
       <td style="padding: 0.75rem 0.85rem; border-bottom: 1px solid #ece7e0;"><code>${binding.scheme}</code></td>
       <td style="padding: 0.75rem 0.85rem; border-bottom: 1px solid #ece7e0; color: #666;">Purposeful alias layer for applying a WCAG-checked scheme in context.</td>
     </tr>
@@ -470,7 +470,7 @@ function getSchemeByName(name) {
   return schemes.find((scheme) => scheme.name === name);
 }
 
-function renderShadePurposeCard(binding, description) {
+function renderIntentPurposeCard(binding, description) {
   const scheme = getSchemeByName(binding.scheme);
   const card = createElement(
     "article",
@@ -483,7 +483,7 @@ function renderShadePurposeCard(binding, description) {
 
   const heading = createText(
     "h2",
-    binding.shade,
+    binding.intent,
     "margin: 0; font-size: 1.35rem; line-height: 1.1; color: var(--color-font--heading);"
   );
   const mappedTo = createElement(
@@ -512,7 +512,7 @@ function renderShadePurposeCard(binding, description) {
 }
 
 const schemes = parseSchemes(colorSchemesSource);
-const shadeBindings = parseShadeBindings(themesSource);
+const intentBindings = parseIntentBindings(themesSource);
 
 export default {
   title: "Design System/Color Schemes",
@@ -531,7 +531,7 @@ export const SchemeShowcase = () => {
     ),
     createText(
       "p",
-      "A full showcase makes sense for schemes, because schemes are the tested semantic source of truth. Shades are only purposeful aliases, so they do not need their own full visual duplicate of the same surface area.",
+      "A full showcase makes sense for schemes, because schemes are the tested semantic source of truth. Intents are only purposeful aliases, so they do not need their own full visual duplicate of the same surface area.",
       "margin: 0; max-width: 74ch; color: #5f5750; line-height: 1.7;"
     )
   );
@@ -543,26 +543,26 @@ export const SchemeShowcase = () => {
   return container;
 };
 
-export const ShadeBindings = () => {
+export const IntentBindings = () => {
   const container = createElement(
     "div",
     "padding: 2rem; font-family: 'Alegreya Sans', sans-serif; background: #f6f1eb;"
   );
   const intro = `
-    <h1 style="margin-top: 0; font-family: 'Playfair Display', 'Alegreya Sans', sans-serif;">Shade bindings</h1>
+    <h1 style="margin-top: 0; font-family: 'Playfair Display', 'Alegreya Sans', sans-serif;">Intent bindings</h1>
     <p style="max-width: 74ch; color: #5f5750; line-height: 1.7;">
-      This is the part that matters for dark mode and contextual theming: shades map a purposeful class to a scheme. That means you can keep the meaning of <code>t-shade-page</code> stable while repointing it to another contrast-checked scheme later.
+      This is the part that matters for dark mode and contextual theming: intents map a purposeful class to a scheme. That means you can keep the meaning of <code>t-intent-page</code> stable while repointing it to another contrast-checked scheme later.
     </p>
     <table style="width: 100%; border-collapse: collapse; background: white; border: 1px solid #ece7e0; border-radius: 1rem; overflow: hidden;">
       <thead>
         <tr style="text-align: left; background: #faf7f3;">
-          <th style="padding: 0.85rem; border-bottom: 1px solid #ece7e0;">Shade</th>
+          <th style="padding: 0.85rem; border-bottom: 1px solid #ece7e0;">Intent</th>
           <th style="padding: 0.85rem; border-bottom: 1px solid #ece7e0;">Scheme</th>
           <th style="padding: 0.85rem; border-bottom: 1px solid #ece7e0;">Why it exists</th>
         </tr>
       </thead>
       <tbody>
-        ${shadeBindings.map(renderBindingRow).join("")}
+        ${intentBindings.map(renderBindingRow).join("")}
       </tbody>
     </table>
   `;
@@ -570,7 +570,7 @@ export const ShadeBindings = () => {
   return container;
 };
 
-export const ShadePurposes = () => {
+export const IntentPurposes = () => {
   const container = createElement(
     "div",
     "padding: 2rem; display: grid; gap: 1.25rem; font-family: 'Alegreya Sans', sans-serif; background: #f6f1eb;"
@@ -580,12 +580,12 @@ export const ShadePurposes = () => {
   intro.append(
     createText(
       "h1",
-      "Shade purposes",
+      "Intent purposes",
       "margin: 0; font-family: 'Playfair Display', 'Alegreya Sans', sans-serif;"
     ),
     createText(
       "p",
-      "Shades are where semantic meaning becomes practical. You apply a purposeful class like page or highlight, and the underlying scheme can later change for dark mode without changing markup.",
+      "Intents are where semantic meaning becomes practical. You apply a purposeful class like page or highlight, and the underlying scheme can later change for dark mode without changing markup.",
       "margin: 0; max-width: 74ch; color: #5f5750; line-height: 1.7;"
     )
   );
@@ -595,12 +595,12 @@ export const ShadePurposes = () => {
     "display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));"
   );
 
-  const pageBinding = shadeBindings.find((binding) => binding.shade === "t-shade-page");
-  const highlightBinding = shadeBindings.find((binding) => binding.shade === "t-shade-highlight");
+  const pageBinding = intentBindings.find((binding) => binding.intent === "t-intent-page");
+  const highlightBinding = intentBindings.find((binding) => binding.intent === "t-intent-highlight");
 
   if (pageBinding) {
     grid.append(
-      renderShadePurposeCard(
+      renderIntentPurposeCard(
         pageBinding,
         "This is the base reading surface for the page or large layout regions. It should feel calm, stable, and broadly usable for long-form content."
       )
@@ -609,7 +609,7 @@ export const ShadePurposes = () => {
 
   if (highlightBinding) {
     grid.append(
-      renderShadePurposeCard(
+      renderIntentPurposeCard(
         highlightBinding,
         "This is a differentiated surface for featured cards, callouts, or grouped emphasis. It should separate itself from the page without breaking semantic contrast rules."
       )

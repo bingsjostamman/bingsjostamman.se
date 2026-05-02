@@ -1,9 +1,9 @@
 {
-  "title": "Components/Allspel Table",
-  "description": "Table of allspelslåtar with support for multiple sheet music and audio links per tune.",
+  "title": "Components/Allspel Tunes",
+  "description": "List of allspelslåtar with support for multiple sheet music and audio links per tune.",
   "status": "ready",
   "tags": ["UI", "content", "table", "allspel"],
-  "class": "allspel-table",
+  "class": "allspel-tunes",
   "macro": true,
   "examples": {
     "Default": {

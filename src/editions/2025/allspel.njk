@@ -5,7 +5,7 @@ eleventyComputed:
   title: "Allspel – Bingsjöstämman {{ year }}"
   permalink: "{% if year == editions.current %}/allspel/index.html{% else %}/{{ year }}/allspel/index.html{% endif %}"
 ---
-{% from "components/allspel-table/allspel-table.njk" import allspelTable %}
+{% from "components/allspel-tunes/allspel-tunes.njk" import allspelTunes %}
 {% set regularTunes = tunes | rejectattr("barnens") | list %}
 {% set barnensTunes = tunes | selectattr("barnens") | list %}
 
@@ -15,7 +15,7 @@ eleventyComputed:
   {{ copy.intro | markdown | safe }}
 </div>
 
-{{ allspelTable(regularTunes) }}
+{{ allspelTunes(regularTunes) }}
 
 <h2>Barnens allspel</h2>
 
@@ -25,4 +25,4 @@ eleventyComputed:
 </div>
 {% endif %}
 
-{{ allspelTable(barnensTunes) }}
+{{ allspelTunes(barnensTunes) }}

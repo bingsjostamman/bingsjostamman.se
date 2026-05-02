@@ -1,16 +1,16 @@
-import './allspel-table.css';
+import './allspel-tunes.css';
 export default {
-  title: "Components/Allspel Table",
+  title: "Components/Allspel Tunes",
   parameters: {
-    docs: { description: { component: "Table of allspelslåtar with support for multiple sheet music and audio links per tune." } },
+    docs: { description: { component: "List of allspelslåtar with support for multiple sheet music and audio links per tune." } },
     status: "ready",
   },
   tags: ["UI","content","table","allspel"],
 };
 
 export const Default = () => `
-<div class="c-allspel-table-wrap">
-  <table class="c-allspel-table">
+<div class="c-allspel-tunes-wrap">
+  <table class="c-allspel-tunes">
     <thead>
       <tr>
         <th scope="col">Låt</th>
@@ -20,12 +20,12 @@ export const Default = () => `
     </thead>
     <tbody>
       <tr>
-        <th scope="row" class="c-allspel-table-name-cell">
-          <span class="c-allspel-table-name">Bingsjöpolskan</span>
-          <span class="c-allspel-table-note">Melodi + andrastämma</span>
+        <th scope="row" class="c-allspel-tunes-name-cell">
+          <span class="c-allspel-tunes-name">Bingsjöpolskan</span>
+          <span class="c-allspel-tunes-note">Melodi + andrastämma</span>
         </th>
         <td>
-          <ul class="c-allspel-table-links">
+          <ul class="c-allspel-tunes-links">
             <li><a href="https://example.com/bingsjopolskan-melodi.pdf">Melodi (PDF)</a></li>
             <li><a href="https://example.com/bingsjopolskan-andrastamma.pdf">Andrastämma (PDF)</a></li>
           </ul>
@@ -35,14 +35,14 @@ export const Default = () => `
         </td>
       </tr>
       <tr>
-        <th scope="row" class="c-allspel-table-name-cell">
-          <span class="c-allspel-table-name">Gammelvals</span>
+        <th scope="row" class="c-allspel-tunes-name-cell">
+          <span class="c-allspel-tunes-name">Gammelvals</span>
         </th>
         <td>
           <a href="https://example.com/gammelvals.pdf">Notblad (PDF)</a>
         </td>
         <td>
-          <ul class="c-allspel-table-links">
+          <ul class="c-allspel-tunes-links">
             <li><a href="https://example.com/gammelvals.mp3">Ljudfil (MP3)</a></li>
             <li><a href="https://example.com/gammelvals-andrastamma.mp3">Andrastämma (MP3)</a></li>
           </ul>

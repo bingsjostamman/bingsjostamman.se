@@ -13,33 +13,38 @@
 
 /* --- Per-logo dimensions --- */
 
-.logo--bilda {
+:where(.logo--bilda) {
   height: 3rem;
   aspect-ratio: 105 / 50;
 }
 
-.logo--bingsjo {
+:where(.logo--bingsjo) {
   height: 4rem;
   aspect-ratio: 544 / 496;
 }
 
-.logo--bingsjostamman-color,
-.logo--bingsjostamman {
+:where(.logo--bingsjostamman-color),
+:where(.logo--bingsjostamman) {
   height: 3rem;
   aspect-ratio: 400 / 246;
 }
 
-.logo--dsf {
+:where(.logo--dsf) {
   height: 4rem;
   aspect-ratio: 420 / 150;
 }
 
-.logo--fmh {
+:where(.logo--fmh) {
   height: 4rem;
   aspect-ratio: 1393 / 753;
 }
 
-.logo--leksands-sparbank {
+:where(.logo--leksands-sparbank) {
   height: 4rem;
   aspect-ratio: 144 / 54;
+}
+
+:where(.logo--stammoveckan) {
+  height: 4rem;
+  aspect-ratio: 842 / 322;
 }

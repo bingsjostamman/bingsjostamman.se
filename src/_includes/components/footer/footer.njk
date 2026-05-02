@@ -1,10 +1,29 @@
-<footer class="c-footer o-container">
+{% from "components/logo/logo.njk" import logo %}
 
-  <nav class="c-footer__links" aria-label="Sidfotslänkar">
-    <a href="/kontakt/">Kontakta oss</a>
-    <a href="/upplagor/">Tidigare upplagor av stämman</a>
-    <a href="/sitemap.xml">Sitemap</a>
-  </nav>
+<footer class="c-footer o-container t-component-footer-top">
+
+  <div class="c-footer__partners">
+    <h2 class="c-footer__subheading">Bingsjöstämman sponsras av Leksands Sparbank</h2>
+      {{ logo("leksands-sparbank", "c-footer__logo") }}
+
+    <h2 class="c-footer__subheading">Vi som samarbetar kring Bingsjöstämman</h2>
+    <ul class="c-footer__partner-list">
+      <li class="c-footer__partner-item">{{ logo("fmh") }}<span class="u-visually-hidden">Folkmusikens Hus</span></li>
+      <li class="c-footer__partner-item">{{ logo("bingsjo") }}<span class="u-visually-hidden">Bingsjö Bystugeförening</span></li>
+      <li class="c-footer__partner-item">{{ logo("dsf") }}<span class="u-visually-hidden">Dalarnas Spelmansförbund</span></li>
+    </ul>
+    <ul class="c-footer__partner-list">
+      <li class="c-footer__partner-item">{{ logo("stammoveckan") }}<span class="u-visually-hidden">Stämmoveckan</span></li>
+      <li class="c-footer__partner-item">{{ logo("bilda") }}<span class="u-visually-hidden">Bilda</span></li>
+    </ul>
+  </div>
+  
+  <div class="o-container__breakout o-container t-component-footer-end">
+    <div class="c-footer__copyright">
+      {{ logo("bingsjostamman", "c-footer__logo") }}
+      <div>&copy; {{ "now" | date("yyyy") }} {{ site.name }}</div>
+    </div>
+  </div>
 
   {% if not env.isProd %}
   <nav class="c-footer__dev-links" aria-label="Testsidor">
@@ -16,7 +35,6 @@
   </nav>
   {% endif %}
 
-  <p class="c-footer__copyright">&copy; {{ "now" | date("yyyy") }} {{ site.name }}</p>
 
   {% if not env.isProd %}
   <p class="c-footer__debug">env.isProd = {{ env.isProd }} | env.name = {{ env.name }}</p>

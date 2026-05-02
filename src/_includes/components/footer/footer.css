@@ -6,5 +6,35 @@
 .c-footer__links {
 }
 
-.c-footer__copyright {
+.c-footer__logo {
+    height: 6rem;
 }
+
+.c-footer__logo + * {
+    margin-block-start: var(--size-full);;
+}
+
+.c-footer__partners {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-full);
+    align-items: center;
+    margin-block: var(--size-double);
+}
+
+.c-footer__partner-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--size-quad);
+    row-gap: var(--size-full);
+    justify-content: center;
+}
+
+.c-footer__copyright {
+    margin-block: var(--size-double);
+    margin-inline: auto;
+}
+

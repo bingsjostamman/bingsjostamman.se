@@ -16,55 +16,52 @@
 {%- macro allspelTunes(tunes) -%}
 {%- if tunes and tunes.length -%}
 <div class="c-allspel-tunes-wrap">
-  <table class="c-allspel-tunes">
-    <thead>
-      <tr>
-        <th scope="col">Låt</th>
-        <th scope="col">Noter (PDF)</th>
-        <th scope="col">Ljudfiler (MP3)</th>
-      </tr>
-    </thead>
-    <tbody>
-      {%- for tune in tunes %}
-      <tr>
-        <th scope="row" class="c-allspel-tunes-name-cell">
-          <span class="c-allspel-tunes-name">{{ tune.name }}</span>
-          {%- if tune.note %}
-          <span class="c-allspel-tunes-note">{{ tune.note }}</span>
-          {%- endif %}
-        </th>
-        <td>
-          {%- if tune.sheetMusic and tune.sheetMusic.length == 1 %}
+
+  <ul class="c-allspel-tunes-tunes">
+
+    {%- for tune in tunes %}
+    <li class="c-allspel-tunes-tune o-tile t-intent-highlight">
+      <div class="c-allspel-tunes-info">
+        <span class="c-allspel-tunes-name">{{ tune.name }}</span>
+        {%- if tune.note %}
+        <span class="c-allspel-tunes-note">{{ tune.note }}</span>
+        {%- endif %}
+      </div>
+      <div class="c-allspel-tunes-media">
+
+        <div>Noter</div>
+        {%- if tune.sheetMusic and tune.sheetMusic.length == 1 %}
           <a href="{{ tune.sheetMusic[0].url }}">{{ tune.sheetMusic[0].label }}</a>
-          {%- elif tune.sheetMusic and tune.sheetMusic.length > 1 %}
+        {%- elif tune.sheetMusic and tune.sheetMusic.length > 1 %}
           <ul class="c-allspel-tunes-links">
             {%- for item in tune.sheetMusic %}
             <li><a href="{{ item.url }}">{{ item.label }}</a></li>
             {%- endfor %}
           </ul>
-          {%- else %}
+        {%- else %}
           <span class="c-allspel-tunes-empty">-</span>
-          {%- endif %}
-        </td>
-        <td>
-          {%- if tune.audio and tune.audio.length == 1 %}
+        {%- endif %}
+
+        <div>Ljudfil</div>
+        {%- if tune.audio and tune.audio.length == 1 %}
           <a href="{{ tune.audio[0].url }}">{{ tune.audio[0].label }}</a>
-          {%- elif tune.audio and tune.audio.length > 1 %}
+        {%- elif tune.audio and tune.audio.length > 1 %}
           <ul class="c-allspel-tunes-links">
             {%- for item in tune.audio %}
-            <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+              <li><a href="{{ item.url }}">{{ item.label }}</a></li>
             {%- endfor %}
           </ul>
-          {%- else %}
+        {%- else %}
           <span class="c-allspel-tunes-empty">-</span>
-          {%- endif %}
-        </td>
-      </tr>
-      {%- endfor %}
-    </tbody>
-  </table>
+        {%- endif %}
+      </div>
+    </li>
+    {%- endfor %}
+
+  </ul>
+
 </div>
 {%- else -%}
-<p>Allspelslåtar publiceras snart.</p>
+<p>Årets allspelslåtar publiceras snart.</p>
 {%- endif -%}
 {%- endmacro -%}

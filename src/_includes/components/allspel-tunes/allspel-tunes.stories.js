@@ -10,45 +10,43 @@ export default {
 
 export const Default = () => `
 <div class="c-allspel-tunes-wrap">
-  <table class="c-allspel-tunes">
-    <thead>
-      <tr>
-        <th scope="col">Låt</th>
-        <th scope="col">Noter (PDF)</th>
-        <th scope="col">Ljudfiler (MP3)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row" class="c-allspel-tunes-name-cell">
-          <span class="c-allspel-tunes-name">Bingsjöpolskan</span>
-          <span class="c-allspel-tunes-note">Melodi + andrastämma</span>
-        </th>
-        <td>
+
+  <ul class="c-allspel-tunes-tunes">
+    <li class="c-allspel-tunes-tune o-tile t-intent-highlight">
+      <div class="c-allspel-tunes-info">
+        <span class="c-allspel-tunes-name">Bingsjöpolskan</span>
+        <span class="c-allspel-tunes-note">Melodi + andrastämma</span>
+      </div>
+      <div class="c-allspel-tunes-media">
+
+        <div>Noter</div>
           <ul class="c-allspel-tunes-links">
             <li><a href="https://example.com/bingsjopolskan-melodi.pdf">Melodi (PDF)</a></li>
             <li><a href="https://example.com/bingsjopolskan-andrastamma.pdf">Andrastämma (PDF)</a></li>
           </ul>
-        </td>
-        <td>
+
+        <div>Ljudfil</div>
           <a href="https://example.com/bingsjopolskan-melodi.mp3">Melodi (MP3)</a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row" class="c-allspel-tunes-name-cell">
-          <span class="c-allspel-tunes-name">Gammelvals</span>
-        </th>
-        <td>
+      </div>
+    </li>
+    <li class="c-allspel-tunes-tune o-tile t-intent-highlight">
+      <div class="c-allspel-tunes-info">
+        <span class="c-allspel-tunes-name">Gammelvals</span>
+      </div>
+      <div class="c-allspel-tunes-media">
+
+        <div>Noter</div>
           <a href="https://example.com/gammelvals.pdf">Notblad (PDF)</a>
-        </td>
-        <td>
+
+        <div>Ljudfil</div>
           <ul class="c-allspel-tunes-links">
-            <li><a href="https://example.com/gammelvals.mp3">Ljudfil (MP3)</a></li>
-            <li><a href="https://example.com/gammelvals-andrastamma.mp3">Andrastämma (MP3)</a></li>
+              <li><a href="https://example.com/gammelvals.mp3">Ljudfil (MP3)</a></li>
+              <li><a href="https://example.com/gammelvals-andrastamma.mp3">Andrastämma (MP3)</a></li>
           </ul>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+      </div>
+    </li>
+
+  </ul>
+
 </div>`;
 Default.storyName = "Default";

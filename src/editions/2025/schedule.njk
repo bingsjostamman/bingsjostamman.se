@@ -2,7 +2,7 @@
 layout: layouts/base
 year: 2025
 eleventyComputed:
-  title: "Översikt – Bingsjöstämman {{ year }}"
+  title: "Översikt {{ year }}"
   permalink: "{% if year == editions.current %}/oversikt/index.html{% else %}/{{ year }}/oversikt/index.html{% endif %}"
 ---
 {% from "components/timeline/timeline.njk" import timeline %}

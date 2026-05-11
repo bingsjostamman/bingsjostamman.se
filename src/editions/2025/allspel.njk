@@ -2,7 +2,7 @@
 layout: layouts/base
 year: 2025
 eleventyComputed:
-  title: "Allspel – Bingsjöstämman {{ year }}"
+  title: "Allspel {{ year }}"
   permalink: "{% if year == editions.current %}/allspel/index.html{% else %}/{{ year }}/allspel/index.html{% endif %}"
 ---
 {% from "components/allspel-tunes/allspel-tunes.njk" import allspelTunes %}

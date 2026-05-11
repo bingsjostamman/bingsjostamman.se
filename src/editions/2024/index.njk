@@ -2,7 +2,7 @@
 layout: layouts/base
 year: 2024
 eleventyComputed:
-  title: "Bingsjöstämmans {{ year }}"
+  title: "{{ year }}"
   permalink: "{% if year == editions.current %}/index.html{% else %}/{{ year }}/index.html{% endif %}"
   isArchive: "{{ year != editions.current }}"
 ---

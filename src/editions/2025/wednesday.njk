@@ -2,7 +2,7 @@
 layout: layouts/base
 year: 2025
 eleventyComputed:
-  title: "Onsdag {{ dates.onsdag | swedishDate }} – Bingsjöstämman {{ year }}"
+  title: "Onsdag {{ dates.onsdag | swedishDate }} {{ year }}"
   permalink: "{% if year == editions.current %}/onsdag/index.html{% else %}/{{ year }}/onsdag/index.html{% endif %}"
 ---
 {% from "components/stage-list/stage-list.njk" import stageList %}

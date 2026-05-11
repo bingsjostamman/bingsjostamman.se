@@ -2,7 +2,7 @@ const editions = require("../../_data/editions.json");
 
 module.exports = {
   layout: "layouts/edition.njk",
-  title: "Bingsjöstämmans 2026",
+  title: "2026",
   year: "2026",
   start: "2026-07-08",
   end: "2026-07-09",

@@ -1,61 +1,84 @@
 @define-mixin scheme-white {
-  --color-background: var(--token-color-white);
+  --color-background: var(--token-color-white-1);
   --color-primary: var(--token-color-chestnut);
   --color-secondary: var(--token-color-bronze);
   --color-link: var(--token-color-chestnut);
   --color-font--display: var(--token-color-black);
   --color-font--heading: var(--token-color-black);
-  --color-font--text: var(--token-color-black);
+  --color-font--text: var(--token-color-teal-black);
   --color-font--primary: var(--token-color-white);
   --color-font--secondary: var(--token-color-white);
-  --color-font--diminish: rgb(from var(--token-color-black) r g b / 0.56);
+  --color-font--diminish: rgb(from var(--token-color-teal-black) r g b / 0.56);
   --color-font--link: var(--token-color-chestnut);
   --color-icon-background: var(--token-color-chestnut);
   --color-icon: var(--token-color-white);
-  --color-border--percieve: rgb(from var(--token-color-black) r g b / 0.45);
-  --color-border--outline: rgb(from var(--token-color-black) r g b / 0.25);
-  --color-border--decorate: rgb(from var(--token-color-black) r g b / 0.1);
-  --color-background--hover: rgb(from var(--token-color-black) r g b / 0.04);
-  --color-background--set: rgb(from var(--token-color-black) r g b / 0.085);
-  --color-elevation-box-shadow: rgb(from var(--token-color-black) r g b / 0.1);
-  --color-elevation-box-shadow--level-2: rgb(from var(--token-color-black) r g b / 0.25);
+  --color-border--percieve: rgb(from var(--token-color-teal-black) r g b / 0.45);
+  --color-border--outline: rgb(from var(--token-color-teal-black) r g b / 0.25);
+  --color-border--decorate: rgb(from var(--token-color-teal-black) r g b / 0.1);
+  --color-background--hover: rgb(from var(--token-color-teal-black) r g b / 0.04);
+  --color-background--set: rgb(from var(--token-color-teal-black) r g b / 0.085);
+  --color-elevation-box-shadow: rgb(from var(--token-color-teal-black) r g b / 0.1);
+  --color-elevation-box-shadow--level-2: rgb(from var(--token-color-teal-black) r g b / 0.25);
 }
 
-@define-mixin scheme-pampas {
-  --color-background: var(--token-color-pampas);
+@define-mixin scheme-white-linen {
+  --color-background: var(--token-color-white-2);
   --color-primary: var(--token-color-chestnut);
   --color-secondary: var(--token-color-bronze);
   --color-link: var(--token-color-chestnut);
-  --color-font--display: var(--token-color-black);
-  --color-font--heading: var(--token-color-black);
-  --color-font--text: var(--token-color-log-cabin);
-  --color-font--primary: var(--token-color-white);
-  --color-font--secondary: var(--token-color-black);
-  --color-font--diminish: rgb(from var(--token-color-black) r g b / 0.62);
+  --color-font--display: var(--token-color-teal-black);
+  --color-font--heading: var(--token-color-teal-black);
+  --color-font--text: var(--token-color-teal-black);
+  --color-font--primary: var(--token-color-white-linen);
+  --color-font--secondary: var(--token-color-white-linen);
+  --color-font--diminish: rgb(from var(--token-color-teal-black) r g b / 0.56);
+  --color-font--link: var(--token-color-chestnut);
+  --color-icon-background: var(--token-color-chestnut);
+  --color-icon: var(--token-color-white-linen);
+  --color-border--percieve: rgb(from var(--token-color-teal-black) r g b / 0.45);
+  --color-border--outline: rgb(from var(--token-color-teal-black) r g b / 0.25);
+  --color-border--decorate: rgb(from var(--token-color-teal-black) r g b / 0.1);
+  --color-background--hover: rgb(from var(--token-color-teal-black) r g b / 0.04);
+  --color-background--set: rgb(from var(--token-color-teal-black) r g b / 0.085);
+  --color-elevation-box-shadow: rgb(from var(--token-color-teal-black) r g b / 0.1);
+  --color-elevation-box-shadow--level-2: rgb(from var(--token-color-teal-black) r g b / 0.25);
+}
+
+@define-mixin scheme-white-pot {
+  --color-background: var(--token-color-white-pot);
+  --color-primary: var(--token-color-chestnut);
+  --color-secondary: var(--token-color-bronze);
+  --color-link: var(--token-color-chestnut);
+  --color-font--display: var(--token-color-teal-black);
+  --color-font--heading: var(--token-color-teal-black);
+  --color-font--text: var(--token-color-teal-black);
+  --color-font--primary: var(--token-color-white-linen);
+  --color-font--secondary: var(--token-color-teal-black);
+  --color-font--diminish: rgb(from var(--token-color-teal-black) r g b / 0.62);
   --color-font--link: var(--token-color-chestnut);
   --color-icon-background: var(--token-color-bronze);
-  --color-icon: var(--token-color-black);
-  --color-border--percieve: rgb(from var(--token-color-black) r g b / 0.35);
-  --color-border--outline: rgb(from var(--token-color-black) r g b / 0.18);
-  --color-border--decorate: rgb(from var(--token-color-black) r g b / 0.08);
-  --color-background--hover: rgb(from var(--token-color-white) r g b / 0.45);
-  --color-background--set: rgb(from var(--token-color-black) r g b / 0.06);
-  --color-elevation-box-shadow: rgb(from var(--token-color-black) r g b / 0.08);
-  --color-elevation-box-shadow--level-2: rgb(from var(--token-color-black) r g b / 0.16);
+  --color-icon: var(--token-color-teal-black);
+  --color-border--percieve: rgb(from var(--token-color-teal-black) r g b / 0.35);
+  --color-border--outline: rgb(from var(--token-color-teal-black) r g b / 0.18);
+  --color-border--decorate: rgb(from var(--token-color-teal-black) r g b / 0.08);
+  --color-background--hover: rgb(from var(--token-color-teal-black) r g b / 0.05);
+  --color-background--set: rgb(from var(--token-color-teal-black) r g b / 0.085);
+  --color-elevation-box-shadow: rgb(from var(--token-color-teal-black) r g b / 0.08);
+  --color-elevation-box-shadow--level-2: rgb(from var(--token-color-teal-black) r g b / 0.16);
 }
 
 @define-mixin scheme-teal-900 {
   --color-background: var(--token-color-teal-900);
   --color-primary: var(--token-color-chestnut);
   --color-secondary: var(--token-color-bronze);
-  --color-link: var(--token-color-bronze);
+  --color-link: var(--token-color-white);
   --color-font--display: var(--token-color-white);
   --color-font--heading: var(--token-color-white);
   --color-font--text: var(--token-color-white);
   --color-font--primary: var(--token-color-white);
   --color-font--secondary: var(--token-color-white);
   --color-font--diminish: rgb(from var(--token-color-white) r g b / 0.62);
-  --color-font--link: var(--token-color-bronze);
+  --color-font--link: var(--token-color-white);
   --color-icon-background: var(--token-color-chestnut);
   --color-icon: var(--token-color-white);
   --color-border--percieve: rgb(from var(--token-color-white) r g b / 0.35);
@@ -71,14 +94,14 @@
   --color-background: var(--token-color-teal-800);
   --color-primary: var(--token-color-chestnut);
   --color-secondary: var(--token-color-bronze);
-  --color-link: var(--token-color-bronze);
+  --color-link: var(--token-color-white);
   --color-font--display: var(--token-color-white);
   --color-font--heading: var(--token-color-white);
   --color-font--text: var(--token-color-white);
   --color-font--primary: var(--token-color-white);
   --color-font--secondary: var(--token-color-white);
   --color-font--diminish: rgb(from var(--token-color-white) r g b / 0.62);
-  --color-font--link: var(--token-color-bronze);
+  --color-font--link: var(--token-color-white);
   --color-icon-background: var(--token-color-chestnut);
   --color-icon: var(--token-color-white);
   --color-border--percieve: rgb(from var(--token-color-white) r g b / 0.35);

@@ -1,6 +1,6 @@
 .o-container {
   --container-main-maxwidth: 1200px;
-  --container-main-gap: var(--size-half);
+  --container-main-gap: var(--size-full);
 
   display: grid;
   grid-template-columns:
@@ -27,5 +27,27 @@
 /* temp */
 
 .o-tile + .o-tile {
+    margin-block-start: var(--size-double);
+}
+
+
+.o-compound {
+  --width-limit--inner: 70ch;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+
+@media screen and (min-width: 42em) {
+  .o-compound {
+    max-width: var(--width-limit--inner);
+  }
+}
+
+main > :last-child {
+    padding-block-end: var(--size-quad);
+}
+
+main > :first-child:not(.o-block--margin-zero) {
     margin-block-start: var(--size-double);
 }

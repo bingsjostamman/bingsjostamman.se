@@ -1,0 +1,25 @@
+/**
+ * UNSTYLED LISTS
+ *
+ * 1. Add the list item role back to list items reset by ’list-style: none’
+ * (Safari)
+ *
+ * 2. Outdent ’dd’ elements in ’dl’ lists
+ */
+
+:where(.u-list-unstyled) {
+  list-style: none;
+  margin-block: initial;
+  padding-inline: initial;
+}
+
+.u-list-unstyled > li::before {
+  /* 1. */
+  position: absolute;
+  content: "\200B";
+}
+
+:where(.u-list-unstyled) dd {
+  /* 2. */
+  margin-inline: initial;
+}

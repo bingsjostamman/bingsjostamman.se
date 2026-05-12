@@ -3,7 +3,7 @@
  *
  * Global settings for the root elements
  *
- * 2. Set background and text color defaults for everything, to be overridden
+ * 1. Set background and text color defaults for everything, to be overridden
  *    by themes or in-context rules
  */
 
@@ -19,7 +19,9 @@ body {
 }
 
 * {
-  background: var(--color-background); /* 2. */
-  color: var(--color-font--text); /* 2. */
+  --color-background: initial;
+  --color-font--text: initial;
+  background: var(--color-background); /* 1. */
+  color: var(--color-font--text); /* 1. */
 }
 

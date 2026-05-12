@@ -1,10 +1,4 @@
 /* config goes here */
-:root {
-  --color: orange;
-  --old: cyan;
-  --new: blue;
-  --great: maroon;
-}
 
 /* Colors */
 
@@ -18,6 +12,8 @@
   --token-color-bronze: rgb(205 135 42); /* #CD872A */
   --token-color-white-pot: rgb(245 235 230); /* #F5EBE6 */
   --token-color-white-linen: rgb(248 246 240); /* #FAF6F0 */
+  --token-color-white-1: rgb(254 250 246); /* #FCFAF0 */
+  --token-color-white-2: rgb(254 247 244); /* #FEF7F4 */
   --token-color-teal-black: rgb(17 29 29); /* #111D1D */
   --token-color-teal-900: rgb(24 39 40); /* #182728 */
   --token-color-teal-800: rgb(37 56 58); /* #25383A */
@@ -32,6 +28,13 @@
   --token-color-teal-050: rgb(243 247 245); /* #F3F7F5 */
 
 
+}
+
+:root {
+  --color: var(--token-color-bronze);
+  --old: cyan;
+  --new: blue;
+  --great: maroon;
 }
 
 :root {

@@ -4,32 +4,27 @@
 
 @mixin fluid-spacing($config) {
   $bp: map.get($config, bp);
-  $font: map.get($config, font);
   $spacing: map.get($config, spacing);
 
-  $min-bp: map.get($bp, min);
-  $max-bp: map.get($bp, max);
-  $min-font: map.get($font, min);
-  $max-font: map.get($font, max);
+  $min-bp: map.get($spacing, min-bp) or map.get($bp, min);
+  $max-bp: map.get($spacing, max-bp) or map.get($bp, max);
   $min-size: map.get($spacing, min);
   $max-size: map.get($spacing, max);
 
   $prefer-vw: math.div(
-    100 *
-      (math.div($max-size * $max-font, 1) - math.div($min-size * $min-font, 1)),
+    100 * ($max-size - $min-size),
     $max-bp - $min-bp
   );
 
   $prefer-rem: math.div(
-    math.div($min-bp * $max-size * $max-font, 16) -
-      math.div($max-bp * $min-size * $min-font, 16),
+    ($min-bp * $max-size) - ($max-bp * $min-size),
     $min-bp - $max-bp
   );
 
   --size-root: clamp(
-    #{utils.to-fixed(math.div($min-size * $min-font, 16))}rem,
-    #{utils.to-fixed($prefer-vw)}vw + #{utils.to-fixed($prefer-rem)}rem,
-    #{utils.to-fixed(math.div($max-size * $max-font, 16))}rem
+    #{utils.to-fixed($min-size)}rem,
+    calc(#{utils.to-fixed($prefer-rem)}rem + #{utils.to-fixed($prefer-vw)}vw),
+    #{utils.to-fixed($max-size)}rem
   );
 
   $s: 0.25;

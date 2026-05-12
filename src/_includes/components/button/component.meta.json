@@ -1,0 +1,14 @@
+{
+  "title": "Components/Button",
+  "description": "A simple button component used throughout the site.",
+  "status": "ready",
+  "tags": ["UI", "form", "interactive"],
+  "class": "button",
+  "examples": {
+    "Default": { "buttonText": "Click me" },
+    "Primary": {
+      "buttonText": "Submit",
+      "variant": "primary"
+    }
+  }
+}

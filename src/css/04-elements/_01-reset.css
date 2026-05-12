@@ -1,0 +1,45 @@
+/**
+ * Border-box all the things
+ *
+ * More sensible default box-sizing:
+ * css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+----------------------------------------------------------------------------- */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+/* =============================================================================
+ * A very simple reset that sits on top of Normalize.css
+ * https://github.com/inuitcss/inuitcss/blob/develop/generic/_generic.reset.scss
+============================================================================= */
+
+/**
+ * Remove trailing margins from nested lists.
+ */
+
+li>ul,
+li>ol {
+  margin-bottom: 0;
+}
+
+/**
+ * Remove spaces between table cells.
+ */
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 0;
+}

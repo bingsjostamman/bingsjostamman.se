@@ -1,0 +1,30 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+{%- set seen = [] -%}
+{%- set currentYear = editions.current -%}
+
+{%- for page in collections.all | sort(attribute='url') -%}
+  {%- if not page.data.eleventyExcludeFromCollections
+        and page.url
+        and page.url != '/sitemap.xml'
+        and not seen.includes(page.url)
+        and (page.data.year is not defined or page.data.year == currentYear) -%}
+
+    {%- set seen = seen.concat(page.url) -%}
+
+    <url>
+      <loc>{{ site.url | trimTrailingSlash }}{{ page.url | url }}</loc>
+      <lastmod>
+        {{ (page.date or page.data.date or "now") | date("yyyy-MM-dd") }}
+      </lastmod>
+    </url>
+
+  {%- endif -%}
+{%- endfor -%}
+
+</urlset>

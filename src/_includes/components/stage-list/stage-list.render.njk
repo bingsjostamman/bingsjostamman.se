@@ -1,0 +1,4 @@
+{#- Render wrapper for prebuild-stories.js
+    Receives: stageName, day, lineup from component.meta.json examples -#}
+{% from "stage-list/stage-list.njk" import stageList %}
+{{ stageList(stageName, lineup, day) }}

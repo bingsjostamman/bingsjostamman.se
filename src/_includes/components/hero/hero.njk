@@ -1,0 +1,43 @@
+{% from "components/image/image-hero.njk" import heroImage %}
+
+{% macro hero(options = {}) %}
+  {% set imageId = options.imageId %}
+  {% set imageAlt = options.imageAlt or "" %}
+  {% set mobileImageId = options.mobileImageId or null %}
+  {% set imageOptions = options.imageOptions or {} %}
+  {% set eyebrow = options.eyebrow %}
+  {% set title = options.title %}
+  {% set text = options.text %}
+  {% set ctaText = options.ctaText %}
+  {% set ctaHref = options.ctaHref %}
+
+  <section class="c-hero o-container__breakout o-block o-block--margin-zero t-intent-highlight">
+    <div class="c-hero__media">
+      {{ heroImage(imageId, imageAlt, mobileImageId, imageOptions) }}
+    </div>
+
+    <div class="c-hero__overlay o-container">
+      <div class="c-hero__content">
+        {% if caller %}
+          {{ caller() }}
+        {% else %}
+          {% if eyebrow %}
+            <p class="c-hero__eyebrow">{{ eyebrow }}</p>
+          {% endif %}
+
+          {% if title %}
+            <h1 class="c-hero__title">{{ title }}</h1>
+          {% endif %}
+
+          {% if text %}
+            <p class="c-hero__text">{{ text }}</p>
+          {% endif %}
+
+          {% if ctaText and ctaHref %}
+            <a class="c-hero__cta" href="{{ ctaHref }}">{{ ctaText }}</a>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endmacro %}

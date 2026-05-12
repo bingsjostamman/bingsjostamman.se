@@ -1,0 +1,27 @@
+/**
+ * ROOT
+ *
+ * Global settings for the root elements
+ *
+ * 1. Set background and text color defaults for everything, to be overridden
+ *    by themes or in-context rules
+ */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  position: relative; /* Menu panel anchoring */
+  font-family: "Playfair Display", "Alegreya Sans", sans-serif;
+}
+
+* {
+  --color-background: initial;
+  --color-font--text: initial;
+  background: var(--color-background); /* 1. */
+  color: var(--color-font--text); /* 1. */
+}
+

@@ -1,0 +1,24 @@
+:where(.t-intent-page) {
+  @mixin scheme-white-linen;
+}
+
+:where(.t-intent-base) {
+  @mixin scheme-white-linen;
+}
+
+:where(.t-intent-emphasis) {
+  @mixin scheme-white-pot;
+}
+
+:where(.t-intent-highlight),
+:where(.t-component-footer-top) {
+  @mixin scheme-teal-800;
+}
+
+:where(.t-component-footer-end) {
+  @mixin scheme-teal-900;
+}
+
+:where(.t-component-header) {
+  @mixin scheme-white;
+}

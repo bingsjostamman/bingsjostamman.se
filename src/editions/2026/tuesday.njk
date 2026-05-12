@@ -1,0 +1,13 @@
+---
+layout: layouts/base
+year: 2026
+eleventyComputed:
+  title: "Tisdag {{ dates.tisdag | swedishDate }} {{ year }}"
+  permalink: "{% if year == editions.current %}/tisdag/index.html{% else %}/{{ year }}/tisdag/index.html{% endif %}"
+eleventyExcludeFromCollections: true
+---
+{% from "components/stage-list/stage-list.njk" import stageList %}
+
+<h1>Tisdag {{ dates.tisdag | swedishDate }}</h1>
+
+{{ stageList("Bystugubanan", lineup, "tisdag") }}

@@ -1,0 +1,46 @@
+/**
+ * SHAME.CSS
+ *
+ * This file is for CSS that is hacky, temporary, or needs to be
+ * refactored and moved to the correct layer later.
+ *
+ * Leave a comment on each rule explaining:
+ * - Why it was needed
+ * - Where it should eventually live
+ * - Any relevant issue or PR reference
+ */
+
+
+.prose {
+
+}
+
+.o-split {
+    display: grid;
+    gap: var(--size-double);
+    align-items: center;
+}
+
+@media (min-width: 600px) {
+    .o-split {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .o-split__content.prose {
+        padding-block: var(--size-double);
+    }
+}
+
+
+.o-split__image {
+    height: 100%;
+}
+
+.o-split__image img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.prose * + * {
+    margin-block-start: var(--size-full);
+}

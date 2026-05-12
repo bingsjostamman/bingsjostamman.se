@@ -1,0 +1,28 @@
+---
+layout: layouts/base
+year: 2025
+eleventyComputed:
+  title: "Allspel {{ year }}"
+  permalink: "{% if year == editions.current %}/allspel/index.html{% else %}/{{ year }}/allspel/index.html{% endif %}"
+---
+{% from "components/allspel-tunes/allspel-tunes.njk" import allspelTunes %}
+{% set regularTunes = tunes | rejectattr("barnens") | list %}
+{% set barnensTunes = tunes | selectattr("barnens") | list %}
+
+<h1>Allspel</h1>
+
+<div class="page-intro">
+  {{ copy.intro | markdown | safe }}
+</div>
+
+{{ allspelTunes(regularTunes) }}
+
+<h2>Barnens allspel</h2>
+
+{% if copy.barnensAllspel %}
+<div class="page-intro">
+  {{ copy.barnensAllspel | markdown | safe }}
+</div>
+{% endif %}
+
+{{ allspelTunes(barnensTunes) }}

@@ -1,0 +1,16 @@
+{
+  "hidden": false,
+  "note": "Biljetterna släpps i mars",
+  "general": {
+    "amount": 350,
+    "note": "Early bird tickets available until May 1st."
+  },
+  "youth": {
+    "amount": 150,
+    "note": "Vänta tills våren"
+  },
+  "camping": {
+    "amount": 200,
+    "note": "Includes one camping spot per ticket."
+  }
+}

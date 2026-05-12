@@ -1,0 +1,68 @@
+{#
+  Allspel tunes component
+
+  Usage:
+    {% from "components/allspel-tunes/allspel-tunes.njk" import allspelTunes %}
+    {{ allspelTunes(tunes) }}
+
+  Expects:
+    - tunes: array of objects with:
+      - name: string
+      - note: string (optional)
+      - sheetMusic: array of { label, url }
+      - audio: array of { label, url }
+#}
+{% from "components/icon/icon.njk" import icon %}
+
+{%- macro allspelTunes(tunes) -%}
+{%- if tunes and tunes.length -%}
+<div class="c-tunes-wrap">
+
+  <ul class="c-tunes-tunes u-list-unstyled">
+
+    {%- for tune in tunes %}
+    <li class="c-tunes-tune o-tile t-intent-emphasis">
+      <div class="c-tunes-info">
+        <h3 class="c-tunes-name">{{ tune.name }}</h3>
+        {%- if tune.note %}
+        <span class="c-tunes-note">{{ tune.note }}</span>
+        {%- endif %}
+      </div>
+      <div class="c-tunes-media">
+
+        <div class="c-tunes-media-label">Noter</div>
+        {%- if tune.sheetMusic and tune.sheetMusic.length == 1 %}
+          <a class="c-tunes-media-link" href="{{ tune.sheetMusic[0].url }}">{{ icon("music-box", "c-tunes-media-icon") }}<span>{{ tune.sheetMusic[0].label }}</span></a>
+        {%- elif tune.sheetMusic and tune.sheetMusic.length > 1 %}
+          <ul class="c-tunes-links u-list-unstyled">
+            {%- for item in tune.sheetMusic %}
+            <li><a class="c-tunes-media-link" href="{{ item.url }}">{{ icon("music-box") }}<span>{{ item.label }}</span></a></li>
+            {%- endfor %}
+          </ul>
+        {%- else %}
+          <span class="c-tunes-empty">-</span>
+        {%- endif %}
+
+        <div class="c-tunes-media-label">Ljudinspelning</div>
+        {%- if tune.audio and tune.audio.length == 1 %}
+          <a class="c-tunes-media-link" href="{{ tune.audio[0].url }}">{{ icon("play-box") }}<span>{{ tune.audio[0].label }}</span></a>
+        {%- elif tune.audio and tune.audio.length > 1 %}
+          <ul class="c-tunes-links u-list-unstyled">
+            {%- for item in tune.audio %}
+              <li><a class="c-tunes-media-link" href="{{ item.url }}">{{ icon("play-box") }}<span>{{ item.label }}</span></a></li>
+            {%- endfor %}
+          </ul>
+        {%- else %}
+          <span class="c-tunes-empty">-</span>
+        {%- endif %}
+      </div>
+    </li>
+    {%- endfor %}
+
+  </ul>
+
+</div>
+{%- else -%}
+<p>Årets allspelslåtar publiceras snart.</p>
+{%- endif -%}
+{%- endmacro -%}

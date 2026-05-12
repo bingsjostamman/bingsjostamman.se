@@ -1,0 +1,11 @@
+{
+  "title": "Components/Header",
+  "description": "Site header containing the Bingsjöstämman logo and main navigation menu.",
+  "status": "ready",
+  "tags": ["UI", "navigation", "layout"],
+  "class": "header",
+  "macro": true,
+  "examples": {
+    "Default": {}
+  }
+}

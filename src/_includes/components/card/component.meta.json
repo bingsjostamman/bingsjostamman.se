@@ -1,0 +1,10 @@
+{
+  "title": "Components/Card",
+  "description": "A minimal card component used throughout the site.",
+  "status": "in progress",
+  "tags": ["UI", "form", "interactive"],
+  "class": "card",
+  "examples": {
+    "Default": { "cardText": "House of cards" }
+  }
+}

@@ -1,9 +1,0 @@
-/* Styleguide styles */
-
-$sg: false !default;
-
-@mixin sg {
-    @if $sg {
-        @content;
-    }
-}

@@ -1,0 +1,49 @@
+import './list-past-editions.css';
+export default {
+  title: "Components/ListPastEditions",
+  parameters: {
+    docs: { description: { component: "A list of past festival editions." } },
+    status: "ready",
+  },
+  tags: ["UI","list","archive"],
+};
+
+export const One Past Edition = () => `
+
+
+
+
+
+  
+
+
+
+
+
+`;
+export const Multiple Past Editions = () => `
+
+
+
+
+
+  
+
+
+
+
+
+`;
+export const No Past Editions = () => `
+
+
+
+
+
+  
+
+
+
+
+
+`;

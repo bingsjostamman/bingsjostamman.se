@@ -1,0 +1,21 @@
+{
+  "name": "Bingsjöstämman",
+  "lang": "sv",
+  "baseUrl": "https://bingsjostamman.se",
+  "description": "Bingsjöstämman samlar spelmän, dansare och besökare i Bingsjö för allspel, konserter och dans.",
+  "defaultImage": "https://res.cloudinary.com/dbblxggj5/image/upload/v1748295028/allspel_2024_zchx2s",
+  "organization": {
+    "name": "Bingsjöstämman",
+    "url": "https://bingsjostamman.se"
+  },
+  "location": {
+    "name": "Bingsjö",
+    "address": {
+      "streetAddress": "Bingsjövägen 52",
+      "postalCode": "795 95",
+      "addressLocality": "Bingsjö",
+      "addressRegion": "Dalarna",
+      "addressCountry": "SE"
+    }
+  }
+}

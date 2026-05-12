@@ -1,0 +1,32 @@
+{# 
+  Component: Past Editions List
+  Usage: 
+    {% include "components/past-editions.njk" with { heading: "Previous Festivals", order: "desc" } %}
+    - heading: optional, string
+    - order: optional, "asc" (oldest first) or "desc" (newest first)
+#}
+
+{% set order = order or "desc" %}
+{% set sortedYears = editions.years | sort %}
+
+{% if order == "desc" %}
+  {% set sortedYears = sortedYears | reverse %}
+{% endif %}
+
+{% set pastYears = [] %}
+{% for y in sortedYears %}
+  {% if y < editions.current %}
+    {% set pastYears = pastYears.concat([y]) %}
+  {% endif %}
+{% endfor %}
+
+{% if pastYears | length > 0 %}
+  {% if heading %}
+    <h2>{{ heading }}</h2>
+  {% endif %}
+  <ul class="past-editions">
+    {% for y in pastYears %}
+      <li><a href="/{{ y }}/">{{ y }}</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}

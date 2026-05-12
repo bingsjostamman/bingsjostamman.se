@@ -1,0 +1,47 @@
+@use "sass:math";
+@use "../02-tools/fluid.utils" as utils;
+@use "sass:map";
+
+@mixin fluid-spacing($config) {
+  $bp: map.get($config, bp);
+  $spacing: map.get($config, spacing);
+
+  $min-bp: map.get($spacing, min-bp) or map.get($bp, min);
+  $max-bp: map.get($spacing, max-bp) or map.get($bp, max);
+  $min-size: map.get($spacing, min);
+  $max-size: map.get($spacing, max);
+
+  $prefer-vw: math.div(
+    100 * ($max-size - $min-size),
+    $max-bp - $min-bp
+  );
+
+  $prefer-rem: math.div(
+    ($min-bp * $max-size) - ($max-bp * $min-size),
+    $min-bp - $max-bp
+  );
+
+  --size-root: clamp(
+    #{utils.to-fixed($min-size)}rem,
+    calc(#{utils.to-fixed($prefer-rem)}rem + #{utils.to-fixed($prefer-vw)}vw),
+    #{utils.to-fixed($max-size)}rem
+  );
+
+  $s: 0.25;
+  $size-names: (
+    "0.25": "quarter",
+    "0.5": "half",
+    "1": "full",
+    "2": "double",
+    "4": "quad",
+    "8": "octo",
+  );
+
+  @for $i from 1 through 6 {
+    --size-#{map.get($size-names, #{$s})}: calc(#{$s} * var(--size-root));
+    --size--#{map.get($size-names, #{$s})}: calc(
+      -1 * var(--size-#{map.get($size-names, #{$s})})
+    );
+    $s: $s * 2;
+  }
+}

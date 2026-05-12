@@ -1,0 +1,24 @@
+/**
+ * FOCUS OUTLINE
+ *
+ * Use this utility to add behaviour on top of the default generic focus styling
+ * provided in elements/_04-focus.css.
+ * 
+ * 1. Use the class .u-focus-outline to move focus styling form the interactive
+ *    element to a parent (wrapper), while eliminating the focus style on the
+ *    interactive element itself by using the class .u-focus-outline-none
+ *
+ */
+
+.u-focus-outline:focus-within:has(:focus-visible) {
+  /* 1. */
+  outline: var(--focus-outline-size) solid var(--color-focus-outline);
+  outline-offset: var(--focus-outline-size);
+  box-shadow: 0 0 0 var(--focus-box-shadow-size) var(--color-focus-box-shadow);
+}
+
+.u-focus-outline-none:focus-visible {
+  /* 1. */
+  outline: none;
+  box-shadow: none;
+}

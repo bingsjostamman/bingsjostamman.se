@@ -1,0 +1,91 @@
+---
+title: Javascript Components
+layout: layouts/base
+eleventyExcludeFromCollections: true
+permalink: /components/
+---
+
+
+<h1>Javascript components.</h1>
+
+<p>Here are some components</p>
+
+
+{# Define props first #}
+{% set buttonText = "Click Me Now!" %}
+
+{# Include button template #}
+{% include "components/button/button.njk" %}
+
+{% set cardText = "Keep your cards to yourself!" %}
+{% include "components/card/card.njk" %}
+
+<h2>Modal</h2>
+
+<div data-modal>
+  <button data-modal-open>Open modal</button>
+
+  <dialog>
+    <button data-modal-close>×</button>
+    <p>Hello from the modal!</p>
+  </dialog>
+</div>
+
+<hr>
+
+<h2>Accordion</h2>
+
+<div data-accordion>
+  <div data-accordion-item>
+    <button data-accordion-header>What is Bingsjöstämman?</button>
+    <div data-accordion-panel>
+      It’s a traditional folk music gathering…
+    </div>
+  </div>
+
+  <div data-accordion-item>
+    <button data-accordion-header>Where is it held?</button>
+    <div data-accordion-panel>
+      In Bingsjö, Dalarna.
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<h2>Photos</h2>
+
+
+{% from "components/image/image-hero.njk" import heroImage %}
+{% from "components/image/image-card.njk" import cardImage %}
+{% from "components/image/image-thumbnail.njk" import thumbnailImage %}
+
+<h3>Hero Image</h3>
+{{ heroImage("dimma_u2vigg", "Sunny beach at sunset") }}
+
+<h3>Hero Image with optional mobile</h3>
+{{ heroImage(
+    "dimma_u2vigg",
+    "Sunny beach at sunset",
+    "legacy/bingsjoberget_njblcc_fxcspu"
+) }}
+
+<h3>Hero Image with custom sizes</h3>
+{{ heroImage(
+    "dimma_u2vigg",
+    "Sunny beach at sunset",
+    null,
+    "(max-width: 768px) 100vw, 50vw"
+) }}
+
+<h3>Card Image</h3>
+{{ cardImage("dimma_u2vigg", "Mountain view") }}
+
+<h3>Card Image with custom sizes</h3>
+{{ cardImage("dimma_u2vigg", "Mountain view", {sizes: "43vw"}) }}
+
+<h3>Thumbnail</h3>
+{{ thumbnailImage("dimma_u2vigg", null, {sizes: "15vw"}) }}
+
+<h3>Thumbnail with custom sizes</h3>
+{{ thumbnailImage("dimma_u2vigg", "Forest path", "99px") }}

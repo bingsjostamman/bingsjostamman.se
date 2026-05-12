@@ -1,0 +1,25 @@
+{
+  "title": "Components/Hero",
+  "description": "Hero section with image background and text overlay.",
+  "status": "wip",
+  "tags": ["UI", "hero", "layout"],
+  "macro": true,
+  "examples": {
+    "Default": {
+      "imageId": "2026/Bingsjo_2025-38_xvzbt6",
+      "imageAlt": "Dans på Bingsjöstämman",
+      "eyebrow": "Bingsjöstämman",
+      "title": "Välkommen till årets festival",
+      "text": "Spel, dans och möten i Bingsjö."
+    },
+    "With CTA": {
+      "imageId": "2026/Bingsjo_2025-38_xvzbt6",
+      "imageAlt": "Dans på Bingsjöstämman",
+      "eyebrow": "Biljetter",
+      "title": "Säkra din plats",
+      "text": "Biljetter finns i flera kategorier.",
+      "ctaText": "Se biljetter",
+      "ctaHref": "/biljetter/"
+    }
+  }
+}

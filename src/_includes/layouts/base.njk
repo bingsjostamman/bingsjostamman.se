@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+        {% set pageTitle = title and (title ~ ' - ' ~ site.name) or site.name %}
+        {% set canonicalUrl = canonical or (site.baseUrl ~ page.url) %}
+        {% set metaDescription = socialDescription or description or site.description or '' %}
+        {% set socialImageCandidate = socialImage or image or site.defaultImage %}
+        {% if socialImageCandidate and socialImageCandidate[0] == '/' %}
+            {% set socialImageUrl = site.baseUrl ~ socialImageCandidate %}
+        {% else %}
+            {% set socialImageUrl = socialImageCandidate %}
+        {% endif %}
+        {% set resolvedOgType = ogType or 'website' %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>{{ pageTitle }}</title>
+        <link rel="icon" href="/favicon.ico" sizes="32x32">
+        <link rel="icon" href="/icon.svg" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png"> <!-- 180×180 -->
+
+        <meta name="description" content="{{ metaDescription }}">
+        <link rel="canonical" href="{{ canonicalUrl }}">
+
+        <meta property="og:title" content="{{ pageTitle }}">
+        <meta property="og:description" content="{{ metaDescription }}">
+        <meta property="og:image" content="{{ socialImageUrl }}">
+        <meta property="og:url" content="{{ canonicalUrl }}">
+        <meta property="og:type" content="{{ resolvedOgType }}">
+        <meta property="og:site_name" content="{{ site.name }}">
+        <meta property="og:locale" content="sv_SE">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ pageTitle }}">
+        <meta name="twitter:description" content="{{ metaDescription }}">
+        <meta name="twitter:image" content="{{ socialImageUrl }}">
+
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/changes.css">
+    
+    {% if not env.isProd %}
+        <link rel="stylesheet" href="/assets/css/debug.css">
+    {% endif %}
+
+    {% if isArchive and isArchive != 'false' %}
+    <meta name="robots" content="noindex, follow">
+    {% endif %}
+{% include "structured-data.njk" %}
+</head>
+<body>
+
+<a href="#main-content" class="u-skip-link">Hoppa till innehåll</a>
+
+{% include "components/header/header.njk" %}
+
+    <main id="main-content" class="o-container t-intent-page">
+        {{ content | safe }}
+    </main>
+
+{% include "components/footer/footer.njk" %}
+
+<script type="module" src="/assets/js/main.js"></script>
+
+</body>
+</html>

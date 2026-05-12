@@ -1,0 +1,55 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentcolor;
+}
+
+/* --- Per-logo dimensions --- */
+
+:where(.logo--bilda) {
+  height: 3rem;
+  aspect-ratio: 105 / 50;
+}
+
+:where(.logo--bingsjo) {
+  height: 4rem;
+  aspect-ratio: 544 / 496;
+}
+
+:where(.logo--bingsjostamman-color),
+:where(.logo--bingsjostamman) {
+  height: 3rem;
+  aspect-ratio: 400 / 246;
+}
+
+:where(.logo--bingsjostamman-color) {
+  height: 5rem;
+  height: var(--size-quad);
+}
+
+:where(.logo--dsf) {
+  height: 4rem;
+  aspect-ratio: 420 / 150;
+}
+
+:where(.logo--fmh) {
+  height: 4rem;
+  aspect-ratio: 1393 / 753;
+}
+
+:where(.logo--leksands-sparbank) {
+  height: 4rem;
+  aspect-ratio: 144 / 54;
+}
+
+:where(.logo--stammoveckan) {
+  height: 4rem;
+  aspect-ratio: 842 / 322;
+}

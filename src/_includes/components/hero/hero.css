@@ -6,7 +6,7 @@
 
 .c-hero__media {
   grid-area: intrinsic-content;
-  height: calc(90vh - 3rem - var(--size-half) * 2);
+  height: calc(90vh - 5rem - var(--size-full) * 2);
   line-height: 0;
 }
 
@@ -47,15 +47,15 @@
 
 .c-hero__title {
   margin: 0;
-  font-size: var(--font-size-6);
+  font-size: var(--font-size-7);
   color: var(--token-color-white-linen);
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: 'Alegreya', 'Alegreya Sans', sans-serif;
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 .c-hero__text {
   margin: 0.5rem 0 0;
-  color: var(--color);
   font-size: var(--font-size-4);
   font-weight: 500;
 }

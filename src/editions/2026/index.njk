@@ -19,10 +19,12 @@ eleventyComputed:
 }) }}
 
 
-<h2>Välkommen till Bingsjöstämman {{ year }}</h2>
-<p>Onsdagen den 1 juli samlas vi åter i Bingsjö för årets Bingsjöstämma. Men som vanligt tjuvstartar vi redan på tisdagkvällen. Programmet är klart och kommer att presentera här inom kort.</p>
-<p>Passa på att träna in <a href="{% if year == editions.current %}/allspel/{% else %}/{{ year }}/allspel/{% endif %}">årets allspelslåtar</a> så länge!</p>
-
+<div class="o-compound" style="margin-block: var(--size-double) var(--size-quad); font-size: var(--font-size-1);">
+  <h2>Välkommen till Bingsjöstämman</h2>
+  <p>Onsdagen den 1 juli samlas vi åter i Bingsjö för årets Bingsjöstämma. Men som vanligt tjuvstartar vi redan på tisdagkvällen.</p>
+  <p>&nbsp;</p>
+  <p>Programmet är klart och kommer att presenteras här inom kort. Först ut är <a href="{% if year == editions.current %}/allspel/{% else %}/{{ year }}/allspel/{% endif %}" style="text-decoration: underline;">årets allspelslåtar</a>!</p>
+</div>
 
 {% if isArchive == "true" %}
 <div class="archive-banner">

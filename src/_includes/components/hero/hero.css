@@ -6,7 +6,7 @@
 
 .c-hero__media {
   grid-area: intrinsic-content;
-  height: calc(90vh - 5rem - var(--size-full) * 2);
+  height: calc(80vh - 5rem - var(--size-full) * 2);
   line-height: 0;
 }
 

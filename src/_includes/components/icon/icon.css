@@ -2,8 +2,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1em;
-  height: 1em;
+}
+
+:where(.icon) {
+  width: 1.1em;
+  height: 1.1em;
 }
 
 .icon svg {

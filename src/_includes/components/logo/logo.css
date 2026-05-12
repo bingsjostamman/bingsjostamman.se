@@ -29,6 +29,11 @@
   aspect-ratio: 400 / 246;
 }
 
+:where(.logo--bingsjostamman-color) {
+  height: 5rem;
+  height: var(--size-quad);
+}
+
 :where(.logo--dsf) {
   height: 4rem;
   aspect-ratio: 420 / 150;

@@ -48,20 +48,26 @@
   background: none;
 
   position: relative;
-    z-index: 11;
+  z-index: 11;
 
   display: flex;
-    align-items: center;
-    gap: var(--size-quarter);  
+  align-items: center;
+  gap: var(--size-quarter);  
 }
 
 .c-menu__toggle .icon {
-  width: var(--size-full);
-  height: var(--size-full);
+  width: var(--size-double);
+  height: var(--size-double);
 }
 
 .c-menu__toggle-label {
-  text-transform: uppercase
+  text-transform: uppercase;
+  font-size: var(--font-size-1);
+  font-weight: 500;
+  font-family: "Alegreya Sans";
+  line-height: 1;
+  position: relative;
+  margin-block-start: 0.15em;  
 }
 
 /* Menu panel */

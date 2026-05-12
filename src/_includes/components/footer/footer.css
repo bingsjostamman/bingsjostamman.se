@@ -6,7 +6,7 @@
 .c-footer__links {
 }
 
-.c-footer__logo {
+.c-footer__logo.logo--bingsjostamman {
     height: 6rem;
 }
 
@@ -28,7 +28,7 @@
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    column-gap: var(--size-quad);
+    column-gap: var(--size-double);
     row-gap: var(--size-full);
     justify-content: center;
 }
@@ -36,5 +36,21 @@
 .c-footer__copyright {
     margin-block: var(--size-double);
     margin-inline: auto;
+    text-align: center;
+    font-size: var(--font-size-0);
+}
+
+.c-footer__some {
+    text-align: center;
+}
+
+.c-footer__some-link {
+    display: inline-block;
+    margin-inline: var(--size-half);
+}
+
+.c-footer__some-icon {
+    width: var(--size-double);
+    height: var(--size-double);
 }
 

@@ -12,6 +12,7 @@ const layers = [
   "06-objects",
   "07-components",
   "08-utilities",
+  "09-shame"
 ];
 const prebuildDir = "prebuilt";
 const entryPath = path.resolve("src/css/entry.css");
@@ -63,7 +64,17 @@ function toRelative(file) {
 // ----------------------
 const globalCss = getGlobalCssFiles();
 const componentCss = getUsedComponentCss();
-const allCssFiles = [...globalCss, ...componentCss];
+
+// Split globals into layers before utilities/shame and after
+const globalsBefore = globalCss.filter(
+  (f) => !f.includes("/08-utilities/") && !f.includes("/09-shame/")
+);
+const globalsAfter = globalCss.filter(
+  (f) => f.includes("/08-utilities/") || f.includes("/09-shame/")
+);
+
+// Order: global layers → components → utilities & shame
+const allCssFiles = [...globalsBefore, ...componentCss, ...globalsAfter];
 
 const imports = allCssFiles.map((f) => `@import "${toRelative(f)}";`);
 

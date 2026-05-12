@@ -27,5 +27,4 @@ chokidar.watch(watchCss, { ignored: ignoredCss }).on("change", (file) => {
 chokidar.watch(watchTemplates).on("change", (file) => {
   console.log(`🔄 Template changed: ${file}`);
   run("node scripts/prebuild-stories.js");
-  run("node scripts/generate-entry-css.js");
 });

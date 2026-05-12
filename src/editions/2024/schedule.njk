@@ -1,8 +1,11 @@
 ---
 layout: layouts/base
 year: 2024
+overviewSocialImage:
 eleventyComputed:
   title: "Översikt {{ year }}"
+  description: "Visuell oversikt over programmet for Bingsjostamman {{ year }}."
+  socialImage: "{{ overviewSocialImage or site.defaultImage }}"
   permalink: "{% if year == editions.current %}/oversikt/index.html{% else %}/{{ year }}/oversikt/index.html{% endif %}"
 ---
 {% from "components/timeline/timeline.njk" import timeline %}

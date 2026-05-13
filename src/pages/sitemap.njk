@@ -18,7 +18,7 @@ eleventyExcludeFromCollections: true
     {%- set seen = seen.concat(page.url) -%}
 
     <url>
-      <loc>{{ site.url | trimTrailingSlash }}{{ page.url | url }}</loc>
+      <loc>{{ site.baseUrl | trimTrailingSlash }}{{ page.url | url }}</loc>
       <lastmod>
         {{ (page.date or page.data.date or "now") | date("yyyy-MM-dd") }}
       </lastmod>

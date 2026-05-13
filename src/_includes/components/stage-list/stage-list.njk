@@ -1,0 +1,47 @@
+{#
+  Stage schedule list component
+  Usage:
+    {% from "components/stage-list/stage-list.njk" import stageList %}
+    {{ stageList("Låttältet", lineup, "onsdag") }}
+    {{ stageList("Dansbanan", lineup, "onsdag", "invigning") }}
+
+  Parameters:
+    - stageName: string – the stage to filter on
+    - lineup: array – the full lineup data
+    - day: string – "tisdag" or "onsdag"
+    - excludeType: string (optional) – exclude acts of this type
+#}
+
+{%- macro stageList(stageName, lineup, day, excludeType) -%}
+{%- set acts = [] -%}
+{%- for act in lineup -%}
+  {%- if act.day == day and act.stage == stageName -%}
+    {%- if not excludeType or act.type != excludeType -%}
+      {%- set acts = (acts.push(act), acts) -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if acts.length == 1 -%}
+  <div class="c-stage-list">
+    <div class="c-stage-list__item">
+      <span class="c-stage-list__time">{{ acts[0].starttime }}{% if acts[0].endtime %}–{{ acts[0].endtime }}{% endif %}</span>
+      <strong class="c-stage-list__name">{{ acts[0].name }}</strong>
+      {%- if acts[0].description %}
+      <span class="c-stage-list__description">{{ acts[0].description }}</span>
+      {%- endif %}
+    </div>
+  </div>
+{%- elif acts.length -%}
+  <ol class="c-stage-list">
+    {%- for act in acts %}
+    <li class="c-stage-list__item">
+      <span class="c-stage-list__time">{{ act.starttime }}{% if act.endtime %}–{{ act.endtime }}{% endif %}</span>
+      <strong class="c-stage-list__name">{{ act.name }}</strong>
+      {%- if act.description %}
+      <span class="c-stage-list__description">{{ act.description }}</span>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ol>
+{%- endif -%}
+{%- endmacro -%}

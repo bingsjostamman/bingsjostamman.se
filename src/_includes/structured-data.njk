@@ -1,46 +1,61 @@
-{# structured-data.njk #}
-
-{% set currentYear = editions.current %}
-
-{# Find the current edition manually #}
-{% set currentEdition = null %}
-{% for e in collections.editionsList %}
-  {% if e.data.year == currentYear %}
-    {% set currentEdition = e %}
-  {% endif %}
-{% endfor %}
+{% set org = site.organization or {} %}
+{% set location = site.location or {} %}
+{% set locationAddress = location.address or {} %}
+{% set festivalName = site.name ~ ' ' ~ year %}
+{% set pageUrl = canonical or (site.baseUrl ~ page.url) %}
+{% set pageDescription = socialDescription or description or site.description %}
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "{{ site.baseUrl }}#organization",
+  "name": "{{ org.name or site.name }}",
+  "url": "{{ org.url or site.baseUrl }}"
+}
+</script>
+
+{% if start and end %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "Festival",
-  "name": "Bingsjöstämmans",
-  "url": "{{ site.url | trimTrailingSlash }}",
+  "@id": "{{ pageUrl }}#festival",
+  "name": "{{ festivalName }}",
+  "url": "{{ pageUrl }}",
+  "startDate": "{{ start }}",
+  "endDate": "{{ end }}",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
   "location": {
     "@type": "Place",
-    "name": "Bingsjö",
-    "address": "Bingsjö, Sweden"
+    "name": "{{ location.name or 'Bingsjo' }}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{{ locationAddress.streetAddress or '' }}",
+      "postalCode": "{{ locationAddress.postalCode or '' }}",
+      "addressLocality": "{{ locationAddress.addressLocality or '' }}",
+      "addressRegion": "{{ locationAddress.addressRegion or '' }}",
+      "addressCountry": "{{ locationAddress.addressCountry or 'SE' }}"
+    }
   },
-  "event": {
-    "@type": "Event",
-    "name": "Bingsjöstämmans {{ currentYear }}",
-    "startDate": "{{ currentEdition.data.start }}",
-    "endDate": "{{ currentEdition.data.end }}",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "location": {
-      "@type": "Place",
-      "name": "Bingsjö",
-      "address": "Bingsjö, Sweden"
-    },
-    "performer": [
-      {%- for artist in currentEdition.data.artists -%}
-        {
-          "@type": "MusicGroup",
-          "name": "{{ artist.name }}"
-        }{%- if not loop.last %},{% endif -%}
-      {%- endfor -%}
-    ]
+  "organizer": {
+    "@id": "{{ site.baseUrl }}#organization"
   }
+}
+</script>
+{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ title and (title ~ ' - ' ~ site.name) or site.name }}",
+  "url": "{{ pageUrl }}",
+  "inLanguage": "{{ site.lang }}"{% if pageDescription %},
+  "description": "{{ pageDescription }}"{% endif %}{% if start and end %},
+  "about": {
+    "@id": "{{ pageUrl }}#festival"
+  }{% endif %}
 }
 </script>

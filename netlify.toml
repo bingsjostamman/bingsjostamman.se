@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build:netlify"
+  publish = "_site"
+
+[context.deploy-preview]
+  environment = { ELEVENTY_ENV = "development" }
+
+[context.branch-deploy]
+  environment = { ELEVENTY_ENV = "development" }
+
+[context.storybook]
+  command = "npm run build:storybook"
+  publish = "_styleguide"

@@ -1,0 +1,42 @@
+@use "sass:math";
+@use "../02-tools/fluid.utils" as utils;
+@use "sass:map";
+
+@mixin fluid-leading($config) {
+  $bp: map.get($config, bp);
+  $font: map.get($config, font);
+  $leading: map.get($config, leading);
+
+  $min-bp: map.get($bp, min);
+  $max-bp: map.get($bp, max);
+  $min-font: map.get($font, min);
+  $max-font: map.get($font, max);
+  $min-leading: map.get($leading, min);
+  $max-leading: map.get($leading, max);
+
+  // fluid root leading calculation
+  $prefer-lh-vw: math.div(
+      math.div($max-leading, 2) * $max-font - math.div($min-leading, 2) *
+        $min-font,
+      16
+    ) * 100;
+
+  $prefer-lh-rem: math.div(
+    math.div(
+      math.div($min-bp * $max-leading, 2) * $max-font -
+        math.div($max-bp * $min-leading, 2) * $min-font,
+      16
+    ),
+    $min-bp - $max-bp
+  );
+
+  --font-leading-root: clamp(
+    #{utils.to-fixed(math.div($min-leading * $min-font, 2 * 16))}rem,
+    #{utils.to-fixed($prefer-lh-vw)}vw + #{utils.to-fixed($prefer-lh-rem)}rem,
+    #{utils.to-fixed(math.div($max-leading * $max-font, 2 * 16))}rem
+  );
+
+  @for $i from 2 through map.get($leading, steps) {
+    --font-leading-#{$i}: calc(#{$i} * var(--font-leading-root));
+  }
+}

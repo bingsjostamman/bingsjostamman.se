@@ -4,8 +4,8 @@
   "status": "ready",
   "tags": ["UI", "navigation", "interactive"],
   "class": "menu",
+  "init": "initMenu",
   "examples": {
-    "Default": {},
-    "Open": { "state": "Menu rendered in open state for visual testing" }
+    "Default": {}
   }
 }

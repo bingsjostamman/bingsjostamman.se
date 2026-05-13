@@ -37,6 +37,7 @@ export default ({ mode }) => {
     },
     css: {
       devSourcemap: true,
+      postcss: "./postcss.config.js",
     },
     plugins: [
       {
@@ -44,7 +45,7 @@ export default ({ mode }) => {
         generateBundle(options, bundle) {
           console.log("📦 Bundled files:");
           Object.keys(bundle).forEach((fileName) =>
-            console.log(" -", fileName)
+            console.log(" -", fileName),
           );
         },
       },
@@ -69,10 +70,20 @@ export default ({ mode }) => {
           if (imports.length) {
             console.log(`📄 entry.css imports (${imports.length} files):`);
             imports.forEach((f) =>
-              console.log(`  ${fs.existsSync(f) ? "✅" : "⚠️"} ${f}`)
+              console.log(`  ${fs.existsSync(f) ? "✅" : "⚠️"} ${f}`),
             );
           } else {
             console.log("⚠️ No imports found in entry.css");
+          }
+        },
+      },
+      {
+        name: "copy-fonts",
+        closeBundle() {
+          const src = resolve("src/assets/fonts");
+          const dest = resolve("public/assets/fonts");
+          if (fs.existsSync(src)) {
+            fs.cpSync(src, dest, { recursive: true });
           }
         },
       },

@@ -1,19 +1,37 @@
-<div data-menu class="menu">
+{# src/_includes/components/menu.njk #}
+{% from "components/icon/icon.njk" import icon %}
+<div data-menu class="c-menu">
   <!-- Starts as an <a> for no-JS fallback -->
-  <a href="#main-nav" data-menu-toggle class="menu-toggle">
-    ☰ <span class="visually-hidden">Meny</span>
+  <a href="#main-nav" data-menu-toggle class="c-menu__toggle">
+    <span class="c-menu__toggle-label">Meny</span>
+    {{ icon("menu") }}
   </a>
 
   <!-- Backdrop only used when JS is active -->
-  <div class="menu-backdrop" aria-hidden="true"></div>
+  <div class="c-menu__backdrop" data-menu-backdrop aria-hidden="true"></div>
 
-  <nav id="main-nav" data-menu-panel class="menu-panel">
-    <a href="/">Hem</a>
-    <a href="/start/">Start</a>
-    <a href="/program/">Program</a>
-    <a href="/biljetter/">Biljetter</a>
-    <a href="/editions/2025/lineup/">Lineup</a>
-    <a href="/past-editions/">Past editions</a>
+  {% set menuLinks = [
+    { url: "/tisdag/", label: "Tisdag" },
+    { url: "/onsdag/", label: "Onsdag" },
+    { url: "/allspel/", label: "Allspel" },
+    { url: "/scen/", label: "På scen" },
+    { url: "/biljetter/", label: "Entré och biljetter" }
+  ] %}
+
+  <nav id="main-nav" data-menu-panel class="c-menu__panel">
+    <ul class="c-menu__items">
+      {% for link in menuLinks %}
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="{{ link.url }}" 
+            {% if page.url == link.url %}aria-current="page"{% endif %}
+          >
+            {{ link.label }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
   </nav>
 </div>
 

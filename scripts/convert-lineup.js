@@ -1,12 +1,13 @@
 /**
  * Convert lineup Excel file (e.g. lineup.xlsx) to JSON for Eleventy.
  * ---------------------------------------------------------------
- * Usage: node tools/convert-lineup.js lineup-2025.xlsx
+ * Usage: node scripts/convert-lineup.js data/lineup-2025.xlsx
  *
  * Creates: src/_data/lineup2025.json
  */
 
 import fs from "fs-extra";
+import { type } from "os";
 import path from "path";
 import xlsx from "xlsx";
 
@@ -42,6 +43,22 @@ function hhmmToMinutes(hhmm) {
   return h * 60 + m;
 }
 
+/**
+ * Normalize a time string for display (mod 24).
+ * "24:15" → "00:15", "25:00" → "01:00"
+ * Use 24+ notation in the Excel for post-midnight times;
+ * this keeps startMinutes/endMinutes correct for grid positioning
+ * while showing proper clock times in templates.
+ */
+function normalizeDisplayTime(hhmm) {
+  if (!hhmm) return "";
+  const [h, m] = hhmm.split(":").map(Number);
+  const normalizedH = h % 24;
+  return `${normalizedH.toString().padStart(2, "0")}:${m
+    .toString()
+    .padStart(2, "0")}`;
+}
+
 // ----------------------
 // 3. Clean + normalize
 // ----------------------
@@ -50,23 +67,79 @@ const cleaned = rows
   .map((row) => {
     const starttime = excelTimeToString(row.starttime || "");
     const endtime = excelTimeToString(row.endtime || "");
+    const hasStarttime = !!(row.starttime || row.starttime === 0);
+    const hasEndtime = !!(row.endtime || row.endtime === 0);
     const startMinutes = hhmmToMinutes(starttime);
     const endMinutes = hhmmToMinutes(endtime);
 
     return {
       day: row.day || "",
       stage: row.stage || "",
+      type: row.type || "",
+      placement: row.placement || "",
+      page: row.page || "",
       name: row.name.trim(),
-      url: row.url || "",
+      ref: row.ref || "",
       description: row.description || "",
       link: row.link || "",
+      longdescription: row.longdescription || "",
       image: row.image || "",
       starttime,
       endtime,
+      hasStarttime,
+      hasEndtime,
       startMinutes,
       endMinutes,
     };
   });
+
+// ----------------------
+// 3b. Fix post-midnight times
+// ----------------------
+// Festival days run past midnight. Excel can't store 24+ hour values,
+// so 00:40 (Wednesday) could be early morning OR post-midnight continuation.
+// Heuristic: if a day has acts starting at/after noon (>= 720 min), then
+// any act before 06:00 (< 360 min) is a post-midnight continuation → add 24h.
+const POST_MIDNIGHT_CUTOFF = 360; // 06:00
+const EVENING_THRESHOLD = 720; // 12:00
+
+const dayHasEvening = {};
+for (const act of cleaned) {
+  if (act.startMinutes >= EVENING_THRESHOLD) {
+    dayHasEvening[act.day] = true;
+  }
+}
+
+for (const act of cleaned) {
+  if (!dayHasEvening[act.day]) continue;
+
+  // Shift start time if it's in the post-midnight zone
+  if (act.hasStarttime && act.startMinutes < POST_MIDNIGHT_CUTOFF) {
+    act.startMinutes += 1440;
+  }
+
+  // Shift end time if it's in the post-midnight zone
+  if (act.hasEndtime && act.endMinutes < POST_MIDNIGHT_CUTOFF) {
+    act.endMinutes += 1440;
+  }
+
+  // Safeguard: if end still < start after shifting
+  if (act.hasEndtime && act.hasStarttime && act.endMinutes < act.startMinutes) {
+    act.endMinutes += 1440;
+  }
+}
+
+// Clean up temporary flags
+for (const act of cleaned) {
+  delete act.hasStarttime;
+  delete act.hasEndtime;
+}
+
+// Display times are always proper 24h clock (mod 24)
+for (const act of cleaned) {
+  act.starttime = normalizeDisplayTime(act.starttime);
+  act.endtime = normalizeDisplayTime(act.endtime);
+}
 
 // ----------------------
 // 4. Determine year

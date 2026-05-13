@@ -1,0 +1,29 @@
+{
+  "title": "Components/Headline Acts",
+  "description": "Displays headline acts with images, used on start and lineup pages. Depends on image macros and lineup data.",
+  "status": "ready",
+  "tags": ["UI", "content", "lineup"],
+  "class": "headline-acts",
+  "macro": true,
+  "examples": {
+    "Default": {
+      "lineup": [
+        { "placement": "headline", "name": "Spelmansmöte", "day": "onsdag", "stage": "Nygårdsgården", "starttime": "13:00", "endtime": "14:00", "image": "Ulrika-Sofia_hgdace", "description": "Sofia Sandén och Ulrika Bodén träffas i årets spelmansmöte." },
+        { "placement": "headline", "name": "Hoven Droven", "day": "onsdag", "stage": "Dansbanan", "starttime": "16:45", "endtime": "17:45", "image": "HD_d0ttej", "description": "Evigt unga Hoven Droven tar plats på scenen." },
+        { "placement": "headline", "name": "Ellika Frisell och Emma Reid", "day": "onsdag", "stage": "Kapellet", "starttime": "20:00", "endtime": "21:00", "image": "Ellika_Emma4012_lbpvwn", "description": "Låtar från Bingsjö med Ellika och Emma." }
+      ]
+    },
+    "Without images": {
+      "lineup": [
+        { "placement": "headline", "name": "Spelmansmöte", "day": "onsdag", "stage": "Nygårdsgården", "starttime": "13:00", "endtime": "14:00", "image": "", "description": "Sofia Sandén och Ulrika Bodén träffas i årets spelmansmöte." },
+        { "placement": "headline", "name": "Hoven Droven", "day": "onsdag", "stage": "Dansbanan", "starttime": "16:45", "endtime": "17:45", "image": "", "description": "" }
+      ]
+    },
+    "Single headline": {
+      "lineup": [
+        { "placement": "headline", "name": "Hoven Droven", "day": "onsdag", "stage": "Dansbanan", "starttime": "16:45", "endtime": "17:45", "image": "HD_d0ttej", "description": "Evigt unga Hoven Droven tar plats på scenen." },
+        { "placement": "", "name": "Some other act", "day": "onsdag", "stage": "Logen", "starttime": "19:00", "endtime": "20:00", "image": "", "description": "" }
+      ]
+    }
+  }
+}

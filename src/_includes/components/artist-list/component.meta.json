@@ -1,0 +1,26 @@
+{
+  "title": "Components/Artist List",
+  "description": "A list of non-headline artists with optional thumbnail image, link to artist page, and stage slot info. Used on the lineup page.",
+  "status": "ready",
+  "tags": ["UI", "content", "lineup"],
+  "class": "artist-list",
+  "macro": true,
+  "examples": {
+    "Default": {
+      "lineup": [
+        { "page": "artist", "placement": "", "name": "Täby Spelmansgille", "ref": "taby", "day": "tisdag", "stage": "Bystugubanan", "starttime": "19:00", "endtime": "20:30", "image": "lattaltet_cidg9i", "longdescription": "", "description": "Polskor efter Peckos Helmer" },
+        { "page": "", "placement": "", "name": "Bingsjölåtar med Täby spelmansgille", "ref": "taby", "day": "onsdag", "stage": "Låttältet", "starttime": "19:00", "endtime": "20:00", "image": "lattaltet_cidg9i", "longdescription": "", "description": "" },
+        { "page": "artist", "placement": "", "name": "Nordanstigs spelmanslag", "ref": "", "day": "tisdag", "stage": "Bystugubanan", "starttime": "20:30", "endtime": "21:00", "image": "", "longdescription": "", "description": "" },
+        { "page": "artist", "placement": "", "name": "Malungs folkhögskola", "ref": "", "day": "tisdag", "stage": "Bystugubanan", "starttime": "21:00", "endtime": "22:00", "image": "", "longdescription": "Gamla och nya Malungselever hälsas välkomna att spela till dans", "description": "" },
+        { "page": "artist", "placement": "headline", "name": "Hoven Droven", "ref": "", "day": "onsdag", "stage": "Dansbanan", "starttime": "16:45", "endtime": "17:45", "image": "HD_d0ttej", "longdescription": "Första CD:n släpptes 1994...", "description": "" }
+      ]
+    },
+    "Without images": {
+      "lineup": [
+        { "page": "artist", "placement": "", "name": "Bröderna", "ref": "", "day": "onsdag", "stage": "Tunet", "starttime": "19:15", "endtime": "19:45", "image": "", "longdescription": "", "description": "" },
+        { "page": "artist", "placement": "", "name": "Eyra", "ref": "", "day": "onsdag", "stage": "Tunet", "starttime": "23:15", "endtime": "23:45", "image": "", "longdescription": "", "description": "" },
+        { "page": "artist", "placement": "", "name": "Kapell Malén", "ref": "", "day": "onsdag", "stage": "Tunet", "starttime": "22:15", "endtime": "22:45", "image": "", "longdescription": "En av Sveriges mest spännande folkmusikgrupper.", "description": "" }
+      ]
+    }
+  }
+}

@@ -10,10 +10,9 @@ eleventyExcludeFromCollections: true
   <section class="report-summary">
     <h2>Summary</h2>
     <ul>
-      <li><strong>Pages tested:</strong> {{ accessibility.summary.pages }}</li>
-      <li><strong>Total violations:</strong> {{ accessibility.summary.violations }}</li>
-      <li><strong>Warnings:</strong> {{ accessibility.summary.incomplete }}</li>
-      <li><strong>Passed tests:</strong> {{ accessibility.summary.passes }}</li>
+      <li><strong>Pages tested:</strong> {{ accessibility.summary.totalPages }}</li>
+      <li><strong>Total violations:</strong> {{ accessibility.summary.totalViolations }}</li>
+      <li><strong>Pages with issues:</strong> {{ accessibility.summary.pagesWithIssues }}</li>
     </ul>
   </section>
 
@@ -21,7 +20,7 @@ eleventyExcludeFromCollections: true
     {% for page in accessibility.pages %}
       {% if page.violations and page.violations.length %}
         <article class="page-report">
-          <h2>{{ page.url }}</h2>
+          <h2>{{ page.path }}</h2>
 
           <p>
           <strong>{{ page.violations.length }}</strong>
@@ -47,9 +46,9 @@ eleventyExcludeFromCollections: true
                     <ul class="nodes">
                       {% for node in issue.nodes %}
                         <li>
-                          <code>{{ node.target | join(', ') | safe }}</code>
+                          <code>{{ node.target | join(', ') }}</code>
                           {% if node.failureSummary %}
-                            <p>{{ node.failureSummary | safe }}</p>
+                            <p>{{ node.failureSummary }}</p>
                           {% endif %}
                         </li>
                       {% endfor %}
@@ -61,6 +60,7 @@ eleventyExcludeFromCollections: true
           </ul>
         </article>
       {% endif %}
+      <br><hr>
     {% endfor %}
   </section>
 {% else %}

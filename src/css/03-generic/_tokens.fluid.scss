@@ -1,0 +1,10 @@
+@use "../01-settings/fluid.config" as config;
+@use "../02-tools/fluid.font-scale" as font;
+@use "../02-tools/fluid.leading" as lead;
+@use "../02-tools/fluid.spacing" as space;
+
+:root {
+  @include font.fluid-font-scale(config.$fluid-config);
+  @include lead.fluid-leading(config.$fluid-config);
+  @include space.fluid-spacing(config.$fluid-config);
+}

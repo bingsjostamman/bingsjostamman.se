@@ -1,0 +1,18 @@
+/**
+ * FOCUS INSET
+ *
+ * Use this utility to add behaviour on top of the default generic focus styling
+ * provided in elements/_04-focus.css.
+ * 
+ * 1. Where an outline outside it's box can't be used due to clipping or visual
+ *    reasons, use this inset class
+ *
+ */
+
+.u-focus-inset:focus-visible,
+.u-focus-outline.u-focus-inset:focus-within:has(:focus-visible) {
+  /* 1. */
+  box-shadow: inset 0 0 0 var(--focus-box-shadow-size)
+    var(--color-focus-box-shadow);
+  outline-offset: calc(var(--focus-outline-size) * -2.5);
+}

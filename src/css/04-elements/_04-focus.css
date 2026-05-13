@@ -1,0 +1,28 @@
+/**
+ * FOCUS STYLING
+ *
+ * No need anymore for styling :focus, styling :focus-visible is enough
+ * https://hachyderm.io/@hi_mayank/112124624184257324
+ *
+ * 1. Make sure elements that receive focus are visible on top of covering areas
+ *
+ * 2. Use a black outline over a wider white box-shadow as default to ensure
+ *    enough contrast in all cases. Override when needed.
+ *
+ * 3. Non-interactive elements where focus may be programmatically set should
+ *    not show focus markers.
+ */
+
+*:where(:focus-visible) {
+  position: relative; /* 1. */
+  z-index: 1000; /* 1. */
+  outline: var(--focus-outline-size) solid var(--color-focus-outline); /* 2. */
+  outline-offset: var(--focus-outline-size); /* 2. */
+  box-shadow: 0 0 0 var(--focus-box-shadow-size) var(--color-focus-box-shadow); /* 2. */
+}
+
+:where([tabindex="-1"]):focus-visible {
+  /* 3. */
+  outline: none;
+  box-shadow: none;
+}

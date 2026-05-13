@@ -8,7 +8,7 @@ import { createRequire } from "module";
 dotenv.config();
 console.log(
   "🔍 Eleventy environment:",
-  process.env.ELEVENTY_ENV || "development"
+  process.env.ELEVENTY_ENV || "development",
 );
 
 export default async function (eleventyConfig) {
@@ -60,6 +60,13 @@ export default async function (eleventyConfig) {
       .replace(/ö/g, "o")
       .replace(/[^\w]+/g, "-")
       .replace(/^-+|-+$/g, "");
+  });
+
+  /* Swedish date filter – "2025-07-01" → "1 juli" */
+  eleventyConfig.addFilter("swedishDate", function (dateInput) {
+    const dt = DateTime.fromISO(dateInput, { zone: "Europe/Stockholm" });
+    if (!dt.isValid) return dateInput;
+    return dt.setLocale("sv").toFormat("d MMMM");
   });
 
   /* Date filter */
@@ -130,7 +137,7 @@ export default async function (eleventyConfig) {
     (value, length = 2, char = "0") => {
       if (value === undefined || value === null) return "";
       return String(value).padStart(length, char);
-    }
+    },
   );
 
   /* GroupBy filter */
@@ -146,6 +153,13 @@ export default async function (eleventyConfig) {
       grouper: key,
       items: groups[key],
     }));
+  });
+
+  /* Markdown filter */
+  eleventyConfig.addFilter("markdown", (content) => {
+    if (!content) return "";
+    const markdownIt = require("markdown-it")({ html: true });
+    return markdownIt.render(content);
   });
 
   /* ----------------------------------------------------------------------
@@ -214,7 +228,8 @@ export default async function (eleventyConfig) {
           scanTemplates(fullPath);
         } else if (/\.(njk|md|html)$/.test(entry.name)) {
           const content = fs.readFileSync(fullPath, "utf-8");
-          const regex = /\{%\s*include\s+["']components\/([^\/]+)\//g;
+          const regex =
+            /(?:include|from)\s+["']components\/([\w-]+)\/[\w-]+\.njk["']/g;
           let match;
           while ((match = regex.exec(content)) !== null) {
             usedComponents.add(match[1]);
@@ -229,10 +244,10 @@ export default async function (eleventyConfig) {
       fs.mkdirSync(prebuildDir, { recursive: true });
     fs.writeFileSync(
       usedComponentsFile,
-      JSON.stringify([...usedComponents], null, 2)
+      JSON.stringify([...usedComponents], null, 2),
     );
     console.log(
-      `✅ Updated used components: ${[...usedComponents].join(", ")}`
+      `✅ Updated used components: ${[...usedComponents].join(", ")}`,
     );
   });
 
@@ -249,13 +264,20 @@ export default async function (eleventyConfig) {
   eleventyConfig.watchIgnores.add("src/js/**");
   eleventyConfig.watchIgnores.add("src/css/**");
 
+  // Prevent watch loops: prebuilt/ is written by beforeBuild each run;
+  // without this, setUseGitIgnore(false) means the .gitignore exclusion
+  // for prebuilt/ is gone and every write re-triggers a build.
+  // .stories.js files are generated artefacts that don't affect Eleventy output.
+  eleventyConfig.watchIgnores.add("prebuilt/**");
+  eleventyConfig.watchIgnores.add("src/_includes/components/**/*.stories.js");
+
   // Watch only content + templates
   eleventyConfig.addWatchTarget("src/_includes/");
   eleventyConfig.addWatchTarget("src/content/");
   eleventyConfig.addWatchTarget("src/pages/");
   eleventyConfig.addWatchTarget("src/_data/");
 
-  // Watch Vite output
+  // Vite output + static assets (copied into public/assets after Vite build)
   eleventyConfig.addPassthroughCopy({ "public/assets": "assets" });
 
   // Root folders

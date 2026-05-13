@@ -1,0 +1,13 @@
+---
+layout: layouts/base
+year: 2025
+eleventyComputed:
+  title: "Artister {{ year }}"
+  permalink: "{% if year == editions.current %}/scen/index.html{% else %}/{{ year }}/scen/index.html{% endif %}"
+---
+
+<h1>Artister {{ year }}</h1>
+
+{% include "components/headline-acts/headline-acts.njk" %}
+
+{% include "components/artist-list/artist-list.njk" %}

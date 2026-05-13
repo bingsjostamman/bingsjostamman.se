@@ -1,6 +1,7 @@
 /** @type { import('@storybook/html-vite').Preview } */
 
 const preview = {
+  tags: ['autodocs'],
   parameters: {
     controls: {
       matchers: {

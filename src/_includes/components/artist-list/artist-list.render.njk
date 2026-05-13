@@ -1,0 +1,47 @@
+{#- Render wrapper for prebuild-stories.js
+    Cannot use the real template because it imports thumbnailImage which depends
+    on Cloudinary. Reproduces the same HTML structure with placeholder images. -#}
+
+{%- set others = [] -%}
+{%- for act in lineup -%}
+  {%- if act.page == "artist" and act.placement != "headline" -%}
+    {%- set others = (others.push(act), others) -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if others.length -%}
+<section class="c-artist-list">
+  <h2 class="c-artist-list__heading">Övriga artister</h2>
+  <ul class="c-artist-list__list">
+    {%- for act in others | sort(false, false, 'name') %}
+    <li class="c-artist-list__item">
+      {%- if act.image %}
+      <div class="c-artist-list__image">
+        <img src="https://placehold.co/300x300?text={{ act.name | urlencode }}" alt="{{ act.name }}" loading="lazy" width="300" height="300">
+      </div>
+      {%- endif %}
+      <div class="c-artist-list__body">
+        {%- if act.longdescription %}
+        <a class="c-artist-list__name" href="/scen/{{ act.name | lower | replace(" ", "-") }}/">{{ act.name }}</a>
+        {%- else %}
+        <span class="c-artist-list__name">{{ act.name }}</span>
+        {%- endif %}
+        {%- set slots = [] -%}
+        {%- if act.ref -%}
+          {%- for slot in lineup -%}
+            {%- if slot.ref == act.ref -%}
+              {%- set slots = (slots.push(slot), slots) -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- else -%}
+          {%- set slots = (slots.push(act), slots) -%}
+        {%- endif -%}
+        {%- for slot in slots %}
+        <span class="c-artist-list__meta">{{ slot.day | capitalize }} · {{ slot.starttime }}–{{ slot.endtime }} · {{ slot.stage }}</span>
+        {%- endfor %}
+      </div>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif -%}

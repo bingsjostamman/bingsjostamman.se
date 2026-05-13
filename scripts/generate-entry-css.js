@@ -8,9 +8,11 @@ const layers = [
   "02-tools",
   "03-generic",
   "04-elements",
-  "05-objects",
-  "06-components",
-  "07-utilities",
+  "05-themes",
+  "06-objects",
+  "07-components",
+  "08-utilities",
+  "09-shame"
 ];
 const prebuildDir = "prebuilt";
 const entryPath = path.resolve("src/css/entry.css");
@@ -45,8 +47,6 @@ function getUsedComponentCss() {
     const cssPath = path.resolve(componentsDir, name, `${name}.css`);
     if (fs.existsSync(cssPath)) {
       cssFiles.push(cssPath);
-    } else {
-      console.warn(`⚠️ Component CSS missing: ${cssPath}`);
     }
   });
   return cssFiles;
@@ -64,15 +64,30 @@ function toRelative(file) {
 // ----------------------
 const globalCss = getGlobalCssFiles();
 const componentCss = getUsedComponentCss();
-const allCssFiles = [...globalCss, ...componentCss];
+
+// Split globals into layers before utilities/shame and after
+const globalsBefore = globalCss.filter(
+  (f) => !f.includes("/08-utilities/") && !f.includes("/09-shame/")
+);
+const globalsAfter = globalCss.filter(
+  (f) => f.includes("/08-utilities/") || f.includes("/09-shame/")
+);
+
+// Order: global layers → components → utilities & shame
+const allCssFiles = [...globalsBefore, ...componentCss, ...globalsAfter];
 
 const imports = allCssFiles.map((f) => `@import "${toRelative(f)}";`);
 
-fs.writeFileSync(entryPath, imports.join("\n"));
-
-console.log(
-  `✅ entry.css generated with ${globalCss.length} global + ${componentCss.length} component CSS imports`
-);
+const newContent = imports.join("\n");
+const existing = fs.existsSync(entryPath) ? fs.readFileSync(entryPath, "utf-8") : null;
+if (newContent === existing) {
+  console.log("✅ entry.css unchanged, skipping write");
+} else {
+  fs.writeFileSync(entryPath, newContent);
+  console.log(
+    `✅ entry.css generated with ${globalCss.length} global + ${componentCss.length} component CSS imports`
+  );
+}
 
 // ----------------------
 // Stylelint auto-fix

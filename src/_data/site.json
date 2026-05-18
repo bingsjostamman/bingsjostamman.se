@@ -1,7 +1,7 @@
 {
   "name": "Bingsjöstämman",
   "lang": "sv",
-  "baseUrl": "https://bingsjostamman.se",
+  "baseUrl": "https://www.bingsjostamman.se",
   "description": "Varje sommar i början av juli samlas spelmän, dansare och andra musikintresserade i Bingsjö, då hela byn blir en levande scen där alla är välkomna att deltaga.",
   "defaultImage": "https://res.cloudinary.com/bingsjostamman/image/upload/v1778658003/2026/bingsjostamman_share2026_mr2fcl.jpg",
   "organization": {

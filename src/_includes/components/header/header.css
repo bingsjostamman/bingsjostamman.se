@@ -25,6 +25,7 @@
 .c-header__logo {
   display: inline-flex;
   flex-shrink: 0;
+  color: var(--color-font--text);
 }
 
 .c-header__logo-img {

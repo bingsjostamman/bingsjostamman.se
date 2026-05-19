@@ -1,3 +1,9 @@
+/* Hide close button on desktop */
+@media (width >= 1200px) {
+  .c-menu__close {
+    display: none;
+  }
+}
 /* ==========================================================================
    Menu
    Component: Main site navigation menu
@@ -18,14 +24,15 @@
   /* position: absolute; */
   /* inset: 0 auto auto 0; */
   /* transform: translateY(-100%); */
-  background: white;
-  transition: transform 0.5s ease-out;
+  transition: all 0.2s ease-in;
   z-index: 10;
+  padding-inline: var(--size-double) var(--size-quad);
 }
 
 :target.c-menu__panel {
   /* transform: translateY(0%); */
   display: block;
+  transition: transform 0.4s ease-out;
 }
 
 /* Reduced motion */
@@ -45,7 +52,7 @@
   appearance: none;
   border: none;
   background: none;
-
+  z-index: 0;
   position: relative;
 
   display: flex;
@@ -72,36 +79,43 @@
 /* Menu panel */
 [data-js] .c-menu__panel {
 
-  position: absolute;
-  top: calc(var(--size-quad) + var(--size-double));
+  position: fixed;
+  top: 0;
   right: 0;
   width: 30em;
   max-width: 80vw;
   height: 100%;
   overflow-y: scroll;
   transform: translateX(100%);
-
-  background-color: lightgreen;
 }
 
 [data-js] .c-menu__panel {
   display: block;
+  transition: transform 0.2s ease-in, max-height 0.2s ease-in, opacity 0.2s ease-in;
 }
 
-[data-js] .c-menu__panel[data-open="false"] .c-menu__items {
+[data-js] .c-menu__panel[data-open="true"] {
+  transition: transform 0.38s ease-out, max-height 0.38s ease-out, opacity 0.2s ease-out;
+}
+
+[data-js] .c-menu__panel[hidden] {
   display: none;
 }
 
-[data-js] .c-menu__panel[data-open="true"] .c-menu__items {
-  display: block;
-  transition: transform 0.2s ease-in;
-}
-
-[data-js] body:has(.c-menu__panel[data-open="true"]) {
-  overflow: hidden;
-}
 
 @media (width <= 1199px) {
+  [data-js] body:has(.c-menu__panel[data-open="true"]) {
+    overflow: hidden;
+  }
+
+[data-js] .c-menu__panel[data-open="false"] .c-menu__items {
+    display: none;
+  }
+
+  [data-js] .c-menu__panel[data-open="true"] .c-menu__items {
+    display: block;
+  }
+
   [data-js] .c-menu__panel {
     transform: translateX(100%);
   }
@@ -112,19 +126,60 @@
 
 }
 
+.c-menu__close {
+  position: sticky;
+  top: var(--size-full);
+  left: calc(100% + var(--size-half));
+  margin-inline-end: var(--size--quad);
+  background-color: none;
+  border: none;
+  font-size: var(--font-size-3);
+  padding: var(--size-half);
+  min-width: 1.1em;
+  min-height: 1.1em;
+  box-sizing: border-box;
+}
+
 .c-menu__panel a.active {
   /* font-weight: bold;
   text-decoration: underline;
   color: #07c; */
 }
 
+.c-menu__item + .c-menu__item {
+  border-block-start: 1px solid var(--color-border--decorate);
+}
+
+.c-menu__link {
+  line-height: 1;
+  font-size: var(--font-size-3);
+  padding-block: var(--size-full);
+  display: block;
+  color: var(--color-font--text);
+  /* text-transform: uppercase; */
+  /* font-family: 'Alegreya'; */
+  font-weight: 500;
+}
+
+@media (width >= 1200px) {
+
+  .c-menu__panel {
+    padding-inline: var(--size-double);
+  }
+  .c-menu__link {
+    font-size: var(--font-size-2);
+  }
+}
+
 @media (width >= 1200px) {
   [data-js] .c-menu__panel {
+    position: absolute;
     height: auto;
     top: 100%;
-    transform: translateX(0);
+    transform: translateY(-0.5rem);
     max-height: 0;
-    transition: max-height 3s ease-in-out;    
+    opacity: 0;
+    overflow: hidden;
     /* position: absolute;
     height: auto;
     width: auto;
@@ -134,16 +189,19 @@
     right: auto;
     opacity: 0;
     pointer-events: none; */
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  [data-js] .c-menu__panel .c-menu__items {
+    display: block;
   }
 
   [data-js] .c-menu__panel[data-open="true"] {
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
-    z-index: -1;
+    z-index: 10;
     max-height: 100vh;
-    transition: max-height 3s ease-in;
-
   }
 
 }
@@ -155,16 +213,17 @@
   background: rgb(0 0 0 / 45%);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.15s ease-in;
   z-index: 9;
 }
 
 [data-js] .c-menu__backdrop[data-open="true"] {
   opacity: 1;
   pointer-events: auto;
+  transition: opacity 0.3s ease-out;
 }
 
-@media (width >= 820px) {
+@media (width >= 1200px) {
   [data-js] .c-menu__backdrop {
     display: none;
   }

@@ -11,15 +11,18 @@
   <div class="c-menu__backdrop" data-menu-backdrop aria-hidden="true"></div>
 
   {% set menuLinks = [
-    { url: "/tisdag/", label: "Tisdag" },
-    { url: "/onsdag/", label: "Onsdag" },
+    { url: "/tisdag/", label: "Tisdag", dateKey: "tisdag" },
+    { url: "/onsdag/", label: "Onsdag", dateKey: "onsdag" },
     { url: "/allspel/", label: "Allspel" },
     { url: "/scen/", label: "På scen" },
     { url: "/biljetter/", label: "Entré och biljetter" }
   ] %}
 
-  <nav id="main-nav" data-menu-panel class="c-menu__panel">
-    <ul class="c-menu__items">
+  <nav id="main-nav" data-menu-panel class="c-menu__panel t-component-header">
+    <button type="button" class="c-menu__close" data-menu-close aria-label="Stäng meny">
+      {{ icon("close") }}
+    </button>
+    <ul class="c-menu__items u-list-unstyled">
       {% for link in menuLinks %}
         <li class="c-menu__item">
           <a
@@ -27,59 +30,7 @@
             href="{{ link.url }}" 
             {% if page.url == link.url %}aria-current="page"{% endif %}
           >
-            {{ link.label }}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-    <ul class="c-menu__items">
-      {% for link in menuLinks %}
-        <li class="c-menu__item">
-          <a
-            class="c-menu__link"
-            href="{{ link.url }}" 
-            {% if page.url == link.url %}aria-current="page"{% endif %}
-          >
-            {{ link.label }}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-    <ul class="c-menu__items">
-      {% for link in menuLinks %}
-        <li class="c-menu__item">
-          <a
-            class="c-menu__link"
-            href="{{ link.url }}" 
-            {% if page.url == link.url %}aria-current="page"{% endif %}
-          >
-            {{ link.label }}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-    <ul class="c-menu__items">
-      {% for link in menuLinks %}
-        <li class="c-menu__item">
-          <a
-            class="c-menu__link"
-            href="{{ link.url }}" 
-            {% if page.url == link.url %}aria-current="page"{% endif %}
-          >
-            {{ link.label }}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-    <ul class="c-menu__items">
-      {% for link in menuLinks %}
-        <li class="c-menu__item">
-          <a
-            class="c-menu__link"
-            href="{{ link.url }}" 
-            {% if page.url == link.url %}aria-current="page"{% endif %}
-          >
-            {{ link.label }}
+            {{ link.label }}{% if link.dateKey and dates[link.dateKey] %} {{ dates[link.dateKey] | swedishDate }}{% endif %}
           </a>
         </li>
       {% endfor %}

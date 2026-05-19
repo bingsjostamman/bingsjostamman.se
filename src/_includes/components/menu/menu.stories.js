@@ -88,6 +88,218 @@ export const Default = () => `
         </li>
       
     </ul>
+    <ul class="c-menu__items">
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/tisdag/" 
+            
+          >
+            Tisdag
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/onsdag/" 
+            
+          >
+            Onsdag
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/allspel/" 
+            
+          >
+            Allspel
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/scen/" 
+            
+          >
+            På scen
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/biljetter/" 
+            
+          >
+            Entré och biljetter
+          </a>
+        </li>
+      
+    </ul>
+    <ul class="c-menu__items">
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/tisdag/" 
+            
+          >
+            Tisdag
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/onsdag/" 
+            
+          >
+            Onsdag
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/allspel/" 
+            
+          >
+            Allspel
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/scen/" 
+            
+          >
+            På scen
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/biljetter/" 
+            
+          >
+            Entré och biljetter
+          </a>
+        </li>
+      
+    </ul>
+    <ul class="c-menu__items">
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/tisdag/" 
+            
+          >
+            Tisdag
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/onsdag/" 
+            
+          >
+            Onsdag
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/allspel/" 
+            
+          >
+            Allspel
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/scen/" 
+            
+          >
+            På scen
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/biljetter/" 
+            
+          >
+            Entré och biljetter
+          </a>
+        </li>
+      
+    </ul>
+    <ul class="c-menu__items">
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/tisdag/" 
+            
+          >
+            Tisdag
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/onsdag/" 
+            
+          >
+            Onsdag
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/allspel/" 
+            
+          >
+            Allspel
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/scen/" 
+            
+          >
+            På scen
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/biljetter/" 
+            
+          >
+            Entré och biljetter
+          </a>
+        </li>
+      
+    </ul>
   </nav>
 </div>
 

@@ -4,7 +4,6 @@
    ========================================================================== */
 
 .c-menu {
-  /* position: relative; */
 }
 
 /* Generic reset */
@@ -20,7 +19,7 @@
   /* inset: 0 auto auto 0; */
   /* transform: translateY(-100%); */
   background: white;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease-out;
   z-index: 10;
 }
 
@@ -48,11 +47,11 @@
   background: none;
 
   position: relative;
-  z-index: 11;
 
   display: flex;
   align-items: center;
   gap: var(--size-quarter);  
+  cursor: pointer;  
 }
 
 .c-menu__toggle .icon {
@@ -62,52 +61,47 @@
 
 .c-menu__toggle-label {
   text-transform: uppercase;
-  font-size: var(--font-size-1);
+  font-size: var(--font-size-0);
   font-weight: 500;
   font-family: "Alegreya Sans";
   line-height: 1;
   position: relative;
-  margin-block-start: 0.15em;  
+  margin-block-start: 0.15em;
 }
 
 /* Menu panel */
 [data-js] .c-menu__panel {
 
   position: absolute;
-  top: 0;
+  top: calc(var(--size-quad) + var(--size-double));
   right: 0;
   width: 30em;
   max-width: 80vw;
   height: 100%;
-  /* transform: translateX(100%); */
-  /* transition: transform 0.3s ease; */
+  overflow-y: scroll;
+  transform: translateX(100%);
 
   background-color: lightgreen;
-
-  /* position: fixed;
-  top: 0;
-  right: 0;
-  width: 80vw;
-  max-width: 320px;
-  height: 100vh;
-  background: white;
-  padding: 2rem;
-  overflow-y: auto;
-  z-index: 1100;
-
-    background: lightgreen;
- */
 }
 
-[data-js] .c-menu__panel[data-open="false"] {
-  display: none;
-}
-
-[data-js] .c-menu__panel[data-open="true"] {
+[data-js] .c-menu__panel {
   display: block;
 }
 
-@media (width <= 819px) {
+[data-js] .c-menu__panel[data-open="false"] .c-menu__items {
+  display: none;
+}
+
+[data-js] .c-menu__panel[data-open="true"] .c-menu__items {
+  display: block;
+  transition: transform 0.2s ease-in;
+}
+
+[data-js] body:has(.c-menu__panel[data-open="true"]) {
+  overflow: hidden;
+}
+
+@media (width <= 1199px) {
   [data-js] .c-menu__panel {
     transform: translateX(100%);
   }
@@ -124,10 +118,13 @@
   color: #07c; */
 }
 
-@media (width >= 820px) {
+@media (width >= 1200px) {
   [data-js] .c-menu__panel {
     height: auto;
     top: 100%;
+    transform: translateX(0);
+    max-height: 0;
+    transition: max-height 3s ease-in-out;    
     /* position: absolute;
     height: auto;
     width: auto;
@@ -135,7 +132,6 @@
     inset: auto auto auto 0;
     top: 100%;
     right: auto;
-    transform: translateY(-20%);
     opacity: 0;
     pointer-events: none; */
   }
@@ -144,7 +140,9 @@
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
-      z-index: -1;
+    z-index: -1;
+    max-height: 100vh;
+    transition: max-height 3s ease-in;
 
   }
 

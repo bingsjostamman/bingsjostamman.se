@@ -1,5 +1,6 @@
 @import "./01-settings/_color-schemes.css";
 @import "./01-settings/_config.css";
+@import "./03-generic/_applications.css";
 @import "./03-generic/_fonts.css";
 @import "./03-generic/_tokens.fluid.css";
 @import "./03-generic/_typography.css";
@@ -14,6 +15,7 @@
 @import "./../_includes/components/allspel-tunes/allspel-tunes.css";
 @import "./../_includes/components/icon/icon.css";
 @import "./../_includes/components/logo/logo.css";
+@import "./../_includes/components/menu/menu.css";
 @import "./../_includes/components/timeline/timeline.css";
 @import "./../_includes/components/header/header.css";
 @import "./../_includes/components/footer/footer.css";

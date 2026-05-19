@@ -1,0 +1,8 @@
+:root {
+    /* Focus marker settings */
+    --color-focus-outline: var(--token-color-black);
+    --focus-outline-size: 2px;
+    --color-focus-box-shadow: var(--token-color-white);
+    --focus-box-shadow-size: 6px;
+}
+

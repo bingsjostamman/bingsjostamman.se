@@ -7,17 +7,91 @@ pagination:
   alias: artist
   addAllPagesToCollections: true
 eleventyComputed:
-  title: "{{ artist.name }}"
-  description: "{{ artist.description or ('Artist pa Bingsjostamman ' ~ year) }}"
-  socialImage: "{{ artist.image and ('https://res.cloudinary.com/dbblxggj5/image/upload/c_fill,w_1200,h_630,q_auto,f_auto/' ~ artist.image) or site.defaultImage }}"
-  permalink: "{% if year == editions.current %}/scen/{{ artist.name | slugify }}/{% else %}/{{ year }}/scen/{{ artist.name | slugify }}/{% endif %}"
-eleventyExcludeFromCollections: true
+  title: "{{ artist.name or 'Unknown' }}"
+  permalink: "{% if year == editions.current %}/scen/{{ (artist.name or 'unknown') | slugify }}/{% else %}/{{ year }}/scen/{{ (artist.name or 'unknown') | slugify }}/{% endif %}"
 ---
 
 {% from "components/image/image-hero.njk" import heroImage %}
 
 <article>
-  
+  <h1>{{ artist.name }}</h1>
+
+  {% if artist.image %}
+    <div class="artist-image">
+      {{ heroImage(artist.image | replace(".jpg", "") | replace(".png", ""), artist.name) }}
+    </div>
+  {% endif %}
+
+  <dl class="artist-meta">
+    <dt>Dag</dt>
+    <dd>{{ artist.day | capitalize }}{% if dates[artist.day] %}, {{ dates[artist.day] }}{% endif %}</dd>
+    <dt>Scen</dt>
+    <dd>{{ artist.stage }}</dd>
+    <dt>Tid</dt>
+    <dd>{{ artist.starttime }}–{{ artist.endtime }}</dd>
+  </dl>
+
+
+
+    {# Gather all slots for this artist by ref - filter manually since selectattr doesn't support variables #}
+    {% set allSlots = [] %}
+    {% for slot in fullLineup %}
+      {% if slot.page == "artist" and slot.ref == artist.ref %}
+        {% set allSlots = allSlots.concat([slot]) %}
+      {% endif %}
+    {% endfor %}
+
+    {% if allSlots.length > 1 %}
+      <ul class="artist-meta">
+        {% for slot in allSlots %}
+          <li>{{ slot.stage }} {{ slot.day }} {{ slot.starttime }}–{{ slot.endtime }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="artist-meta">
+        {{ artist.stage }} {{ artist.day }} {{ artist.starttime }}–{{ artist.endtime }}
+      </div>
+    {% endif %}
+
+  {% if artist.description %}
+    <p>{{ artist.description }}</p>
+  {% endif %}
+
+  {% if artist.longdescription %}
+    <div class="artist-longdescription">
+      {{ artist.longdescription }}
+    </div>
+  {% endif %}
+
+  {% if artist.link %}
+    <p><a href="{{ artist.link }}" target="_blank" rel="noopener noreferrer">Besök webbplats ↗</a></p>
+  {% endif %}
+
+  {%- if artist.ref %}
+    {% set relatedSlots = [] %}
+    {% for slot in fullLineup %}
+      {% if slot.ref == artist.ref and slot.name != artist.name %}
+        {% set relatedSlots = (relatedSlots.push(slot), relatedSlots) %}
+      {% endif %}
+    {% endfor %}
+
+    {% if relatedSlots.length %}
+    <section class="artist-related">
+      <h2>Fler spelningar</h2>
+      <ul>
+        {% for slot in relatedSlots %}
+          <li>
+            <strong>{{ slot.name }}</strong><br>
+            {{ slot.day | capitalize }}{% if dates[slot.day] %}, {{ dates[slot.day] }}{% endif %}
+            · {{ slot.starttime }}–{{ slot.endtime }}
+            · {{ slot.stage }}
+            {% if slot.description %}<p>{{ slot.description }}</p>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  {%- endif %}
 </article>
 
 {% if year != editions.current %}

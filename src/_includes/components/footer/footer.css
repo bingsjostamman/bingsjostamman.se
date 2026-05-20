@@ -49,6 +49,7 @@
 .c-footer__some-link {
     display: inline-block;
     margin-inline: var(--size-half);
+    font-size: 0;
 }
 
 .c-footer__some-icon {

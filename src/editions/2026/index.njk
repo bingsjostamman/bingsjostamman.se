@@ -27,6 +27,9 @@ eleventyComputed:
   <p>Programmet är klart och kommer att presenteras här inom kort. Först ut är <a href="{% if year == editions.current %}/allspel/{% else %}/{{ year }}/allspel/{% endif %}" style="text-decoration: underline;">årets allspelslåtar</a>!</p>
 </div>
 
+{% include "components/headline-acts/headline-acts.njk" %}
+
+
 {% if isArchive == "true" %}
 <div class="archive-banner">
   This is an archive from {{ year }}.

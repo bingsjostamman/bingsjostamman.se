@@ -11,12 +11,9 @@
 
 .c-tunes-tune {
   display: flex;
-  border: 1px solid var(--color-border--decorate);
   justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--size-full);
-  padding: var(--size-full);
-  border-radius: 6px;
 }
 
 .c-tunes-info {

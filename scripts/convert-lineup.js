@@ -116,6 +116,7 @@ const cleaned = rows
       description: row.description || "",
       link: row.link || "",
       longdescription: row.longdescription || "",
+      eyebrow: row.eyebrow || "",
       image: row.image || "",
       starttime,
       endtime,

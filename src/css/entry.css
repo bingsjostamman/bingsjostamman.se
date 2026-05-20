@@ -11,6 +11,7 @@
 @import "./04-elements/_04-focus.css";
 @import "./05-themes/_themes.css";
 @import "./06-objects/container.css";
+@import "./07-components/artist.css";
 @import "./07-components/temp.css";
 @import "./../_includes/components/allspel-tunes/allspel-tunes.css";
 @import "./../_includes/components/icon/icon.css";

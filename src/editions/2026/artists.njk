@@ -12,26 +12,24 @@ eleventyComputed:
 ---
 
 {% from "components/image/image-hero.njk" import heroImage %}
-
-<article>
-  <h1>{{ artist.name }}</h1>
-
-  {% if artist.image %}
-    <div class="artist-image">
-      {{ heroImage(artist.image | replace(".jpg", "") | replace(".png", ""), artist.name) }}
-    </div>
-  {% endif %}
-
-  <dl class="artist-meta">
-    <dt>Dag</dt>
-    <dd>{{ artist.day | capitalize }}{% if dates[artist.day] %}, {{ dates[artist.day] }}{% endif %}</dd>
-    <dt>Scen</dt>
-    <dd>{{ artist.stage }}</dd>
-    <dt>Tid</dt>
-    <dd>{{ artist.starttime }}–{{ artist.endtime }}</dd>
-  </dl>
+{% from "components/icon/icon.njk" import icon %}
 
 
+<article class="artist">
+  <div class="artist-intro">
+    <h1 class="artist-headline">
+      {%- if artist.eyebrow %}
+      <span class="artist__eyebrow">{{ icon("music") }}{{ artist.eyebrow }}</span>
+      {%- endif %}
+      {{ artist.name }}
+    </h1>
+
+    {% if artist.image %}
+      <div class="artist-image">
+        {{ heroImage(artist.image | replace(".jpg", "") | replace(".png", ""), artist.name) }}
+      </div>
+    {% endif %}
+  </div>
 
     {# Gather all slots for this artist by ref - filter manually since selectattr doesn't support variables #}
     {% set allSlots = [] %}
@@ -41,30 +39,45 @@ eleventyComputed:
       {% endif %}
     {% endfor %}
 
-    {% if allSlots.length > 1 %}
-      <ul class="artist-meta">
-        {% for slot in allSlots %}
-          <li>{{ slot.stage }} {{ slot.day }} {{ slot.starttime }}–{{ slot.endtime }}</li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <div class="artist-meta">
-        {{ artist.stage }} {{ artist.day }} {{ artist.starttime }}–{{ artist.endtime }}
-      </div>
-    {% endif %}
-
-  {% if artist.description %}
-    <p>{{ artist.description }}</p>
-  {% endif %}
-
+  <div class="artist-split o-split o-split--uneven">
   {% if artist.longdescription %}
     <div class="artist-longdescription">
       {{ artist.longdescription }}
     </div>
   {% endif %}
 
+      {% if allSlots.length > 1 %}
+        {% set dayOrder = {"tisdag": 1, "onsdag": 2} %}
+        {% set decoratedSlots = [] %}
+        {% for slot in allSlots %}
+          {% set rank = dayOrder[slot.day] or 99 %}
+          {% set sortKey = (rank * 10000) + (slot.startMinutes or 0) %}
+          {% set decoratedSlots = (decoratedSlots.push({"sortKey": sortKey, "slot": slot}), decoratedSlots) %}
+        {% endfor %}
+        {% set sortedSlots = decoratedSlots | sort(false, false, "sortKey") %}
+      <ul class="artist-meta u-list-unstyled o-tile t-intent-emphasis">
+          {% for row in sortedSlots %}
+            {% set slot = row.slot %}
+          <li class="artist-meta-item">
+            <div class="artist-meta-info artist-meta-location">{{ icon("location", "artist-meta-icon") }}{{ slot.stage }}</div>
+            <time class="artist-meta-info">{{ icon("schedule", "artist-meta-icon") }}{{ slot.day | capitalize }} {{ slot.starttime }}–{{ slot.endtime }}</time>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="artist-meta o-tile t-intent-emphasis">
+          <div class="artist-meta-item">
+            <div class="artist-meta-info artist-meta-location">{{ icon("location", "artist-meta-icon") }}{{ artist.stage }}</div>
+            <time class="artist-meta-info">{{ icon("schedule", "artist-meta-icon") }}{{ artist.day | capitalize }} {{ artist.starttime }}–{{ artist.endtime }}</time>
+          </div>
+      </div>
+    {% endif %}
+
+
   {% if artist.link %}
-    <p><a href="{{ artist.link }}" target="_blank" rel="noopener noreferrer">Besök webbplats ↗</a></p>
+    <div>
+      <a class="artist-link" href="{{ artist.link }}" target="_blank" rel="external noopener noreferrer">Besök webbplats <span class="u-visually-hidden">(Öppnas i nytt fönster)</span>{{ icon("open-in-new")}}</a>
+    </div>
   {% endif %}
 
   {%- if artist.ref %}
@@ -92,6 +105,8 @@ eleventyComputed:
     </section>
     {% endif %}
   {%- endif %}
+
+  </div> <!-- end: compound -->
 </article>
 
 {% if year != editions.current %}

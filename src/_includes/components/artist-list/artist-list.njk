@@ -10,6 +10,7 @@
 -#}
 
 {% from "components/image/image-thumbnail.njk" import thumbnailImage %}
+{% from "components/icon/icon.njk" import icon %}
 
 {%- set others = [] -%}
 {%- for act in lineup -%}
@@ -46,7 +47,7 @@
           {%- set slots = (slots.push(act), slots) -%}
         {%- endif -%}
         {%- for slot in slots %}
-        <span class="c-artist-list__meta">{{ slot.day | capitalize }} · {{ slot.starttime }}–{{ slot.endtime }} · {{ slot.stage }}</span>
+        <span class="c-artist-list__meta">{{ icon("schedule") }}{{ slot.day | capitalize }} · {{ slot.starttime }}–{{ slot.endtime }} · {{ icon("location") }}{{ slot.stage }}</span>
         {%- endfor %}
       </div>
     </li>

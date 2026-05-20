@@ -69,11 +69,13 @@ export function initMenu(root = document) {
       nav.dataset.open = "true";
       backdrop.dataset.open = "true";
       btn.setAttribute("aria-expanded", "true");
-    });
 
-    // Move focus to first link for natural Tab navigation
-    const first = links()[0];
-    //    if (first) first.focus();
+      // On mobile: move focus to close button (toggle is covered by panel)
+      // On desktop: keep focus on toggle button (it's not covered by dropdown)
+      if (!isDesktop() && closeBtn) {
+        closeBtn.focus();
+      }
+    });
   }
 
   function closeMenu() {

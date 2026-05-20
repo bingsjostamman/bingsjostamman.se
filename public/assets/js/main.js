@@ -41,8 +41,10 @@ function initMenu(root = document) {
       nav.dataset.open = "true";
       backdrop.dataset.open = "true";
       btn.setAttribute("aria-expanded", "true");
+      if (!isDesktop() && closeBtn) {
+        closeBtn.focus();
+      }
     });
-    links()[0];
   }
   function closeMenu() {
     nav.dataset.open = "false";

@@ -37,8 +37,7 @@
         <meta name="twitter:description" content="{{ metaDescription }}">
         <meta name="twitter:image" content="{{ socialImageUrl }}">
 
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <link rel="stylesheet" href="/assets/css/changes.css">
+    <link rel="stylesheet" href="{{ (viteAssets and viteAssets.cssMain) or '/assets/css/styles.css' }}">
 
     {% if env.isProd %}
     <!-- Privacy-friendly analytics by Plausible -->
@@ -71,7 +70,7 @@
 
 {% include "components/footer/footer.njk" %}
 
-<script type="module" src="/assets/js/main.js"></script>
+<script type="module" src="{{ (viteAssets and viteAssets.jsMain) or '/assets/js/main.js' }}"></script>
 
 </body>
 </html>

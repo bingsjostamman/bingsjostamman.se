@@ -14,20 +14,23 @@ export default ({ mode }) => {
     build: {
       outDir: "public/assets",
       emptyOutDir: true,
+      manifest: "manifest.json",
       sourcemap: !isProd,
       minify: isProd,
       rollupOptions: {
         input: {
-          css: resolve("src/css/entry.css"),
-          js: resolve("src/js/main.js"),
+          styles: resolve("src/css/entry.css"),
+          main: resolve("src/js/main.js"),
         },
         output: {
-          entryFileNames: (chunk) =>
-            chunk.name === "js" ? "js/main.js" : "js/[name].js",
-          assetFileNames: (assetInfo) =>
-            assetInfo.name && assetInfo.name.endsWith(".css")
-              ? "css/styles.css"
-              : "assets/[name][extname]",
+          entryFileNames: "js/[name]-[hash].js",
+          assetFileNames: (assetInfo) => {
+            if (assetInfo.name && assetInfo.name.endsWith(".css")) {
+              return "css/[name]-[hash][extname]";
+            }
+
+            return "assets/[name]-[hash][extname]";
+          },
         },
       },
     },

@@ -15,6 +15,37 @@ export default async function (eleventyConfig) {
   const env = loadEnv();
   const isProd = env.isProd;
   const outputDir = "_site";
+  const viteManifestPath = path.resolve("public/assets/manifest.json");
+
+  function getViteAssets() {
+    const fallback = {
+      cssMain: "/assets/css/styles.css",
+      jsMain: "/assets/js/main.js",
+    };
+
+    if (!fs.existsSync(viteManifestPath)) {
+      return fallback;
+    }
+
+    try {
+      const manifest = JSON.parse(fs.readFileSync(viteManifestPath, "utf-8"));
+
+      const cssEntry =
+        manifest["src/css/entry.css"] ||
+        Object.values(manifest).find((item) => item?.src === "src/css/entry.css");
+      const jsEntry =
+        manifest["src/js/main.js"] ||
+        Object.values(manifest).find((item) => item?.src === "src/js/main.js");
+
+      return {
+        cssMain: cssEntry?.file ? `/assets/${cssEntry.file}` : fallback.cssMain,
+        jsMain: jsEntry?.file ? `/assets/${jsEntry.file}` : fallback.jsMain,
+      };
+    } catch (error) {
+      console.warn("⚠️ Failed to read Vite manifest, using fallback asset paths", error);
+      return fallback;
+    }
+  }
 
   const isServe =
     process.argv.includes("--serve") || process.argv.includes("--watch");
@@ -43,6 +74,7 @@ export default async function (eleventyConfig) {
     currentYear: editionsData.current,
     allYears: editionsData.years,
   });
+  eleventyConfig.addGlobalData("viteAssets", getViteAssets());
 
   // Optional collection
   eleventyConfig.addCollection("editionsList", () => editionsData.years);

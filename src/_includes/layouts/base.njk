@@ -3,7 +3,7 @@
 <head>
         {% set pageTitle = title and (title ~ ' - ' ~ site.name) or site.name %}
         {% set canonicalUrl = canonical or (site.baseUrl ~ page.url) %}
-        {% set metaDescription = socialDescription or description or site.description or '' %}
+        {% set metaDescription = somedescription or socialDescription or description or site.description or '' %}
         {% set socialImageCandidate = socialImage or image or site.defaultImage %}
         {% if socialImageCandidate and socialImageCandidate[0] == '/' %}
             {% set socialImageUrl = site.baseUrl ~ socialImageCandidate %}

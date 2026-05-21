@@ -1,6 +1,6 @@
 {
   "summary": {
-    "timestamp": "2026-05-21T08:32:21.436Z",
+    "timestamp": "2026-05-21T10:11:39.584Z",
     "totalPages": 34,
     "totalViolations": 14,
     "pagesWithIssues": 9
@@ -55,10 +55,6 @@
       "violations": []
     },
     {
-      "path": "2024/index.html",
-      "violations": []
-    },
-    {
       "path": "2025/index.html",
       "violations": [
         {
@@ -87,25 +83,8 @@
       ]
     },
     {
-      "path": "allspel/index.html",
-      "violations": [
-        {
-          "id": "heading-order",
-          "impact": "moderate",
-          "description": "Ensure the order of headings is semantically correct",
-          "help": "Heading levels should only increase by one",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=axeAPI",
-          "nodes": [
-            {
-              "target": [
-                ".c-tunes-tune.o-tile.t-intent-emphasis:nth-child(1) > .c-tunes-info > h3"
-              ],
-              "html": "<h3 class=\"c-tunes-name\">Bingsjövalsen</h3>",
-              "failureSummary": "Fix any of the following:\n  Heading order invalid"
-            }
-          ]
-        }
-      ]
+      "path": "2024/index.html",
+      "violations": []
     },
     {
       "path": "biljetter/index.html",
@@ -133,6 +112,27 @@
       "violations": []
     },
     {
+      "path": "allspel/index.html",
+      "violations": [
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "description": "Ensure the order of headings is semantically correct",
+          "help": "Heading levels should only increase by one",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".c-tunes-tune.o-tile.t-intent-emphasis:nth-child(1) > .c-tunes-info > h3"
+              ],
+              "html": "<h3 class=\"c-tunes-name\">Bingsjövalsen</h3>",
+              "failureSummary": "Fix any of the following:\n  Heading order invalid"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "path": "kontakt/index.html",
       "violations": []
     },
@@ -157,19 +157,7 @@
       "violations": []
     },
     {
-      "path": "2024/onsdag/index.html",
-      "violations": []
-    },
-    {
-      "path": "2024/oversikt/index.html",
-      "violations": []
-    },
-    {
-      "path": "2024/tisdag/index.html",
-      "violations": []
-    },
-    {
-      "path": "2024/scen/index.html",
+      "path": "2025/onsdag/index.html",
       "violations": []
     },
     {
@@ -192,14 +180,6 @@
           ]
         }
       ]
-    },
-    {
-      "path": "2025/onsdag/index.html",
-      "violations": []
-    },
-    {
-      "path": "2025/oversikt/index.html",
-      "violations": []
     },
     {
       "path": "2025/scen/index.html",
@@ -230,16 +210,53 @@
       ]
     },
     {
+      "path": "2025/oversikt/index.html",
+      "violations": []
+    },
+    {
       "path": "2025/tisdag/index.html",
       "violations": []
     },
     {
-      "path": "scen/merit-hemmingson/index.html",
+      "path": "2024/onsdag/index.html",
       "violations": []
     },
     {
-      "path": "scen/polenta/index.html",
+      "path": "2024/scen/index.html",
       "violations": []
+    },
+    {
+      "path": "2024/tisdag/index.html",
+      "violations": []
+    },
+    {
+      "path": "2024/oversikt/index.html",
+      "violations": []
+    },
+    {
+      "path": "scen/hjort-anders-i-ord-och-toner/index.html",
+      "violations": []
+    },
+    {
+      "path": "test/carbon/index.html",
+      "violations": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+          "help": "Page should contain a level-one heading",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"sv\">",
+              "failureSummary": "Fix all of the following:\n  Page must have a level-one heading"
+            }
+          ]
+        }
+      ]
     },
     {
       "path": "test/accessibility/index.html",
@@ -371,266 +388,231 @@
             },
             {
               "target": [
-                "article:nth-child(6) > h2"
+                "article:nth-child(8) > h2"
               ],
               "html": "<h2>2025/index.html</h2>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(6) > p"
+                "article:nth-child(8) > p"
               ],
               "html": "<p>\n          <strong>1</strong>\n          issue found\n          </p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(6) > .issues > .impact-minor > h3"
+                "article:nth-child(8) > .issues > .impact-minor > h3"
               ],
               "html": "<h3>Alternative text of images should not be repeated as text</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(6) > .issues > .impact-minor > p:nth-child(2)"
+                "article:nth-child(8) > .issues > .impact-minor > p:nth-child(2)"
               ],
               "html": "<p>Ensure image alternative is not repeated as text</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(6) > .issues > .impact-minor > p:nth-child(3)"
+                "article:nth-child(8) > .issues > .impact-minor > p:nth-child(3)"
               ],
               "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/image-redundant-alt?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(9) > h2"
+                "article:nth-child(11) > h2"
               ],
               "html": "<h2>allspel/index.html</h2>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(9) > p"
+                "article:nth-child(11) > p"
               ],
               "html": "<p>\n          <strong>1</strong>\n          issue found\n          </p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(9) > .issues > .impact-moderate > h3"
+                "article:nth-child(11) > .issues > .impact-moderate > h3"
               ],
               "html": "<h3>Heading levels should only increase by one</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(9) > .issues > .impact-moderate > p:nth-child(2)"
+                "article:nth-child(11) > .issues > .impact-moderate > p:nth-child(2)"
               ],
               "html": "<p>Ensure the order of headings is semantically correct</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(9) > .issues > .impact-moderate > p:nth-child(3)"
+                "article:nth-child(11) > .issues > .impact-moderate > p:nth-child(3)"
               ],
               "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/heading-order?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(16) > h2"
+                "article:nth-child(14) > h2"
               ],
               "html": "<h2>biljetter/index.html</h2>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(16) > p"
+                "article:nth-child(14) > p"
               ],
               "html": "<p>\n          <strong>1</strong>\n          issue found\n          </p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(16) > .issues > .impact-moderate > h3"
+                "article:nth-child(14) > .issues > .impact-moderate > h3"
               ],
               "html": "<h3>Page should contain a level-one heading</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(16) > .issues > .impact-moderate > p:nth-child(2)"
+                "article:nth-child(14) > .issues > .impact-moderate > p:nth-child(2)"
               ],
               "html": "<p>Ensure that the page, or at least one of its frames contains a level-one heading</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(16) > .issues > .impact-moderate > p:nth-child(3)"
+                "article:nth-child(14) > .issues > .impact-moderate > p:nth-child(3)"
               ],
               "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(31) > h2"
+                "article:nth-child(39) > h2"
               ],
               "html": "<h2>2025/allspel/index.html</h2>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(31) > p"
+                "article:nth-child(39) > p"
               ],
               "html": "<p>\n          <strong>1</strong>\n          issue found\n          </p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(31) > .issues > .impact-moderate > h3"
+                "article:nth-child(39) > .issues > .impact-moderate > h3"
               ],
               "html": "<h3>Heading levels should only increase by one</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(31) > .issues > .impact-moderate > p:nth-child(2)"
+                "article:nth-child(39) > .issues > .impact-moderate > p:nth-child(2)"
               ],
               "html": "<p>Ensure the order of headings is semantically correct</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(31) > .issues > .impact-moderate > p:nth-child(3)"
+                "article:nth-child(39) > .issues > .impact-moderate > p:nth-child(3)"
               ],
               "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/heading-order?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(38) > h2"
+                "article:nth-child(46) > h2"
               ],
               "html": "<h2>2025/scen/index.html</h2>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(38) > p"
+                "article:nth-child(46) > p"
               ],
               "html": "<p>\n          <strong>1</strong>\n          issue found\n          </p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(38) > .issues > .impact-minor > h3"
+                "article:nth-child(46) > .issues > .impact-minor > h3"
               ],
               "html": "<h3>Alternative text of images should not be repeated as text</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(38) > .issues > .impact-minor > p:nth-child(2)"
+                "article:nth-child(46) > .issues > .impact-minor > p:nth-child(2)"
               ],
               "html": "<p>Ensure image alternative is not repeated as text</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(38) > .issues > .impact-minor > p:nth-child(3)"
+                "article:nth-child(46) > .issues > .impact-minor > p:nth-child(3)"
               ],
               "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/image-redundant-alt?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(57) > h2"
-              ],
-              "html": "<h2>test/carbon/index.html</h2>",
-              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-            },
-            {
-              "target": [
-                "article:nth-child(57) > p"
-              ],
-              "html": "<p>\n          <strong>1</strong>\n          issue found\n          </p>",
-              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-            },
-            {
-              "target": [
-                "article:nth-child(57) > .issues > .impact-moderate > h3"
-              ],
-              "html": "<h3>Page should contain a level-one heading</h3>",
-              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-            },
-            {
-              "target": [
-                "article:nth-child(57) > .issues > .impact-moderate > p:nth-child(2)"
-              ],
-              "html": "<p>Ensure that the page, or at least one of its frames contains a level-one heading</p>",
-              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-            },
-            {
-              "target": [
-                "article:nth-child(57) > .issues > .impact-moderate > p:nth-child(3)"
-              ],
-              "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
-              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-            },
-            {
-              "target": [
-                "article:nth-child(60) > h2"
+                "article:nth-child(55) > h2"
               ],
               "html": "<h2>test/accessibility/index.html</h2>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(60) > p"
+                "article:nth-child(55) > p"
               ],
               "html": "<p>\n          <strong>4</strong>\n          issues found\n          </p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(60) > .issues > .impact-serious:nth-child(1) > h3"
+                "article:nth-child(55) > .issues > .impact-serious:nth-child(1) > h3"
               ],
               "html": "<h3>Documents must have &lt;title&gt; element to aid in navigation</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(60) > .issues > .impact-serious:nth-child(1) > p:nth-child(2)"
+                "article:nth-child(55) > .issues > .impact-serious:nth-child(1) > p:nth-child(2)"
               ],
               "html": "<p>Ensure each HTML document contains a non-empty &lt;title&gt; element</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(60) > .issues > .impact-serious:nth-child(1) > p:nth-child(3)"
+                "article:nth-child(55) > .issues > .impact-serious:nth-child(1) > p:nth-child(3)"
               ],
               "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/document-title?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(60) > .issues > .impact-serious:nth-child(2) > h3"
+                "article:nth-child(55) > .issues > .impact-serious:nth-child(2) > h3"
               ],
               "html": "<h3>&lt;html&gt; element must have a lang attribute</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(60) > .issues > .impact-serious:nth-child(2) > p:nth-child(2)"
+                "article:nth-child(55) > .issues > .impact-serious:nth-child(2) > p:nth-child(2)"
               ],
               "html": "<p>Ensure every HTML document has a lang attribute</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(60) > .issues > .impact-serious:nth-child(2) > p:nth-child(3)"
+                "article:nth-child(55) > .issues > .impact-serious:nth-child(2) > p:nth-child(3)"
               ],
               "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
@@ -679,58 +661,93 @@
             },
             {
               "target": [
-                "article:nth-child(75) > h2"
+                "article:nth-child(58) > h2"
               ],
               "html": "<h2>test/pagespeed/index.html</h2>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(75) > p"
+                "article:nth-child(58) > p"
               ],
               "html": "<p>\n          <strong>2</strong>\n          issues found\n          </p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(75) > .issues > .impact-serious:nth-child(1) > h3"
+                "article:nth-child(58) > .issues > .impact-serious:nth-child(1) > h3"
               ],
               "html": "<h3>Elements must meet minimum color contrast ratio thresholds</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(75) > .issues > .impact-serious:nth-child(1) > p:nth-child(2)"
+                "article:nth-child(58) > .issues > .impact-serious:nth-child(1) > p:nth-child(2)"
               ],
               "html": "<p>Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(75) > .issues > .impact-serious:nth-child(1) > p:nth-child(3)"
+                "article:nth-child(58) > .issues > .impact-serious:nth-child(1) > p:nth-child(3)"
               ],
               "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(75) > .issues > .impact-serious:nth-child(2) > h3"
+                "article:nth-child(58) > .issues > .impact-serious:nth-child(2) > h3"
               ],
               "html": "<h3>Scrollable region must have keyboard access</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(75) > .issues > .impact-serious:nth-child(2) > p:nth-child(2)"
+                "article:nth-child(58) > .issues > .impact-serious:nth-child(2) > p:nth-child(2)"
               ],
               "html": "<p>Ensure elements that have scrollable content are accessible by keyboard</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(75) > .issues > .impact-serious:nth-child(2) > p:nth-child(3)"
+                "article:nth-child(58) > .issues > .impact-serious:nth-child(2) > p:nth-child(3)"
               ],
               "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/scrollable-region-focusable?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "article:nth-child(75) > h2"
+              ],
+              "html": "<h2>test/carbon/index.html</h2>",
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "article:nth-child(75) > p"
+              ],
+              "html": "<p>\n          <strong>1</strong>\n          issue found\n          </p>",
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "article:nth-child(75) > .issues > .impact-moderate > h3"
+              ],
+              "html": "<h3>Page should contain a level-one heading</h3>",
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "article:nth-child(75) > .issues > .impact-moderate > p:nth-child(2)"
+              ],
+              "html": "<p>Ensure that the page, or at least one of its frames contains a level-one heading</p>",
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                "article:nth-child(75) > .issues > .impact-moderate > p:nth-child(3)"
+              ],
+              "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             }
           ]
@@ -782,7 +799,27 @@
       ]
     },
     {
+      "path": "2025/scen/ellika-frisell-och-emma-reid/index.html",
+      "violations": []
+    },
+    {
+      "path": "scen/polenta/index.html",
+      "violations": []
+    },
+    {
+      "path": "2025/scen/hoven-droven/index.html",
+      "violations": []
+    },
+    {
+      "path": "2025/scen/spelmansmote/index.html",
+      "violations": []
+    },
+    {
       "path": "2024/scen/ellika-frisell-och-emma-reid/index.html",
+      "violations": []
+    },
+    {
+      "path": "scen/merit-hemmingson/index.html",
       "violations": []
     },
     {
@@ -792,43 +829,6 @@
     {
       "path": "2024/scen/spelmansmote/index.html",
       "violations": []
-    },
-    {
-      "path": "2025/scen/ellika-frisell-och-emma-reid/index.html",
-      "violations": []
-    },
-    {
-      "path": "2025/scen/hoven-droven/index.html",
-      "violations": []
-    },
-    {
-      "path": "scen/hjort-anders-i-ord-och-toner/index.html",
-      "violations": []
-    },
-    {
-      "path": "2025/scen/spelmansmote/index.html",
-      "violations": []
-    },
-    {
-      "path": "test/carbon/index.html",
-      "violations": [
-        {
-          "id": "page-has-heading-one",
-          "impact": "moderate",
-          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
-          "help": "Page should contain a level-one heading",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one?application=axeAPI",
-          "nodes": [
-            {
-              "target": [
-                "html"
-              ],
-              "html": "<html lang=\"sv\">",
-              "failureSummary": "Fix all of the following:\n  Page must have a level-one heading"
-            }
-          ]
-        }
-      ]
     }
   ]
 }

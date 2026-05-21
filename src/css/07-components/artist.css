@@ -86,7 +86,9 @@ font-weight: 600;
 }
 
 .artist-meta-item + .artist-meta-item {
-  margin-block-start: var(--size-full);
+  margin-block-start: var(--size-half);
+  border-top: 1px solid var(--color-border--decorate);
+  padding-block-start: var(--size-half);
 }
 
 .artist-meta-icon {

@@ -13,15 +13,31 @@
 {% from "components/icon/icon.njk" import icon %}
 
 {%- set others = [] -%}
+{%- set headlineKeys = [] -%}
+{%- set seenKeys = [] -%}
+
 {%- for act in lineup -%}
-  {%- if act.page == "artist" and act.placement != "headline" -%}
-    {%- set others = (others.push(act), others) -%}
+  {%- if act.page == "artist" and (act.placement | trim | lower) == "headline" -%}
+    {%- set headlineKey = act.ref or act.name -%}
+    {%- if headlineKey and headlineKeys.indexOf(headlineKey) == -1 -%}
+      {%- set headlineKeys = (headlineKeys.push(headlineKey), headlineKeys) -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- for act in lineup -%}
+  {%- if act.page == "artist" -%}
+    {%- set groupKey = act.ref or act.name -%}
+    {%- if groupKey and headlineKeys.indexOf(groupKey) == -1 and seenKeys.indexOf(groupKey) == -1 -%}
+      {%- set seenKeys = (seenKeys.push(groupKey), seenKeys) -%}
+      {%- set others = (others.push(act), others) -%}
+    {%- endif -%}
   {%- endif -%}
 {%- endfor -%}
 
 {%- if others.length -%}
 <section class="c-artist-list">
-  <h2 class="c-artist-list__heading">Övriga artister</h2>
+  <h2 class="c-artist-list__heading">Övriga akter</h2>
   <ul class="c-artist-list__list u-list-unstyled">
     {%- for act in others | sort(false, false, 'name') %}
     <li class="c-artist-list__item {%- if act.longdescription %} t-intent-highlight{% else %} t-intent-shoutout{% endif %}">
@@ -37,15 +53,13 @@
         <h3 class="c-artist-list__name">{{ act.name }}</h3>
         {%- endif %}
         {%- set slots = [] -%}
-        {%- if act.ref -%}
-          {%- for slot in lineup -%}
-            {%- if slot.ref == act.ref -%}
-              {%- set slots = (slots.push(slot), slots) -%}
-            {%- endif -%}
-          {%- endfor -%}
-        {%- else -%}
-          {%- set slots = (slots.push(act), slots) -%}
-        {%- endif -%}
+        {%- set groupKey = act.ref or act.name -%}
+        {%- for slot in lineup -%}
+          {%- set slotKey = slot.ref or slot.name -%}
+          {%- if slot.page == "artist" and slotKey == groupKey and (slot.placement | trim | lower) != "headline" -%}
+            {%- set slots = (slots.push(slot), slots) -%}
+          {%- endif -%}
+        {%- endfor -%}
         {%- for slot in slots %}
 
         <div class="c-artist-list__meta artist-meta-item">

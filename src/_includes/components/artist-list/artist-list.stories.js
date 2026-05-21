@@ -30,7 +30,6 @@ export const Default = () => `<section class="c-artist-list">
       <div class="c-artist-list__body">
         <span class="c-artist-list__name">Täby Spelmansgille</span>
         <span class="c-artist-list__meta">Tisdag · 19:00–20:30 · Bystugubanan</span>
-        <span class="c-artist-list__meta">Onsdag · 19:00–20:00 · Låttältet</span>
       </div>
     </li>
   </ul>

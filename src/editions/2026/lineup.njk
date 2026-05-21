@@ -4,7 +4,6 @@ year: 2026
 eleventyComputed:
   title: "På scen {{ year }}"
   permalink: "{% if year == editions.current %}/scen/index.html{% else %}/{{ year }}/scen/index.html{% endif %}"
-eleventyExcludeFromCollections: true
 ---
 
 {% include "components/headline-acts/headline-acts.njk" %}

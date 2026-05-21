@@ -1,0 +1,53 @@
+---
+layout: layouts/base
+year: 2025
+eleventyComputed:
+  title: "Onsdag {{ dates.onsdag | swedishDate }} {{ year }}"
+  permalink: "{% if year == editions.current %}/onsdag/index.html{% else %}/{{ year }}/onsdag/index.html{% endif %}"
+---
+{% from "components/stage-list/stage-list.njk" import stageList %}
+
+<h1>Onsdag {{ dates.onsdag | swedishDate }}</h1>
+
+<div class="page-intro">
+  {{ copy.intro | markdown | safe }}
+</div>
+
+<h2>Nygårdsgården</h2>
+{{ stageList("Nygårdsgården", lineup, "onsdag") }}
+
+<h2>Dansbanan</h2>
+
+<h3>Invigningsprogram</h3>
+{{ stageList("Invigning", lineup, "onsdag") }}
+
+<h3>Dansprogram</h3>
+{{ stageList("Dansbanan", lineup, "onsdag", "invigning") }}
+
+<h2>Bagarstugan</h2>
+{{ stageList("Bagarstugan", lineup, "onsdag") }}
+
+<h2>Danielsgården</h2>
+{{ stageList("Danielsgården", lineup, "onsdag") }}
+
+<h2>Bystugubanan</h2>
+<div class="stage-intro">
+  {{ copy.bystugubanan | markdown | safe }}
+</div>
+
+{{ stageList("Bystugubanan", lineup, "onsdag") }}
+
+<h2>Kapellet</h2>
+{{ stageList("Kapellet", lineup, "onsdag") }}
+
+<h2>Levande ladan</h2>
+{{ stageList("Levande ladan", lineup, "onsdag") }}
+
+<h2>Låttältet</h2>
+{{ stageList("Låttältet", lineup, "onsdag") }}
+
+<h2>Tunet</h2>
+{{ stageList("Tunet", lineup, "onsdag") }}
+
+<h2>Logen</h2>
+{{ stageList("Logen", lineup, "onsdag") }}

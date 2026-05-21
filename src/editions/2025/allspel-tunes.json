@@ -1,0 +1,88 @@
+[
+  {
+    "name": "Farmors brudpolska",
+    "note": "Byt ut med årets allspelslåtar",
+    "sheetMusic": [
+      {
+        "label": "Melodi (PDF)",
+        "url": "https://www.dropbox.com/scl/fi/bwfejh6yizeei7juvr70i/farmors.pdf?rlkey=en3r1kbdrxd5ibhotl6l43530&st=zp8hofe1&raw=1"
+      }
+    ],
+    "audio": [
+      {
+        "label": "Melodi (MP3)",
+        "url": "https://www.dropbox.com/scl/fi/4n7nkzjd17e3egu8kvmyp/Farmors_brudpolska_Alvdalen.mp3?rlkey=90dm21yn8azc0ogattwopfciy&st=qcl8dx69&raw=1"
+      }
+    ]
+  },
+  {
+    "name": "Gärdebylåten",
+    "note": "från Rättvik, arrangerad av Tommy Gjers",
+    "sheetMusic": [
+      {
+        "label": "Melodi (PDF)",
+        "url": "https://www.dropbox.com/scl/fi/lwqtiuylaaqrg07oae242/gardebylaten.pdf?rlkey=ix3zjygkzqi9lnpwudals5skp&st=3uvltvii&raw=1"
+      }
+    ],
+    "audio": []
+  },
+  {
+    "name": "Trettondagsmarschen",
+    "note": "av Hjort Anders Olsson",
+    "sheetMusic": [
+      {
+        "label": "Melodi (PDF)",
+        "url": "https://www.dropbox.com/scl/fi/3erzrnqzdbvlxzc0zvkkn/trettondagsmarschen.pdf?rlkey=p8fooxo8ha7f9a2c7avzprq12&st=9y5vokg9&raw=1"
+      }
+    ],
+    "audio": []
+  },
+  {
+    "name": "Envisa valsen",
+    "barnens": true,
+    "sheetMusic": [
+      {
+        "label": "Noter (PDF)",
+        "url": "https://www.dropbox.com/scl/fi/4n7nkzjd17e3egu8kvmyp/Farmors_brudpolska_Alvdalen.mp3?rlkey=90dm21yn8azc0ogattwopfciy&st=qcl8dx69&raw=1"
+      }
+    ],
+    "audio": [
+      {
+        "label": "Ljudfil (MP3)",
+        "url": "https:example.com/audio.mp3"
+      }
+    ]
+  },
+  {
+    "name": "Morapolska",
+    "barnens": true,
+    "sheetMusic": [
+      {
+        "label": "Noter (PDF)",
+        "url": "https://www.dropbox.com/scl/fi/4n7nkzjd17e3egu8kvmyp/Morapolska.pdf?rlkey=90dm21yn8azc0ogattwopfciy&st=qcl8dx69&raw=1"
+      }
+    ],
+    "audio": [
+      {
+        "label": "Ljudfil (MP3)",
+        "url": "https://example.com/audio.mp3"
+      }
+    ]
+  },
+  {
+    "name": "Schottis från Blyberg",
+    "barnens": true,
+    "sheetMusic": [
+      {
+        "label": "Noter (PDF)",
+        "url": "https://www.dropbox.com/scl/fi/4n7nkzjd17e3egu8kvmyp/Schottis_fran_Blyberg.pdf?rlkey=90dm21yn8azc0ogattwopfciy&st=qcl8dx69&raw=1"
+      }
+    ],
+    "audio": [
+      {
+        "label": "Ljudfil (MP3)",
+        "url": "https://example.com/audio.mp3"
+      }
+    ]
+  }
+]

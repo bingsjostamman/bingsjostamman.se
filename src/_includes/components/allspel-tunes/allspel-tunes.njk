@@ -32,11 +32,11 @@
 
         <div class="c-tunes-media-label">Noter</div>
         {%- if tune.sheetMusic and tune.sheetMusic.length == 1 %}
-          <a class="c-tunes-media-link" href="{{ tune.sheetMusic[0].url }}">{{ icon("music-box", "c-tunes-media-icon") }}<span>{{ tune.sheetMusic[0].label }}</span></a>
+          <a class="c-tunes-media-link" href="{{ tune.sheetMusic[0].url }}" data-track-event="allspel_media_click" data-track-label="{{ tune.name }} - {{ tune.sheetMusic[0].label }}" data-track-context="allspel-sheet-music">{{ icon("music-box", "c-tunes-media-icon") }}<span>{{ tune.sheetMusic[0].label }}</span></a>
         {%- elif tune.sheetMusic and tune.sheetMusic.length > 1 %}
           <ul class="c-tunes-links u-list-unstyled">
             {%- for item in tune.sheetMusic %}
-            <li><a class="c-tunes-media-link" href="{{ item.url }}">{{ icon("music-box") }}<span>{{ item.label }}</span></a></li>
+            <li><a class="c-tunes-media-link" href="{{ item.url }}" data-track-event="allspel_media_click" data-track-label="{{ tune.name }} - {{ item.label }}" data-track-context="allspel-sheet-music">{{ icon("music-box") }}<span>{{ item.label }}</span></a></li>
             {%- endfor %}
           </ul>
         {%- else %}
@@ -45,11 +45,11 @@
 
         <div class="c-tunes-media-label">Ljudinspelning</div>
         {%- if tune.audio and tune.audio.length == 1 %}
-          <a class="c-tunes-media-link" href="{{ tune.audio[0].url }}">{{ icon("play-box") }}<span>{{ tune.audio[0].label }}</span></a>
+          <a class="c-tunes-media-link" href="{{ tune.audio[0].url }}" data-track-event="allspel_media_click" data-track-label="{{ tune.name }} - {{ tune.audio[0].label }}" data-track-context="allspel-audio">{{ icon("play-box") }}<span>{{ tune.audio[0].label }}</span></a>
         {%- elif tune.audio and tune.audio.length > 1 %}
           <ul class="c-tunes-links u-list-unstyled">
             {%- for item in tune.audio %}
-              <li><a class="c-tunes-media-link" href="{{ item.url }}">{{ icon("play-box") }}<span>{{ item.label }}</span></a></li>
+              <li><a class="c-tunes-media-link" href="{{ item.url }}" data-track-event="allspel_media_click" data-track-label="{{ tune.name }} - {{ item.label }}" data-track-context="allspel-audio">{{ icon("play-box") }}<span>{{ item.label }}</span></a></li>
             {%- endfor %}
           </ul>
         {%- else %}

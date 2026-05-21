@@ -31,7 +31,7 @@
             <span class="c-headline-acts__eyebrow artist__eyebrow">{{ icon("music") }}{{ act.eyebrow }}</span>
             {%- endif %}
             {%- if act.longdescription %}
-            <a class="c-headline-acts__link u-focus-outline-none" href="{% if year == editions.current %}/scen/{{ act.name | slugify }}/{% else %}/{{ year }}/scen/{{ act.name | slugify }}/{% endif %}">{{ act.name }}</a>
+            <a class="c-headline-acts__link u-focus-outline-none" href="{% if year == editions.current %}/scen/{{ act.name | slugify }}/{% else %}/{{ year }}/scen/{{ act.name | slugify }}/{% endif %}" data-track-event="headline_act_click" data-track-label="{{ act.name }}" data-track-context="headline-acts">{{ act.name }}</a>
             {%- else %}
             {{ act.name }}
             {%- endif %}

@@ -31,6 +31,9 @@
           <a
             class="c-menu__link"
             href="{{ link.url }}" 
+            data-track-event="menu_link_click"
+            data-track-label="{{ link.label }}"
+            data-track-context="main-menu"
             {% if page.url == link.url %}aria-current="page"{% endif %}
           >
             {{ link.label }}{% if link.dateKey and dates[link.dateKey] %} {{ dates[link.dateKey] | swedishDate }}{% endif %}

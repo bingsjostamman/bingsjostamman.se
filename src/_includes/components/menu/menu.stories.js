@@ -49,6 +49,9 @@ export const Default = () => `
           <a
             class="c-menu__link"
             href="/allspel/" 
+            data-track-event="menu_link_click"
+            data-track-label="Allspel"
+            data-track-context="main-menu"
             
           >
             Allspel
@@ -59,6 +62,9 @@ export const Default = () => `
           <a
             class="c-menu__link"
             href="/scen/" 
+            data-track-event="menu_link_click"
+            data-track-label="På scen"
+            data-track-context="main-menu"
             
           >
             På scen

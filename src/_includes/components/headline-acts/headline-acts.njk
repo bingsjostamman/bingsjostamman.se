@@ -15,35 +15,47 @@
 
 {% if headlines.length %}
 <section class="c-headline-acts">
-  <h2 class="c-headline-acts__heading">Huvudakter</h2>
+  <h2 class="c-headline-acts__heading">På våra scener 2026</h2>
 
-  <ul class="c-headline-acts__list">
+  <ul class="c-headline-acts__list u-list-unstyled">
     {% for act in headlines %}
-      <li class="c-headline-acts__item">
+      <li class="c-headline-acts__item o-tile u-focus-outline">
         {% if act.image %}
           <div class="c-headline-acts__image">
             {{ cardImage(act.image | replace(".jpg", "") | replace(".png", ""), act.name) }}
           </div>
         {% endif %}
-        <div class="c-headline-acts__body">
+        <div class="c-headline-acts__body t-intent-emphasis">
           <h3 class="c-headline-acts__name">
             {%- if act.eyebrow %}
-            <span class="c-headline-acts__eyebrow">{{ act.eyebrow }}</span>
+            <span class="c-headline-acts__eyebrow artist__eyebrow">{{ icon("music") }}{{ act.eyebrow }}</span>
             {%- endif %}
             {%- if act.longdescription %}
-            <a class="c-headline-acts__link" href="{% if year == editions.current %}/scen/{{ act.name | slugify }}/{% else %}/{{ year }}/scen/{{ act.name | slugify }}/{% endif %}">{{ act.name }}</a>
+            <a class="c-headline-acts__link u-focus-outline-none" href="{% if year == editions.current %}/scen/{{ act.name | slugify }}/{% else %}/{{ year }}/scen/{{ act.name | slugify }}/{% endif %}">{{ act.name }}</a>
             {%- else %}
             {{ act.name }}
             {%- endif %}
           </h3>
+          {%- if act.description %}
+          <div class="c-headline-acts__description">
+          {{ act.description }}
+          </div>
+          {%- endif %}
+
+{#
           <div class="c-headline-acts__meta">
             {{ icon("location") }} {{ act.stage }}
             {{ icon("schedule") }} {{ act.day | capitalize }} · {{ act.starttime }}–{{ act.endtime }} 
           </div>
+          <div class="artist-meta-item">
+            <div class="artist-meta-info artist-meta-location">{{ icon("location", "artist-meta-icon") }}{{ act.stage }}</div>
+            <time class="artist-meta-info">{{ icon("schedule", "artist-meta-icon") }}{{ act.day | capitalize }}</time>
+          </div>
+#}
 
           {% if act.longdescription %}
             <div class="c-headline-acts__cue" aria-hidden="true">
-              {{ icon("close", "c-headline-acts__cue-icon") }}
+              {{ icon("arrow-forward", "c-headline-acts__cue-icon") }}
             </div>
           {% endif %}
         </div>

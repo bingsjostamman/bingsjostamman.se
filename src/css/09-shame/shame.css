@@ -49,7 +49,7 @@
     margin-block-start: var(--size-full);
 }
 
-.o-tile {
+:where(.o-tile) {
       border: 1px solid var(--color-border--decorate);
   padding: var(--size-full);
   border-radius: 6px;

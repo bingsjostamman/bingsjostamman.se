@@ -18,10 +18,11 @@
 .artist__eyebrow {
 color: var(--color-font--primary);
   background-color: var(--color-primary);
-  font-size: var(--font-size--1);
+  font-size: var(--font-size--2);
   font-family: 'Alegreya Sans';
   text-transform: uppercase;
   font-weight: 400;
+  line-height: var(--font-leading-root);
   letter-spacing: 0.08em;
   display: flex;
   width: max-content;
@@ -70,7 +71,8 @@ color: var(--color-font--primary);
 .artist-meta-info {
     display: flex;
   align-items: center;
-  gap: var(--size-quarter);    
+  gap: var(--size-quarter);  
+  font-size: var(--font-size--1);  
 }
 
 .artist-meta-location {

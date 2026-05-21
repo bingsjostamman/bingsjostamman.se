@@ -14,7 +14,7 @@ export default ({ mode }) => {
     build: {
       outDir: "public/assets",
       emptyOutDir: true,
-      manifest: "manifest.json",
+      manifest: isProd ? "manifest.json" : false,
       sourcemap: !isProd,
       minify: isProd,
       rollupOptions: {
@@ -23,13 +23,17 @@ export default ({ mode }) => {
           main: resolve("src/js/main.js"),
         },
         output: {
-          entryFileNames: "js/[name]-[hash].js",
+          entryFileNames: isProd ? "js/[name]-[hash].js" : "js/[name].js",
           assetFileNames: (assetInfo) => {
             if (assetInfo.name && assetInfo.name.endsWith(".css")) {
-              return "css/[name]-[hash][extname]";
+              return isProd
+                ? "css/[name]-[hash][extname]"
+                : "css/[name][extname]";
             }
 
-            return "assets/[name]-[hash][extname]";
+            return isProd
+              ? "assets/[name]-[hash][extname]"
+              : "assets/[name][extname]";
           },
         },
       },

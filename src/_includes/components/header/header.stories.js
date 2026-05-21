@@ -37,6 +37,8 @@ export const Default = () => `<header class="c-header">
 
   
 
+
+
   <nav id="main-nav" data-menu-panel class="c-menu__panel t-component-header">
     <button type="button" class="c-menu__close" data-menu-close aria-label="Stäng meny">
       
@@ -45,26 +47,6 @@ export const Default = () => `<header class="c-header">
 </span>
     </button>
     <ul class="c-menu__items u-list-unstyled">
-      
-        <li class="c-menu__item">
-          <a
-            class="c-menu__link"
-            href="/tisdag/" 
-            
-          >
-            Tisdag
-          </a>
-        </li>
-      
-        <li class="c-menu__item">
-          <a
-            class="c-menu__link"
-            href="/onsdag/" 
-            
-          >
-            Onsdag
-          </a>
-        </li>
       
         <li class="c-menu__item">
           <a
@@ -83,16 +65,6 @@ export const Default = () => `<header class="c-header">
             
           >
             På scen
-          </a>
-        </li>
-      
-        <li class="c-menu__item">
-          <a
-            class="c-menu__link"
-            href="/biljetter/" 
-            
-          >
-            Entré och biljetter
           </a>
         </li>
       

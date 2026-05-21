@@ -18,6 +18,13 @@ export default async function (eleventyConfig) {
   const viteManifestPath = path.resolve("public/assets/manifest.json");
 
   function getViteAssets() {
+    if (!isProd) {
+      return {
+        cssMain: "/assets/css/styles.css",
+        jsMain: "/assets/js/main.js",
+      };
+    }
+
     const fallback = {
       cssMain: "/assets/css/styles.css",
       jsMain: "/assets/js/main.js",
@@ -308,6 +315,13 @@ export default async function (eleventyConfig) {
   eleventyConfig.addWatchTarget("src/content/");
   eleventyConfig.addWatchTarget("src/pages/");
   eleventyConfig.addWatchTarget("src/_data/");
+
+  // In dev, serve passthrough files directly from source (no copy needed,
+  // avoids race condition with Vite --watch writing to public/assets).
+  // In prod, the normal copy behaviour applies.
+  if (isServe) {
+    eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
+  }
 
   // Vite output + static assets (copied into public/assets after Vite build)
   eleventyConfig.addPassthroughCopy({ "public/assets": "assets" });

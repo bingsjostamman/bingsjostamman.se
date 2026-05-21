@@ -10,9 +10,33 @@
 
 .c-headline-acts__list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: var(--size-full, 1rem);
 }
+
+@media (min-width: 600px) {
+  .c-headline-acts__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .c-headline-acts__list:has(.c-headline-acts__item:nth-child(3)) > .c-headline-acts__item:first-child {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 960px) {
+  .c-headline-acts__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .c-headline-acts__list:has(.c-headline-acts__item:nth-child(3)) > .c-headline-acts__item:first-child {
+    grid-column: span 1;
+  }
+
+  .c-headline-acts__list:not(:has(.c-headline-acts__item:nth-child(3))) {
+    grid-template-columns: repeat(2, 1fr);
+  }  
+}
+
 
 .c-headline-acts__item {
   position: relative;

@@ -14,3 +14,13 @@
 [context.storybook]
   command = "npm run build:storybook"
   publish = "_styleguide"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

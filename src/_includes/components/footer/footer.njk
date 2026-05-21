@@ -4,57 +4,61 @@
 <footer class="c-footer o-container t-component-footer-top">
 
 
-    <div class="c-footer__copyright">
-      {{ logo("bingsjostamman", "c-footer__logo") }}
-      <p>Bingsjöstämman arrangeras av Föreningen Bingsjöstämman</p>
-    </div>
+  <div class="c-footer__copyright">
+    {{ logo("bingsjostamman", "c-footer__logo") }}
+    <p>Bingsjöstämman arrangeras av Föreningen Bingsjöstämman</p>
+  </div>
 
   
   <div class="o-container__breakout o-container t-component-footer-end">
-  <div class="c-footer__partners" aria-label="Samarbetspartners och sponsorer">
-    <ul class="c-footer__partner-list">
-      <li class="c-footer__partner-item">{{ logo("fmh") }}<span class="u-visually-hidden">Folkmusikens Hus</span></li>
-      <li class="c-footer__partner-item">{{ logo("bingsjo") }}<span class="u-visually-hidden">Bingsjö Bystugeförening</span></li>
-      <li class="c-footer__partner-item">{{ logo("dsf") }}<span class="u-visually-hidden">Dalarnas Spelmansförbund</span></li>
-      <li class="c-footer__partner-item">{{ logo("bilda") }}<span class="u-visually-hidden">Bilda</span></li>
-      <li class="c-footer__partner-item">{{ logo("stammoveckan") }}<span class="u-visually-hidden">Stämmoveckan</span></li>
-    </ul>
-      {{ logo("leksands-sparbank", "c-footer__logo") }}
-    <ul class="c-footer__partner-list">
-    </ul>
-  </div>
-
-    <div class="c-footer__some" aria-label="Följ oss i sociala medier">
-      <a class="c-footer__some-link" href="https://www.facebook.com/bingsjostamman">
-        <span class="u-visually-hidden">Facebook</span>{{ icon("facebook", "c-footer__some-icon") }}
-      </a>
-      <a class="c-footer__some-link" href="https://www.instagram.com/bingsjostamman">
-        <span class="u-visually-hidden">Instagram</span>{{ icon("instagram", "c-footer__some-icon") }}
-      </a>
+    <div class="c-footer__partners" aria-label="Samarbetspartners och sponsorer">
+      <ul class="c-footer__partner-list">
+        <li class="c-footer__partner-item">{{ logo("fmh") }}<span class="u-visually-hidden">Folkmusikens Hus</span></li>
+        <li class="c-footer__partner-item">{{ logo("bingsjo") }}<span class="u-visually-hidden">Bingsjö Bystugeförening</span></li>
+        <li class="c-footer__partner-item">{{ logo("dsf") }}<span class="u-visually-hidden">Dalarnas Spelmansförbund</span></li>
+        <li class="c-footer__partner-item">{{ logo("bilda") }}<span class="u-visually-hidden">Bilda</span></li>
+        <li class="c-footer__partner-item">{{ logo("stammoveckan") }}<span class="u-visually-hidden">Stämmoveckan</span></li>
+      </ul>
+        {{ logo("leksands-sparbank", "c-footer__logo") }}
+      <ul class="c-footer__partner-list">
+      </ul>
     </div>
 
-    <div class="c-footer__copyright">
-      <div><p>&copy; {{ "now" | date("yyyy") }} {{ site.name }}</p></div>
-    </div>
+      <div class="c-footer__some" aria-label="Följ oss i sociala medier">
+        <a class="c-footer__some-link" href="https://www.facebook.com/bingsjostamman">
+          <span class="u-visually-hidden">Facebook</span>{{ icon("facebook", "c-footer__some-icon") }}
+        </a>
+        <a class="c-footer__some-link" href="https://www.instagram.com/bingsjostamman">
+          <span class="u-visually-hidden">Instagram</span>{{ icon("instagram", "c-footer__some-icon") }}
+        </a>
+      </div>
+
+
+      <div class="c-footer__copyright">
+        <div><p>&copy; {{ "now" | date("yyyy") }} {{ site.name }}</p></div>
+      </div>
 
 
 
-  {% if not env.isProd %}
-  <nav class="c-footer__dev-links" aria-label="Testsidor">
-    <a href="/components/">Components</a>
-    <a href="/start/">Start</a>
-    <a href="/test/accessibility/">Accessibility</a>
-    <a href="/test/pagespeed/">Page Speed</a>
-    <a href="/test/carbon/">Website Carbon Footprint</a>
-  </nav>
-  {% endif %}
+    {% if not env.isProd %}
+    <nav class="c-footer__dev-links" aria-label="Testsidor">
+      <a href="/components/">Components</a>
+      <a href="/start/">Start</a>
+      <a href="/test/accessibility/">Accessibility</a>
+      <a href="/test/pagespeed/">Page Speed</a>
+      <a href="/test/carbon/">Website Carbon Footprint</a>
+    </nav>
+    {% endif %}
 
 
-  {% if not env.isProd %}
-  <p class="c-footer__debug">env.isProd = {{ env.isProd }} | env.name = {{ env.name }}</p>
-  {% endif %}
+    {% if not env.isProd %}
+    <p class="c-footer__debug">env.isProd = {{ env.isProd }} | env.name = {{ env.name }}</p>
+    {% endif %}
 
   </div>
 
+    <div class="c-footer__corner">
+      {{ icon("fioler", "c-footer__corner-graphic") }}
+    </div>
 
 </footer>

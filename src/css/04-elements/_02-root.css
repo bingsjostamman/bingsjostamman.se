@@ -16,6 +16,7 @@ html, body {
 body {
   position: relative; /* Menu panel anchoring */
   font-family: "Playfair Display", "Alegreya Sans", sans-serif;
+  font-size: var(--font-size-0);
 }
 
 * {

@@ -48,7 +48,7 @@
   $min-step: 1;
   $max-step: math.div($max-font, $min-font);
 
-  @for $i from -$neg-step through -1 {
+  @for $i from -1 through -$neg-step {
     $min-step: math.div($min-step, $min-scale);
     $max-step: math.div($max-step, $max-scale);
 

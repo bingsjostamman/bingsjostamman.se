@@ -20,12 +20,14 @@ eleventyComputed:
 }) }}
 
 
+{% include "components/headline-acts/headline-acts.njk" %}
+
 <div class="o-compound" style="margin-block: var(--size-double) var(--size-quad); font-size: var(--font-size-1);">
   <h2>Välkommen till Bingsjöstämman</h2>
   <p>Onsdagen den 1 juli samlas vi åter i Bingsjö för årets Bingsjöstämma. Men som vanligt tjuvstartar vi redan på tisdagkvällen.</p>
-  <p>&nbsp;</p>
-  <p>Programmet är klart och kommer att presenteras här inom kort. Först ut är <a href="{% if year == editions.current %}/allspel/{% else %}/{{ year }}/allspel/{% endif %}" style="text-decoration: underline;">årets allspelslåtar</a>!</p>
+  <p>Programmet är klart och vi fyller på med programpunkter här på webben näsrmsta tiden. Kom tillbaka och kika, och du kan också följa oss i våra sociala kanaler</p> 
 </div>
+
 
 {% if isArchive == "true" %}
 <div class="archive-banner">

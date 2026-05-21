@@ -1,3 +1,4 @@
+import './artist-list.css';
 export default {
   title: "Components/Artist List",
   parameters: {

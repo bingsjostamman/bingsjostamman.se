@@ -22,9 +22,9 @@
 {%- if others.length -%}
 <section class="c-artist-list">
   <h2 class="c-artist-list__heading">Övriga artister</h2>
-  <ul class="c-artist-list__list">
+  <ul class="c-artist-list__list u-list-unstyled">
     {%- for act in others | sort(false, false, 'name') %}
-    <li class="c-artist-list__item">
+    <li class="c-artist-list__item {%- if act.longdescription %} t-intent-highlight{% else %} t-intent-shoutout{% endif %}">
       {%- if act.image %}
       <div class="c-artist-list__image">
         {{ thumbnailImage(act.image | replace(".jpg", "") | replace(".png", ""), act.name) }}
@@ -32,9 +32,9 @@
       {%- endif %}
       <div class="c-artist-list__body">
         {%- if act.longdescription %}
-        <a class="c-artist-list__name" href="{% if year == editions.current %}/scen/{{ act.name | slugify }}/{% else %}/{{ year }}/scen/{{ act.name | slugify }}/{% endif %}">{{ act.name }}</a>
+        <h3 class="c-artist-list__name"><a class="c-artist-list__link" href="{% if year == editions.current %}/scen/{{ act.name | slugify }}/{% else %}/{{ year }}/scen/{{ act.name | slugify }}/{% endif %}">{{ act.name }}</a></h3>
         {%- else %}
-        <span class="c-artist-list__name">{{ act.name }}</span>
+        <h3 class="c-artist-list__name">{{ act.name }}</h3>
         {%- endif %}
         {%- set slots = [] -%}
         {%- if act.ref -%}
@@ -47,8 +47,18 @@
           {%- set slots = (slots.push(act), slots) -%}
         {%- endif -%}
         {%- for slot in slots %}
-        <span class="c-artist-list__meta">{{ icon("schedule") }}{{ slot.day | capitalize }} · {{ slot.starttime }}–{{ slot.endtime }} · {{ icon("location") }}{{ slot.stage }}</span>
+
+        <div class="c-artist-list__meta artist-meta-item">
+            <div class="c-artist-list__meta-info artist-meta-info artist-meta-location">{{ icon("location", "artist-meta-icon") }}{{ slot.stage }}</div>
+            <time class="c-artist-list__meta-info artist-meta-info">{{ icon("schedule", "artist-meta-icon") }}{{ slot.day | capitalize }} {{ slot.starttime }}</time>
+        </div>
         {%- endfor %}
+
+          {% if act.longdescription %}
+            <div class="c-headline-acts__cue" aria-hidden="true">
+              {{ icon("arrow-forward", "c-headline-acts__cue-icon") }}
+            </div>
+          {% endif %}
       </div>
     </li>
     {%- endfor %}

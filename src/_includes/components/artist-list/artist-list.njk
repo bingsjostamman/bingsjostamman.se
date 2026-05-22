@@ -9,7 +9,7 @@
     - editions: object with .current
 -#}
 
-{% from "components/image/image-thumbnail.njk" import thumbnailImage %}
+{% from "components/image/image-card.njk" import cardImage %}
 {% from "components/icon/icon.njk" import icon %}
 
 {%- set others = [] -%}
@@ -43,7 +43,7 @@
     <li class="c-artist-list__item {%- if act.longdescription %} t-intent-highlight{% else %} t-intent-shoutout{% endif %}">
       {%- if act.image %}
       <div class="c-artist-list__image">
-        {{ thumbnailImage(act.image | replace(".jpg", "") | replace(".png", ""), act.name) }}
+        {{ cardImage(act.image | replace(".jpg", "") | replace(".png", ""), act.name) }}
       </div>
       {%- endif %}
       <div class="c-artist-list__body">

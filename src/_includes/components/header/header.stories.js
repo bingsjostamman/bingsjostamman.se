@@ -74,6 +74,19 @@ export const Default = () => `<header class="c-header">
           </a>
         </li>
       
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/kurser/" 
+            data-track-event="menu_link_click"
+            data-track-label="Kurser"
+            data-track-context="main-menu"
+            
+          >
+            Kurser
+          </a>
+        </li>
+      
     </ul>
   </nav>
 </div>

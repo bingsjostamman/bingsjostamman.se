@@ -1,0 +1,30 @@
+{
+  "title": "Components/Workshops List",
+  "description": "List of workshop cards with name, description, location, and time.",
+  "status": "ready",
+  "tags": ["UI", "content", "workshops"],
+  "class": "workshops-list",
+  "macro": true,
+  "examples": {
+    "Default": {
+      "workshops": [
+        {
+          "name": "Polskeworkshop",
+          "teacher": "Anna Spelman",
+          "description": "Lar dig en lat och spelar i grupp med fokus pa svang och samspel.",
+          "location": "Lattaltet",
+          "time": "Onsdag 10:00-11:30",
+          "photoUrl": "2026/sade_epuvzg.jpg",
+          "link": "https://example.com/workshops/polska"
+        },
+        {
+          "name": "Rytm och komp",
+          "description": "Utforska takt, accents och samspel i en praktisk workshop.",
+          "location": "Logen",
+          "time": "Onsdag 13:00-14:30",
+          "photoUrl": "2026/ami-fredrik_u9v3n5.jpg"
+        }
+      ]
+    }
+  }
+}

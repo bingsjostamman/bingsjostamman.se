@@ -1,0 +1,43 @@
+{#- Render wrapper for prebuild-stories.js
+    Cannot use the real template because it imports cardImage/cloudinary macros.
+    Reproduces equivalent structure with placeholder images. -#}
+{%- set workshops = [
+  {
+    name: "Lär dig en polska",
+    description: "Gemensam genomgång av en låt med fokus på melodi, puls och spelkänsla.",
+    location: "Låttältet",
+    time: "Tisdag 10:00–12:00",
+    photoUrl: "2026/sade_epuvzg.jpg"
+  },
+  {
+    name: "Bygg upp en stämma",
+    description: "Vi provar att lägga en andrastämma på gehör och spelar tillsammans i grupp.",
+    location: "Logen",
+    time: "Onsdag 14:00–15:30",
+    photoUrl: "2026/ami-fredrik_u9v3n5.jpg"
+  }
+] -%}
+
+<div class="c-workshops-list">
+  <ul class="c-workshops-list__list u-list-unstyled">
+    {%- for workshop in workshops %}
+    <li class="c-workshops-list__item o-split">
+      <div class="o-split__content c-workshops-list__body">
+        <h2 class="c-workshops-list__name">{{ workshop.name }}</h2>
+        <p class="c-workshops-list__description">{{ workshop.description }}</p>
+        <div class="c-workshops-list__meta">
+          <div class="c-workshops-list__meta-item">
+            <div class="c-workshops-list__meta-label">{{ workshop.location }}</div>
+          </div>
+          <div class="c-workshops-list__meta-item">
+            <div class="c-workshops-list__meta-label">{{ workshop.time }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="o-split__image c-workshops-list__image">
+        <img src="https://placehold.co/1200x900?text={{ workshop.name | urlencode }}" alt="{{ workshop.name }}" loading="lazy" width="1200" height="900">
+      </div>
+    </li>
+    {%- endfor %}
+  </ul>
+</div>

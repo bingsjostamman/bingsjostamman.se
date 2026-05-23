@@ -52,6 +52,12 @@
   letter-spacing: 0.05em;
 }
 
+.c-workshops-list__meta-time {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+}
+
 .c-workshops-list__meta-value {
   font-size: var(--font-size-0);
 }
@@ -72,7 +78,7 @@
 }
 
 .c-workshops-list__link-wrap {
-  margin-top: var(--size-full);
+  margin-top: var(--size-double);
 }
 
 .c-workshops-list__link {

@@ -2,15 +2,24 @@
   "hidden": false,
   "note": "Biljetterna släpps i mars",
   "general": {
-    "amount": 350,
-    "note": "Early bird tickets available until May 1st."
+    "amount": "250 kr",
+    "note": "Entrén gäller från tisdagen per person. Barn under 16 år går in gratis."
   },
   "youth": {
-    "amount": 150,
-    "note": "Vänta tills våren"
+    "amount": "0 kr",
+    "note": "Barn under 16 år går in gratis"
   },
   "camping": {
-    "amount": 200,
-    "note": "Includes one camping spot per ticket."
+    "amount": "200 kr/natt",
+    "note": "Campingavgiften gäller per ekipage (tält, husvagn eller husbil)"
+  },
+  "concert": {
+    "amount": "150 kr",
+    "note": "Konsertbiljetter säljs i informationstältet från kl 11 på onsdagen"
+  },
+  "workshops": {
+    "amount": "300 - 600 kr",
+    "note": "Olika priser gäller för olika kurser, se kursutbudet för mer information"
   }
+
 }

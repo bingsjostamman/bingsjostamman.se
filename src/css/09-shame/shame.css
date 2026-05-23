@@ -54,3 +54,28 @@
   padding: var(--size-full);
   border-radius: 6px;
 }
+
+.c-tickets__item + .c-tickets__item {
+  margin-block-start: var(--size-full);
+  padding-block-start: var(--size-full);
+  border-block-start: 1px solid var(--color-border--decorate);
+}
+
+.c-tickets__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--size-quarter);
+  font-size: var(--font-size-0);
+  margin-block-start: var(--size-half);
+  font-weight: 600;
+}
+
+.c-tickets__meta .icon {
+    color: var(--color-primary);
+  position: relative;
+  margin-block-start: 0.1em;
+}
+
+.c-tickets__note {
+    
+}

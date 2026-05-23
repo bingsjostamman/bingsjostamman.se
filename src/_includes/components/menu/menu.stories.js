@@ -48,13 +48,13 @@ export const Default = () => `
         <li class="c-menu__item">
           <a
             class="c-menu__link"
-            href="/allspel/" 
+            href="/biljetter/" 
             data-track-event="menu_link_click"
-            data-track-label="Allspel"
+            data-track-label="Entré och biljetter"
             data-track-context="main-menu"
             
           >
-            Allspel
+            Entré och biljetter
           </a>
         </li>
       
@@ -68,6 +68,19 @@ export const Default = () => `
             
           >
             På scen
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/allspel/" 
+            data-track-event="menu_link_click"
+            data-track-label="Allspel"
+            data-track-context="main-menu"
+            
+          >
+            Allspel
           </a>
         </li>
       

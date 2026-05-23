@@ -28,6 +28,7 @@
 
 .c-workshops-list__body {
   padding: var(--size-full);
+  order: 1;
 }
 
 .c-workshops-list__meta {

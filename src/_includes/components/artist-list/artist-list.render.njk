@@ -1,6 +1,7 @@
 {#- Render wrapper for prebuild-stories.js
     Cannot use the real template because it imports thumbnailImage which depends
     on Cloudinary. Reproduces the same HTML structure with placeholder images. -#}
+{% from "components/artist-meta/artist-meta.njk" import artistMetaItem %}
 
 {%- set others = [] -%}
 {%- set headlineKeys = [] -%}
@@ -27,7 +28,7 @@
 
 {%- if others.length -%}
 <section class="c-artist-list">
-  <h2 class="c-artist-list__heading">Övriga artister</h2>
+  <h2 class="c-artist-list__heading">Övriga akter</h2>
   <ul class="c-artist-list__list">
     {%- for act in others | sort(false, false, 'name') %}
     <li class="c-artist-list__item">
@@ -51,7 +52,12 @@
           {%- endif -%}
         {%- endfor -%}
         {%- for slot in slots %}
-        <span class="c-artist-list__meta">{{ slot.day | capitalize }} · {{ slot.starttime }}–{{ slot.endtime }} · {{ slot.stage }}</span>
+        {{ artistMetaItem(slot.stage, slot.day, slot.starttime, slot.endtime, {
+          tag: "div",
+          rootClass: "c-artist-list__meta artist-meta-item",
+          infoClass: "c-artist-list__meta-info artist-meta-info",
+          locationClass: "artist-meta-location"
+        }) }}
         {%- endfor %}
       </div>
     </li>

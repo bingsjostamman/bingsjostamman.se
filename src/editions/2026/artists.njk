@@ -15,6 +15,7 @@ eleventyComputed:
 
 {% from "components/image/image-hero.njk" import heroImage %}
 {% from "components/icon/icon.njk" import icon %}
+{% from "components/artist-meta/artist-meta.njk" import artistMetaItem %}
 
 
 <article class="artist">
@@ -60,18 +61,12 @@ eleventyComputed:
       <ul class="artist-meta u-list-unstyled o-tile t-intent-emphasis">
           {% for row in sortedSlots %}
             {% set slot = row.slot %}
-          <li class="artist-meta-item">
-            <div class="artist-meta-info artist-meta-location">{{ icon("location", "artist-meta-icon") }}{{ slot.stage }}</div>
-            <time class="artist-meta-info">{{ icon("schedule", "artist-meta-icon") }}{{ slot.day | capitalize }} {{ slot.starttime }}–{{ slot.endtime }}</time>
-          </li>
+          {{ artistMetaItem(slot.stage, slot.day, slot.starttime, slot.endtime, { tag: "li" }) }}
         {% endfor %}
       </ul>
     {% else %}
       <div class="artist-meta o-tile t-intent-emphasis">
-          <div class="artist-meta-item">
-            <div class="artist-meta-info artist-meta-location">{{ icon("location", "artist-meta-icon") }}{{ artist.stage }}</div>
-            <time class="artist-meta-info">{{ icon("schedule", "artist-meta-icon") }}{{ artist.day | capitalize }} {{ artist.starttime }}–{{ artist.endtime }}</time>
-          </div>
+          {{ artistMetaItem(artist.stage, artist.day, artist.starttime, artist.endtime) }}
       </div>
     {% endif %}
 

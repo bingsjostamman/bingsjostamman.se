@@ -1,0 +1,35 @@
+{% from "components/icon/icon.njk" import icon %}
+
+{#-
+  Component: Artist Meta Item
+  Renders a location + schedule row with semantic time values.
+
+  Parameters:
+    - stage: string
+    - day: string
+    - starttime: string
+    - endtime: string (optional)
+    - options: object (optional)
+      - tag: "div" (default) or "li"
+      - rootClass: default "artist-meta-item"
+      - infoClass: default "artist-meta-info"
+      - locationClass: default "artist-meta-location"
+-#}
+{%- macro artistMetaItem(stage, day, starttime, endtime, options) -%}
+  {%- set tag = (options and options.tag) or "div" -%}
+  {%- set rootClass = (options and options.rootClass) or "artist-meta-item" -%}
+  {%- set infoClass = (options and options.infoClass) or "artist-meta-info" -%}
+  {%- set locationClass = (options and options.locationClass) or "artist-meta-location" -%}
+
+  {%- if tag == "li" -%}
+  <li class="{{ rootClass }}">
+    <div class="{{ infoClass }} {{ locationClass }}">{{ icon("location", "artist-meta-icon") }}{{ stage }}</div>
+    <div class="{{ infoClass }}">{{ icon("schedule", "artist-meta-icon") }}{{ day | capitalize }} <time datetime="{{ starttime }}">{{ starttime }}</time>{% if endtime %}–<time datetime="{{ endtime }}">{{ endtime }}</time>{% endif %}</div>
+  </li>
+  {%- else -%}
+  <div class="{{ rootClass }}">
+    <div class="{{ infoClass }} {{ locationClass }}">{{ icon("location", "artist-meta-icon") }}{{ stage }}</div>
+    <div class="{{ infoClass }}">{{ icon("schedule", "artist-meta-icon") }}{{ day | capitalize }} <time datetime="{{ starttime }}">{{ starttime }}</time>{% if endtime %}–<time datetime="{{ endtime }}">{{ endtime }}</time>{% endif %}</div>
+  </div>
+  {%- endif -%}
+{%- endmacro -%}

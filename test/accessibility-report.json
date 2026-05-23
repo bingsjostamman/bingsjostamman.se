@@ -1,9 +1,9 @@
 {
   "summary": {
-    "timestamp": "2026-05-21T21:29:34.512Z",
-    "totalPages": 15,
-    "totalViolations": 12,
-    "pagesWithIssues": 7
+    "timestamp": "2026-05-23T19:20:06.510Z",
+    "totalPages": 16,
+    "totalViolations": 11,
+    "pagesWithIssues": 6
   },
   "pages": [
     {
@@ -76,6 +76,10 @@
       ]
     },
     {
+      "path": "components/index.html",
+      "violations": []
+    },
+    {
       "path": "biljetter/index.html",
       "violations": [
         {
@@ -97,11 +101,15 @@
       ]
     },
     {
-      "path": "components/index.html",
+      "path": "kontakt/index.html",
       "violations": []
     },
     {
-      "path": "kontakt/index.html",
+      "path": "kurser/index.html",
+      "violations": []
+    },
+    {
+      "path": "scen/index.html",
       "violations": []
     },
     {
@@ -109,93 +117,19 @@
       "violations": []
     },
     {
-      "path": "scen/index.html",
-      "violations": [
-        {
-          "id": "page-has-heading-one",
-          "impact": "moderate",
-          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
-          "help": "Page should contain a level-one heading",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one?application=axeAPI",
-          "nodes": [
-            {
-              "target": [
-                "html"
-              ],
-              "html": "<html lang=\"sv\">",
-              "failureSummary": "Fix all of the following:\n  Page must have a level-one heading"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "path": "test/carbon/index.html",
-      "violations": [
-        {
-          "id": "page-has-heading-one",
-          "impact": "moderate",
-          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
-          "help": "Page should contain a level-one heading",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one?application=axeAPI",
-          "nodes": [
-            {
-              "target": [
-                "html"
-              ],
-              "html": "<html lang=\"sv\">",
-              "failureSummary": "Fix all of the following:\n  Page must have a level-one heading"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "path": "test/pagespeed/index.html",
-      "violations": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI",
-          "nodes": [
-            {
-              "target": [
-                ".psi-card:nth-child(1) > .psi-score-ring.psi--good"
-              ],
-              "html": "<div class=\"psi-score-ring psi--good\">95</div>",
-              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.08 (foreground color: #ffffff, background color: #0cce6b, font size: 18.0pt (24px), font weight: bold). Expected contrast ratio of 3:1"
-            },
-            {
-              "target": [
-                ".psi-card:nth-child(2) > .psi-score-ring.psi--good"
-              ],
-              "html": "<div class=\"psi-score-ring psi--good\">98</div>",
-              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.08 (foreground color: #ffffff, background color: #0cce6b, font size: 18.0pt (24px), font weight: bold). Expected contrast ratio of 3:1"
-            }
-          ]
-        },
-        {
-          "id": "scrollable-region-focusable",
-          "impact": "serious",
-          "description": "Ensure elements that have scrollable content are accessible by keyboard",
-          "help": "Scrollable region must have keyboard access",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/scrollable-region-focusable?application=axeAPI",
-          "nodes": [
-            {
-              "target": [
-                "pre"
-              ],
-              "html": "<pre class=\"psi-raw\">",
-              "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "path": "scen/hjort-anders-i-ord-och-toner/index.html",
+      "violations": []
+    },
+    {
+      "path": "scen/merit-hemmingson/index.html",
+      "violations": []
+    },
+    {
+      "path": "scen/polenta/index.html",
+      "violations": []
+    },
+    {
+      "path": "scen/storrada/index.html",
       "violations": []
     },
     {
@@ -267,7 +201,7 @@
               "target": [
                 ".report-summary"
               ],
-              "html": "<section class=\"report-summary\">\n    <h2>Summary</h2>\n    <ul>\n      <li><strong>Pages tested:</strong> 15</li>\n      <li><strong>Total violations:</strong> 12</li>\n      <li><strong>Pages with issues:</strong> 7</li>\n    </ul>\n  </section>",
+              "html": "<section class=\"report-summary\">\n    <h2>Summary</h2>\n    <ul>\n      <li><strong>Pages tested:</strong> 15</li>\n      <li><strong>Total violations:</strong> 11</li>\n      <li><strong>Pages with issues:</strong> 6</li>\n    </ul>\n  </section>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
@@ -330,7 +264,7 @@
               "target": [
                 "article:nth-child(6) > h2"
               ],
-              "html": "<h2>allspel/index.html</h2>",
+              "html": "<h2>biljetter/index.html</h2>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
@@ -344,28 +278,28 @@
               "target": [
                 "article:nth-child(6) > .issues > .impact-moderate > h3"
               ],
-              "html": "<h3>Heading levels should only increase by one</h3>",
+              "html": "<h3>Page should contain a level-one heading</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
                 "article:nth-child(6) > .issues > .impact-moderate > p:nth-child(2)"
               ],
-              "html": "<p>Ensure the order of headings is semantically correct</p>",
+              "html": "<p>Ensure that the page, or at least one of its frames contains a level-one heading</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
                 "article:nth-child(6) > .issues > .impact-moderate > p:nth-child(3)"
               ],
-              "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/heading-order?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
+              "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
                 "article:nth-child(9) > h2"
               ],
-              "html": "<h2>biljetter/index.html</h2>",
+              "html": "<h2>allspel/index.html</h2>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
@@ -379,110 +313,75 @@
               "target": [
                 "article:nth-child(9) > .issues > .impact-moderate > h3"
               ],
-              "html": "<h3>Page should contain a level-one heading</h3>",
+              "html": "<h3>Heading levels should only increase by one</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
                 "article:nth-child(9) > .issues > .impact-moderate > p:nth-child(2)"
               ],
-              "html": "<p>Ensure that the page, or at least one of its frames contains a level-one heading</p>",
+              "html": "<p>Ensure the order of headings is semantically correct</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
                 "article:nth-child(9) > .issues > .impact-moderate > p:nth-child(3)"
               ],
-              "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
+              "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/heading-order?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(16) > h2"
-              ],
-              "html": "<h2>scen/index.html</h2>",
-              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-            },
-            {
-              "target": [
-                "article:nth-child(16) > p"
-              ],
-              "html": "<p>\n          <strong>1</strong>\n          issue found\n          </p>",
-              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-            },
-            {
-              "target": [
-                "article:nth-child(16) > .issues > .impact-moderate > h3"
-              ],
-              "html": "<h3>Page should contain a level-one heading</h3>",
-              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-            },
-            {
-              "target": [
-                "article:nth-child(16) > .issues > .impact-moderate > p:nth-child(2)"
-              ],
-              "html": "<p>Ensure that the page, or at least one of its frames contains a level-one heading</p>",
-              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-            },
-            {
-              "target": [
-                "article:nth-child(16) > .issues > .impact-moderate > p:nth-child(3)"
-              ],
-              "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
-              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
-            },
-            {
-              "target": [
-                "article:nth-child(29) > h2"
+                "article:nth-child(20) > h2"
               ],
               "html": "<h2>test/accessibility/index.html</h2>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(29) > p"
+                "article:nth-child(20) > p"
               ],
               "html": "<p>\n          <strong>4</strong>\n          issues found\n          </p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(29) > .issues > .impact-serious:nth-child(1) > h3"
+                "article:nth-child(20) > .issues > .impact-serious:nth-child(1) > h3"
               ],
               "html": "<h3>Documents must have &lt;title&gt; element to aid in navigation</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(29) > .issues > .impact-serious:nth-child(1) > p:nth-child(2)"
+                "article:nth-child(20) > .issues > .impact-serious:nth-child(1) > p:nth-child(2)"
               ],
               "html": "<p>Ensure each HTML document contains a non-empty &lt;title&gt; element</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(29) > .issues > .impact-serious:nth-child(1) > p:nth-child(3)"
+                "article:nth-child(20) > .issues > .impact-serious:nth-child(1) > p:nth-child(3)"
               ],
               "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/document-title?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(29) > .issues > .impact-serious:nth-child(2) > h3"
+                "article:nth-child(20) > .issues > .impact-serious:nth-child(2) > h3"
               ],
               "html": "<h3>&lt;html&gt; element must have a lang attribute</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(29) > .issues > .impact-serious:nth-child(2) > p:nth-child(2)"
+                "article:nth-child(20) > .issues > .impact-serious:nth-child(2) > p:nth-child(2)"
               ],
               "html": "<p>Ensure every HTML document has a lang attribute</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(29) > .issues > .impact-serious:nth-child(2) > p:nth-child(3)"
+                "article:nth-child(20) > .issues > .impact-serious:nth-child(2) > p:nth-child(3)"
               ],
               "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
@@ -531,91 +430,91 @@
             },
             {
               "target": [
-                "article:nth-child(32) > h2"
+                "article:nth-child(23) > h2"
               ],
               "html": "<h2>test/carbon/index.html</h2>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(32) > p"
+                "article:nth-child(23) > p"
               ],
               "html": "<p>\n          <strong>1</strong>\n          issue found\n          </p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(32) > .issues > .impact-moderate > h3"
+                "article:nth-child(23) > .issues > .impact-moderate > h3"
               ],
               "html": "<h3>Page should contain a level-one heading</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(32) > .issues > .impact-moderate > p:nth-child(2)"
+                "article:nth-child(23) > .issues > .impact-moderate > p:nth-child(2)"
               ],
               "html": "<p>Ensure that the page, or at least one of its frames contains a level-one heading</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(32) > .issues > .impact-moderate > p:nth-child(3)"
+                "article:nth-child(23) > .issues > .impact-moderate > p:nth-child(3)"
               ],
               "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(35) > h2"
+                "article:nth-child(26) > h2"
               ],
               "html": "<h2>test/pagespeed/index.html</h2>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(35) > p"
+                "article:nth-child(26) > p"
               ],
               "html": "<p>\n          <strong>2</strong>\n          issues found\n          </p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(35) > .issues > .impact-serious:nth-child(1) > h3"
+                "article:nth-child(26) > .issues > .impact-serious:nth-child(1) > h3"
               ],
               "html": "<h3>Elements must meet minimum color contrast ratio thresholds</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(35) > .issues > .impact-serious:nth-child(1) > p:nth-child(2)"
+                "article:nth-child(26) > .issues > .impact-serious:nth-child(1) > p:nth-child(2)"
               ],
               "html": "<p>Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(35) > .issues > .impact-serious:nth-child(1) > p:nth-child(3)"
+                "article:nth-child(26) > .issues > .impact-serious:nth-child(1) > p:nth-child(3)"
               ],
               "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(35) > .issues > .impact-serious:nth-child(2) > h3"
+                "article:nth-child(26) > .issues > .impact-serious:nth-child(2) > h3"
               ],
               "html": "<h3>Scrollable region must have keyboard access</h3>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(35) > .issues > .impact-serious:nth-child(2) > p:nth-child(2)"
+                "article:nth-child(26) > .issues > .impact-serious:nth-child(2) > p:nth-child(2)"
               ],
               "html": "<p>Ensure elements that have scrollable content are accessible by keyboard</p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
             },
             {
               "target": [
-                "article:nth-child(35) > .issues > .impact-serious:nth-child(2) > p:nth-child(3)"
+                "article:nth-child(26) > .issues > .impact-serious:nth-child(2) > p:nth-child(3)"
               ],
               "html": "<p><a href=\"https://dequeuniversity.com/rules/axe/4.11/scrollable-region-focusable?application=axeAPI\" target=\"_blank\">Learn more about this rule</a></p>",
               "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
@@ -625,16 +524,69 @@
       ]
     },
     {
-      "path": "scen/merit-hemmingson/index.html",
-      "violations": []
+      "path": "test/carbon/index.html",
+      "violations": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+          "help": "Page should contain a level-one heading",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "html": "<html lang=\"sv\">",
+              "failureSummary": "Fix all of the following:\n  Page must have a level-one heading"
+            }
+          ]
+        }
+      ]
     },
     {
-      "path": "scen/polenta/index.html",
-      "violations": []
-    },
-    {
-      "path": "scen/storrada/index.html",
-      "violations": []
+      "path": "test/pagespeed/index.html",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".psi-card:nth-child(1) > .psi-score-ring.psi--good"
+              ],
+              "html": "<div class=\"psi-score-ring psi--good\">95</div>",
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.08 (foreground color: #ffffff, background color: #0cce6b, font size: 18.0pt (24px), font weight: bold). Expected contrast ratio of 3:1"
+            },
+            {
+              "target": [
+                ".psi-card:nth-child(2) > .psi-score-ring.psi--good"
+              ],
+              "html": "<div class=\"psi-score-ring psi--good\">98</div>",
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.08 (foreground color: #ffffff, background color: #0cce6b, font size: 18.0pt (24px), font weight: bold). Expected contrast ratio of 3:1"
+            }
+          ]
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "description": "Ensure elements that have scrollable content are accessible by keyboard",
+          "help": "Scrollable region must have keyboard access",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/scrollable-region-focusable?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "pre"
+              ],
+              "html": "<pre class=\"psi-raw\">",
+              "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

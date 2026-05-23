@@ -1,12 +1,11 @@
 ---
 layout: layouts/base
-year: 2026
 eleventyComputed:
   title: "På scen {{ year }}"
   permalink: "{% if year == editions.current %}/scen/index.html{% else %}/{{ year }}/scen/index.html{% endif %}"
 ---
 
-<h1>På våra scener 2026</h1>
+<h1>På våra scener {{ year }}</h1>
 {% include "components/headline-acts/headline-acts.njk" %}
 
 {% include "components/artist-list/artist-list.njk" %}

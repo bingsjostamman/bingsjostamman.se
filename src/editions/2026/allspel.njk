@@ -1,7 +1,6 @@
 ---
 layout: layouts/base
-year: 2026
-description: "Allspelslåtar for Bingsjöstämman 2026."
+description: "Allspelslåtar for Bingsjöstämman {{ year }}."
 eleventyComputed:
   title: "Allspel {{ year }}"
   permalink: "{% if year == editions.current %}/allspel/index.html{% else %}/{{ year }}/allspel/index.html{% endif %}"
@@ -13,7 +12,7 @@ eleventyComputed:
 
 <div class="o-split">
   <div class="o-split__content prose">
-    <h1>Allspelslåtar 2026</h1>
+    <h1>Allspelslåtar {{ year }}</h1>
 
     <div class="page-intro">
       {{ copy.intro | markdown | safe }}

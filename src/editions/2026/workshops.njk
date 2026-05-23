@@ -1,7 +1,6 @@
 ---
 layout: layouts/base
-year: 2026
-description: "Kurser under Bingsjöstämman 2026."
+description: "Kurser under Bingsjöstämman {{ year }}."
 eleventyComputed:
   title: "Kurser {{ year }}"
   permalink: "{% if year == editions.current %}/kurser/index.html{% else %}/{{ year }}/kurser/index.html{% endif %}"

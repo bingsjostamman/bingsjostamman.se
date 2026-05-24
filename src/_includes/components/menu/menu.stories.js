@@ -97,6 +97,19 @@ export const Default = () => `
           </a>
         </li>
       
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/kontakt/" 
+            data-track-event="menu_link_click"
+            data-track-label="Kontakta oss"
+            data-track-context="main-menu"
+            
+          >
+            Kontakta oss
+          </a>
+        </li>
+      
     </ul>
   </nav>
 </div>

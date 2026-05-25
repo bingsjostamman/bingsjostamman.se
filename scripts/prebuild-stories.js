@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import nunjucks from "nunjucks";
+import markdownIt from "markdown-it";
 
 const componentsDir = "src/_includes/components";
 const prebuildDir = "prebuilt";
@@ -10,6 +11,60 @@ const usedComponentsFile = path.join(prebuildDir, "used-components.json");
 if (!fs.existsSync(prebuildDir)) fs.mkdirSync(prebuildDir, { recursive: true });
 
 const env = nunjucks.configure([componentsDir, "src/_includes"], { autoescape: true });
+
+// Register custom filters used in components
+env.addFilter("split", (str, sep) => str.split(sep));
+env.addFilter("map", (array, property) => {
+  if (!Array.isArray(array)) return [];
+  return array.map((item) => item[property]);
+});
+env.addFilter("min", (array) => {
+  if (!Array.isArray(array) || array.length === 0) return 0;
+  return Math.min(...array.filter((n) => typeof n === "number"));
+});
+env.addFilter("max", (array) => {
+  if (!Array.isArray(array) || array.length === 0) return 0;
+  return Math.max(...array.filter((n) => typeof n === "number"));
+});
+env.addFilter("math", (v1, operator, v2) => {
+  v1 = Number(v1);
+  v2 = Number(v2);
+  switch (operator) {
+    case "+":
+      return v1 + v2;
+    case "-":
+      return v1 - v2;
+    case "*":
+      return v1 * v2;
+    case "/":
+      return v1 / v2;
+    default:
+      return v1;
+  }
+});
+env.addFilter("padStart", (value, length = 2, char = "0") => {
+  if (value === undefined || value === null) return "";
+  return String(value).padStart(length, char);
+});
+env.addFilter("groupBy", (array, prop) => {
+  if (!Array.isArray(array)) return [];
+  const groups = {};
+  array.forEach((item) => {
+    const key = item[prop] || "unknown";
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(item);
+  });
+  return Object.keys(groups).map((key) => ({
+    grouper: key,
+    items: groups[key],
+  }));
+});
+env.addFilter("markdown", (content) => {
+  if (!content) return "";
+  const md = markdownIt({ html: true });
+  return md.render(content);
+});
+env.addFilter("safe", (str) => str);
 
 // Recursively get all component files
 function getComponentFiles(dir) {

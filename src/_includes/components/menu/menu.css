@@ -161,6 +161,10 @@
   font-weight: 500;
 }
 
+.c-menu__link:hover {
+  background-color: var(--color-background--hover);
+}
+
 @media (width >= 1200px) {
 
   .c-menu__panel {
@@ -204,6 +208,10 @@
     max-height: 100vh;
   }
 
+}
+
+.c-menu__items {
+  margin-block-end: var(--size-double);
 }
 
 /* Backdrop */

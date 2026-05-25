@@ -1,0 +1,29 @@
+{
+  "title": "Components/Stage Card",
+  "description": "A stage card with optional image and description that renders its slot list using the Stage List component.",
+  "status": "ready",
+  "tags": ["UI", "schedule", "content"],
+  "class": "stage-card",
+  "macro": true,
+  "examples": {
+    "Default": {
+      "stageName": "The Valley",
+      "day": "onsdag",
+      "lineup": [
+        { "day": "onsdag", "stage": "The Valley", "name": "Sarah Thorne", "starttime": "13:15", "endtime": "", "description": "" },
+        { "day": "onsdag", "stage": "The Valley", "name": "Whisper Creek Solo", "starttime": "14:30", "endtime": "", "description": "" },
+        { "day": "onsdag", "stage": "The Valley", "name": "Mountain Breath", "starttime": "15:45", "endtime": "", "description": "" },
+        { "day": "onsdag", "stage": "The Valley", "name": "Clara & The Harp", "starttime": "17:00", "endtime": "", "description": "" },
+        { "day": "onsdag", "stage": "The Valley", "name": "Old Ghost Trio", "starttime": "18:15", "endtime": "", "description": "" },
+        { "day": "onsdag", "stage": "The Valley", "name": "The Echoing Vale", "starttime": "19:30", "endtime": "", "description": "" },
+        { "day": "onsdag", "stage": "The Valley", "name": "Solstice Winds", "starttime": "20:45", "endtime": "", "description": "" }
+      ],
+      "options": {
+        "stageDescription": "A hidden sanctuary at the valley floor, offering intimate proximity and natural acoustics.",
+        "imageSrc": "https://placehold.co/1200x720",
+        "imageAlt": "The Valley stage",
+        "splitSlotsOnNarrow": true
+      }
+    }
+  }
+}

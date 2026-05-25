@@ -6,6 +6,7 @@ eleventyComputed:
   permalink: "{% if year == editions.current %}/allspel/index.html{% else %}/{{ year }}/allspel/index.html{% endif %}"
 ---
 {% from "components/allspel-tunes/allspel-tunes.njk" import allspelTunes %}
+{% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
 {% from "components/image/image.njk" import cloudinaryPicture %}
 {% set regularTunes = tunes | rejectattr("barnens") | list %}
 {% set barnensTunes = tunes | selectattr("barnens") | list %}
@@ -17,12 +18,21 @@ eleventyComputed:
     <div class="page-intro">
       {{ copy.intro | markdown | safe }}
     </div>
+    <div class="o-tile t-intent-highlight">
+      <h3>{{ copy.shoutoutHeadline | markdown | safe }}</h3>
+      {{ copy.shoutoutText | markdown | safe }}
+
+      {{ scheduleItem("Logen", "15:30", "16:30", {
+        rootClass: "",
+        infoClass: ""
+      }) }}
+    </div>
+
   </div>
   <div class="o-split__image o-split__content">
     {{ cloudinaryPicture("v1748295028/allspel_2024_zchx2s", "Allspel på stora scenen") }}
   </div>
 </div>
-
 
 
 {{ allspelTunes(regularTunes) }}

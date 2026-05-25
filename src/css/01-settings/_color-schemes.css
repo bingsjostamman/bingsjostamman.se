@@ -57,7 +57,7 @@
   --color-font--diminish: rgb(from var(--token-color-teal-black) r g b / 0.62);
   --color-font--link: var(--token-color-chestnut);
   --color-icon-background: var(--token-color-bronze);
-  --color-icon: var(--token-color-teal-black);
+  --color-icon: var(--token-color-chestnut);
   --color-border--percieve: rgb(from var(--token-color-teal-black) r g b / 0.35);
   --color-border--outline: rgb(from var(--token-color-teal-black) r g b / 0.18);
   --color-border--decorate: rgb(from var(--token-color-teal-black) r g b / 0.08);
@@ -80,7 +80,7 @@
   --color-font--diminish: rgb(from var(--token-color-teal-black) r g b / 0.62);
   --color-font--link: var(--token-color-chestnut);
   --color-icon-background: var(--token-color-bronze);
-  --color-icon: var(--token-color-teal-black);
+  --color-icon: var(--token-color-chestnut);
   --color-border--percieve: rgb(from var(--token-color-teal-black) r g b / 0.35);
   --color-border--outline: rgb(from var(--token-color-teal-black) r g b / 0.18);
   --color-border--decorate: rgb(from var(--token-color-teal-black) r g b / 0.08);
@@ -149,7 +149,7 @@
   --color-font--diminish: rgb(from var(--token-color-white) r g b / 0.62);
   --color-font--link: var(--token-color-white);
   --color-icon-background: var(--token-color-chestnut);
-  --color-icon: var(--token-color-white);
+  --color-icon: var(--token-color-bronze);
   --color-border--percieve: rgb(from var(--token-color-white) r g b / 0.35);
   --color-border--outline: rgb(from var(--token-color-white) r g b / 0.18);
   --color-border--decorate: rgb(from var(--token-color-white) r g b / 0.08);

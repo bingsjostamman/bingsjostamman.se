@@ -14,7 +14,7 @@ eleventyComputed:
 
 {% from "components/image/image-hero.njk" import heroImage %}
 {% from "components/icon/icon.njk" import icon %}
-{% from "components/artist-meta/artist-meta.njk" import artistMetaItem %}
+{% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
 
 
 <article class="artist">
@@ -43,8 +43,8 @@ eleventyComputed:
 
   <div class="artist-split o-split o-split--uneven">
   {% if artist.longdescription %}
-    <div class="artist-longdescription">
-      {{ artist.longdescription }}
+    <div class="artist-longdescription u-anfang">
+      <p>{{ artist.longdescription }}</p>
     </div>
   {% endif %}
 
@@ -60,12 +60,12 @@ eleventyComputed:
       <ul class="artist-meta u-list-unstyled o-tile t-intent-emphasis">
           {% for row in sortedSlots %}
             {% set slot = row.slot %}
-          {{ artistMetaItem(slot.stage, slot.day, slot.starttime, slot.endtime, { tag: "li" }) }}
+          {{ scheduleItem(slot.stage, slot.starttime, slot.endtime, { tag: "li", day: slot.day }) }}
         {% endfor %}
       </ul>
     {% else %}
       <div class="artist-meta o-tile t-intent-emphasis">
-          {{ artistMetaItem(artist.stage, artist.day, artist.starttime, artist.endtime) }}
+          {{ scheduleItem(artist.stage, artist.starttime, artist.endtime, { day: artist.day }) }}
       </div>
     {% endif %}
 

@@ -1,0 +1,277 @@
+---
+layout: layouts/base
+eleventyComputed:
+  title: "Onsdag {{ dates.onsdag | swedishDate }} {{ year }}"
+  permalink: "{% if year == editions.current %}/onsdag/index.html{% else %}/{{ year }}/onsdag/index.html{% endif %}"
+eleventyExcludeFromCollections: true
+---
+{% from "components/stage-card/stage-card.njk" import stageCard %}
+{% from "components/image/image.njk" import cloudinaryPicture %}
+
+
+<div class="o-split">
+    <div class="o-split__content prose u-anfang">
+        <h1>Bingsjöstämman onsdag {{ dates.onsdag | swedishDate }}</h1>
+            <p>&nbsp;</p>
+
+        <div class="page-intro u-anfang">
+            {%- for paragraph in copy.intro %}
+            <p>{{ paragraph }}</p>
+            <p>&nbsp;</p>
+            {%- endfor %}
+        </div>
+    </div>
+
+    <div class="o-split__image o-split__content">
+        <div class="o-split__image o-split__content">
+            {{ cloudinaryPicture("2026/programbild_pcau4h", "Ungdomsgrupperna spelar på stora scenen.") }}
+        </div>
+    </div>
+
+</div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!-- Invigningsprogram och Dansbanan -->
+<h2>{{ copy.openingProgramHeadline }}</h2>
+<p>&nbsp;</p>
+{{ copy.openingProgramText | markdown | safe }}
+<p>&nbsp;</p>
+<div class="o-list-layout o-list-layout--md-2">
+
+    <!-- Invigningsprogram -->
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+        {{ stageCard(copy.stages.dansbanan.stageName, lineup, "onsdag", "", {
+            headingText: "Stora scenen på Dansbanan",
+            stageDescription: copy.stages.dansbanan.invigningDescription,
+            imageSrc: copy.stages.dansbanan.invigningImageSrc,
+            imageAlt: copy.stages.dansbanan.invigningImageAlt,
+            includeType: "invigning"
+        }) }}
+    </div>
+
+    <!-- Dansbanan -->
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+        {{ stageCard(copy.stages.dansbanan.stageName, lineup, "onsdag", copy.stages.dansbanan.excludeType or "", {
+        stageDescription: copy.stages.dansbanan.description,
+        imageSrc: copy.stages.dansbanan.imageSrc,
+        imageAlt: copy.stages.dansbanan.imageAlt,
+        includeType: "dansa"
+        }) }}
+    </div>
+
+</div>
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!-- Bystugeområdet -->
+<h2>{{ copy.bystuganHeadline }}</h2>
+<p>&nbsp;</p>
+{{ copy.bystuganText | markdown | safe }}
+<p>&nbsp;</p>
+<div class="o-list-layout o-list-layout--md-2 o-list-layout--lg-3">
+
+    <!-- Barnens Bingsjö -->
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+    {{ stageCard(copy.stages.dansladu.stageName, lineup, "onsdag", "", {
+        headingText: "Barnens Bingsjö",
+        stageDescription: copy.stages.dansladu.barnensDescription,
+        imageSrc: copy.stages.dansladu.barnensImageSrc,
+        imageAlt: copy.stages.dansladu.barnensImageAlt,
+        includeType: "upplev"
+    }) }}
+    </div>
+
+    <!-- Bystuguscenen -->
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+    {{ stageCard(copy.stages.bystuguscenen.stageName, lineup, "onsdag", copy.stages.bystuguscenen.excludeType or "", {
+        stageDescription: copy.stages.bystuguscenen.description,
+        imageSrc: copy.stages.bystuguscenen.imageSrc,
+        imageAlt: copy.stages.bystuguscenen.imageAlt
+    }) }}
+    </div>
+
+    <!-- Dansladu -->
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+    {{ stageCard(copy.stages.dansladu.stageName, lineup, "onsdag", copy.stages.dansladu.excludeType or "", {
+        stageDescription: copy.stages.dansladu.description,
+        imageSrc: copy.stages.dansladu.imageSrc,
+        imageAlt: copy.stages.dansladu.imageAlt,
+        includeType: "dansa"
+    }) }}
+    </div>
+
+</div>
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!-- Finlir på Danielsgården -->
+<h2>{{ copy.danielsgardenHeadline }}</h2>
+<p>&nbsp;</p>
+{{ copy.danielsgardenText | markdown | safe }}
+<p>&nbsp;</p>
+<div class="o-list-layout o-list-layout--md-2">
+
+    <!-- Tunet -->
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+    {{ stageCard(copy.stages.tunet.stageName, lineup, "onsdag", copy.stages.tunet.excludeType or "", {
+        stageDescription: copy.stages.tunet.description,
+        imageSrc: copy.stages.tunet.imageSrc,
+        imageAlt: copy.stages.tunet.imageAlt
+    }) }}
+    </div>
+
+    <!-- Logen -->
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+    {{ stageCard(copy.stages.logen.stageName, lineup, "onsdag", copy.stages.logen.excludeType or "", {
+        stageDescription: copy.stages.logen.description,
+        imageSrc: copy.stages.logen.imageSrc,
+        imageAlt: copy.stages.logen.imageAlt,
+        includeType: "dansa"
+    }) }}
+    </div>
+</div>
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!-- Spela eller sjung med -->
+<h2>{{ copy.joinInHeadline }}</h2>
+<p>&nbsp;</p>
+{{ copy.joinInText | markdown | safe }}
+<p>&nbsp;</p>
+<div class="o-list-layout o-list-layout--md-2 o-list-layout--lg-3">
+
+    <!-- Kurser på logen -->
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+    {{ stageCard(copy.stages.logen.stageName, lineup, "onsdag", "", {
+        headingText: "Logen",
+        stageDescription: copy.stages.logen.kurserDescription,
+        imageSrc: copy.stages.logen.kurserImageSrc,
+        imageAlt: copy.stages.logen.kurserImageAlt,
+        includeType: "kurs"
+    }) }}
+    </div>
+
+    <!-- Levande Ladan -->
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+    {{ stageCard(copy.stages.levandeLadan.stageName, lineup, "onsdag", copy.stages.levandeLadan.excludeType or "", {
+        stageDescription: copy.stages.levandeLadan.description,
+        imageSrc: copy.stages.levandeLadan.imageSrc,
+        imageAlt: copy.stages.levandeLadan.imageAlt
+    }) }}
+    </div>
+
+    <!-- Låttältet -->
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+    {{ stageCard(copy.stages.lattaltet.stageName, lineup, "onsdag", copy.stages.lattaltet.excludeType or "", {
+        stageDescription: copy.stages.lattaltet.description,
+        imageSrc: copy.stages.lattaltet.imageSrc,
+        imageAlt: copy.stages.lattaltet.imageAlt
+    }) }}
+    </div>
+
+</div>
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!-- Lyssnarscenerna -->
+<h2>{{ copy.listenHeadline }}</h2>
+<p>&nbsp;</p>
+{{ copy.listenText | markdown | safe }}
+<p>&nbsp;</p>
+<div class="o-list-layout o-list-layout--md-2">
+
+    <!-- Nygårdsgården -->
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+    {{ stageCard(copy.stages.nygardsgarden.stageName, lineup, "onsdag", copy.stages.nygardsgarden.excludeType or "", {
+        stageDescription: copy.stages.nygardsgarden.description,
+        imageSrc: copy.stages.nygardsgarden.imageSrc,
+        imageAlt: copy.stages.nygardsgarden.imageAlt
+    }) }}
+    </div>
+
+    <!-- Kapellet -->
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+    {{ stageCard(copy.stages.kapellet.stageName, lineup, "onsdag", copy.stages.kapellet.excludeType or "", {
+        stageDescription: copy.stages.kapellet.description,
+        imageSrc: copy.stages.kapellet.imageSrc,
+        imageAlt: copy.stages.kapellet.imageAlt
+    }) }}
+    </div>
+
+
+</div>
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!-- Upplevelser i Bingsjö -->
+<h2>{{ copy.experiencesHeadline }}</h2>
+<p>&nbsp;</p>
+{{ copy.experiencesText | markdown | safe }}
+<p>&nbsp;</p>
+<div class="o-list-layout o-list-layout--md-2 o-list-layout--lg-3">
+
+  <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+    {{ stageCard(copy.stages.bingsjo.stageName, lineup, "onsdag", "", {
+      headingText: "Bingsjö med omnejd",
+      stageDescription: copy.stages.bingsjo.description,
+      imageSrc: copy.stages.bingsjo.imageSrc,
+      imageAlt: copy.stages.bingsjo.imageAlt
+    }) }}
+  </div>
+
+  <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+    {{ stageCard(copy.stages.bagarstugan.stageName, lineup, "onsdag", copy.stages.bagarstugan.excludeType or "", {
+      stageDescription: copy.stages.bagarstugan.description,
+      imageSrc: copy.stages.bagarstugan.imageSrc,
+      imageAlt: copy.stages.bagarstugan.imageAlt
+    }) }}
+  </div>
+
+  <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+    {{ stageCard(copy.stages.danielsgarden.stageName, lineup, "onsdag", copy.stages.danielsgarden.excludeType or "", {
+      stageDescription: copy.stages.danielsgarden.description,
+      imageSrc: copy.stages.danielsgarden.imageSrc,
+      imageAlt: copy.stages.danielsgarden.imageAlt
+    }) }}
+  </div>
+</div>
+
+
+
+
+
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+  </div>
+

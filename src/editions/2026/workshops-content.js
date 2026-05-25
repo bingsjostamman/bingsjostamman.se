@@ -28,10 +28,10 @@ Alla kurser arrangeras av Folkmusikens Hus under Stämmoveckan och anmälan sker
       link: "https://folkmusikenshus.se/event/nyborjarkurs-i-polska-med-ami-fredrik/",
     },
     {
-      name: "Kurs om Bingsjomusiken",
-      teacher: "Micke Lofroth",
+      name: "Kurs om Bingsjömusiken",
+      teacher: "Micke Löfroth",
       description:
-        "Lär dig mer om den unika Bingsjomusiken efter legendaren Hjort Anders och andra spelman från Bingsjö. Micke Lofroth förmedlar berättelser med utgångspunkt från sin uppsats och lär ut några av låtarna han pratar om.",
+        "Lär dig mer om den unika Bingsjömusiken efter legendaren Hjort Anders och andra spelman från Bingsjö. Micke Löfroth förmedlar berättelser med utgångspunkt från sin uppsats och lär ut några av låtarna han pratar om.",
       location: "Nygårdsgården",
       time: "Onsdag 10:00-12:30",
       photoUrl: "2026/bingsjomusik_yykfse.jpg",

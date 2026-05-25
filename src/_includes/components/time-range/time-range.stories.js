@@ -1,5 +1,5 @@
 export default {
-  title: "Components/artist-meta",
+  title: "Components/time-range",
   parameters: {
     docs: { description: { component: "" } },
     status: "",

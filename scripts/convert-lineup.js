@@ -92,14 +92,18 @@ function normalizeDisplayTime(hhmm) {
     .padStart(2, "0")}`;
 }
 
+function preserveZeroOrEmpty(value) {
+  return value === 0 || value ? value : "";
+}
+
 // ----------------------
 // 3. Clean + normalize
 // ----------------------
 const cleaned = rows
   .filter((row) => row.name)
   .map((row) => {
-    const starttime = excelTimeToString(row.starttime || "");
-    const endtime = excelTimeToString(row.endtime || "");
+    const starttime = excelTimeToString(preserveZeroOrEmpty(row.starttime));
+    const endtime = excelTimeToString(preserveZeroOrEmpty(row.endtime));
     const hasStarttime = !!(row.starttime || row.starttime === 0);
     const hasEndtime = !!(row.endtime || row.endtime === 0);
     const startMinutes = hhmmToMinutes(starttime);

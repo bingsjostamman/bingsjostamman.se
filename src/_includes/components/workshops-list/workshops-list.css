@@ -1,0 +1,90 @@
+.c-workshops-list__list {
+  display: grid;
+  gap: var(--size-double);
+}
+
+.c-workshops-list__item {
+  overflow: hidden;
+  align-items: stretch;
+  padding-block-start: var(--size-double);
+}
+
+
+.c-workshops-list__item + .c-workshops-list__item {
+    border-block-start: 1px solid var(--color-border--decorate);
+}
+
+.c-workshops-list__name {
+  margin: 0;
+}
+
+.c-workshops-list__teacher {
+  margin: var(--size-half) 0 0;
+}
+
+.c-workshops-list__description {
+  margin: var(--size-half) 0 0;
+}
+
+.c-workshops-list__body {
+  padding: var(--size-full);
+  order: 1;
+}
+
+.c-workshops-list__meta {
+  display: grid;
+  gap: var(--size-quarter);
+  margin-top: var(--size-full);
+}
+
+.c-workshops-list__meta-item {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.c-workshops-list__meta-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-quarter);
+  font-size: var(--font-size--1);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.c-workshops-list__meta-time {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+}
+
+.c-workshops-list__meta-value {
+  font-size: var(--font-size-0);
+}
+
+.c-workshops-list__meta-icon {
+  color: var(--color-primary);
+  margin-block-start: 0.1em;
+}
+
+.c-workshops-list__image {
+  min-height: 14rem;
+}
+
+.c-workshops-list__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c-workshops-list__link-wrap {
+  margin-top: var(--size-double);
+}
+
+.c-workshops-list__link {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-0);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

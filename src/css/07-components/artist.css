@@ -1,0 +1,72 @@
+
+.artist-intro {
+    display: flex;
+    flex-direction: column-reverse;    
+}
+
+.artist-split {
+    align-items: flex-start;
+}
+
+.artist-headline {
+  font-size: var(--font-size-7);
+  font-weight: 500;
+  line-height: 1.1;
+  margin-block-start: var(--size-quad);
+}
+
+.artist__eyebrow {
+color: var(--color-font--primary);
+  background-color: var(--color-primary);
+  font-size: var(--font-size--2);
+  font-family: 'Alegreya Sans';
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: var(--font-leading-root);
+  letter-spacing: 0.08em;
+  display: flex;
+  width: max-content;
+  padding-block: var(--size-quarter);
+  padding-inline: var(--size-full);
+  border-radius: 2em;
+  align-items: center;
+  gap: var(--size-quarter);
+}
+
+.artist-intro + * {
+  margin-block-start: var(--size-double);
+}
+
+.artist-longdescription {
+    font-size: var(--font-size-1);
+}
+
+.artist-longdescription::first-letter {
+}
+
+.artist-image {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.artist-image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artist-link {
+  display: flex;
+  width: max-content;
+  background: var(--token-color-teal-800);
+  color: var(--color-font--primary);
+  padding-block: var(--size-full);
+  padding-inline: var(--size-double);
+  font-size: var(--font-size-0);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 6px;
+  align-items: center;
+  gap: var(--size-half);
+}

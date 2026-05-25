@@ -1,0 +1,20 @@
+---
+layout: layouts/base
+description: "Kurser under Bingsjöstämman {{ year }}."
+eleventyComputed:
+  title: "Kurser {{ year }}"
+  permalink: "{% if year == editions.current %}/kurser/index.html{% else %}/{{ year }}/kurser/index.html{% endif %}"
+---
+{% from "components/image/image.njk" import cloudinaryPicture %}
+{% from "components/workshops-list/workshops-list.njk" import workshopsList %}
+
+    <h1>Kurser</h1>
+
+    <div class="page-intro">
+      {{ copy.intro | markdown | safe }}
+    </div>
+
+
+
+{{ workshopsList(workshops) }}
+

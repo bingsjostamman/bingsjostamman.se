@@ -9,14 +9,10 @@
 
 .u-skip-link:focus {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: auto;
+  top: var(--size-half);
+  left: calc(var(--size-quad) * 3);  width: auto;
   height: auto;
   overflow: visible;
   z-index: 1000;
   padding: var(--size-half) var(--size-full);
-  background: #fff;
-  color: rebeccapurple;
-  font-weight: 700;
 }

@@ -2,70 +2,76 @@
    Shared math utilities for fluid tokens
 ---------------------------------------- */
 :root {
+  --font-size--3: clamp(
+    0.75rem,
+    -0.17vw +
+      0.79rem,
+    0.64rem
+  );
   --font-size--2: clamp(
-    0.91rem,
-    0.13vw +
-      0.88rem,
-    0.99rem
+    0.83rem,
+    -0.09vw +
+      0.85rem,
+    0.77rem
   );
   --font-size--1: clamp(
-    0.83rem,
-    0vw +
-      0.83rem,
-    0.82rem
+    0.91rem,
+    0.03vw +
+      0.9rem,
+    0.93rem
   );
   --font-size-0: clamp(
     1rem,
-    0.29vw +
-      0.93rem,
-    1.19rem
+    0.17vw +
+      0.96rem,
+    1.11rem
   );
   --font-size-1: clamp(
     1.1rem,
-    0.51vw +
-      0.98rem,
-    1.43rem
+    0.36vw +
+      1.01rem,
+    1.33rem
   );
   --font-size-2: clamp(
     1.21rem,
-    0.78vw +
-      1.03rem,
-    1.71rem
+    0.61vw +
+      1.07rem,
+    1.6rem
   );
   --font-size-3: clamp(
     1.33rem,
-    1.12vw +
-      1.07rem,
-    2.05rem
+    0.92vw +
+      1.12rem,
+    1.92rem
   );
   --font-size-4: clamp(
     1.46rem,
-    1.56vw +
-      1.1rem,
-    2.46rem
+    1.31vw +
+      1.16rem,
+    2.3rem
   );
   --font-size-5: clamp(
     1.61rem,
-    2.1vw +
-      1.12rem,
-    2.95rem
+    1.8vw +
+      1.19rem,
+    2.76rem
   );
   --font-size-6: clamp(
     1.77rem,
-    2.77vw +
-      1.12rem,
-    3.55rem
+    2.41vw +
+      1.21rem,
+    3.32rem
   );
   --font-size-7: clamp(
     1.95rem,
-    3.6vw +
-      1.11rem,
-    4.26rem
+    3.17vw +
+      1.21rem,
+    3.98rem
   );
   --font-leading-root: clamp(
-    0.75rem,
-    25.94vw + 0.66rem,
-    1.01rem
+    0.84rem,
+    21.88vw + 0.76rem,
+    1.06rem
   );
   --font-leading-2: calc(2 * var(--font-leading-root));
   --font-leading-3: calc(3 * var(--font-leading-root));

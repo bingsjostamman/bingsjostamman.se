@@ -1,0 +1,49 @@
+.c-stage-card {
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.c-stage-card__image {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.c-stage-card__icon {
+    position: relative;
+    top: 0.15em;
+    margin-inline-end: var(--size-quarter);
+    color: var(--color-icon);
+}
+
+.c-stage-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c-stage-card__body {
+  padding-block: var(--size-full);
+  padding-inline: var(--size-half);
+}
+
+.c-stage-card__stage-name {
+    display: flex;
+    align-items: center;
+  margin: 0;
+}
+
+.c-stage-card__stage-description {
+  margin: var(--size-half) 0 0;
+}
+
+.c-stage-card__stage-description > :first-child {
+  margin-top: 0;
+}
+
+.c-stage-card__stage-description > :last-child {
+  margin-bottom: 0;
+}
+
+.c-stage-card__slots {
+  margin-top: var(--size-full);
+}

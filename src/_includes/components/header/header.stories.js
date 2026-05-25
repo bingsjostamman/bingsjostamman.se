@@ -37,13 +37,22 @@ export const Default = () => `<header class="c-header">
 
   
 
-  <nav id="main-nav" data-menu-panel class="c-menu__panel">
-    <ul class="c-menu__items">
+  <nav id="main-nav" data-menu-panel class="c-menu__panel t-component-header">
+    <button type="button" class="c-menu__close" data-menu-close aria-label="Stäng meny">
+      
+<span class="icon" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+</span>
+    </button>
+    <ul class="c-menu__items u-list-unstyled">
       
         <li class="c-menu__item">
           <a
             class="c-menu__link"
             href="/tisdag/" 
+            data-track-event="menu_link_click"
+            data-track-label="Tisdag"
+            data-track-context="main-menu"
             
           >
             Tisdag
@@ -54,6 +63,9 @@ export const Default = () => `<header class="c-header">
           <a
             class="c-menu__link"
             href="/onsdag/" 
+            data-track-event="menu_link_click"
+            data-track-label="Onsdag"
+            data-track-context="main-menu"
             
           >
             Onsdag
@@ -63,10 +75,13 @@ export const Default = () => `<header class="c-header">
         <li class="c-menu__item">
           <a
             class="c-menu__link"
-            href="/allspel/" 
+            href="/biljetter/" 
+            data-track-event="menu_link_click"
+            data-track-label="Entré och biljetter"
+            data-track-context="main-menu"
             
           >
-            Allspel
+            Entré och biljetter
           </a>
         </li>
       
@@ -74,6 +89,9 @@ export const Default = () => `<header class="c-header">
           <a
             class="c-menu__link"
             href="/scen/" 
+            data-track-event="menu_link_click"
+            data-track-label="På scen"
+            data-track-context="main-menu"
             
           >
             På scen
@@ -83,10 +101,39 @@ export const Default = () => `<header class="c-header">
         <li class="c-menu__item">
           <a
             class="c-menu__link"
-            href="/biljetter/" 
+            href="/allspel/" 
+            data-track-event="menu_link_click"
+            data-track-label="Allspel"
+            data-track-context="main-menu"
             
           >
-            Entré och biljetter
+            Allspel
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/kurser/" 
+            data-track-event="menu_link_click"
+            data-track-label="Kurser"
+            data-track-context="main-menu"
+            
+          >
+            Kurser
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/kontakt/" 
+            data-track-event="menu_link_click"
+            data-track-label="Kontakta oss"
+            data-track-context="main-menu"
+            
+          >
+            Kontakta oss
           </a>
         </li>
       

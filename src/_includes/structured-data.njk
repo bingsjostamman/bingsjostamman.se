@@ -3,7 +3,7 @@
 {% set locationAddress = location.address or {} %}
 {% set festivalName = site.name ~ ' ' ~ year %}
 {% set pageUrl = canonical or (site.baseUrl ~ page.url) %}
-{% set pageDescription = socialDescription or description or site.description %}
+{% set pageDescription = metaDescription or socialDescription or description or site.description %}
 
 <script type="application/ld+json">
 {

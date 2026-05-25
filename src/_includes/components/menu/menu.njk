@@ -11,23 +11,31 @@
   <div class="c-menu__backdrop" data-menu-backdrop aria-hidden="true"></div>
 
   {% set menuLinks = [
-    { url: "/tisdag/", label: "Tisdag" },
-    { url: "/onsdag/", label: "Onsdag" },
-    { url: "/allspel/", label: "Allspel" },
+    { url: "/tisdag/", label: "Tisdag", dateKey: "tisdag" },
+    { url: "/onsdag/", label: "Onsdag", dateKey: "onsdag" },
+    { url: "/biljetter/", label: "Entré och biljetter" },
     { url: "/scen/", label: "På scen" },
-    { url: "/biljetter/", label: "Entré och biljetter" }
+    { url: "/allspel/", label: "Allspel" },
+    { url: "/kurser/", label: "Kurser" },
+    { url: "/kontakt/", label: "Kontakta oss" }
   ] %}
 
-  <nav id="main-nav" data-menu-panel class="c-menu__panel">
-    <ul class="c-menu__items">
+  <nav id="main-nav" data-menu-panel class="c-menu__panel t-component-header">
+    <button type="button" class="c-menu__close" data-menu-close aria-label="Stäng meny">
+      {{ icon("close") }}
+    </button>
+    <ul class="c-menu__items u-list-unstyled">
       {% for link in menuLinks %}
         <li class="c-menu__item">
           <a
             class="c-menu__link"
             href="{{ link.url }}" 
+            data-track-event="menu_link_click"
+            data-track-label="{{ link.label }}"
+            data-track-context="main-menu"
             {% if page.url == link.url %}aria-current="page"{% endif %}
           >
-            {{ link.label }}
+            {{ link.label }}{% if link.dateKey and dates[link.dateKey] %} {{ dates[link.dateKey] | swedishDate }}{% endif %}
           </a>
         </li>
       {% endfor %}

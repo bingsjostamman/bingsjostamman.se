@@ -1,8 +1,6 @@
 ---
 layout: layouts/base
-year: 2026
-description: "Bingsjostamman 2026 i Bingsjo med spel, dans och allspel."
-socialImage: "https://res.cloudinary.com/dbblxggj5/image/upload/v1748295028/allspel_2024_zchx2s"
+description: "Bingsjöstämman 2026 i Bingsjö med spel, dans, allspel, konserter och buskspel. Hela byn är en levande scen där alla är välkomna att deltaga."
 eleventyComputed:
   title: "{{ year }}"
   permalink: "{% if year == editions.current %}/index.html{% else %}/{{ year }}/index.html{% endif %}"
@@ -21,12 +19,14 @@ eleventyComputed:
 }) }}
 
 
+{% include "components/headline-acts/headline-acts.njk" %}
+
 <div class="o-compound" style="margin-block: var(--size-double) var(--size-quad); font-size: var(--font-size-1);">
   <h2>Välkommen till Bingsjöstämman</h2>
   <p>Onsdagen den 1 juli samlas vi åter i Bingsjö för årets Bingsjöstämma. Men som vanligt tjuvstartar vi redan på tisdagkvällen.</p>
-  <p>&nbsp;</p>
-  <p>Programmet är klart och kommer att presenteras här inom kort. Först ut är <a href="{% if year == editions.current %}/allspel/{% else %}/{{ year }}/allspel/{% endif %}" style="text-decoration: underline;">årets allspelslåtar</a>!</p>
+  <p>Programmet är klart och vi fyller på med programpunkter här på webben närmsta tiden, så kom tillbaka och kika! Du kan också följa oss i våra sociala kanaler.</p> 
 </div>
+
 
 {% if isArchive == "true" %}
 <div class="archive-banner">

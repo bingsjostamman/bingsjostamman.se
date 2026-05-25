@@ -13,11 +13,26 @@ const year = path.basename(__dirname);
 const lineup = require("./lineup.json");
 const dates = require("./dates.json");
 
-// Only generate artist pages for entries with page == "artist"
-// and that have a long description to warrant a dedicated page
-const artists = lineup.filter(
-  (act) => act.page === "artist" && act.longdescription
-);
+// Group artists by ref (or name if no ref)
+// Only generate artist pages if ANY slot has a longdescription
+const groupedByRef = lineup.reduce((acc, act) => {
+  if (act.page !== "artist") return acc;
+  
+  const key = act.ref || act.name;
+  if (!acc[key]) {
+    acc[key] = [];
+  }
+  acc[key].push(act);
+  return acc;
+}, {});
+
+// Get unique artists where at least one entry has a longdescription
+const artists = Object.values(groupedByRef)
+  .filter((group) => group.some((act) => act.longdescription))
+  .map((group) => {
+    // Return the entry with longdescription, or first entry if none has it
+    return group.find((act) => act.longdescription) || group[0];
+  });
 
 export default {
   lineup: artists,

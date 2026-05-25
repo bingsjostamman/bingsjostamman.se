@@ -1,23 +1,108 @@
 ---
 layout: layouts/base
-year: 2026
 pagination:
   data: lineup
   size: 1
   alias: artist
   addAllPagesToCollections: true
 eleventyComputed:
-  title: "{{ artist.name }}"
-  description: "{{ artist.description or ('Artist pa Bingsjostamman ' ~ year) }}"
-  socialImage: "{{ artist.image and ('https://res.cloudinary.com/dbblxggj5/image/upload/c_fill,w_1200,h_630,q_auto,f_auto/' ~ artist.image) or site.defaultImage }}"
-  permalink: "{% if year == editions.current %}/scen/{{ artist.name | slugify }}/{% else %}/{{ year }}/scen/{{ artist.name | slugify }}/{% endif %}"
-eleventyExcludeFromCollections: true
+  title: "{{ artist.name or 'Unknown' }}"
+  somedescription: "{% set descCandidates = [] %}{% if artist.somedescription %}{% set descCandidates = (descCandidates.push(artist.somedescription), descCandidates) %}{% endif %}{% for slot in fullLineup %}{% if ((artist.ref and slot.ref == artist.ref) or (not artist.ref and slot.name == artist.name)) and slot.somedescription %}{% set descCandidates = (descCandidates.push(slot.somedescription), descCandidates) %}{% endif %}{% endfor %}{{ descCandidates[0] or '' }}"
+  socialImage: "{% set imageCandidates = [] %}{% if artist.image %}{% set imageCandidates = (imageCandidates.push(artist.image), imageCandidates) %}{% endif %}{% for slot in fullLineup %}{% if ((artist.ref and slot.ref == artist.ref) or (not artist.ref and slot.name == artist.name)) and slot.image %}{% set imageCandidates = (imageCandidates.push(slot.image), imageCandidates) %}{% endif %}{% endfor %}{% if imageCandidates[0] %}https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,c_fill,g_auto,w_1200,h_630/{{ imageCandidates[0] | replace('.jpg', '') | replace('.jpeg', '') | replace('.png', '') }}.jpg{% else %}{{ site.defaultImage }}{% endif %}"
+  permalink: "{% if year == editions.current %}/scen/{{ (artist.name or 'unknown') | slugify }}/{% else %}/{{ year }}/scen/{{ (artist.name or 'unknown') | slugify }}/{% endif %}"
 ---
 
 {% from "components/image/image-hero.njk" import heroImage %}
+{% from "components/icon/icon.njk" import icon %}
+{% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
 
-<article>
-  
+
+<article class="artist">
+  <div class="artist-intro">
+    <h1 class="artist-headline">
+      {%- if artist.eyebrow %}
+      <span class="artist__eyebrow">{{ icon("music") }}{{ artist.eyebrow }}</span>
+      {%- endif %}
+      {{ artist.name }}
+    </h1>
+
+    {% if artist.image %}
+      <div class="artist-image">
+        {{ heroImage(artist.image | replace(".jpg", "") | replace(".png", ""), artist.name) }}
+      </div>
+    {% endif %}
+  </div>
+
+    {# Gather all slots for this artist by ref - filter manually since selectattr doesn't support variables #}
+    {% set allSlots = [] %}
+    {% for slot in fullLineup %}
+      {% if slot.page == "artist" and slot.ref == artist.ref %}
+        {% set allSlots = allSlots.concat([slot]) %}
+      {% endif %}
+    {% endfor %}
+
+  <div class="artist-split o-split o-split--uneven">
+  {% if artist.longdescription %}
+    <div class="artist-longdescription u-anfang">
+      <p>{{ artist.longdescription }}</p>
+    </div>
+  {% endif %}
+
+      {% if allSlots.length > 1 %}
+        {% set dayOrder = {"tisdag": 1, "onsdag": 2} %}
+        {% set decoratedSlots = [] %}
+        {% for slot in allSlots %}
+          {% set rank = dayOrder[slot.day] or 99 %}
+          {% set sortKey = (rank * 10000) + (slot.startMinutes or 0) %}
+          {% set decoratedSlots = (decoratedSlots.push({"sortKey": sortKey, "slot": slot}), decoratedSlots) %}
+        {% endfor %}
+        {% set sortedSlots = decoratedSlots | sort(false, false, "sortKey") %}
+      <ul class="artist-meta u-list-unstyled o-tile t-intent-emphasis">
+          {% for row in sortedSlots %}
+            {% set slot = row.slot %}
+          {{ scheduleItem(slot.stage, slot.starttime, slot.endtime, { tag: "li", day: slot.day }) }}
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="artist-meta o-tile t-intent-emphasis">
+          {{ scheduleItem(artist.stage, artist.starttime, artist.endtime, { day: artist.day }) }}
+      </div>
+    {% endif %}
+
+
+  {% if artist.link %}
+    <div>
+      <a class="artist-link" href="{{ artist.link }}" target="_blank" rel="external noopener noreferrer">Besök webbplats <span class="u-visually-hidden">(Öppnas i nytt fönster)</span>{{ icon("open-in-new")}}</a>
+    </div>
+  {% endif %}
+
+  {%- if artist.ref %}
+    {% set relatedSlots = [] %}
+    {% for slot in fullLineup %}
+      {% if slot.ref == artist.ref and slot.name != artist.name %}
+        {% set relatedSlots = (relatedSlots.push(slot), relatedSlots) %}
+      {% endif %}
+    {% endfor %}
+
+    {% if relatedSlots.length %}
+    <section class="artist-related">
+      <h2>Fler spelningar</h2>
+      <ul>
+        {% for slot in relatedSlots %}
+          <li>
+            <strong>{{ slot.name }}</strong><br>
+            {{ slot.day | capitalize }}{% if dates[slot.day] %}, {{ dates[slot.day] }}{% endif %}
+            · {{ slot.starttime }}–{{ slot.endtime }}
+            · {{ slot.stage }}
+            {% if slot.description %}<p>{{ slot.description }}</p>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  {%- endif %}
+
+  </div> <!-- end: compound -->
 </article>
 
 {% if year != editions.current %}

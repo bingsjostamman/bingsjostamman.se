@@ -4,6 +4,10 @@ img {
   max-width: 100%;
 }
 
+svg {
+  fill: currentColor;
+}
+
 :where(a) {
   text-decoration: none;
 }

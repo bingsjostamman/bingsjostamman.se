@@ -14,6 +14,7 @@ export function initMenu(root = document) {
   const link = qs("[data-menu-toggle]", root);
   const nav = qs("[data-menu-panel]", root);
   const backdrop = qs("[data-menu-backdrop]", root);
+  const closeBtn = qs("[data-menu-close]", nav);
 
   if (!link || !nav || !backdrop) return;
 
@@ -41,6 +42,10 @@ export function initMenu(root = document) {
 
   let previouslyFocused = null;
   const links = () => Array.from(nav.querySelectorAll("a[href]")); // only links in the panel
+  // Helper: is desktop (>=1200px)?
+  function isDesktop() {
+    return window.matchMedia("(min-width: 1200px)").matches;
+  }
 
   // reduced motion check to decide hide timing
   const reduceMotion = window.matchMedia(
@@ -54,13 +59,23 @@ export function initMenu(root = document) {
     nav.hidden = false;
     backdrop.hidden = false;
 
-    nav.dataset.open = "true";
-    backdrop.dataset.open = "true";
-    btn.setAttribute("aria-expanded", "true");
+    // Ensure a measurable closed state before opening, otherwise some browsers skip the transition.
+    nav.dataset.open = "false";
+    backdrop.dataset.open = "false";
+    void nav.offsetHeight;
 
-    // Move focus to first link for natural Tab navigation
-    const first = links()[0];
-    //    if (first) first.focus();
+    // Apply open state on next frame so transitions can run from closed styles.
+    requestAnimationFrame(() => {
+      nav.dataset.open = "true";
+      backdrop.dataset.open = "true";
+      btn.setAttribute("aria-expanded", "true");
+
+      // On mobile: move focus to close button (toggle is covered by panel)
+      // On desktop: keep focus on toggle button (it's not covered by dropdown)
+      if (!isDesktop() && closeBtn) {
+        closeBtn.focus();
+      }
+    });
   }
 
   function closeMenu() {
@@ -91,6 +106,11 @@ export function initMenu(root = document) {
     }
   });
 
+  // Close button inside menu
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closeMenu);
+  }
+
   // ESC closes (listen on document so it works anywhere)
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && nav.dataset.open === "true") {
@@ -99,52 +119,50 @@ export function initMenu(root = document) {
   });
 
   // Focus trap behavior:
-  // The trap includes the toggle button — Tab cycles: first link -> ... -> last link -> button -> first link.
-  // Shift+Tab cycles backwards: button -> last link -> ... -> first link -> button.
+  // On desktop (>=1200px): trap toggle button and menu links (not close button, which is hidden)
+  // On mobile (<1200px): trap close button and menu links (not toggle button)
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Tab" || nav.dataset.open !== "true") return;
 
     const currentLinks = links();
-    if (currentLinks.length === 0) {
-      // If there are no links, trap focus between btn and btn (i.e., keep focusable on btn)
-      e.preventDefault();
-      btn.focus();
-      return;
+    let focusables;
+    if (isDesktop()) {
+      // Desktop: toggle button + links
+      focusables = [btn, ...currentLinks].filter(Boolean);
+    } else {
+      // Mobile: close button + links
+      focusables = [closeBtn, ...currentLinks].filter(Boolean);
     }
+    if (focusables.length === 0) return;
 
-    const first = currentLinks[0];
-    const last = currentLinks[currentLinks.length - 1];
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
     const active = document.activeElement;
 
-    // If focused on the last link and user TABs forward -> move to button
+    // Forward tab
     if (!e.shiftKey && active === last) {
-      e.preventDefault();
-      btn.focus();
-      return;
-    }
-
-    // If focused on the button and user TABs forward -> move to first link
-    if (!e.shiftKey && active === btn) {
       e.preventDefault();
       first.focus();
       return;
     }
-
-    // If focused on the first link and user SHIFT+TAB -> move to button
+    // Backward tab
     if (e.shiftKey && active === first) {
-      e.preventDefault();
-      btn.focus();
-      return;
-    }
-
-    // If focused on the button and user SHIFT+TAB -> move to last link
-    if (e.shiftKey && active === btn) {
       e.preventDefault();
       last.focus();
       return;
     }
-
-    // otherwise let the browser handle tabbing between links naturally
+    // On desktop, allow tabbing from btn to first link
+    if (isDesktop() && !e.shiftKey && active === btn && currentLinks.length) {
+      e.preventDefault();
+      currentLinks[0].focus();
+      return;
+    }
+    if (isDesktop() && e.shiftKey && active === btn && currentLinks.length) {
+      e.preventDefault();
+      currentLinks[currentLinks.length - 1].focus();
+      return;
+    }
+    // Otherwise, let browser handle
   });
 
   // Backdrop click closes

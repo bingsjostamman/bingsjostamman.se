@@ -10,6 +10,10 @@
   @mixin scheme-white-pot;
 }
 
+:where(.t-intent-shoutout) {
+  @mixin scheme-teal-050;
+}
+
 :where(.t-intent-highlight),
 :where(.t-component-footer-top) {
   @mixin scheme-teal-800;

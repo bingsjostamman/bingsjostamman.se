@@ -2,10 +2,61 @@
 layout: layouts/base
 title: Entré & biljetter
 permalink: /biljetter/
-eleventyExcludeFromCollections: true
 ---
 
-<p>Entré och biljetter</p>
+{% from "components/image/image-hero.njk" import heroImage %}
+{% from "components/icon/icon.njk" import icon %}
 
-<p>Vuxen: {{ prices.adult }}</p>
-<p>Ungdom: {{ prices.youth }}</p>
+      <div class="artist-image">
+        {{ heroImage(editions.current ~ "/lattaltet_s1y8lg", "Låttältet") }}
+      </div>
+<p>&nbsp;</p>
+<h1>Entré och biljetter {{ editions.current }}</h1>
+
+<p>&nbsp;</p>
+{% if prices.hidden %}
+<p>Biljettinformation publiceras snart.</p>
+  {% if prices.note %}
+  <p>{{ prices.note }}</p>
+  {% endif %}
+{% else %}
+  <div class="o-tile t-intent-emphasis">
+
+
+  <div class="c-tickets__item">
+    <h2>Entrébiljetter</h2>
+    <div class="c-tickets__meta">{{ icon("ticket") }}Ordinarie entré: {{ prices.general.amount }}</div>
+    {% if prices.general.note %}
+    <p class="c-tickets__note">{{ prices.general.note }}</p>
+    {% endif %}
+  </div>
+
+  <div class="c-tickets__item">
+    <h2>Konsertbiljetter</h2>
+    <div class="c-tickets__meta">{{ icon("ticket") }}Konsertbiljetter: {{ prices.concert.amount }}</div>
+    {% if prices.concert.note %}
+    <p class="c-tickets__note">{{ prices.concert.note }}</p>
+    {% endif %}
+  </div>
+
+  <div class="c-tickets__item">
+    <h2>Campingavgifter</h2>
+    <div class="c-tickets__meta">{{ icon("ticket") }}Camping: {{ prices.camping.amount }}</div>
+    {% if prices.camping.note %}
+    <p class="c-tickets__note">{{ prices.camping.note }}</p>
+    {% endif %}
+  </div>
+
+  <div class="c-tickets__item">
+    <h2>Kursavgifter</h2>
+    <div class="c-tickets__meta">{{ icon("ticket") }}Kurser: {{ prices.workshops.amount }}</div>
+    {% if prices.workshops.note %}
+    <p class="c-tickets__note">{{ prices.workshops.note }}</p>
+    {% endif %}
+  </div>
+
+  </div>
+{% endif %}
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>

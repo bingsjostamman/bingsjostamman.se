@@ -1,0 +1,4 @@
+{#- Render wrapper for prebuild-stories.js
+    Receives: location, starttime, endtime, options from component.meta.json examples. -#}
+{% from "schedule-item/schedule-item.njk" import scheduleItem %}
+{{ scheduleItem(location, starttime, endtime, options) }}

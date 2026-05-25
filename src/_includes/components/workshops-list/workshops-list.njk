@@ -1,0 +1,69 @@
+{#-
+  Component: Workshops List
+  Renders a list of workshops with split layout (text left, photo right).
+
+  Expects in context:
+    - workshops: array of objects with:
+      - name: string
+      - description: string
+      - location: string
+      - time: string
+      - photoUrl: string (Cloudinary public ID, e.g. "2026/sade_epuvzg.jpg")
+      - teacher: string (optional)
+      - link: string (optional)
+-#}
+
+{% from "components/icon/icon.njk" import icon %}
+{% from "components/image/image-card.njk" import cardImage %}
+{% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
+
+{%- macro workshopsList(workshops) -%}
+{%- if workshops and workshops.length -%}
+<div class="c-workshops-list">
+  <ul class="c-workshops-list__list u-list-unstyled">
+    {%- for workshop in workshops %}
+    <li class="c-workshops-list__item o-split">
+      <div class="o-split__content c-workshops-list__body">
+        <h2 class="c-workshops-list__name">{{ workshop.name }}</h2>
+        {%- if workshop.teacher %}
+        <p class="c-workshops-list__teacher"><strong>Kursledare:</strong> {{ workshop.teacher }}</p>
+        {%- endif %}
+        {%- if workshop.description %}
+        <p class="c-workshops-list__description">{{ workshop.description }}</p>
+        {%- endif %}
+
+        <div class="c-workshops-list__meta">
+          {{ scheduleItem(workshop.location, "", "", {
+            rootClass: "c-workshops-list__meta-item",
+            infoClass: "c-workshops-list__meta-label",
+            timeClass: "c-workshops-list__meta-time",
+            iconClass: "c-workshops-list__meta-icon",
+            timeText: workshop.time
+          }) }}
+        </div>
+
+        {%- if workshop.link %}
+        <p class="c-workshops-list__link-wrap">
+          <a class="c-workshops-list__link artist-link" 
+            href="{{ workshop.link }}" 
+            data-track-event="workshop_link_click"
+            data-track-label="{{ link.label }}"
+            data-track-context="workshops-page"
+            target="_blank" rel="external noopener noreferrer">Läs mer och anmäl dig <span class="u-visually-hidden">till {{ workshop.name }} (Öppnas i ett nytt fönster)</span>{{ icon("open-in-new")}}</a>
+        </p>
+        {%- endif %}
+      </div>
+
+      {%- if workshop.photoUrl %}
+      <div class="o-split__image c-workshops-list__image">
+        {{ cardImage(workshop.photoUrl | replace(".jpg", "") | replace(".png", ""), workshop.name) }}
+      </div>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+</div>
+{%- else -%}
+<p>Årets kurser publiceras snart.</p>
+{%- endif -%}
+{%- endmacro -%}

@@ -22,7 +22,40 @@ if (!inputFile) {
 
 const workbook = xlsx.readFile(inputFile);
 const sheet = workbook.Sheets[workbook.SheetNames[0]];
-const rows = xlsx.utils.sheet_to_json(sheet, { raw: true });
+
+// Get header row explicitly to ensure we capture all columns
+const rawData = xlsx.utils.sheet_to_json(sheet, { raw: true, defval: "" });
+
+// Get all unique column names from header and data
+const allHeaders = new Set();
+if (sheet["!ref"]) {
+  const range = xlsx.utils.decode_range(sheet["!ref"]);
+  for (let C = range.s.c; C <= range.e.c; ++C) {
+    const cellAddress = xlsx.utils.encode_cell({ r: 0, c: C });
+    const cell = sheet[cellAddress];
+    if (cell && cell.v) {
+      allHeaders.add(cell.v);
+    }
+  }
+}
+
+// Merge with headers from actual data
+rawData.forEach(row => {
+  Object.keys(row).forEach(key => allHeaders.add(key));
+});
+
+// Re-read the sheet with all headers
+const rows = rawData.map((row, idx) => {
+  const fullRow = { ...row };
+  allHeaders.forEach(header => {
+    if (!(header in fullRow)) {
+      fullRow[header] = "";
+    }
+  });
+  return fullRow;
+});
+
+console.log("📋 Columns found:", Array.from(allHeaders).sort());
 
 // ----------------------
 // 2. Helpers
@@ -59,14 +92,18 @@ function normalizeDisplayTime(hhmm) {
     .padStart(2, "0")}`;
 }
 
+function preserveZeroOrEmpty(value) {
+  return value === 0 || value ? value : "";
+}
+
 // ----------------------
 // 3. Clean + normalize
 // ----------------------
 const cleaned = rows
   .filter((row) => row.name)
   .map((row) => {
-    const starttime = excelTimeToString(row.starttime || "");
-    const endtime = excelTimeToString(row.endtime || "");
+    const starttime = excelTimeToString(preserveZeroOrEmpty(row.starttime));
+    const endtime = excelTimeToString(preserveZeroOrEmpty(row.endtime));
     const hasStarttime = !!(row.starttime || row.starttime === 0);
     const hasEndtime = !!(row.endtime || row.endtime === 0);
     const startMinutes = hhmmToMinutes(starttime);
@@ -79,10 +116,12 @@ const cleaned = rows
       placement: row.placement || "",
       page: row.page || "",
       name: row.name.trim(),
-      ref: row.ref || "",
+      ref: (row.ref !== undefined && row.ref !== null) ? String(row.ref) : "",
       description: row.description || "",
       link: row.link || "",
       longdescription: row.longdescription || "",
+      somedescription: row.somedescription || "",
+      eyebrow: row.eyebrow || "",
       image: row.image || "",
       starttime,
       endtime,

@@ -1,4 +1,4 @@
 {#- Render wrapper for prebuild-stories.js
-    Receives: stageName, day, lineup from component.meta.json examples -#}
+    Receives: stageName, day, lineup, excludeType, options from component.meta.json examples -#}
 {% from "stage-list/stage-list.njk" import stageList %}
-{{ stageList(stageName, lineup, day) }}
+{{ stageList(stageName, lineup, day, excludeType, options) }}

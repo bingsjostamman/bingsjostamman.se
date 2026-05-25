@@ -1,0 +1,313 @@
+
+> bingsjostamman.se@1.0.0 prebuild
+> node scripts/prebuild-stories.js && node scripts/scan-used-components.js
+
+✅ Prebuilt allspel-tunes (1 examples)
+✅ Prebuilt artist-list (2 examples)
+✅ Prebuilt button (2 examples)
+✅ Prebuilt card (1 examples)
+✅ Prebuilt footer (1 examples)
+✅ Prebuilt header (1 examples)
+✅ Prebuilt headline-acts (3 examples)
+✅ Prebuilt hero (2 examples)
+✅ Prebuilt icon (1 examples)
+⚠️ Skipping macro-only component: image-card
+⚠️ Skipping macro-only component: image-hero
+⚠️ Skipping macro-only component: image-thumbnail
+⚠️ Skipping macro-only component: image
+✅ Prebuilt list-past-editions (3 examples)
+✅ Prebuilt logo (1 examples)
+✅ Prebuilt menu (1 examples)
+✅ Prebuilt stage-list (3 examples)
+✅ Prebuilt test (1 examples)
+✅ Prebuilt timeline (3 examples)
+✅ Updated used components → prebuilt/used-components.json
+All stories generated successfully.
+✅ used-components.json updated: [
+  'allspel-tunes',      'icon',
+  'image',              'logo',
+  'menu',               'stage-list',
+  'timeline',           'header',
+  'footer',             'hero',
+  'headline-acts',      'artist-list',
+  'button',             'card',
+  'list-past-editions'
+]
+
+> bingsjostamman.se@1.0.0 build
+> npm run prebuild && npm run build:vite && npm run build:11ty
+
+
+> bingsjostamman.se@1.0.0 prebuild
+> node scripts/prebuild-stories.js && node scripts/scan-used-components.js
+
+✅ Prebuilt allspel-tunes (1 examples)
+✅ Prebuilt artist-list (2 examples)
+✅ Prebuilt button (2 examples)
+✅ Prebuilt card (1 examples)
+✅ Prebuilt footer (1 examples)
+✅ Prebuilt header (1 examples)
+✅ Prebuilt headline-acts (3 examples)
+✅ Prebuilt hero (2 examples)
+✅ Prebuilt icon (1 examples)
+⚠️ Skipping macro-only component: image-card
+⚠️ Skipping macro-only component: image-hero
+⚠️ Skipping macro-only component: image-thumbnail
+⚠️ Skipping macro-only component: image
+✅ Prebuilt list-past-editions (3 examples)
+✅ Prebuilt logo (1 examples)
+✅ Prebuilt menu (1 examples)
+✅ Prebuilt stage-list (3 examples)
+✅ Prebuilt test (1 examples)
+✅ Prebuilt timeline (3 examples)
+✅ Updated used components → prebuilt/used-components.json
+All stories generated successfully.
+✅ used-components.json updated: [
+  'allspel-tunes',      'icon',
+  'image',              'logo',
+  'menu',               'stage-list',
+  'timeline',           'header',
+  'footer',             'hero',
+  'headline-acts',      'artist-list',
+  'button',             'card',
+  'list-past-editions'
+]
+
+> bingsjostamman.se@1.0.0 build:vite
+> npm run css:generate && vite build --config vite.config.js --mode production && npm run copy:assets
+
+
+> bingsjostamman.se@1.0.0 css:generate
+> node scripts/scan-used-components.js && node scripts/generate-entry-css.js
+
+✅ used-components.json updated: [
+  'allspel-tunes',      'icon',
+  'image',              'logo',
+  'menu',               'stage-list',
+  'timeline',           'header',
+  'footer',             'hero',
+  'headline-acts',      'artist-list',
+  'button',             'card',
+  'list-past-editions'
+]
+✅ entry.css unchanged, skipping write
+Vite config mode: production { isProd: true }
+[dotenv@17.2.3] injecting env (4) from .env.development -- tip: 🔑 add access controls to secrets: https://dotenvx.com/ops
+✅ Loaded environment from .env.development
+vite v7.2.4 building client environment for production...
+📄 entry.css imports (34 files):
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/01-settings/_color-schemes.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/01-settings/_config.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/03-generic/_applications.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/03-generic/_fonts.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/03-generic/_tokens.fluid.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/03-generic/_typography.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/04-elements/_00-normalize.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/04-elements/_01-reset.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/04-elements/_02-root.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/04-elements/_03-html-elements.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/04-elements/_04-focus.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/05-themes/_themes.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/06-objects/container.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/07-components/artist.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/07-components/temp.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/_includes/components/allspel-tunes/allspel-tunes.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/_includes/components/icon/icon.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/_includes/components/logo/logo.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/_includes/components/menu/menu.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/_includes/components/timeline/timeline.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/_includes/components/header/header.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/_includes/components/footer/footer.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/_includes/components/hero/hero.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/_includes/components/headline-acts/headline-acts.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/_includes/components/artist-list/artist-list.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/_includes/components/button/button.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/_includes/components/card/card.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/_includes/components/list-past-editions/list-past-editions.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/08-utilities/focus-inset.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/08-utilities/focus-outline.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/08-utilities/list-unstyled.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/08-utilities/skip-link.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/08-utilities/visually-hidden.css
+  ✅ /Users/pekkos/git/bingsjostamman.se/src/css/09-shame/shame.css
+transforming...
+
+/assets/fonts/Alegreya-Regular.woff2 referenced in /assets/fonts/Alegreya-Regular.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/Alegreya-RegularItalic.woff2 referenced in /assets/fonts/Alegreya-RegularItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/Alegreya-Medium.woff2 referenced in /assets/fonts/Alegreya-Medium.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/Alegreya-MediumItalic.woff2 referenced in /assets/fonts/Alegreya-MediumItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/Alegreya-SemiBold.woff2 referenced in /assets/fonts/Alegreya-SemiBold.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/Alegreya-SemiBoldItalic.woff2 referenced in /assets/fonts/Alegreya-SemiBoldItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/Alegreya-Bold.woff2 referenced in /assets/fonts/Alegreya-Bold.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/Alegreya-BoldItalic.woff2 referenced in /assets/fonts/Alegreya-BoldItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/Alegreya-ExtraBold.woff2 referenced in /assets/fonts/Alegreya-ExtraBold.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/Alegreya-ExtraBoldItalic.woff2 referenced in /assets/fonts/Alegreya-ExtraBoldItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/Alegreya-Black.woff2 referenced in /assets/fonts/Alegreya-Black.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/Alegreya-BlackItalic.woff2 referenced in /assets/fonts/Alegreya-BlackItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/AlegreyaSans-Thin.woff2 referenced in /assets/fonts/AlegreyaSans-Thin.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/AlegreyaSans-ThinItalic.woff2 referenced in /assets/fonts/AlegreyaSans-ThinItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/AlegreyaSans-Light.woff2 referenced in /assets/fonts/AlegreyaSans-Light.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/AlegreyaSans-LightItalic.woff2 referenced in /assets/fonts/AlegreyaSans-LightItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/AlegreyaSans-Regular.woff2 referenced in /assets/fonts/AlegreyaSans-Regular.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/AlegreyaSans-RegularItalic.woff2 referenced in /assets/fonts/AlegreyaSans-RegularItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/AlegreyaSans-Medium.woff2 referenced in /assets/fonts/AlegreyaSans-Medium.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/AlegreyaSans-MediumItalic.woff2 referenced in /assets/fonts/AlegreyaSans-MediumItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/AlegreyaSans-Bold.woff2 referenced in /assets/fonts/AlegreyaSans-Bold.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/AlegreyaSans-BoldItalic.woff2 referenced in /assets/fonts/AlegreyaSans-BoldItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/AlegreyaSans-ExtraBold.woff2 referenced in /assets/fonts/AlegreyaSans-ExtraBold.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/AlegreyaSans-ExtraBoldItalic.woff2 referenced in /assets/fonts/AlegreyaSans-ExtraBoldItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/AlegreyaSans-Black.woff2 referenced in /assets/fonts/AlegreyaSans-Black.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/AlegreyaSans-BlackItalic.woff2 referenced in /assets/fonts/AlegreyaSans-BlackItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/PlayfairDisplay-Regular.woff2 referenced in /assets/fonts/PlayfairDisplay-Regular.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/PlayfairDisplay-RegularItalic.woff2 referenced in /assets/fonts/PlayfairDisplay-RegularItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/PlayfairDisplay-Medium.woff2 referenced in /assets/fonts/PlayfairDisplay-Medium.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/PlayfairDisplay-MediumItalic.woff2 referenced in /assets/fonts/PlayfairDisplay-MediumItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/PlayfairDisplay-SemiBold.woff2 referenced in /assets/fonts/PlayfairDisplay-SemiBold.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/PlayfairDisplay-SemiBoldItalic.woff2 referenced in /assets/fonts/PlayfairDisplay-SemiBoldItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/PlayfairDisplay-Bold.woff2 referenced in /assets/fonts/PlayfairDisplay-Bold.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/PlayfairDisplay-BoldItalic.woff2 referenced in /assets/fonts/PlayfairDisplay-BoldItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/PlayfairDisplay-ExtraBold.woff2 referenced in /assets/fonts/PlayfairDisplay-ExtraBold.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/PlayfairDisplay-ExtraBoldItalic.woff2 referenced in /assets/fonts/PlayfairDisplay-ExtraBoldItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/PlayfairDisplay-Black.woff2 referenced in /assets/fonts/PlayfairDisplay-Black.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/assets/fonts/PlayfairDisplay-BlackItalic.woff2 referenced in /assets/fonts/PlayfairDisplay-BlackItalic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+✓ 6 modules transformed.
+rendering chunks...
+📦 Bundled files:
+ - css/styles-i45ndG17.css
+ - js/main-CrAjSYrq.js
+ - js/styles-CJ-f01_o.js
+computing gzip size...
+public/assets/manifest.json             0.37 kB │ gzip: 0.18 kB
+public/assets/css/styles-i45ndG17.css  37.87 kB │ gzip: 6.57 kB
+public/assets/js/main-CrAjSYrq.js       3.62 kB │ gzip: 1.31 kB
+✓ built in 258ms
+
+> bingsjostamman.se@1.0.0 copy:assets
+> cp -R src/assets/* public/assets/
+
+
+> bingsjostamman.se@1.0.0 build:11ty
+> eleventy
+
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+🔍 Eleventy environment: development
+[dotenv@17.2.3] injecting env (4) from .env.development -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+✅ Loaded environment from .env.development
+🧹 Cleaned _site/ before build
+✅ Updated used components: allspel-tunes, icon, image, logo, menu, stage-list, timeline, header, footer, hero, headline-acts, artist-list, button, card, list-past-editions
+➡️ Loading _data/env.js for Eleventy
+[dotenv@17.2.3] injecting env (0) from .env.development -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
+✅ Loaded environment from .env.development
+[11ty] Writing ./_site/sitemap.xml from ./src/pages/sitemap.njk
+[11ty] Writing ./_site/test/accessibility/index.html from ./src/pages/test-accessibility-report.njk
+[11ty] Writing ./_site/404.html from ./src/pages/404.njk
+[11ty] Writing ./_site/components/index.html from ./src/pages/components.njk
+[11ty] Writing ./_site/kontakt/index.html from ./src/pages/contact.njk
+[11ty] Writing ./_site/upplagor/index.html from ./src/pages/editions.njk
+[11ty] Writing ./_site/test/pagespeed/index.html from ./src/pages/test-pagespeed-report.njk
+[11ty] Writing ./_site/biljetter/index.html from ./src/pages/tickets.njk
+[11ty] Writing ./_site/test/carbon/index.html from ./src/pages/websitecarbon-report.njk
+[11ty] Writing ./_site/allspel/index.html from ./src/editions/2026/allspel.njk
+[11ty] Writing ./_site/scen/storrada/index.html from ./src/editions/2026/artists.njk
+[11ty] Writing ./_site/index.html from ./src/editions/2026/index.njk
+[11ty] Writing ./_site/scen/index.html from ./src/editions/2026/lineup.njk
+[11ty] Writing ./_site/scen/hjort-anders-i-ord-och-toner/index.html from ./src/editions/2026/artists.njk
+[11ty] Writing ./_site/scen/merit-hemmingson/index.html from ./src/editions/2026/artists.njk
+[11ty] Writing ./_site/scen/polenta/index.html from ./src/editions/2026/artists.njk
+[11ty] Copied 47 Wrote 16 files in 0.30 seconds (v3.1.2)
+
+> bingsjostamman.se@1.0.0 postbuild
+> npm run test:a11y
+
+
+> bingsjostamman.se@1.0.0 test:a11y
+> node scripts/test-accessibility.js
+
+🔍 Starting accessibility audit...
+
+Found 15 pages to test.
+
+🧪 Testing: 404.html
+❌ 2 issues found on 404.html
+
+🧪 Testing: index.html
+✅ No issues on index.html
+
+🧪 Testing: allspel/index.html
+❌ 1 issues found on allspel/index.html
+
+🧪 Testing: biljetter/index.html
+❌ 1 issues found on biljetter/index.html
+
+🧪 Testing: components/index.html
+✅ No issues on components/index.html
+
+🧪 Testing: kontakt/index.html
+✅ No issues on kontakt/index.html
+
+🧪 Testing: scen/index.html
+✅ No issues on scen/index.html
+
+🧪 Testing: upplagor/index.html
+✅ No issues on upplagor/index.html
+
+🧪 Testing: test/accessibility/index.html
+❌ 4 issues found on test/accessibility/index.html
+
+🧪 Testing: test/pagespeed/index.html
+❌ 2 issues found on test/pagespeed/index.html
+
+🧪 Testing: test/carbon/index.html
+❌ 1 issues found on test/carbon/index.html
+
+🧪 Testing: scen/hjort-anders-i-ord-och-toner/index.html
+✅ No issues on scen/hjort-anders-i-ord-och-toner/index.html
+
+🧪 Testing: scen/polenta/index.html
+✅ No issues on scen/polenta/index.html
+
+🧪 Testing: scen/storrada/index.html
+✅ No issues on scen/storrada/index.html
+
+🧪 Testing: scen/merit-hemmingson/index.html
+✅ No issues on scen/merit-hemmingson/index.html
+
+📄 Report written to: /Users/pekkos/git/bingsjostamman.se/test/accessibility-report.json
+❌ 11 total issues found.

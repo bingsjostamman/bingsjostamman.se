@@ -9,9 +9,11 @@ const year = path.basename(__dirname);
 
 const lineup = require("./lineup.json");
 const dates = require("./dates.json");
+const wednesdayContent = require("./wednesday-content.js").default;
 
 export default {
   lineup,
   dates,
   year,
+  copy: wednesdayContent,
 };

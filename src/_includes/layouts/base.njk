@@ -3,7 +3,7 @@
 <head>
         {% set pageTitle = title and (title ~ ' - ' ~ site.name) or site.name %}
         {% set canonicalUrl = canonical or (site.baseUrl ~ page.url) %}
-        {% set metaDescription = socialDescription or description or site.description or '' %}
+        {% set metaDescription = somedescription or socialDescription or description or site.description or '' %}
         {% set socialImageCandidate = socialImage or image or site.defaultImage %}
         {% if socialImageCandidate and socialImageCandidate[0] == '/' %}
             {% set socialImageUrl = site.baseUrl ~ socialImageCandidate %}
@@ -23,6 +23,7 @@
         <meta name="description" content="{{ metaDescription }}">
         <link rel="canonical" href="{{ canonicalUrl }}">
 
+        <meta property="fb:app_id" content="786656114801883" />
         <meta property="og:title" content="{{ pageTitle }}">
         <meta property="og:description" content="{{ metaDescription }}">
         <meta property="og:image" content="{{ socialImageUrl }}">
@@ -36,8 +37,7 @@
         <meta name="twitter:description" content="{{ metaDescription }}">
         <meta name="twitter:image" content="{{ socialImageUrl }}">
 
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <link rel="stylesheet" href="/assets/css/changes.css">
+    <link rel="stylesheet" href="{{ (viteAssets and viteAssets.cssMain) or '/assets/css/styles.css' }}">
 
     {% if env.isProd %}
     <!-- Privacy-friendly analytics by Plausible -->
@@ -60,7 +60,7 @@
 </head>
 <body>
 
-<a href="#main-content" class="u-skip-link">Hoppa till innehåll</a>
+<a href="#main-content" class="u-skip-link t-intent-highlight">Hoppa till innehåll</a>
 
 {% include "components/header/header.njk" %}
 
@@ -70,7 +70,7 @@
 
 {% include "components/footer/footer.njk" %}
 
-<script type="module" src="/assets/js/main.js"></script>
+<script type="module" src="{{ (viteAssets and viteAssets.jsMain) or '/assets/js/main.js' }}"></script>
 
 </body>
 </html>

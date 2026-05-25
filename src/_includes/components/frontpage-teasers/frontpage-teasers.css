@@ -1,0 +1,100 @@
+.c-frontpage-teasers {
+  margin-block: var(--size-double) var(--size-quad);
+}
+
+.c-frontpage-teasers__head {
+  margin-block-end: var(--size-double);
+  max-width: 62ch;
+}
+
+.c-frontpage-teasers__head h2 {
+  margin-block-end: var(--size-half);
+}
+
+.c-frontpage-teasers__head p {
+  margin: 0;
+  color: color-mix(in srgb, var(--color-font--text), transparent 20%);
+  font-size: var(--font-size-1);
+}
+
+.c-frontpage-teasers__list {
+  align-items: stretch;
+}
+
+.c-frontpage-teasers__item {
+  border-radius: 8px;
+}
+
+.c-frontpage-teasers__content {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--size-half);
+  min-height: 100%;
+  padding: var(--size-full);
+  color: inherit;
+  text-decoration: none;
+}
+
+.c-frontpage-teasers__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.65rem;
+  color: var(--color-icon);
+  background-color: color-mix(in srgb, var(--color-icon), white 80%);
+}
+
+.c-frontpage-teasers__icon {
+  font-size: 1.15rem;
+}
+
+.c-frontpage-teasers__label {
+  margin-top: var(--size-quarter);
+  color: color-mix(in srgb, var(--color-font--text), transparent 35%);
+  font-size: var(--font-size--2);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.c-frontpage-teasers__title {
+  margin: 0;
+  font-size: var(--font-size-2);
+}
+
+.c-frontpage-teasers__title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.c-frontpage-teasers__title-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.c-frontpage-teasers__text {
+  color: color-mix(in srgb, var(--color-font--text), transparent 10%);
+  font-size: var(--font-size-0);
+}
+
+.c-frontpage-teasers__cue {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: var(--size-half);
+}
+
+.c-frontpage-teasers__cue-icon {
+  color: var(--color-font--link);
+  font-size: var(--font-size-4);
+}
+
+@media (max-width: 479px) {
+  .c-frontpage-teasers__content {
+    min-height: 12.5rem;
+  }
+}

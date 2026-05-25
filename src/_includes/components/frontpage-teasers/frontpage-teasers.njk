@@ -1,0 +1,70 @@
+{% from "components/icon/icon.njk" import icon %}
+
+{%- macro frontpageTeasers(year, editions, dates) -%}
+  {%- set basePath = "" -%}
+  {%- if year != editions.current -%}
+    {%- set basePath = "/" ~ year -%}
+  {%- endif -%}
+
+  {% set teasers = [
+    {
+      title: "Allspel",
+      label: "Spela med",
+      text: "Lär dig årets allspelslåtar, öva in dem på logen och ta med dem till stora scenen.",
+      href: basePath ~ "/allspel/",
+      icon: "violinist"
+    },
+    {
+      title: "Tisdag",
+      label: dates.tisdag | swedishDate,
+      text: "Tjuvstarta stämman med förstämma, spontanspel och dans.",
+      href: basePath ~ "/tisdag/",
+      icon: "dance"
+    },
+    {
+      title: "Onsdag",
+      label: dates.onsdag | swedishDate,
+      text: "Hela festivaldagen med konserter, dans och kurser.",
+      href: basePath ~ "/onsdag/",
+      icon: "fioler"
+    },
+    {
+      title: "Biljetter",
+      label: "Planera ditt besök",
+      text: "Entréer, priser och information om vad som gäller på plats.",
+      href: basePath ~ "/biljetter/",
+      icon: "ticket"
+    }
+  ] %}
+
+{#
+    },
+    {
+      title: "Camping & parkering",
+      label: "Hitta rätt",
+      text: "Läs om campingavgifter, infarter och hur du parkerar smidigt.",
+      href: basePath ~ "/biljetter/#camping",
+      icon: "parking"
+#}
+
+  <section class="c-frontpage-teasers" aria-labelledby="frontpage-teasers-heading">
+    <div class="c-frontpage-teasers__head o-compound">
+      <h2 id="frontpage-teasers-heading">Mer att upptäcka</h2>
+      <p>Snabbvägar till det mest efterfrågade innan du kommer till Bingsjö.</p>
+    </div>
+
+    <ul class="c-frontpage-teasers__list o-list-layout o-list-layout--md-2 o-list-layout--lg-3 u-list-unstyled">
+      {% for teaser in teasers %}
+      <li class="c-frontpage-teasers__item o-list-layout__item o-tile t-intent-emphasis u-focus-outline u-lift-link-card">
+        <div class="c-frontpage-teasers__content">
+          <span class="c-frontpage-teasers__icon-wrap" aria-hidden="true">{{ icon(teaser.icon, "c-frontpage-teasers__icon") }}</span>
+          <span class="c-frontpage-teasers__label">{{ teaser.label }}</span>
+          <h3 class="c-frontpage-teasers__title"><a class="c-frontpage-teasers__title-link u-focus-outline-none" href="{{ teaser.href }}" data-track-event="frontpage_teaser_click" data-track-label="{{ teaser.title }}" data-track-context="frontpage-teasers">{{ teaser.title }}</a></h3>
+          <span class="c-frontpage-teasers__text">{{ teaser.text }}</span>
+          <span class="c-frontpage-teasers__cue" aria-hidden="true">{{ icon("arrow-forward", "c-frontpage-teasers__cue-icon") }}</span>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+{%- endmacro -%}

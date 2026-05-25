@@ -1,7 +1,6 @@
 export default {
   intro: [
-    "Varje sommar samlas spelmän, dansare och andra musikintresserade några dagar, kvällar och nätter i början av juli. Hela Bingsjö blir en levande scen där alla är välkomna att delta. Eller bara lyssna.",
-    "Den lilla byn i Rättviks finnmark blir världens mittpunkt för tusentals folkmusiktörstande. Här flyter mötet mellan bybo och besökare, musikant och dansare, publik och artist ihop till en unik och ljuvlig blandning. Suset av toner från förtält och buskar breder ut sig och byn tystnar inte förrän solen gått upp på torsdagsmorgonen."
+    "Varje sommar samlas spelmän, dansare och andra musikintresserade några dagar, kvällar och nätter i början av juli. Hela Bingsjö blir en levande scen där alla är välkomna att delta. Eller bara lyssna. Här flyter mötet mellan bybo och besökare, musikant och dansare, publik och artist ihop till en unik och ljuvlig blandning. Suset av toner från förtält och buskar breder ut sig och byn tystnar inte förrän solen gått upp på torsdagsmorgonen."
   ],
   openingProgramHeadline: "Invigningsprogrammet",
   openingProgramText: `

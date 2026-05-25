@@ -7,6 +7,11 @@
   {% set mobileId = options.mobileId or null %}
   {% set lqipId = options.lqipId or null %}
   {% set fallbackWidth = widths[widths | length - 1] %}
+  {% set transformBase = "f_auto,q_auto" %}
+
+  {% if aspect %}
+    {% set transformBase = transformBase ~ ",c_fill,g_auto,ar_" ~ aspect %}
+  {% endif %}
 
   {# Calculate fallbackHeight if aspect is provided #}
   {% if aspect %}
@@ -21,7 +26,7 @@
   {# Build srcset for main image #}
   {% set srcsetList = "" %}
   {% for w in widths %}
-    {% set src = baseUrl ~ "f_auto,q_auto,w_" ~ w ~ "/" ~ id ~ ".jpg" %}
+    {% set src = baseUrl ~ transformBase ~ ",w_" ~ w ~ "/" ~ id ~ ".jpg" %}
     {% if not loop.first %}
       {% set srcsetList = srcsetList ~ ", " %}
     {% endif %}
@@ -32,7 +37,7 @@
   {% if mobileId %}
     {% set mobileSrcsetList = "" %}
     {% for w in widths %}
-      {% set src = baseUrl ~ "f_auto,q_auto,w_" ~ w ~ "/" ~ mobileId ~ ".jpg" %}
+      {% set src = baseUrl ~ transformBase ~ ",w_" ~ w ~ "/" ~ mobileId ~ ".jpg" %}
       {% if not loop.first %}
         {% set mobileSrcsetList = mobileSrcsetList ~ ", " %}
       {% endif %}
@@ -42,7 +47,11 @@
 
   {# LQIP source #}
   {% if lqipId %}
-    {% set lqipSrc = baseUrl ~ "w_20,q_1,e_blur:2000/" ~ lqipId ~ ".jpg" %}
+    {% set lqipTransform = "w_20,q_1,e_blur:2000" %}
+    {% if aspect %}
+      {% set lqipTransform = lqipTransform ~ ",c_fill,g_auto,ar_" ~ aspect %}
+    {% endif %}
+    {% set lqipSrc = baseUrl ~ lqipTransform ~ "/" ~ lqipId ~ ".jpg" %}
   {% endif %}
 
   {# Render output #}
@@ -50,7 +59,7 @@
     <picture>
       <source srcset="{{ mobileSrcsetList }}" media="(max-width: 600px)">
       <img
-        src="{{ baseUrl ~ 'w_' ~ fallbackWidth ~ '/' ~ id ~ '.jpg' }}"
+        src="{{ baseUrl ~ transformBase ~ ',w_' ~ fallbackWidth ~ '/' ~ id ~ '.jpg' }}"
         srcset="{{ srcsetList }}"
         sizes="{{ sizes }}"
         alt="{{ alt or '' }}"
@@ -63,7 +72,7 @@
     </picture>
   {% else %}
     <img
-      src="{{ baseUrl ~ 'w_' ~ fallbackWidth ~ '/' ~ id ~ '.jpg' }}"
+      src="{{ baseUrl ~ transformBase ~ ',w_' ~ fallbackWidth ~ '/' ~ id ~ '.jpg' }}"
       srcset="{{ srcsetList }}"
       sizes="{{ sizes }}"
       alt="{{ alt or '' }}"

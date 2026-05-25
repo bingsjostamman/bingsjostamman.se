@@ -2,8 +2,8 @@
 
 {% macro cardImage(id, alt=null, options={}) %}
   {{ cloudinaryPicture(id, alt, {
-    widths: options.widths or [400, 800, 1200],
-    sizes: options.sizes or "33vw",
+    widths: options.widths or [240, 320, 375, 480, 560, 640, 750, 828, 960, 1080, 1200],
+    sizes: options.sizes or "(max-width: 600px) 100vw, (max-width: 960px) 50vw, (max-width: 1200px) 33vw, 25vw",
     aspect: options.aspect or "4:3",
     lqipId: options.lqipId or null,
     loading: options.loading or "lazy",

@@ -17,6 +17,7 @@
     photoUrl: "2026/ami-fredrik_u9v3n5.jpg"
   }
 ] -%}
+{% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
 
 <div class="c-workshops-list">
   <ul class="c-workshops-list__list u-list-unstyled">
@@ -26,12 +27,13 @@
         <h2 class="c-workshops-list__name">{{ workshop.name }}</h2>
         <p class="c-workshops-list__description">{{ workshop.description }}</p>
         <div class="c-workshops-list__meta">
-          <div class="c-workshops-list__meta-item">
-            <div class="c-workshops-list__meta-label">{{ workshop.location }}</div>
-          </div>
-          <div class="c-workshops-list__meta-item">
-            <div class="c-workshops-list__meta-label">{{ workshop.time }}</div>
-          </div>
+          {{ scheduleItem(workshop.location, "", "", {
+            rootClass: "c-workshops-list__meta-item",
+            infoClass: "c-workshops-list__meta-label",
+            timeClass: "c-workshops-list__meta-time",
+            iconClass: "c-workshops-list__meta-icon",
+            timeText: workshop.time
+          }) }}
         </div>
       </div>
       <div class="o-split__image c-workshops-list__image">

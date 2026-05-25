@@ -11,7 +11,7 @@
 
 {% from "components/image/image-card.njk" import cardImage %}
 {% from "components/icon/icon.njk" import icon %}
-{% from "components/artist-meta/artist-meta.njk" import artistMetaItem %}
+{% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
 
 {%- set others = [] -%}
 {%- set headlineKeys = [] -%}
@@ -62,11 +62,11 @@
           {%- endif -%}
         {%- endfor -%}
         {%- for slot in slots %}
-        {{ artistMetaItem(slot.stage, slot.day, slot.starttime, slot.endtime, {
+        {{ scheduleItem(slot.stage, slot.starttime, slot.endtime, {
           tag: "div",
-          rootClass: "c-artist-list__meta artist-meta-item",
-          infoClass: "c-artist-list__meta-info artist-meta-info",
-          locationClass: "artist-meta-location"
+          day: slot.day,
+          rootClass: "c-artist-list__meta",
+          infoClass: "c-artist-list__meta-info"
         }) }}
         {%- endfor %}
 

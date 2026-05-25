@@ -1,0 +1,56 @@
+{% from "components/icon/icon.njk" import icon %}
+{% from "components/time-range/time-range.njk" import timeRange %}
+
+{#-
+  Component: Schedule Item
+  Renders a location plus an optional day and time range.
+
+  Parameters:
+    - location: string
+    - starttime: string
+    - endtime: string (optional)
+    - options: object (optional)
+      - day: string (optional)
+      - tag: "div" (default) or "li"
+      - rootClass: default "artist-meta-item"
+      - infoClass: default "artist-meta-info"
+      - locationClass: default "artist-meta-location"
+-#}
+{%- macro scheduleItem(location, starttime, endtime, options) -%}
+  {%- set tag = (options and options.tag) or "div" -%}
+  {%- set day = options and options.day -%}
+  {%- set timeText = options and options.timeText -%}
+  {%- set rootClass = "c-schedule-item" -%}
+  {%- set infoClass = "c-schedule-item__info" -%}
+  {%- set locationClass = "c-schedule-item__location" -%}
+  {%- set timeClass = "" -%}
+  {%- set iconClass = "c-schedule-item__icon" -%}
+
+  {%- if options and options.rootClass -%}
+    {%- set rootClass = rootClass ~ " " ~ options.rootClass -%}
+  {%- endif -%}
+  {%- if options and options.infoClass -%}
+    {%- set infoClass = infoClass ~ " " ~ options.infoClass -%}
+  {%- endif -%}
+  {%- if options and options.locationClass -%}
+    {%- set locationClass = locationClass ~ " " ~ options.locationClass -%}
+  {%- endif -%}
+  {%- if options and options.timeClass -%}
+    {%- set timeClass = options.timeClass -%}
+  {%- endif -%}
+  {%- if options and options.iconClass -%}
+    {%- set iconClass = iconClass ~ " " ~ options.iconClass -%}
+  {%- endif -%}
+
+  {%- if tag == "li" -%}
+  <li class="{{ rootClass }}">
+    <div class="{{ infoClass }} {{ locationClass }}">{{ icon("location", iconClass) }}{{ location }}</div>
+    <div class="{{ infoClass }}{% if timeClass %} {{ timeClass }}{% endif %}">{{ icon("schedule", iconClass) }}{% if timeText %}{{ timeText }}{% else %}{{ timeRange(starttime, endtime, { day: day }) }}{% endif %}</div>
+  </li>
+  {%- else -%}
+  <div class="{{ rootClass }}">
+    <div class="{{ infoClass }} {{ locationClass }}">{{ icon("location", iconClass) }}{{ location }}</div>
+    <div class="{{ infoClass }}{% if timeClass %} {{ timeClass }}{% endif %}">{{ icon("schedule", iconClass) }}{% if timeText %}{{ timeText }}{% else %}{{ timeRange(starttime, endtime, { day: day }) }}{% endif %}</div>
+  </div>
+  {%- endif -%}
+{%- endmacro -%}

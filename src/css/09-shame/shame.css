@@ -45,7 +45,7 @@
     object-fit: cover;
 }
 
-.prose * + * {
+:where(.prose) * + * {
     margin-block-start: var(--size-full);
 }
 
@@ -53,6 +53,10 @@
       border: 1px solid var(--color-border--decorate);
   padding: var(--size-full);
   border-radius: 6px;
+}
+
+:where(.o-tile--padding-half) {
+  padding: var(--size-half);
 }
 
 .c-tickets__item + .c-tickets__item {
@@ -82,4 +86,40 @@
 
 .c-some-link {
     
+}
+
+
+.o-half {
+  display: flex;
+  gap: var(--size-full);
+  flex-wrap: wrap;
+}
+
+.o-half > * {
+  flex-grow: 1;
+}
+
+h2.flex, h3.flex {
+  display: flex;
+  align-items: center;
+}
+
+h2.flex .icon, h3.flex .icon {
+  margin-inline-end: var(--size-half);
+}
+
+.u-anfang p:first-of-type::first-letter {
+  font-family: 'Alegreya';
+  font-weight: 500;
+  color: var(--color-font--link);
+  margin-inline-end: 0.1em;
+  font-size: 6em;
+  line-height: 1;
+  background: none;
+  float: left;
+
+}
+
+.page-intro {
+  font-size: var(--font-size-1);
 }

@@ -17,9 +17,9 @@
 <section class="c-headline-acts">
   <h2 class="c-headline-acts__heading">Stämmans huvudnummer</h2>
 
-  <ul class="c-headline-acts__list u-list-unstyled">
+  <ul class="c-headline-acts__list o-list-layout o-list-layout--md-2 o-list-layout--lg-3 o-list-layout--feature-first o-list-layout--prefer-2-when-few u-list-unstyled">
     {% for act in headlines %}
-      <li class="c-headline-acts__item o-tile u-focus-outline">
+      <li class="c-headline-acts__item o-list-layout__item o-tile u-focus-outline">
         {% if act.image %}
           <div class="c-headline-acts__image">
             {{ cardImage(act.image | replace(".jpg", "") | replace(".png", ""), act.name) }}

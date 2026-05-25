@@ -1,0 +1,16 @@
+{#-
+  Shared time range renderer.
+
+  Parameters:
+    - starttime: string
+    - endtime: string (optional)
+    - options: object (optional)
+      - day: string (optional)
+-#}
+{%- macro timeRange(starttime, endtime, options) -%}
+  {%- set day = options and options.day -%}
+  {%- if day -%}{{ day | capitalize }} {% endif -%}
+  {%- if starttime -%}
+    <time datetime="{{ starttime }}">{{ starttime }}</time>{%- if endtime -%}–<time datetime="{{ endtime }}">{{ endtime }}</time>{%- endif -%}
+  {%- endif -%}
+{%- endmacro -%}

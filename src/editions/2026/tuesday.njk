@@ -1,0 +1,82 @@
+---
+layout: layouts/base
+eleventyComputed:
+  title: "Tisdag {{ dates.tisdag | swedishDate }} {{ year }}"
+  permalink: "{% if year == editions.current %}/tisdag/index.html{% else %}/{{ year }}/tisdag/index.html{% endif %}"
+eleventyExcludeFromCollections: true
+---
+{% from "components/stage-card/stage-card.njk" import stageCard %}
+{% from "components/icon/icon.njk" import icon %}
+{% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
+{% from "components/image/image.njk" import cloudinaryPicture %}
+
+
+<div class="o-split">
+    <div class="o-split__content prose">
+        <h1>Förstämma tisdag {{ dates.tisdag | swedishDate }}</h1>
+        <p>&nbsp;</p>
+        <div class="page-intro u-anfang">
+            {%- for paragraph in copy.intro %}
+            <p>{{ paragraph }}</p>
+            <p>&nbsp;</p>
+            {%- endfor %}
+        </div>
+
+        {%- for item in copy.shoutouts %}
+        <div class="c-artist-list__item t-intent-shoutout">
+            <div class="c-artist-list__body">
+                <h3 class="c-artist-list__name flex">
+                    {{ icon(item.icon) }}{{ item.title }}
+                </h3>
+                <p>{{ item.text }}</p>
+                {{ scheduleItem(item.location, item.starttime, item.endtime, {
+                    rootClass: "c-artist-list__meta",
+                    infoClass: "c-artist-list__meta-info"
+                }) }}
+            </div>
+        </div>
+        {%- endfor %}
+    </div>
+
+    <div class="o-split__image o-split__content">
+        <div class="o-split__image o-split__content">
+            {{ cloudinaryPicture("2026/Bingsjo_2025-38_xvzbt6", "") }}
+        </div>
+    </div>
+
+</div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+    <h2>{{ copy.programHeadline }}</h2>
+    <p>&nbsp;</p>
+
+    <div class="o-list-layout o-list-layout--md-2 o-list-layout--lg-3">
+
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+        {{ stageCard(copy.stages.nygardsgarden.stageName, lineup, "tisdag", "", {
+            stageDescription: copy.stages.nygardsgarden.description,
+            imageSrc: copy.stages.nygardsgarden.imageSrc,
+            imageAlt: copy.stages.nygardsgarden.imageAlt
+        }) }}
+    </div>
+
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+        {{ stageCard(copy.stages.bystuguscenen.stageName, lineup, "tisdag", "", {
+            stageDescription: copy.stages.bystuguscenen.description,
+            imageSrc: copy.stages.bystuguscenen.imageSrc,
+            imageAlt: copy.stages.bystuguscenen.imageAlt
+        }) }}
+    </div>
+
+    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+        {{ stageCard(copy.stages.dansladu.stageName, lineup, "tisdag", "", {
+            stageDescription: copy.stages.dansladu.description,
+            imageSrc: copy.stages.dansladu.imageSrc,
+            imageAlt: copy.stages.dansladu.imageAlt
+        }) }}
+    </div>
+
+    </div>
+
+

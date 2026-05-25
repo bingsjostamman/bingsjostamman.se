@@ -1,0 +1,60 @@
+{#-
+  Component: Stage Card
+  Wraps stage metadata (image/name/description) and renders the stage slots via stageList.
+
+  Parameters:
+    - stageName: string
+    - lineup: array
+    - day: string
+    - excludeType: string (optional)
+    - options: object (optional)
+      - headingText: string (optional)
+      - stageDescription: string (optional)
+      - imageSrc: string (optional)
+      - imageAlt: string (optional)
+      - includeType: string (optional)
+      - headingTag: heading tag (default "h3")
+      - rootClass: string (optional)
+      - splitSlotsOnNarrow: boolean (default false)
+-#}
+
+{% from "components/stage-list/stage-list.njk" import stageList %}
+{% from "components/image/image-card.njk" import cardImage %}
+{% from "components/icon/icon.njk" import icon %}
+
+
+{%- macro stageCard(stageName, lineup, day, excludeType, options) -%}
+  {%- set headingText = (options and options.headingText) or stageName -%}
+  {%- set stageDescription = options and options.stageDescription -%}
+  {%- set imageSrc = options and options.imageSrc -%}
+  {%- set imageAlt = (options and options.imageAlt) or stageName -%}
+  {%- set includeType = options and options.includeType -%}
+  {%- set headingTag = (options and options.headingTag) or "h3" -%}
+  {%- set splitSlotsOnNarrow = options and options.splitSlotsOnNarrow -%}
+  {%- set rootClass = "c-stage-card" -%}
+
+  {%- if options and options.rootClass -%}
+    {%- set rootClass = rootClass ~ " " ~ options.rootClass -%}
+  {%- endif -%}
+
+  <div class="{{ rootClass }}">
+    {%- if imageSrc -%}
+    <div class="c-stage-card__image">
+      {{ cardImage(imageSrc | replace(".jpg", "") | replace(".png", ""), imageAlt) }}
+    </div>
+    {%- endif -%}
+
+    <div class="c-stage-card__body">
+      <{{ headingTag }} class="c-stage-card__stage-name">{{ icon("location", "c-stage-card__icon") }}{{ headingText }}</{{ headingTag }}>
+      {%- if stageDescription -%}
+      <div class="c-stage-card__stage-description">{{ stageDescription | markdown | safe }}</div>
+      {%- endif -%}
+
+      {{ stageList(stageName, lineup, day, excludeType, {
+        rootClass: "c-stage-card__slots",
+        includeType: includeType,
+        splitSlotsOnNarrow: splitSlotsOnNarrow
+      }) }}
+    </div>
+  </div>
+{%- endmacro -%}

@@ -15,6 +15,7 @@
 
 {% from "components/icon/icon.njk" import icon %}
 {% from "components/image/image-card.njk" import cardImage %}
+{% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
 
 {%- macro workshopsList(workshops) -%}
 {%- if workshops and workshops.length -%}
@@ -25,24 +26,30 @@
       <div class="o-split__content c-workshops-list__body">
         <h2 class="c-workshops-list__name">{{ workshop.name }}</h2>
         {%- if workshop.teacher %}
-        <p class="c-workshops-list__teacher"><strong>Ledare:</strong> {{ workshop.teacher }}</p>
+        <p class="c-workshops-list__teacher"><strong>Kursledare:</strong> {{ workshop.teacher }}</p>
         {%- endif %}
         {%- if workshop.description %}
         <p class="c-workshops-list__description">{{ workshop.description }}</p>
         {%- endif %}
 
         <div class="c-workshops-list__meta">
-          <div class="c-workshops-list__meta-item">
-            <div class="c-workshops-list__meta-label">{{ icon("location", "c-workshops-list__meta-icon") }}{{ workshop.location }}</div>
-          </div>
-          <div class="c-workshops-list__meta-item">
-            <div class="c-workshops-list__meta-label c-workshops-list__meta-time">{{ icon("schedule", "c-workshops-list__meta-icon") }}{{ workshop.time }}</div>
-          </div>
+          {{ scheduleItem(workshop.location, "", "", {
+            rootClass: "c-workshops-list__meta-item",
+            infoClass: "c-workshops-list__meta-label",
+            timeClass: "c-workshops-list__meta-time",
+            iconClass: "c-workshops-list__meta-icon",
+            timeText: workshop.time
+          }) }}
         </div>
 
         {%- if workshop.link %}
         <p class="c-workshops-list__link-wrap">
-          <a class="c-workshops-list__link artist-link" href="{{ workshop.link }}" target="_blank" rel="external noopener noreferrer">Läs mer och anmäl dig <span class="u-visually-hidden">till {{ workshop.name }} (Öppnas i ett nytt fönster)</span>{{ icon("open-in-new")}}</a>
+          <a class="c-workshops-list__link artist-link" 
+            href="{{ workshop.link }}" 
+            data-track-event="workshop_link_click"
+            data-track-label="{{ link.label }}"
+            data-track-context="workshops-page"
+            target="_blank" rel="external noopener noreferrer">Läs mer och anmäl dig <span class="u-visually-hidden">till {{ workshop.name }} (Öppnas i ett nytt fönster)</span>{{ icon("open-in-new")}}</a>
         </p>
         {%- endif %}
       </div>

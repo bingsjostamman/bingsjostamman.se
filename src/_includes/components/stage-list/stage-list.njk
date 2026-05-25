@@ -10,38 +10,58 @@
     - lineup: array – the full lineup data
     - day: string – "tisdag" or "onsdag"
     - excludeType: string (optional) – exclude acts of this type
+    - options: object (optional)
+      - includeType: string (optional)
+      - rootClass: string (optional)
+      - splitSlotsOnNarrow: boolean (default false)
 #}
 
-{%- macro stageList(stageName, lineup, day, excludeType) -%}
+{% from "components/icon/icon.njk" import icon %}
+{% from "components/time-range/time-range.njk" import timeRange %}
+
+{%- macro stageList(stageName, lineup, day, excludeType, options) -%}
 {%- set acts = [] -%}
+{%- set includeType = options and options.includeType -%}
 {%- for act in lineup -%}
   {%- if act.day == day and act.stage == stageName -%}
-    {%- if not excludeType or act.type != excludeType -%}
+    {%- if (not includeType or act.type == includeType) and (not excludeType or act.type != excludeType) -%}
       {%- set acts = (acts.push(act), acts) -%}
     {%- endif -%}
   {%- endif -%}
 {%- endfor -%}
-{%- if acts.length == 1 -%}
-  <div class="c-stage-list">
-    <div class="c-stage-list__item">
-      <span class="c-stage-list__time">{{ acts[0].starttime }}{% if acts[0].endtime %}–{{ acts[0].endtime }}{% endif %}</span>
-      <strong class="c-stage-list__name">{{ acts[0].name }}</strong>
-      {%- if acts[0].description %}
-      <span class="c-stage-list__description">{{ acts[0].description }}</span>
-      {%- endif %}
+
+{%- if acts.length -%}
+  {%- set splitSlotsOnNarrow = options and options.splitSlotsOnNarrow -%}
+  {%- set rootClass = "c-stage-list u-list-unstyled" -%}
+  {%- if options and options.rootClass -%}
+    {%- set rootClass = rootClass ~ " " ~ options.rootClass -%}
+  {%- endif -%}
+  {%- if splitSlotsOnNarrow -%}
+    {%- set rootClass = rootClass ~ " c-stage-list--split-narrow" -%}
+  {%- endif -%}
+
+  {%- if acts.length == 1 -%}
+    <div class="{{ rootClass }}">
+      <div class="c-stage-list__item">
+        <span class="c-stage-list__time">{{ icon("schedule") }}{{ timeRange(acts[0].starttime, acts[0].endtime) }}</span>
+        <div class="c-stage-list__name">{{ acts[0].name }}</div>
+        {%- if acts[0].description %}
+        <span class="c-stage-list__description">{{ acts[0].description }}</span>
+        {%- endif %}
+      </div>
     </div>
-  </div>
-{%- elif acts.length -%}
-  <ol class="c-stage-list">
-    {%- for act in acts %}
-    <li class="c-stage-list__item">
-      <span class="c-stage-list__time">{{ act.starttime }}{% if act.endtime %}–{{ act.endtime }}{% endif %}</span>
-      <strong class="c-stage-list__name">{{ act.name }}</strong>
-      {%- if act.description %}
-      <span class="c-stage-list__description">{{ act.description }}</span>
-      {%- endif %}
-    </li>
-    {%- endfor %}
-  </ol>
+  {%- else -%}
+    <ol class="{{ rootClass }}">
+      {%- for act in acts %}
+      <li class="c-stage-list__item">
+        <span class="c-stage-list__time">{{ icon("schedule") }}{{ timeRange(act.starttime, act.endtime) }}</span>
+        <div class="c-stage-list__name">{{ act.name }}</div>
+        {%- if act.description %}
+        <span class="c-stage-list__description">{{ act.description }}</span>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ol>
+  {%- endif -%}
 {%- endif -%}
 {%- endmacro -%}

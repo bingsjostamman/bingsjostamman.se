@@ -1,0 +1,20 @@
+{
+  "title": "Components/Schedule Item",
+  "description": "A location and time row for schedule-style listings. Used on day program pages and Allspel via a Nunjucks macro.",
+  "status": "ready",
+  "tags": ["UI", "schedule", "content"],
+  "class": "c-schedule-item",
+  "macro": true,
+  "examples": {
+    "Default": {
+      "location": "Logen",
+      "starttime": "15:30",
+      "endtime": "16:30"
+    },
+    "Without end time": {
+      "location": "Bystugan",
+      "starttime": "16:00",
+      "endtime": ""
+    }
+  }
+}

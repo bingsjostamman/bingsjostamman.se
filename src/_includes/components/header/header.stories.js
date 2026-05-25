@@ -37,8 +37,6 @@ export const Default = () => `<header class="c-header">
 
   
 
-
-
   <nav id="main-nav" data-menu-panel class="c-menu__panel t-component-header">
     <button type="button" class="c-menu__close" data-menu-close aria-label="Stäng meny">
       
@@ -47,6 +45,32 @@ export const Default = () => `<header class="c-header">
 </span>
     </button>
     <ul class="c-menu__items u-list-unstyled">
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/tisdag/" 
+            data-track-event="menu_link_click"
+            data-track-label="Tisdag"
+            data-track-context="main-menu"
+            
+          >
+            Tisdag
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/onsdag/" 
+            data-track-event="menu_link_click"
+            data-track-label="Onsdag"
+            data-track-context="main-menu"
+            
+          >
+            Onsdag
+          </a>
+        </li>
       
         <li class="c-menu__item">
           <a

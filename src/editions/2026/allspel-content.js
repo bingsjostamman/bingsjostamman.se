@@ -9,4 +9,11 @@ I år är det övergripande temat låtar från Bingsjö, och nedan hittar du all
   barnensAllspel: `
 Även på **Barnens Bingsjö** har vi ett allspel – här hittar du låtarna med noter och ljudfiler.
 `,
+  shoutoutHeadline: `
+  Träna in allspelslåtarna
+`,
+  shoutoutText: `
+  Om du vill öva in några av allspelslåtarna och allsången har du chansen
+  till detta på Danielsgårdens loge. Låtutlärare: Jonas Hjalmarsson, Dan Palmqvist.
+`,
 };

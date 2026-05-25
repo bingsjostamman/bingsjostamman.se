@@ -41,7 +41,7 @@
   <h2 class="c-artist-list__heading">Övriga akter</h2>
   <ul class="c-artist-list__list u-list-unstyled">
     {%- for act in others | sort(false, false, 'name') %}
-    <li class="c-artist-list__item {%- if act.longdescription %} t-intent-highlight{% else %} t-intent-shoutout{% endif %}">
+    <li class="c-artist-list__item u-lift-link-card {%- if act.longdescription %} t-intent-highlight{% else %} t-intent-shoutout{% endif %}">
       {%- if act.image %}
       <div class="c-artist-list__image">
         {{ cardImage(act.image | replace(".jpg", "") | replace(".png", ""), act.name) }}

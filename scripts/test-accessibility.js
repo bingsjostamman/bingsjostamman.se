@@ -75,7 +75,7 @@ const REPORT_PATH = path.resolve("src/_data/axcore.json");
 
   if (totalViolations > 0) {
     console.log(`❌ ${totalViolations} total issues found.`);
-    process.exitCode = 1; // fail build
+    console.warn("⚠ Accessibility report generated; build will continue so the report can be published.");
   } else {
     console.log(`✅ All pages passed accessibility checks!`);
   }

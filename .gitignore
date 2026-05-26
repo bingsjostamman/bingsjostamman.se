@@ -11,3 +11,6 @@ public/assets/css/styles.css
 .env
 .env.development
 .env.production
+src/_data/psi.json
+src/_data/websitecarbon.json
+src/_data/axcore.json

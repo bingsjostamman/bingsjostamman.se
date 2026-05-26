@@ -1,7 +1,0 @@
-{
-  "fetchedAt": "2026-05-26T06:42:09.249Z",
-  "targetUrl": "https://www.bingsjostamman.se/",
-  "error": "PSI fetch failed for mobile - HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Lighthouse returned error: Something went wrong.\",\n    \"errors\": [\n      {\n        \"message\": \"Lighthouse returned error: Something went wrong.\",\n        \"domain\": \"lighthouse\",\n        \"reason\": \"lighthouseError\"\n      }\n    ]\n  }\n}\n",
-  "mobile": null,
-  "desktop": null
-}

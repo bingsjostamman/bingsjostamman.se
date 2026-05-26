@@ -112,15 +112,6 @@ eleventyExcludeFromCollections: true
     height: 100%;
   }
 
-  .psi-raw {
-    margin-top: 2rem;
-    padding: 1rem;
-    background: #111;
-    color: #eee;
-    border-radius: 0.5rem;
-    font-size: 0.85rem;
-    overflow-x: auto;
-  }
 </style>
 
 <div class="psi-container">
@@ -209,6 +200,4 @@ eleventyExcludeFromCollections: true
     {% endfor %}
   </div>
 
-  <h2>Raw data</h2>
-  <pre class="psi-raw">{{ psi | dump(2) }}</pre>
 </div>

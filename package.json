@@ -15,8 +15,8 @@
     "build:11ty": "eleventy",
     "build:stories": "node scripts/prebuild-stories.js",
     "build:fluid": "sass src/css/03-generic/_tokens.fluid.scss src/css/03-generic/_tokens.fluid.css --no-source-map",
-    "build": "npm run prebuild && npm run build:vite && cross-env NODE_ENV=production ELEVENTY_ENV=production npm run carbon && npm run build:11ty",
-    "build:netlify": "npm run prebuild && npm run build:vite && cross-env NODE_ENV=production ELEVENTY_ENV=production npm run carbon && npm run build:11ty",
+    "build": "npm run prebuild && npm run build:vite && cross-env NODE_ENV=production ELEVENTY_ENV=production npm run psi && cross-env NODE_ENV=production ELEVENTY_ENV=production npm run carbon && npm run build:11ty && npm run test:a11y && npm run build:11ty",
+    "build:netlify": "npm run prebuild && npm run build:vite && cross-env NODE_ENV=production ELEVENTY_ENV=production npm run psi && cross-env NODE_ENV=production ELEVENTY_ENV=production npm run carbon && npm run build:11ty && npm run test:a11y && npm run build:11ty",
     "build:storybook": "npm run prebuild && npm run storybook:build",
     "storybook": "npm run copy:assets && storybook dev -p 6008",
     "storybook:build": "npm run copy:assets && storybook build -o _styleguide",
@@ -25,7 +25,7 @@
     "psi": "node scripts/fetch-psi.js",
     "test:a11y": "node scripts/test-accessibility.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postbuild": "npm run test:a11y"
+    "postbuild": "echo \"postbuild handled in build\""
   },
   "repository": {
     "type": "git",

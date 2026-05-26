@@ -5,37 +5,61 @@ title: Omtanke i den digitala världen
 eleventyExcludeFromCollections: true
 ---
 
-<div class="o-compound">
-    <h1>Omtanke i den digitala världen</h1>
+{% from "components/icon/icon.njk" import icon %}
+
+
+<div class="o-compound prose">
+    <h1>Omtanke i en digital värld</h1>
 
     <p>
-        Vi vill att bingsjostamman.se ska vara snabb, tillgänglig och resurssnål.
-        Här samlar vi nyckelvärden för integritet, tillgänglighet, prestanda och klimatavtryck.
+        Bingsjöstämman är ett arrangemang som värnar om inkludering av människor och med målet 
+        att göra ett så litet klimatmässigt avtryck som möjligt. Därför är det också naturligt 
+        för oss att vår digitala närvaro utgår från samma mål.
     </p>
-
-    <h2>Integritet</h2>
     <p>
-        Vi undviker onödig spårning och tredjepartsskript. Målet är en webbplats med så lite
-        persondatahantering som möjligt och tydlig informationsgivning när vi måste mäta något.
+        Vi vill att bingsjostamman.se ska vara snabb, tillgänglig och resurssnål. Här samlar vi 
+        information kring integritet, tillgänglighet, snabbhet och klimatavtryck.
     </p>
 
-    <h2>Tillgänglighet</h2>
+    <h2>{{ icon("security")}} Integritet</h2>
+    <p>
+        Vi undviker onödig spårning och tredjepartsskript av respekt för dig som besökare. Vi mäter 
+        trafik på våra sidor utan att spara persondata och utan att sätta s.k. <em lang="en">cookies</em>. 
+    </p>
+    <p>
+        Anledningen till att vi mäter trafiken och beteendet på webbplatsen är för att kunna se vilka 
+        sidor och funktioner som används, så att vi kan fortsätta att förbättra upplevelsen för dig 
+        och alla andra.
+    </p>
+
+    <h2>{{ icon("human")}} Tillgänglighet</h2>
+    <p>
+        Digital tillgänglighet är en mänsklig rättighet, och därmed något vi tar på allvar. Oavsett dina
+        förmågor ska du kunna läsa och använda våra sidor. Vi strävar därför efter att vara kompatibla med  
+        <strong lang="en">European Accessibility Act</strong> <strong>EN 301 549</strong> och att uppfylla 
+        framgångskriterierna i <strong>WCAG 2.2</strong>, oavsett om lagen kräver det av oss eller ej.
+    </p>
+    <p>
+        Vi testar kontinuerligt tillgängligheten på våra sidor. Det som går att testa automatiskt sammanfattas nedan,
+        men mycket går inte att testa med mindre än att vi under utvecklingsarbetet använder webbplatsen med tangentbord 
+        eller hjälpmedel som skärmläsare.
+    </p>
     {% set a11y = axecore or accessibility %}
     {% if a11y and a11y.summary %}
-        <section class="about-metric-cards" aria-label="Sammanfattning av tillgänglighetskontroll">
-            <article class="about-metric-card">
+        <div class="about-metric-cards" aria-label="Sammanfattning av automatisk tillgänglighetskontroll">
+            <div class="about-metric-card">
                 <p class="about-metric-card__label">Sidor testade</p>
                 <p class="about-metric-card__value">{{ a11y.summary.totalPages }}</p>
-            </article>
-            <article class="about-metric-card">
+            </div>
+            <div class="about-metric-card">
                 <p class="about-metric-card__label">Identifierade avvikelser</p>
                 <p class="about-metric-card__value">{{ a11y.summary.totalViolations }}</p>
-            </article>
-            <article class="about-metric-card">
+            </div>
+            <div class="about-metric-card">
                 <p class="about-metric-card__label">Sidor med avvikelser</p>
                 <p class="about-metric-card__value">{{ a11y.summary.pagesWithIssues }}</p>
-            </article>
-        </section>
+            </div>
+        </div>
 
         <p>
             Senaste automatiska kontroll: {{ a11y.summary.totalPages }} sidor testade,
@@ -50,32 +74,13 @@ eleventyExcludeFromCollections: true
         <p>Ingen tillgänglighetsrapport hittades än.</p>
     {% endif %}
 
-    <h2>Klimatavtryck</h2>
-    {% if websitecarbon and websitecarbon.co2PerPageView != null %}
-        <p>
-            Uppskattat klimatavtryck: {{ websitecarbon.co2PerPageView | round(2) }} g CO<sub>2</sub>e per sidvisning.
-            Sidan är renare än {{ websitecarbon.cleanerThanPercent | round(0) }}% av testade webbplatser.
-            Källa: <a href="https://www.websitecarbon.com/website/bingsjostamman-se/">Website Carbon</a>.
-        </p>
-        {% if websitecarbon.fetchedAt %}
-            <p><em>Senast uppdaterad: {{ websitecarbon.fetchedAt | date("yyyy-MM-dd HH:mm") }}</em></p>
-        {% endif %}
-    {% elif websitecarbon and websitecarbon.error %}
-        <p>
-            Klimatmätning kunde inte uppdateras vid senaste körning.
-            Källa: <a href="https://www.websitecarbon.com/website/bingsjostamman-se/">Website Carbon</a>.
-        </p>
-        {% if websitecarbon.fetchedAt %}
-            <p><em>Senast uppdaterad: {{ websitecarbon.fetchedAt | date("yyyy-MM-dd HH:mm") }}</em></p>
-        {% endif %}
-    {% else %}
-        <p>Ingen klimatdata hittades än.</p>
-    {% endif %}
 
-        <h2>Bandbreddsvänliga sidor</h2>
+    <h2>{{ icon("speedometer")}} Snabbhet</h2>
     <p>
         Webbplatsen är statiskt genererad, med begränsad JavaScript-mängd och optimerade tillgångar.
-        Det ger kortare laddtider och lägre datamängd för besökaren.
+        Detta ger kortare laddtider och lägre datamängd för besökaren. Vi mäter kontinuerligt hur snabbt
+        våra sidor laddas och gör förbättringar där vi kan. Nedan följer en ögonblicksbild över den senaste 
+        mätningen, där 100 innebär full pott.
     </p>
 
     {% if psi and psi.mobile and psi.desktop and psi.mobile.lighthouseResult and psi.desktop.lighthouseResult %}
@@ -106,7 +111,7 @@ eleventyExcludeFromCollections: true
         </section>
 
         <p>
-            Senaste PageSpeed Insights: mobil {{ mobileScore | round }}, desktop {{ desktopScore | round }}.
+            Senaste mätningen med <span lang="en">PageSpeed Insights</span>: mobil {{ mobileScore | round }}, desktop {{ desktopScore | round }}.
             Källa: <a href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fwww.bingsjostamman.se%2F">Google PageSpeed Insights</a>.
         </p>
         {% if psi.fetchedAt %}
@@ -123,9 +128,43 @@ eleventyExcludeFromCollections: true
     {% else %}
         <p>Ingen prestandadata hittades än.</p>
     {% endif %}
+
+
+    <h2>{{ icon("sprout")}} Klimatavtryck</h2>
+
+    <p>
+        Med genomtänkta teknikval försöker vi göra ett så litet klimatavtryck som det bara går. 
+    </p>
+    {% if websitecarbon and websitecarbon.co2PerPageView != null %}
+        <p>
+            Vårt uppskattade klimatavtryck är {{ websitecarbon.co2PerPageView | round(2) }} g CO<sub>2</sub>e per sidvisning.
+            Det innebär att sidan är renare än {{ websitecarbon.cleanerThanPercent | round(0) }}% av testade webbplatser.
+            Källa: <a href="https://www.websitecarbon.com/website/bingsjostamman-se/">Website Carbon</a>.
+        </p>
+        {% if websitecarbon.fetchedAt %}
+            <p><em>Senast uppdaterad: {{ websitecarbon.fetchedAt | date("yyyy-MM-dd HH:mm") }}</em></p>
+        {% endif %}
+    {% elif websitecarbon and websitecarbon.error %}
+        <p>
+            Klimatmätning kunde inte uppdateras vid senaste körning.
+            Källa: <a href="https://www.websitecarbon.com/website/bingsjostamman-se/">Website Carbon</a>.
+        </p>
+        {% if websitecarbon.fetchedAt %}
+            <p><em>Senast uppdaterad: {{ websitecarbon.fetchedAt | date("yyyy-MM-dd HH:mm") }}</em></p>
+        {% endif %}
+    {% else %}
+        <p>Ingen klimatdata hittades än.</p>
+    {% endif %}
+
+
 </div>
 
 <style>
+    h2 {
+        display: flex;
+        align-items: center;
+        gap: var(--size-full);
+    }
     .about-metric-cards {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));

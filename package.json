@@ -25,6 +25,7 @@
     "psi": "node scripts/fetch-psi.js",
     "test:a11y": "node scripts/test-accessibility.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npx puppeteer browsers install chrome",
     "postbuild": "echo \"postbuild handled in build\""
   },
   "repository": {

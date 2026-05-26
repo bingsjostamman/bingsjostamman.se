@@ -6,7 +6,7 @@ import fs from "fs/promises";
 import axeSource from "axe-core";
 
 const SITE_DIR = path.resolve("_site");
-const REPORT_PATH = path.resolve("src/_data/axcore.json");
+const REPORT_PATH = path.resolve("src/_data/axecore.json");
 
 (async () => {
   console.log("🔍 Starting accessibility audit...\n");

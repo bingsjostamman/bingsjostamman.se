@@ -20,6 +20,11 @@ export const Default = () => `
   
   
   
+  
+
+  
+    
+  
 
   
   
@@ -33,6 +38,54 @@ export const Default = () => `
   
   
     
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
+    
+    
+  
+    
+    
+      
     
     
   
@@ -58,9 +111,9 @@ export const Default = () => `
   
   
     <img
-      src="https://res.cloudinary.com/bingsjostamman/image/upload/w_1200/https://placehold.co/1200x720.jpg"
-      srcset="https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,w_400/https://placehold.co/1200x720.jpg 400w, https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,w_800/https://placehold.co/1200x720.jpg 800w, https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,w_1200/https://placehold.co/1200x720.jpg 1200w"
-      sizes="33vw"
+      src="https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,c_fill,g_auto,ar_4:3,w_1200/https://placehold.co/1200x720.jpg"
+      srcset="https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,c_fill,g_auto,ar_4:3,w_240/https://placehold.co/1200x720.jpg 240w, https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,c_fill,g_auto,ar_4:3,w_320/https://placehold.co/1200x720.jpg 320w, https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,c_fill,g_auto,ar_4:3,w_375/https://placehold.co/1200x720.jpg 375w, https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,c_fill,g_auto,ar_4:3,w_480/https://placehold.co/1200x720.jpg 480w, https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,c_fill,g_auto,ar_4:3,w_560/https://placehold.co/1200x720.jpg 560w, https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,c_fill,g_auto,ar_4:3,w_640/https://placehold.co/1200x720.jpg 640w, https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,c_fill,g_auto,ar_4:3,w_750/https://placehold.co/1200x720.jpg 750w, https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,c_fill,g_auto,ar_4:3,w_828/https://placehold.co/1200x720.jpg 828w, https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,c_fill,g_auto,ar_4:3,w_960/https://placehold.co/1200x720.jpg 960w, https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,c_fill,g_auto,ar_4:3,w_1080/https://placehold.co/1200x720.jpg 1080w, https://res.cloudinary.com/bingsjostamman/image/upload/f_auto,q_auto,c_fill,g_auto,ar_4:3,w_1200/https://placehold.co/1200x720.jpg 1200w"
+      sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, (max-width: 1200px) 33vw, 25vw"
       alt="The Valley stage"
       width="1200"
       height="900"

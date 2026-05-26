@@ -43,6 +43,9 @@ const URL = "https://www.bingsjostamman.se/";
 const apiKey = process.env.PSI_API_KEY;
 const strategies = ["mobile", "desktop"];
 const outputPath = path.join("src", "_data", "psi.json");
+const maxAttempts = 3;
+const runtimeEnv = process.env.ELEVENTY_ENV || process.env.NODE_ENV || "development";
+const isProdBuild = runtimeEnv === "production";
 
 function isQuotaExceeded(statusCode, text) {
   if (statusCode === 429) return true;
@@ -92,21 +95,81 @@ async function fetchPSI(strategy) {
   return response.json();
 }
 
+function shouldRetry(statusCode) {
+  return statusCode === 429 || statusCode === 503;
+}
+
+function wait(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function fetchPSIWithRetry(strategy) {
+  let lastError;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    try {
+      return await fetchPSI(strategy);
+    } catch (err) {
+      lastError = err;
+      const retryable = shouldRetry(err.statusCode) || err.isQuotaExceeded;
+      const isLastAttempt = attempt === maxAttempts;
+
+      if (!retryable || isLastAttempt) {
+        break;
+      }
+
+      const backoffMs = attempt * 1500;
+      console.warn(
+        `⚠ PSI temporary error for ${strategy} (HTTP ${err.statusCode}). Retrying in ${backoffMs}ms...`
+      );
+      await wait(backoffMs);
+    }
+  }
+
+  throw lastError;
+}
+
+async function writePayload(payload) {
+  await fs.mkdir(path.dirname(outputPath), { recursive: true });
+  await fs.writeFile(outputPath, JSON.stringify(payload, null, 2));
+}
+
 // ----------------------------------------------------------------------
 // Run all strategies
 // ----------------------------------------------------------------------
 async function run() {
+  if (!isProdBuild) {
+    console.log(
+      `ℹ Skipping PSI fetch because runtime env is '${runtimeEnv}' (production only).`
+    );
+    return;
+  }
+
+  // In CI environments, use cached data if available to avoid quota limits and API issues
+  if (process.env.CI) {
+    const cachedExists = await hasCachedResult();
+    if (cachedExists) {
+      console.log(
+        "ℹ Using cached PSI data in CI environment (to avoid quota limits)."
+      );
+      return;
+    }
+  }
+
   try {
     const results = {};
 
     for (const strategy of strategies) {
-      results[strategy] = await fetchPSI(strategy);
+      results[strategy] = await fetchPSIWithRetry(strategy);
     }
 
-    // Ensure folder exists
-    await fs.mkdir(path.dirname(outputPath), { recursive: true });
+    const payload = {
+      fetchedAt: new Date().toISOString(),
+      targetUrl: URL,
+      ...results,
+    };
 
-    await fs.writeFile(outputPath, JSON.stringify(results, null, 2));
+    await writePayload(payload);
 
     console.log("✔ PSI results saved to src/_data/psi.json");
   } catch (err) {
@@ -118,13 +181,23 @@ async function run() {
       return;
     }
 
-    console.error("❌ Failed to fetch PSI:", err.message);
+    const failedPayload = {
+      fetchedAt: new Date().toISOString(),
+      targetUrl: URL,
+      error: err.message,
+      mobile: null,
+      desktop: null,
+    };
+
+    await writePayload(failedPayload);
+
+    console.warn("⚠ Failed to fetch PSI; wrote placeholder data instead.");
+    console.warn(`ℹ Reason: ${err.message}`);
     if (!apiKey) {
-      console.error(
-        "ℹ Set PSI_API_KEY in your environment or .env.development and retry."
+      console.warn(
+        "ℹ Set PSI_API_KEY in your environment or local .env files for more reliable production fetches."
       );
     }
-    process.exit(1);
   }
 }
 

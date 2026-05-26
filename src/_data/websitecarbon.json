@@ -1,0 +1,12 @@
+{
+  "source": "websitecarbon",
+  "fetchedAt": "2026-05-26T11:12:39.474Z",
+  "targetUrl": "https://www.bingsjostamman.se/",
+  "co2PerPageView": 0.05,
+  "cleanerThanPercent": 95,
+  "raw": {
+    "c": 0.05,
+    "p": 95,
+    "url": "https://www.bingsjostamman.se/"
+  }
+}

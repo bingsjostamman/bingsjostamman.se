@@ -29,7 +29,7 @@ Nygårdsgården ligger på promenadavstånd från bystugeområdet, och i år kry
 
 Biljetter till konserten säljs via [Nygårdsgårdens webbplats](https://www.nygardsgarden.com/).
 `,
-      imageSrc: "2026/nygardsgarden-skullen_ardqsh.jpg",
+      imageSrc: "2026/osten-med-resten_d0bw6k.jpg",
       imageAlt: "Nygårdsgården"
     },
     bystuguscenen: {

@@ -1,0 +1,21 @@
+.u-lift-link-card {
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.u-lift-link-card:has(a[href]:hover),
+.u-lift-link-card:has(a[href]:focus-visible) {
+  transform: translateY(-3px);
+  border-color: var(--color-border--outline);
+  box-shadow: 0 10px 24px var(--color-elevation-box-shadow--level-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .u-lift-link-card {
+    transition: box-shadow 220ms ease, border-color 220ms ease;
+  }
+
+  .u-lift-link-card:has(a[href]:hover),
+  .u-lift-link-card:has(a[href]:focus-visible) {
+    transform: none;
+  }
+}

@@ -53,7 +53,7 @@ eleventyExcludeFromCollections: true
     <h2>Klimatavtryck</h2>
     {% if websitecarbon and websitecarbon.co2PerPageView != null %}
         <p>
-            Uppskattat klimatavtryck: {{ websitecarbon.co2PerPageView | round(2) }} g CO2e per sidvisning.
+            Uppskattat klimatavtryck: {{ websitecarbon.co2PerPageView | round(2) }} g CO<sub>2</sub>e per sidvisning.
             Sidan är renare än {{ websitecarbon.cleanerThanPercent | round(0) }}% av testade webbplatser.
             Källa: <a href="https://www.websitecarbon.com/website/bingsjostamman-se/">Website Carbon</a>.
         </p>

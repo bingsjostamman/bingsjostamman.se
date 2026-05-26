@@ -163,7 +163,13 @@ async function run() {
       results[strategy] = await fetchPSIWithRetry(strategy);
     }
 
-    await writePayload(results);
+    const payload = {
+      fetchedAt: new Date().toISOString(),
+      targetUrl: URL,
+      ...results,
+    };
+
+    await writePayload(payload);
 
     console.log("✔ PSI results saved to src/_data/psi.json");
   } catch (err) {

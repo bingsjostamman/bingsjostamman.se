@@ -26,4 +26,20 @@ export default [
       "import/order": ["warn", { "newlines-between": "always" }],
     },
   },
+
+  {
+    files: ["scripts/**/*.js"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: {
+        console: "readonly",
+        process: "readonly",
+        URL: "readonly",
+        fetch: "readonly",
+        window: "readonly",
+        document: "readonly",
+      },
+    },
+  },
 ];

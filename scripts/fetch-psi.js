@@ -145,6 +145,17 @@ async function run() {
     return;
   }
 
+  // In CI environments, use cached data if available to avoid quota limits and API issues
+  if (process.env.CI) {
+    const cachedExists = await hasCachedResult();
+    if (cachedExists) {
+      console.log(
+        "ℹ Using cached PSI data in CI environment (to avoid quota limits)."
+      );
+      return;
+    }
+  }
+
   try {
     const results = {};
 

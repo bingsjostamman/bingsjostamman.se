@@ -150,6 +150,17 @@ async function run() {
     return;
   }
 
+  // In CI environments, use cached data if available to avoid Cloudflare bot detection
+  if (process.env.CI) {
+    const cachedExists = await hasCachedResult();
+    if (cachedExists) {
+      console.log(
+        "ℹ Using cached Website Carbon data in CI environment (to avoid Cloudflare protection).",
+      );
+      return;
+    }
+  }
+
   const targetUrl = getTargetUrl(configuredUrl);
 
   try {

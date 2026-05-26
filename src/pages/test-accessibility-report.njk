@@ -4,20 +4,22 @@ permalink: /test/accessibility/
 eleventyExcludeFromCollections: true
 ---
 
-{% if accessibility and accessibility.summary %}
+{% set report = axcore or accessibility %}
+
+{% if report and report.summary %}
   <h1>{{ title }}</h1>
 
   <section class="report-summary">
     <h2>Summary</h2>
     <ul>
-      <li><strong>Pages tested:</strong> {{ accessibility.summary.totalPages }}</li>
-      <li><strong>Total violations:</strong> {{ accessibility.summary.totalViolations }}</li>
-      <li><strong>Pages with issues:</strong> {{ accessibility.summary.pagesWithIssues }}</li>
+      <li><strong>Pages tested:</strong> {{ report.summary.totalPages }}</li>
+      <li><strong>Total violations:</strong> {{ report.summary.totalViolations }}</li>
+      <li><strong>Pages with issues:</strong> {{ report.summary.pagesWithIssues }}</li>
     </ul>
   </section>
 
   <section class="report-details">
-    {% for page in accessibility.pages %}
+    {% for page in report.pages %}
       {% if page.violations and page.violations.length %}
         <article class="page-report">
           <h2>{{ page.path }}</h2>

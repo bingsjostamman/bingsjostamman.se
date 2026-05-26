@@ -1,0 +1,241 @@
+{
+  "summary": {
+    "timestamp": "2026-05-26T06:46:37.393Z",
+    "totalPages": 17,
+    "totalViolations": 9,
+    "pagesWithIssues": 5
+  },
+  "pages": [
+    {
+      "path": "404.html",
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "li:nth-child(1) > a[href=\"/\"]"
+              ],
+              "html": "<a href=\"/\">Startsidan</a>",
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.97 (foreground color: #ffffff, background color: #007bff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            },
+            {
+              "target": [
+                "li:nth-child(2) > a[href$=\"allspel/\"]"
+              ],
+              "html": "<a href=\"/allspel/\">Allspelslåtar</a>",
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.97 (foreground color: #ffffff, background color: #007bff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        },
+        {
+          "id": "landmark-unique",
+          "impact": "moderate",
+          "description": "Ensure landmarks are unique",
+          "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-unique?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "#main-nav"
+              ],
+              "html": "<nav id=\"main-nav\" data-menu-panel=\"\" class=\"c-menu__panel t-component-header\">",
+              "failureSummary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "index.html",
+      "violations": []
+    },
+    {
+      "path": "allspel/index.html",
+      "violations": [
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "description": "Ensure the order of headings is semantically correct",
+          "help": "Heading levels should only increase by one",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".t-intent-highlight.o-tile > h3"
+              ],
+              "html": "<h3><p>Träna in allspelslåtarna</p>\n</h3>",
+              "failureSummary": "Fix any of the following:\n  Heading order invalid"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "components/index.html",
+      "violations": []
+    },
+    {
+      "path": "biljetter/index.html",
+      "violations": []
+    },
+    {
+      "path": "kurser/index.html",
+      "violations": []
+    },
+    {
+      "path": "kontakt/index.html",
+      "violations": []
+    },
+    {
+      "path": "onsdag/index.html",
+      "violations": []
+    },
+    {
+      "path": "scen/index.html",
+      "violations": []
+    },
+    {
+      "path": "tisdag/index.html",
+      "violations": [
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "description": "Ensure the order of headings is semantically correct",
+          "help": "Heading levels should only increase by one",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                ".c-artist-list__item.t-intent-shoutout:nth-child(4) > .c-artist-list__body > .c-artist-list__name.flex"
+              ],
+              "html": "<h3 class=\"c-artist-list__name flex\">",
+              "failureSummary": "Fix any of the following:\n  Heading order invalid"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "upplagor/index.html",
+      "violations": []
+    },
+    {
+      "path": "scen/hjort-anders-i-ord-och-toner/index.html",
+      "violations": []
+    },
+    {
+      "path": "scen/merit-hemmingson/index.html",
+      "violations": []
+    },
+    {
+      "path": "scen/polenta/index.html",
+      "violations": []
+    },
+    {
+      "path": "test/accessibility/index.html",
+      "violations": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "description": "Ensure each HTML document contains a non-empty <title> element",
+          "help": "Documents must have <title> element to aid in navigation",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/document-title?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "html": "<html>",
+              "failureSummary": "Fix any of the following:\n  Document does not have a non-empty <title> element"
+            }
+          ]
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "description": "Ensure every HTML document has a lang attribute",
+          "help": "<html> element must have a lang attribute",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/html-has-lang?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "html": "<html>",
+              "failureSummary": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+            }
+          ]
+        },
+        {
+          "id": "landmark-one-main",
+          "impact": "moderate",
+          "description": "Ensure the document has a main landmark",
+          "help": "Document should have one main landmark",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "html"
+              ],
+              "html": "<html>",
+              "failureSummary": "Fix all of the following:\n  Document does not have a main landmark"
+            }
+          ]
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "description": "Ensure all page content is contained by landmarks",
+          "help": "All page content should be contained by landmarks",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/region?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "h1"
+              ],
+              "html": "<h1>Accessibility Report</h1>",
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            },
+            {
+              "target": [
+                ".report-summary"
+              ],
+              "html": "<section class=\"report-summary\">\n    <h2>Summary</h2>\n    <ul>\n      <li><strong>Pages tested:</strong> 0</li>\n      <li><strong>Total violations:</strong> 0</li>\n      <li><strong>Pages with issues:</strong> 0</li>\n    </ul>\n  </section>",
+              "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "test/carbon/index.html",
+      "violations": []
+    },
+    {
+      "path": "test/pagespeed/index.html",
+      "violations": [
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "description": "Ensure elements that have scrollable content are accessible by keyboard",
+          "help": "Scrollable region must have keyboard access",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/scrollable-region-focusable?application=axeAPI",
+          "nodes": [
+            {
+              "target": [
+                "pre"
+              ],
+              "html": "<pre class=\"psi-raw\">",
+              "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

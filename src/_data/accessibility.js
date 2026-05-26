@@ -2,7 +2,7 @@
 import fs from "fs";
 
 export default function () {
-  const reportPath = "test/accessibility-report.json";
+  const reportPath = "src/_data/axcore.json";
   if (fs.existsSync(reportPath)) {
     const data = JSON.parse(fs.readFileSync(reportPath, "utf8"));
     return data;

@@ -5,7 +5,93 @@ permalink: /test/carbon/
 eleventyExcludeFromCollections: true
 ---
 
-<p><a href="https://www.websitecarbon.com/website/bingsjostamman-se/">Website Carbon</a></p>
+<style>
+	.carbon-report {
+		max-width: 48rem;
+		margin: 2rem auto;
+		padding: 1.5rem;
+		font-family: system-ui, sans-serif;
+	}
 
-<div id="wcb" class="carbonbadge wcb-d"></div>
-<script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
+	.carbon-card {
+		border-radius: 1rem;
+		padding: 1.25rem 1.5rem;
+		background: #f7faf7;
+		border: 1px solid #dce6dc;
+	}
+
+	.carbon-stat {
+		margin: 0;
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1.2;
+	}
+
+	.carbon-meta {
+		margin-top: 0.75rem;
+		color: #2f3a2f;
+	}
+
+	.carbon-label {
+		margin-top: 0;
+		color: #1f2b1f;
+		font-weight: 600;
+	}
+
+	.carbon-raw {
+		margin-top: 2rem;
+		padding: 1rem;
+		background: #111;
+		color: #eee;
+		border-radius: 0.5rem;
+		font-size: 0.85rem;
+		overflow-x: auto;
+	}
+</style>
+
+<div class="carbon-report">
+	<h1>{{ title }}</h1>
+	<p>Data fetched at build time from Website Carbon and rendered statically.</p>
+
+	{% if websitecarbon and websitecarbon.co2PerPageView != null %}
+		<section class="carbon-card">
+			<p class="carbon-label">Estimated CO2 per page view</p>
+			<p class="carbon-stat">{{ websitecarbon.co2PerPageView | round(2) }} g CO2e</p>
+
+			{% if websitecarbon.cleanerThanPercent != null %}
+				<p class="carbon-meta">
+					Cleaner than {{ websitecarbon.cleanerThanPercent | round(0) }}% of tested web pages.
+				</p>
+			{% endif %}
+
+			<p class="carbon-meta">
+				Tested URL:
+				<a href="{{ websitecarbon.targetUrl }}">{{ websitecarbon.targetUrl }}</a>
+			</p>
+
+			{% if websitecarbon.fetchedAt %}
+				<p class="carbon-meta">Last updated: {{ websitecarbon.fetchedAt }}</p>
+			{% endif %}
+
+			<p class="carbon-meta">
+				Source:
+				<a href="https://www.websitecarbon.com/">Website Carbon</a>
+			</p>
+		</section>
+
+		<h2>Raw data</h2>
+		<pre class="carbon-raw">{{ websitecarbon | dump(2) }}</pre>
+	{% else %}
+		<p>
+			No Website Carbon data found yet. Run
+			<code>npm run carbon</code>
+			(or a full
+			<code>npm run build</code>)
+			and rebuild.
+		</p>
+
+		{% if websitecarbon and websitecarbon.error %}
+			<p class="carbon-meta">Latest fetch error: {{ websitecarbon.error }}</p>
+		{% endif %}
+	{% endif %}
+</div>

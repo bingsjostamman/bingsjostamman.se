@@ -6,7 +6,7 @@ import fs from "fs/promises";
 import axeSource from "axe-core";
 
 const SITE_DIR = path.resolve("_site");
-const REPORT_PATH = path.resolve("test/accessibility-report.json");
+const REPORT_PATH = path.resolve("src/_data/axcore.json");
 
 (async () => {
   console.log("🔍 Starting accessibility audit...\n");
@@ -69,6 +69,7 @@ const REPORT_PATH = path.resolve("test/accessibility-report.json");
 
   const output = { summary, pages: report };
 
+  await fs.mkdir(path.dirname(REPORT_PATH), { recursive: true });
   await fs.writeFile(REPORT_PATH, JSON.stringify(output, null, 2));
   console.log(`\n📄 Report written to: ${REPORT_PATH}`);
 

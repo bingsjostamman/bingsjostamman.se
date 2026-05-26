@@ -1,0 +1,9 @@
+{
+  "source": "websitecarbon",
+  "fetchedAt": "2026-05-26T06:28:48.053Z",
+  "targetUrl": "https://www.bingsjostamman.se/",
+  "co2PerPageView": null,
+  "cleanerThanPercent": null,
+  "error": "Website Carbon fetch failed - HTTP 503: {\n  \"error\": \"Service temporarily unavailable.\"\n}",
+  "raw": null
+}

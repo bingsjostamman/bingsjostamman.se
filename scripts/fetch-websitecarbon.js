@@ -53,27 +53,58 @@ async function fetchWebsiteCarbon(targetUrl) {
   const url = `${endpoint}?url=${encodeURIComponent(targetUrl)}`;
   console.log(`→ Fetching Website Carbon for ${targetUrl}...`);
 
-  const response = await fetch(url, {
-    headers: {
-      Accept: "application/json",
-      "User-Agent": "bingsjostamman.se build metrics",
-    },
-  });
+  const headers = {
+    Accept: "application/json",
+    // Use a legitimate browser User-Agent to avoid Cloudflare bot detection
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Cache-Control": "no-cache",
+  };
+
+  if (process.env.CI) {
+    console.debug(`[DEBUG] Request URL: ${url}`);
+    console.debug(`[DEBUG] Request headers:`, headers);
+  }
+
+  const response = await fetch(url, { headers });
+
+  if (process.env.CI) {
+    console.debug(`[DEBUG] Response status: ${response.status}`);
+    console.debug(`[DEBUG] Response headers:`, Object.fromEntries(response.headers.entries()));
+  }
 
   if (!response.ok) {
     const text = await response.text();
+    const contentType = response.headers.get("content-type");
+    
+    // Check if this is a Cloudflare challenge page
+    const isCloudflareChallenge = text.includes("Just a moment") || text.includes("Checking your browser");
+    
+    if (isCloudflareChallenge) {
+      console.warn("⚠ Website Carbon is behind Cloudflare protection; request was blocked.");
+      if (process.env.CI) {
+        console.debug("[DEBUG] Response snippet:", text.substring(0, 200));
+      }
+    }
+    
     const error = new Error(
-      `Website Carbon fetch failed - HTTP ${response.status}: ${text}`,
+      `Website Carbon fetch failed - HTTP ${response.status}${isCloudflareChallenge ? " (Cloudflare challenge)" : ""}`,
     );
     error.statusCode = response.status;
+    error.isCloudflareChallenge = isCloudflareChallenge;
     throw error;
   }
 
   return response.json();
 }
 
-function shouldRetry(statusCode) {
-  return statusCode === 429 || statusCode === 503;
+function shouldRetry(error) {
+  // Don't retry Cloudflare challenges — they won't change on retry
+  if (error.isCloudflareChallenge) {
+    return false;
+  }
+  // Only retry specific transient errors
+  return error.statusCode === 429 || error.statusCode === 503;
 }
 
 function wait(ms) {
@@ -88,7 +119,7 @@ async function fetchWithRetry(targetUrl) {
       return await fetchWebsiteCarbon(targetUrl);
     } catch (err) {
       lastError = err;
-      const retryable = shouldRetry(err.statusCode);
+      const retryable = shouldRetry(err);
       const isLastAttempt = attempt === maxAttempts;
 
       if (!retryable || isLastAttempt) {

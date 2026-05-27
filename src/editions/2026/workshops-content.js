@@ -39,7 +39,7 @@ Alla kurser arrangeras av Folkmusikens Hus under Stämmoveckan och anmälan sker
     },
     {
       name: "Kurs i jojk",
-      teacher: "Nik Marak",
+      teacher: "Nik Märak",
       description:
         "Jojken tar vid där orden tar slut. Vi jojkar tillsammans, några traditionella och några nya, och provar även att hitta egna jojkar. Det finns egentligen inga rätt och fel, men det kan vara bra att veta hur traditionerna ser ut. Och det ska vara härligt.",
       location: "Danielsgården",

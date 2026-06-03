@@ -1,1 +1,10 @@
-/* author */
+/* humans.txt */
+
+    BINGSJOSTAMMAN.SE is served as a static website, in order to 
+    be fast and secure. We try hard to respect your bandwidth.
+    
+    No cookies, no nonsense.
+
+    We take accessibility seriously, because we believe you deserve it.
+
+    Made with love and consideration in Sweden.

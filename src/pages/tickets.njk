@@ -10,14 +10,13 @@ permalink: /biljetter/
 <div class="artist-image">
 {{ heroImage(editions.current ~ "/lattaltet_s1y8lg", "Låttältet") }}
 </div>
-<p>&nbsp;</p>
-<h1>Entré och biljetter {{ editions.current }}</h1>
+<div class="o-compound prose o-block o-block--margin-medium">
+    <h1>Entré och biljetter {{ editions.current }}</h1>
 
-<p>Från tisdag kl 17:00 kan du köpa entrébandet i Folkmusikens hus tält vid bystugeområdet. Anländer du till stämman på onsdagen möts du vid infarterna av våra funktionärer där du betalar för entrébanet och campingbiljetter.</p>
-<p>Det finns möjlighet att betala med kontanter, Swish eller kort på stämmoområdet</p>
-<p>Entrébandet fäster du runt handleden och visar upp när du passerar in till serveringsområdet utanför bystugan.</p>
+    <p>Från tisdag kl 17:00 kan du köpa entrébandet i Folkmusikens hus tält vid bystugeområdet. Anländer du till stämman på onsdagen möts du vid infarterna av våra funktionärer där du betalar för entrébanet och campingbiljetter.</p>
+    <p>Det finns möjlighet att betala med kontanter, Swish eller kort på stämmoområdet</p>
+    <p>Entrébandet fäster du runt handleden och visar upp när du passerar in till serveringsområdet utanför bystugan.</p>
 
-<p>&nbsp;</p>
 {% if prices.hidden %}
 <p>Biljettinformation publiceras snart.</p>
   {% if prices.note %}
@@ -62,5 +61,5 @@ permalink: /biljetter/
   </div>
 {% endif %}
 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+</div>
+

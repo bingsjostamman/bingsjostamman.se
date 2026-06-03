@@ -32,7 +32,7 @@ h4 {
   font-family: "Playfair Display", "Alegreya", serif;
 }
 
-p {
+:where(p) {
   margin-block: 0;
 }
 

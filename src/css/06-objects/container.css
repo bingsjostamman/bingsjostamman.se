@@ -51,3 +51,16 @@ main > :last-child {
 main > :first-child:not(.o-block--margin-zero) {
     margin-block-start: var(--size-double);
 }
+
+
+.o-block {
+
+}
+
+.o-block--margin-zero {
+    margin: 0;
+}
+
+.o-block--margin-medium {
+    margin-block: var(--size-double);
+}

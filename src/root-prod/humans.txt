@@ -1,6 +1,6 @@
 /* humans.txt */
 
-    bingsjostamman.se is served as a static website, in order to 
+    BINGSJOSTAMMAN.SE is served as a static website, in order to 
     be fast and secure. We try hard to respect your bandwidth.
     
     No cookies, no nonsense.

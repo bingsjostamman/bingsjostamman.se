@@ -101,3 +101,14 @@ fullscreen is kept for same-origin only.
 5. [ ] Upgrade to max-age=31536000; includeSubDomains; preload only when you are sure every present/future subdomain is HTTPS-only.
 
 
+## DONE and stashed, to be verified before implementation
+
+- Tightened CSP in netlify.toml:31
+- Removed inline Plausible init script in base.njk:44
+- Removed inline image background styles in image.njk:61
+- Reworked timeline to class-based placement (no inline style attrs) in timeline.njk:84
+- Added class-based timeline positioning rules in timeline.css:27
+- Added generated utility classes for timeline grid placement in timeline-grid.css:1
+- Imported that utility stylesheet in entry.css:39
+- Removed inline footer dev style block in footer.njk:52 and moved rules to footer.css:66
+- Removed inline style blocks from about-considerations.njk:8 and 404.njk:19, moved styles into shame.css:129

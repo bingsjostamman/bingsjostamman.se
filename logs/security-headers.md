@@ -99,3 +99,5 @@ fullscreen is kept for same-origin only.
 3. [ ] Replace inline style attributes in image.njk:69 and image.njk:82, then remove unsafe-inline from style-src.
 4. [ ] Add CSP reporting endpoint (report-to / report-uri) for safe tightening over time.
 5. [ ] Upgrade to max-age=31536000; includeSubDomains; preload only when you are sure every present/future subdomain is HTTPS-only.
+
+

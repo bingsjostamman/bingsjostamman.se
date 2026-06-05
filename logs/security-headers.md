@@ -75,6 +75,23 @@ Sends only origin (not full path/query) on cross-origin HTTPS requests.
 Avoids breaking common analytics/use-cases while improving privacy.
 
 
+## Permissions-Policy
+
+Added a conservative Permissions-Policy baseline.
+
+Updated:
+
+netlify.toml
+Header added on /*:
+
+Permissions-Policy = "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), clipboard-read=(), clipboard-write=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(self), gamepad=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), web-share=(), xr-spatial-tracking=()"
+Result:
+
+Config validates with no errors.
+Most powerful browser features are disabled by default.
+fullscreen is kept for same-origin only.
+
+
 ## Suggested next steps
 
 1. Deploy and re-run securityheaders.com to confirm CSP is detected and effective.

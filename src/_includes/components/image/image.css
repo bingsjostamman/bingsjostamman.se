@@ -1,0 +1,56 @@
+/* ==========================================================================
+   Component: Image
+   Layered placeholder image pattern for LQIP backgrounds.
+   ========================================================================== */
+
+.c-image {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.c-image__picture,
+.c-image__img,
+.c-image__placeholder {
+  display: block;
+  width: 100%;
+}
+
+.c-image__picture,
+.c-image__placeholder,
+.c-image__img {
+  height: auto;
+}
+
+.c-image--lqip .c-image__placeholder,
+.c-image--lqip .c-image__picture {
+  position: relative;
+}
+
+.c-image--lqip .c-image__placeholder,
+.c-image--lqip .c-image__img {
+  grid-area: 1 / 1;
+}
+
+.c-image--lqip {
+  display: grid;
+}
+
+.c-image--lqip .c-image__placeholder {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  object-position: center;
+  filter: blur(18px);
+  transform: scale(1.08);
+}
+
+.c-image--lqip .c-image__picture,
+.c-image--lqip .c-image__img {
+  position: relative;
+  z-index: 1;
+}
+
+.c-image--lqip .c-image__img {
+  background-color: transparent;
+}

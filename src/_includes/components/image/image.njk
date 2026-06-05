@@ -55,32 +55,66 @@
   {% endif %}
 
   {# Render output #}
+  {% if lqipId %}
+    {% set imageClass = "c-image c-image--lqip" %}
+  {% else %}
+    {% set imageClass = "c-image" %}
+  {% endif %}
+
   {% if mobileId %}
-    <picture>
-      <source srcset="{{ mobileSrcsetList }}" media="(max-width: 600px)">
+    <span class="{{ imageClass }}">
+      {% if lqipId %}
+        <img
+          class="c-image__placeholder"
+          src="{{ lqipSrc }}"
+          alt=""
+          aria-hidden="true"
+          width="{{ fallbackWidth }}"
+          {% if fallbackHeight %}height="{{ fallbackHeight }}"{% endif %}
+          loading="eager"
+          decoding="async"
+        >
+      {% endif %}
+      <picture class="c-image__picture">
+        <source srcset="{{ mobileSrcsetList }}" media="(max-width: 600px)">
+        <img
+          class="c-image__img"
+          src="{{ baseUrl ~ transformBase ~ ',w_' ~ fallbackWidth ~ '/' ~ id ~ '.jpg' }}"
+          srcset="{{ srcsetList }}"
+          sizes="{{ sizes }}"
+          alt="{{ alt or '' }}"
+          width="{{ fallbackWidth }}"
+          {% if fallbackHeight %}height="{{ fallbackHeight }}"{% endif %}
+          loading="{{ options.loading or 'lazy' }}"
+          decoding="{{ options.decoding or 'async' }}"
+        >
+      </picture>
+    </span>
+  {% else %}
+    <span class="{{ imageClass }}">
+      {% if lqipId %}
+        <img
+          class="c-image__placeholder"
+          src="{{ lqipSrc }}"
+          alt=""
+          aria-hidden="true"
+          width="{{ fallbackWidth }}"
+          {% if fallbackHeight %}height="{{ fallbackHeight }}"{% endif %}
+          loading="eager"
+          decoding="async"
+        >
+      {% endif %}
       <img
+        class="c-image__img"
         src="{{ baseUrl ~ transformBase ~ ',w_' ~ fallbackWidth ~ '/' ~ id ~ '.jpg' }}"
         srcset="{{ srcsetList }}"
         sizes="{{ sizes }}"
         alt="{{ alt or '' }}"
         width="{{ fallbackWidth }}"
         {% if fallbackHeight %}height="{{ fallbackHeight }}"{% endif %}
-        {% if lqipId %}style="background: url('{{ lqipSrc }}') center/cover no-repeat;"{% endif %}
         loading="{{ options.loading or 'lazy' }}"
         decoding="{{ options.decoding or 'async' }}"
       >
-    </picture>
-  {% else %}
-    <img
-      src="{{ baseUrl ~ transformBase ~ ',w_' ~ fallbackWidth ~ '/' ~ id ~ '.jpg' }}"
-      srcset="{{ srcsetList }}"
-      sizes="{{ sizes }}"
-      alt="{{ alt or '' }}"
-      width="{{ fallbackWidth }}"
-      {% if fallbackHeight %}height="{{ fallbackHeight }}"{% endif %}
-      {% if lqipId %}style="background: url('{{ lqipSrc }}') center/cover no-repeat;"{% endif %}
-      loading="{{ options.loading or 'lazy' }}"
-      decoding="{{ options.decoding or 'async' }}"
-    >
+    </span>
   {% endif %}
 {% endmacro %}

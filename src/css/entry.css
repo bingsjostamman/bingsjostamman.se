@@ -16,6 +16,7 @@
 @import "./07-components/temp.css";
 @import "./../_includes/components/allspel-tunes/allspel-tunes.css";
 @import "./../_includes/components/icon/icon.css";
+@import "./../_includes/components/image/image.css";
 @import "./../_includes/components/schedule-item/schedule-item.css";
 @import "./../_includes/components/logo/logo.css";
 @import "./../_includes/components/menu/menu.css";
@@ -37,5 +38,6 @@
 @import "./08-utilities/lift-link-card.css";
 @import "./08-utilities/list-unstyled.css";
 @import "./08-utilities/skip-link.css";
+@import "./08-utilities/timeline-grid.css";
 @import "./08-utilities/visually-hidden.css";
 @import "./09-shame/shame.css";

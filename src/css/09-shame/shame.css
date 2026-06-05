@@ -9,12 +9,6 @@
  * - Where it should eventually live
  * - Any relevant issue or PR reference
  */
-
-
-.prose {
-
-}
-
 :where(.o-split) {
     display: grid;
     gap: var(--size-double);
@@ -98,15 +92,6 @@
   margin-block-start: 0.1em;
 }
 
-.c-tickets__note {
-    
-}
-
-.c-some-link {
-    
-}
-
-
 .o-half {
   display: flex;
   gap: var(--size-full);
@@ -140,4 +125,140 @@ h2.flex .icon, h3.flex .icon {
 
 .page-intro {
   font-size: var(--font-size-1);
+}
+
+.p-about-considerations h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--size-half);
+}
+
+.about-metric-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.about-metric-card {
+  border: 1px solid #d5dbe2;
+  background: #f6f8fa;
+  border-radius: 0.7rem;
+  padding: 0.9rem;
+}
+
+.about-metric-card + .about-metric-card {
+  margin-block-start: 0;
+}
+
+.about-metric-card__label {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.about-metric-card__value {
+  margin: 0.35rem 0 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.about-psi-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.about-psi-card {
+  border: 1px solid #d5dbe2;
+  background: #f6f8fa;
+  border-radius: 0.7rem;
+  padding: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-psi-card + .about-psi-card {
+  margin-block-start: 0;
+}
+
+.about-psi-card__label {
+  margin: 0;
+  font-size: 1rem;
+  color: #334155;
+  font-weight: 600;
+}
+
+.about-psi-score {
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+}
+
+.about-psi-score--good {
+  background: #0cce6b;
+  color: #102016;
+}
+
+.about-psi-score--ok {
+  background: #ffa400;
+  color: #111;
+}
+
+.about-psi-score--poor {
+  background: #ff4e42;
+}
+
+.not-found {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.not-found h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.not-found > p {
+  font-size: 1.125rem;
+  margin-bottom: 3rem;
+  color: var(--color-text-secondary, #666);
+}
+
+.not-found__nav h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.not-found__nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.not-found__nav a {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-primary, #007bff);
+  color: white;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
+  font-weight: 500;
+}
+
+.not-found__nav a:hover {
+  background-color: var(--color-primary-dark, #0056b3);
 }

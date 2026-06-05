@@ -81,12 +81,12 @@
 {%- set totalSlots = ((gridEnd - gridStart) / inc) | round(0, "ceil") -%}
 
 {# ── 4. Render ─────────────────────────────────────────── #}
-<div class="c-timeline" aria-hidden="true" style="--timeline-cols: {{ stageNames.length }}; --timeline-rows: {{ totalSlots }};">
+<div class="c-timeline u-tl-cols-{{ stageNames.length }} u-tl-rows-{{ totalSlots }}" aria-hidden="true">
   {# Column headers #}
-  <div class="c-timeline__header" style="grid-row: 1;">
+  <div class="c-timeline__header">
     <div class="c-timeline__corner"></div>
     {%- for stage in stageNames %}
-    <div class="c-timeline__stage-label" style="grid-column: {{ loop.index + 1 }};">{{ stage }}</div>
+    <div class="c-timeline__stage-label u-gc-{{ loop.index + 1 }}">{{ stage }}</div>
     {%- endfor %}
   </div>
 
@@ -95,7 +95,7 @@
     {%- set mins = gridStart + (i * inc) -%}
     {%- if mins % 60 == 0 -%}
     {%- set displayHour = ((mins / 60) | round(0, "floor")) % 24 -%}
-    <div class="c-timeline__time" style="grid-row: {{ i + 2 }}; grid-column: 1;">
+    <div class="c-timeline__time u-gr-{{ i + 2 }}">
       {{ displayHour }}:00
     </div>
     {%- endif -%}
@@ -105,7 +105,7 @@
   {%- for i in range(0, totalSlots) -%}
     {%- set mins = gridStart + (i * inc) -%}
     {%- if mins % 60 == 0 -%}
-    <div class="c-timeline__hour-line" style="grid-row: {{ i + 2 }}; grid-column: 1 / -1;" aria-hidden="true"></div>
+    <div class="c-timeline__hour-line u-gr-{{ i + 2 }}" aria-hidden="true"></div>
     {%- endif -%}
   {%- endfor -%}
 
@@ -121,8 +121,7 @@
     {%- set rowStart = ((act.startMinutes - gridStart) / inc) | round(0, "floor") + 2 -%}
     {%- set rowEnd   = ((act.endMinutes   - gridStart) / inc) | round(0, "ceil")  + 2 -%}
 
-    <div class="c-timeline__act c-timeline__act--{{ act.type }}"
-         style="grid-row: {{ rowStart }} / {{ rowEnd }}; grid-column: {{ colIdx + 1 }};">
+    <div class="c-timeline__act c-timeline__act--{{ act.type }} u-grs-{{ rowStart }} u-gre-{{ rowEnd }} u-gc-{{ colIdx + 1 }}">
       <span class="c-timeline__act-time">{{ act.starttime }}–{{ act.endtime }}</span>
       <span class="c-timeline__act-name">{{ act.name }}</span>
     </div>

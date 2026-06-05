@@ -31,6 +31,7 @@
 }
 
 .c-timeline__stage-label {
+  grid-column: var(--gc-start);
   grid-row: 1;
   padding: 0.25rem 0.5rem;
   font-weight: 700;
@@ -59,6 +60,8 @@
 /* ── Hour grid lines ─────────────────────────────────────── */
 
 .c-timeline__hour-line {
+  grid-row: var(--gr);
+  grid-column: 1 / -1;
   border-top: 1px solid var(--color-border, #ddd);
   pointer-events: none;
   z-index: 0;
@@ -67,6 +70,8 @@
 /* ── Act blocks ──────────────────────────────────────────── */
 
 .c-timeline__act {
+  grid-row: var(--gr-start) / var(--gr-end);
+  grid-column: var(--gc-start);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,6 +97,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.c-timeline__time {
+  grid-row: var(--gr);
 }
 
 /* ── Type modifiers ──────────────────────────────────────── */

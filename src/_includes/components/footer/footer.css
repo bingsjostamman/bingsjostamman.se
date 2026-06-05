@@ -71,3 +71,17 @@
   opacity: 0.05;
 }
 
+.c-footer__dev-links {
+    text-align: center;
+    opacity: 0.5;
+}
+
+.c-footer__dev-links a + a::before {
+    content: " | ";
+}
+
+.c-footer__debug {
+    text-align: center;
+    opacity: 0.5;
+}
+

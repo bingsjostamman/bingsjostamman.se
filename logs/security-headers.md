@@ -25,3 +25,60 @@ What this CSP now does:
     - Fonts: self + data:
     - Media: self + dropbox domains for tune links
     - Manifest: self
+
+## X-Content-Type-Options
+
+Added X-Content-Type-Options successfully.
+
+Updated:
+
+netlify.toml:21
+netlify.toml:27
+What was added:
+
+X-Content-Type-Options = "nosniff" under /assets/*
+X-Content-Type-Options = "nosniff" under /*
+Why both:
+
+Ensures MIME sniffing is disabled for both static assets and HTML/document routes.
+
+
+## HSTS
+
+HSTS is active in production; I’ll add the same header explicitly in your config so it’s version-controlled and not dependent on defaults.
+
+Correct, that result means your live site already sends HSTS.
+
+I’ve now made it explicit in repo config so it’s controlled by your codebase too:
+
+Added Strict-Transport-Security = "max-age=31536000" in netlify.toml:28
+Why this is good:
+
+Keeps behavior predictable across environments/platform changes.
+Makes security header policy auditable in git.
+
+
+## Referrer-Policy
+
+Added Referrer-Policy to your global headers.
+
+Updated:
+
+netlify.toml:29
+Value set:
+
+Referrer-Policy = "strict-origin-when-cross-origin"
+Why this is a good default:
+
+Keeps full referrer on same-origin navigations.
+Sends only origin (not full path/query) on cross-origin HTTPS requests.
+Avoids breaking common analytics/use-cases while improving privacy.
+
+
+## Suggested next steps
+
+1. Deploy and re-run securityheaders.com to confirm CSP is detected and effective.
+2. Move toward stricter CSP by removing inline script in base.njk:44, then drop unsafe-inline from script-src.
+3. Replace inline style attributes in image.njk:69 and image.njk:82, then remove unsafe-inline from style-src.
+4. Add CSP reporting endpoint (report-to / report-uri) for safe tightening over time.
+5. Upgrade to max-age=31536000; includeSubDomains; preload only when you are sure every present/future subdomain is HTTPS-only.

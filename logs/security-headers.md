@@ -94,8 +94,8 @@ fullscreen is kept for same-origin only.
 
 ## Suggested next steps
 
-1. Deploy and re-run securityheaders.com to confirm CSP is detected and effective.
-2. Move toward stricter CSP by removing inline script in base.njk:44, then drop unsafe-inline from script-src.
-3. Replace inline style attributes in image.njk:69 and image.njk:82, then remove unsafe-inline from style-src.
-4. Add CSP reporting endpoint (report-to / report-uri) for safe tightening over time.
-5. Upgrade to max-age=31536000; includeSubDomains; preload only when you are sure every present/future subdomain is HTTPS-only.
+1. [x] Deploy and re-run securityheaders.com to confirm CSP is detected and effective.
+2. [ ] Move toward stricter CSP by removing inline script in base.njk:44, then drop unsafe-inline from script-src.
+3. [ ] Replace inline style attributes in image.njk:69 and image.njk:82, then remove unsafe-inline from style-src.
+4. [ ] Add CSP reporting endpoint (report-to / report-uri) for safe tightening over time.
+5. [ ] Upgrade to max-age=31536000; includeSubDomains; preload only when you are sure every present/future subdomain is HTTPS-only.

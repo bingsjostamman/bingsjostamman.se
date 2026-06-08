@@ -58,9 +58,13 @@ main > :first-child:not(.o-block--margin-zero) {
 }
 
 .o-block--margin-zero {
-    margin: 0;
+    margin-block-start: 0;
 }
 
 .o-block--margin-medium {
-    margin-block: var(--size-double);
+    margin-block-start: var(--size-double);
+}
+
+.o-block--margin-large {
+    margin-block-start: var(--size-quad);
 }

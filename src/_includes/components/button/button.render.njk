@@ -1,0 +1,14 @@
+{% from "components/button/button.njk" import button %}
+
+{{ button(buttonText, {
+  href: href,
+  variant: variant,
+  size: size,
+  external: external,
+  externalText: externalText,
+  prefixIcon: prefixIcon,
+  suffixIcon: suffixIcon,
+  type: type,
+  disabled: disabled,
+  className: className
+}) }}

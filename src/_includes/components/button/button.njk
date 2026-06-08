@@ -1,3 +1,54 @@
-<button class="{{ class }}{% if variant %} {{ variant }}{% endif %}" {% if disabled %}disabled{% endif %}>
-  {{ buttonText }}
-</button>
+{% from "components/icon/icon.njk" import icon %}
+
+{% macro button(buttonText="", options={}) %}
+  {% set label = buttonText or options.buttonText or options.label or "" %}
+  {% set href = options.href or "" %}
+  {% set variant = options.variant or "primary" %}
+  {% set size = options.size or "default" %}
+  {% set external = options.external or false %}
+  {% set externalText = options.externalText or (external and " (Öppnas i nytt fönster)") or "" %}
+  {% set prefixIcon = options.prefixIcon or "" %}
+  {% set suffixIcon = options.suffixIcon or (external and "open-in-new") or "" %}
+  {% set className = options.className or options.class or "" %}
+  {% set classes = "c-button" %}
+
+  {% if variant and variant != "primary" %}
+    {% set classes = classes ~ " c-button--" ~ variant %}
+  {% endif %}
+
+  {% if size and size != "default" %}
+    {% set classes = classes ~ " c-button--" ~ size %}
+  {% endif %}
+
+  {% if className %}
+    {% set classes = classes ~ " " ~ className %}
+  {% endif %}
+
+  {% if href %}
+    <a class="{{ classes }}" href="{{ href }}"{% if options.target or external %} target="{{ options.target or '_blank' }}"{% endif %}{% if options.rel or external %} rel="{{ options.rel or 'external noopener noreferrer' }}"{% endif %}>
+      {% if prefixIcon %}
+        <span class="c-button__icon c-button__icon--prefix">{{ icon(prefixIcon) }}</span>
+      {% endif %}
+      <span class="c-button__label">{{ label }}</span>
+      {% if externalText %}
+        <span class="u-visually-hidden">{{ externalText }}</span>
+      {% endif %}
+      {% if suffixIcon %}
+        <span class="c-button__icon c-button__icon--suffix">{{ icon(suffixIcon) }}</span>
+      {% endif %}
+    </a>
+  {% else %}
+    <button class="{{ classes }}" type="{{ options.type or 'button' }}"{% if options.disabled %} disabled{% endif %}>
+      {% if prefixIcon %}
+        <span class="c-button__icon c-button__icon--prefix">{{ icon(prefixIcon) }}</span>
+      {% endif %}
+      <span class="c-button__label">{{ label }}</span>
+      {% if externalText %}
+        <span class="u-visually-hidden">{{ externalText }}</span>
+      {% endif %}
+      {% if suffixIcon %}
+        <span class="c-button__icon c-button__icon--suffix">{{ icon(suffixIcon) }}</span>
+      {% endif %}
+    </button>
+  {% endif %}
+{% endmacro %}

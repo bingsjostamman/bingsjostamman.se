@@ -1,6 +1,70 @@
-.primary {
-  background-color: #007bff;
-  color: white;
-  border: 2px solid rebeccapurple;
-  outline: 3px solid grey;
+.c-button,
+.artist-link {
+  display: inline-flex;
+  width: max-content;
+  align-items: center;
+  gap: var(--size-half);
+  padding-block: var(--size-full);
+  padding-inline: var(--size-double);
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-size: var(--font-size-0);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.c-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-button__label {
+  display: inline-flex;
+}
+
+.c-button__icon--prefix {
+  margin-inline-end: var(--size-quarter);
+}
+
+.c-button__icon--suffix {
+  margin-inline-start: var(--size-quarter);
+}
+
+.c-button--mini {
+  padding-block: var(--size-half);
+  padding-inline: var(--size-full);
+  font-size: var(--font-size--1);
+}
+
+.c-button--jumbo {
+  padding-block: var(--size-double);
+  padding-inline: var(--size-quad);
+  font-size: var(--font-size-1);
+}
+
+.c-button {
+  background: var(--color-primary) !important;
+  color: var(--color-font--primary) !important;
+}
+
+.c-button--secondary,
+.artist-link {
+  background: transparent;
+  border-color: currentColor;
+}
+
+.c-button--ghost {
+  background: transparent;
+  color: inherit;
+  border-color: transparent;
+}
+
+.c-button:hover,
+.c-button:focus-visible,
+.artist-link:hover,
+.artist-link:focus-visible {
+  filter: brightness(1.05);
 }

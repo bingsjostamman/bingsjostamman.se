@@ -1,0 +1,34 @@
+---
+layout: layouts/base
+overviewSocialImage:
+eleventyComputed:
+  title: "Spelshema Onsdag {{ dates.onsdag | swedishDate }} {{ year }}"
+  description: "Visuellt spelschema över onsdagsprogrammet för Bingsjöstämman {{ year }}."
+  socialImage: "{{ overviewSocialImage or site.defaultImage }}"
+  permalink: "{% if year == editions.current %}/spelscheman/index.html{% else %}/{{ year }}/spelscheman/index.html{% endif %}"
+---
+{% from "components/timeline/timeline.njk" import timeline %}
+{% from "components/icon/icon.njk" import icon %}
+
+
+<div class="prose">
+  <h1>Spelscheman för onsdagens program {{ dates.onsdag | swedishDate }} {{ year }}</h1>
+
+  <div class="page-intro prose">
+    {{ copy.intro | markdown | safe }}
+  </div>
+</div>
+
+{%- for section in copy.sections -%}
+<div class="prose{% if section.breakout %} o-container__breakout o-container{% endif %} o-block o-block--margin-large">
+  <h2 class="c-schedule__section-heading"><span class="c-frontpage-teasers__icon-wrap c-schedule__section-heading-icon-wrap" aria-hidden="true">{{ icon(section.titleIcon or "schedule", "c-frontpage-teasers__icon") }}</span>{{ section.title }}</h2>
+  {% if section.description %}
+  {{ section.description | markdown | safe }}
+  {% endif %}
+  {% if section.breakout %}<div class="o-container__breakout o-block o-block--margin-zero">{% endif %}
+  {{ timeline(lineup, section.timeline) }}
+  {% if section.breakout %}</div>{% endif %}
+
+</div>
+{%- endfor -%}
+

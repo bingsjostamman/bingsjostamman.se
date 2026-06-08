@@ -8,7 +8,9 @@ export default {
   tags: ["UI","hero","layout"],
 };
 
-export const Default = () => `<section class="c-hero o-container__breakout">
+export const Default = () => `
+
+<section class="c-hero o-container__breakout">
   <div class="c-hero__media">
     <picture>
       <img
@@ -40,7 +42,9 @@ export const Default = () => `<section class="c-hero o-container__breakout">
   </div>
 </section>`;
 Default.storyName = "Default";
-export const With_CTA = () => `<section class="c-hero o-container__breakout">
+export const With_CTA = () => `
+
+<section class="c-hero o-container__breakout">
   <div class="c-hero__media">
     <picture>
       <img
@@ -68,7 +72,37 @@ export const With_CTA = () => `<section class="c-hero o-container__breakout">
       
 
       
-        <a class="c-hero__cta" href="/biljetter/">Se biljetter</a>
+        
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    <a class="c-button c-button--ghost c-hero__cta" href="/biljetter/">
+      
+      <span class="c-button__label">Se biljetter</span>
+      
+      
+    </a>
+  
+
       
     </div>
   </div>

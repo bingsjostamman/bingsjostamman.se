@@ -1,3 +1,4 @@
+{% from "components/button/button.njk" import button %}
 {% from "components/image/image-hero.njk" import heroImage %}
 
 {% macro hero(options = {}) %}
@@ -34,7 +35,11 @@
           {% endif %}
 
           {% if ctaText and ctaHref %}
-            <a class="c-hero__cta" href="{{ ctaHref }}">{{ ctaText }}</a>
+            {{ button(ctaText, {
+              href: ctaHref,
+              variant: options.ctaVariant or "ghost",
+              className: "c-hero__cta"
+            }) }}
           {% endif %}
         {% endif %}
       </div>

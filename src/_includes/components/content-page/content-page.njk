@@ -1,0 +1,151 @@
+{% from "components/hero/hero.njk" import hero %}
+{% from "components/image/image.njk" import cloudinaryPicture %}
+{% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
+
+{% macro renderSlots(slots=[], options={}) %}
+  {% set eyebrowTag = options.eyebrowTag or "p" %}
+  {% set eyebrowClass = options.eyebrowClass or "" %}
+  {% set titleTag = options.titleTag or "h2" %}
+  {% set titleClass = options.titleClass or "" %}
+  {% set textTag = options.textTag or "p" %}
+  {% set textClass = options.textClass or "" %}
+  {% set markdownClass = options.markdownClass or textClass %}
+  {% set linkClass = options.linkClass or "c-button" %}
+
+  {% for slot in slots %}
+    {% if slot.type == "eyebrow" and slot.text %}
+      <{{ eyebrowTag }} class="{% if eyebrowClass %}{{ eyebrowClass }}{% endif %}{% if slot.className %}{% if eyebrowClass %} {% endif %}{{ slot.className }}{% endif %}">{{ slot.text }}</{{ eyebrowTag }}>
+    {% elif slot.type == "title" and slot.text %}
+      <{{ titleTag }} class="{% if titleClass %}{{ titleClass }}{% endif %}{% if slot.className %}{% if titleClass %} {% endif %}{{ slot.className }}{% endif %}">{{ slot.text }}</{{ titleTag }}>
+    {% elif slot.type == "text" and slot.text %}
+      <{{ textTag }} class="{% if textClass %}{{ textClass }}{% endif %}{% if slot.className %}{% if textClass %} {% endif %}{{ slot.className }}{% endif %}">{{ slot.text }}</{{ textTag }}>
+    {% elif slot.type == "markdown" and slot.text %}
+      <div class="{% if markdownClass %}{{ markdownClass }}{% endif %}{% if slot.className %}{% if markdownClass %} {% endif %}{{ slot.className }}{% endif %}">
+        {{ slot.text | markdown | safe }}
+      </div>
+    {% elif slot.type == "link" and slot.text and slot.href %}
+      <a class="{{ linkClass }}{% if slot.className %} {{ slot.className }}{% endif %}" href="{{ slot.href }}">{{ slot.text }}</a>
+    {% endif %}
+  {% endfor %}
+{% endmacro %}
+
+{% macro renderSectionBody(section={}, titleTag="h2") %}
+  {% if section.title %}
+    <{{ titleTag }}>{{ section.title }}</{{ titleTag }}>
+  {% endif %}
+
+  {% if section.body %}
+    {{ section.body | markdown | safe }}
+  {% endif %}
+
+  {% if section.slots %}
+    {{ renderSlots(section.slots, {
+      titleTag: section.slotTitleTag or titleTag,
+      linkClass: section.linkClass or "c-button"
+    }) }}
+  {% endif %}
+
+  {% if section.price and section.price.amount %}
+    <div class="o-tile o-tile--padding-half t-intent-emphasis">
+      {% if section.price.label %}
+        <p><strong>{{ section.price.label }}</strong></p>
+      {% endif %}
+      <p>{{ section.price.amount }}</p>
+      {% if section.price.note %}
+        <p>{{ section.price.note }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if section.scheduleItems and section.scheduleItems | length %}
+    <ul class="u-list-unstyled">
+      {% for item in section.scheduleItems %}
+        {{ scheduleItem(item.location, item.starttime or "", item.endtime or "", {
+          tag: "li",
+          day: item.day,
+          timeText: item.timeText,
+          rootClass: item.rootClass or "o-tile o-tile--padding-half t-intent-emphasis",
+          infoClass: item.infoClass or "",
+          locationClass: item.locationClass or "",
+          timeClass: item.timeClass or "",
+          iconClass: item.iconClass or ""
+        }) }}
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}
+
+{% macro contentPage(page={}) %}
+  {% set heroContent = page.hero %}
+  {% set intro = page.intro %}
+  {% set sections = page.sections or [] %}
+
+  {% if heroContent and heroContent.imageId %}
+    {% if heroContent.slots %}
+      {% call hero(heroContent) %}
+        {{ renderSlots(heroContent.slots, {
+          eyebrowClass: "c-hero__eyebrow",
+          titleTag: "h1",
+          titleClass: "c-hero__title",
+          textClass: "c-hero__text",
+          markdownClass: "c-hero__text",
+          linkClass: "c-button c-button--ghost c-hero__cta"
+        }) }}
+      {% endcall %}
+    {% else %}
+      {{ hero(heroContent) }}
+    {% endif %}
+  {% endif %}
+
+  <div class="o-compound o-block o-block--margin-medium prose">
+    {% if page.title and not (heroContent and (heroContent.title or heroContent.slots)) %}
+      <h1>{{ page.title }}</h1>
+    {% endif %}
+
+    {% if intro %}
+      <div class="page-intro">
+        {{ intro | markdown | safe }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% for section in sections %}
+    {% set rootClass = section.rootClass or "" %}
+
+    {% if section.layout == "split" %}
+      <section class="o-split o-block o-block--margin-medium{% if section.uneven %} o-split--uneven{% endif %}{% if rootClass %} {{ rootClass }}{% endif %}">
+        <div class="o-split__content prose{% if section.contentClass %} {{ section.contentClass }}{% endif %}">
+          {{ renderSectionBody(section) }}
+        </div>
+
+        {% if section.image and section.image.id %}
+          <div class="o-split__image{% if section.image.className %} {{ section.image.className }}{% endif %}">
+            {{ cloudinaryPicture(section.image.id, section.image.alt, section.image.options or {}) }}
+          </div>
+        {% endif %}
+      </section>
+    {% elif section.layout == "callout" %}
+      <section class="o-compound o-block o-block--margin-medium{% if rootClass %} {{ rootClass }}{% endif %}">
+        <div class="o-tile{% if section.paddingClass %} {{ section.paddingClass }}{% endif %} {% if section.intentClass %}{{ section.intentClass }}{% else %}t-intent-highlight{% endif %}{% if section.contentClass %} {{ section.contentClass }}{% endif %}">
+          <div class="prose">
+            {{ renderSectionBody(section, section.titleTag or "h3") }}
+          </div>
+        </div>
+      </section>
+    {% else %}
+      <section class="o-compound prose o-block o-block--margin-medium{% if rootClass %} {{ rootClass }}{% endif %}">
+        {{ renderSectionBody(section) }}
+
+        {% if section.image and section.image.id %}
+          <figure>
+            {{ cloudinaryPicture(section.image.id, section.image.alt, section.image.options or {}) }}
+
+            {% if section.image.caption %}
+              <figcaption>{{ section.image.caption }}</figcaption>
+            {% endif %}
+          </figure>
+        {% endif %}
+      </section>
+    {% endif %}
+  {% endfor %}
+{% endmacro %}

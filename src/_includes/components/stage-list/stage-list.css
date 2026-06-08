@@ -29,7 +29,7 @@
 
 .c-stage-list__name {
   font-size: var(--font-size-1);
-  font-size: 500;
+  font-weight: 500;
 }
 
 .c-stage-list__description {

@@ -75,6 +75,32 @@ export const Default = () => `<header class="c-header">
         <li class="c-menu__item">
           <a
             class="c-menu__link"
+            href="/scen/" 
+            data-track-event="menu_link_click"
+            data-track-label="På scen"
+            data-track-context="main-menu"
+            
+          >
+            På scen
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/spelscheman/" 
+            data-track-event="menu_link_click"
+            data-track-label="Spelscheman för onsdagen"
+            data-track-context="main-menu"
+            
+          >
+            Spelscheman för onsdagen
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
             href="/biljetter/" 
             data-track-event="menu_link_click"
             data-track-label="Entré och biljetter"
@@ -88,13 +114,13 @@ export const Default = () => `<header class="c-header">
         <li class="c-menu__item">
           <a
             class="c-menu__link"
-            href="/scen/" 
+            href="/camping/" 
             data-track-event="menu_link_click"
-            data-track-label="På scen"
+            data-track-label="Camping på stämman"
             data-track-context="main-menu"
             
           >
-            På scen
+            Camping på stämman
           </a>
         </li>
       

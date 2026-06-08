@@ -400,6 +400,25 @@
   },
   {
     "day": "onsdag",
+    "stage": "Dansladu",
+    "type": "upplev",
+    "placement": "",
+    "page": "",
+    "name": "Barnens Bingsjö",
+    "ref": "99",
+    "description": "",
+    "link": "",
+    "longdescription": "",
+    "somedescription": "",
+    "eyebrow": "",
+    "image": "",
+    "starttime": "14:00",
+    "endtime": "16:30",
+    "startMinutes": 840,
+    "endMinutes": 990
+  },
+  {
+    "day": "onsdag",
     "stage": "Bagarstugan",
     "type": "upplev",
     "placement": "",
@@ -1294,7 +1313,7 @@
   {
     "day": "onsdag",
     "stage": "Dansladu",
-    "type": "upplev",
+    "type": "barnens",
     "placement": "barnens",
     "page": "",
     "name": "Invigning & allspel",
@@ -1313,7 +1332,7 @@
   {
     "day": "onsdag",
     "stage": "Dansladu",
-    "type": "upplev",
+    "type": "barnens",
     "placement": "barnens",
     "page": "",
     "name": "Dansa folkdans (från 10 år)",
@@ -1332,7 +1351,7 @@
   {
     "day": "onsdag",
     "stage": "Dansladu",
-    "type": "upplev",
+    "type": "barnens",
     "placement": "barnens",
     "page": "",
     "name": "En skog av toner",
@@ -1351,7 +1370,7 @@
   {
     "day": "onsdag",
     "stage": "Dansladu",
-    "type": "upplev",
+    "type": "barnens",
     "placement": "barnens",
     "page": "",
     "name": "Bingsjös längsta långdans?",

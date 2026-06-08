@@ -9,15 +9,21 @@ eleventyComputed:
 ---
 {% from "components/timeline/timeline.njk" import timeline %}
 {% from "components/icon/icon.njk" import icon %}
+{% from "components/hero/hero.njk" import hero %}
 
 
-<div class="prose">
-  <h1>Spelscheman för onsdagens program {{ dates.onsdag | swedishDate }} {{ year }}</h1>
 
-  <div class="page-intro prose">
+{{ hero({
+  imageId: "2026/spelschema_nrrjoi",
+  imageAlt: "Spel till dans",
+  eyebrow: "Onsdagens program",
+  title: "Spelscheman",
+  maskOpacity: "68%"
+}) }}
+
+  <div class="o-compound page-intro o-block o-block--margin-large prose u-anfang">
     {{ copy.intro | markdown | safe }}
   </div>
-</div>
 
 {%- for section in copy.sections -%}
 <div class="prose{% if section.breakout %} o-container__breakout o-container{% endif %} o-block o-block--margin-large">

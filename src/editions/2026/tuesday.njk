@@ -8,20 +8,30 @@ eleventyExcludeFromCollections: true
 {% from "components/stage-card/stage-card.njk" import stageCard %}
 {% from "components/icon/icon.njk" import icon %}
 {% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
-{% from "components/image/image.njk" import cloudinaryPicture %}
+{% from "components/hero/hero.njk" import hero %}
 
 
-<div class="o-split">
-    <div class="o-split__content prose">
-        <h1>Förstämma tisdag {{ dates.tisdag | swedishDate }}</h1>
-        <div class="page-intro u-anfang">
-            {%- for paragraph in copy.intro %}
-            <p>{{ paragraph }}</p>
-            {%- endfor %}
-        </div>
+{{ hero({
+  imageId: "2026/logen-spel_u2fim5",
+  imageAlt: "Spontant spel på logen.",
+  eyebrow: "Förstämma",
+  title: "Tisdag " ~ (dates.tisdag | swedishDate),
+  text: "Tjuvstarta stämman med förstämma, konserter, spontanspel och dans",
+  maskOpacity: "68%"
+}) }}
 
+<div class="o-compound o-block o-block--margin-medium prose u-anfang">
+    <div class="page-intro u-anfang">
+        {%- for paragraph in copy.intro %}
+        <p>{{ paragraph }}</p>
+        {%- endfor %}
+    </div>
+</div>
+
+<div class="o-block o-block--margin-large prose">
+    <div class="o-split">
         {%- for item in copy.shoutouts %}
-        <div class="c-artist-list__item t-intent-shoutout">
+        <div class="o-split__content c-artist-list__item t-intent-shoutout">
             <div class="c-artist-list__body">
                 <h3 class="c-artist-list__name flex">
                     {{ icon(item.icon) }}{{ item.title }}
@@ -35,16 +45,9 @@ eleventyExcludeFromCollections: true
         </div>
         {%- endfor %}
     </div>
-
-    <div class="o-split__image o-split__content">
-        <div class="o-split__image o-split__content">
-            {{ cloudinaryPicture("2026/logen-spel_u2fim5", "Spontant spel på logen.") }}
-        </div>
-    </div>
-
 </div>
 
-<div class="o-block o-block--margin-medium prose">
+<div class="o-block o-block--margin-large prose">
     <h2>{{ copy.programHeadline }}</h2>
 
     <div class="o-list-layout o-list-layout--md-2 o-list-layout--lg-3">

@@ -6,30 +6,29 @@ eleventyComputed:
 eleventyExcludeFromCollections: true
 ---
 {% from "components/stage-card/stage-card.njk" import stageCard %}
-{% from "components/image/image.njk" import cloudinaryPicture %}
+{% from "components/hero/hero.njk" import hero %}
 
 
-<div class="o-split">
-    <div class="o-split__content prose u-anfang">
-        <h1>Onsdag {{ dates.onsdag | swedishDate }}</h1>
-        
-        <div class="page-intro u-anfang">
-            {%- for paragraph in copy.intro %}
-            <p>{{ paragraph }}</p>
-            {%- endfor %}
-        </div>
+{{ hero({
+  imageId: "2026/programbild_pcau4h",
+  imageAlt: "Ungdomsgrupperna spelar på stora scenen.",
+  eyebrow: "Stämmodagen",
+  title: "Onsdag " ~ (dates.onsdag | swedishDate),
+  text: "Buskspel, återseenden, skymningsdans och nya minnen. Jojk, hammondorgel och finskt fyrverkeri. Det här vill du inte missa.",
+
+  maskOpacity: "68%"
+}) }}
+
+<div class="o-compound o-block o-block--margin-large prose u-anfang">
+    <div class="page-intro u-anfang">
+        {%- for paragraph in copy.intro %}
+        <p>{{ paragraph }}</p>
+        {%- endfor %}
     </div>
-
-    <div class="o-split__image o-split__content">
-        <div class="o-split__image o-split__content">
-            {{ cloudinaryPicture("2026/programbild_pcau4h", "Ungdomsgrupperna spelar på stora scenen.") }}
-        </div>
-    </div>
-
 </div>
 
 <!-- Invigningsprogram och Dansbanan -->
-<div class="o-block o-block--margin-medium prose">
+<div class="o-block o-block--margin-large prose">
     <h2>{{ copy.openingProgramHeadline }}</h2>
     {{ copy.openingProgramText | markdown | safe }}
     <div class="o-list-layout o-list-layout--md-2">
@@ -60,7 +59,7 @@ eleventyExcludeFromCollections: true
 
 
 <!-- Bystugeområdet -->
-<div class="o-block o-block--margin-medium prose">
+<div class="o-block o-block--margin-large prose">
 
     <h2>{{ copy.bystuganHeadline }}</h2>
     {{ copy.bystuganText | markdown | safe }}
@@ -101,7 +100,7 @@ eleventyExcludeFromCollections: true
 
 
 <!-- Finlir på Danielsgården -->
-<div class="o-block o-block--margin-medium prose">
+<div class="o-block o-block--margin-large prose">
     <h2>{{ copy.danielsgardenHeadline }}</h2>
     {{ copy.danielsgardenText | markdown | safe }}
     <div class="o-list-layout o-list-layout--md-2">
@@ -128,7 +127,7 @@ eleventyExcludeFromCollections: true
 </div>
 
 <!-- Spela eller sjung med -->
-<div class="o-block o-block--margin-medium prose">
+<div class="o-block o-block--margin-large prose">
     <h2>{{ copy.joinInHeadline }}</h2>
     {{ copy.joinInText | markdown | safe }}
     <div class="o-list-layout o-list-layout--md-2 o-list-layout--lg-3">
@@ -167,7 +166,7 @@ eleventyExcludeFromCollections: true
 
 
 <!-- Lyssnarscenerna -->
-<div class="o-block o-block--margin-medium prose">
+<div class="o-block o-block--margin-large prose">
     <h2>{{ copy.listenHeadline }}</h2>
     {{ copy.listenText | markdown | safe }}
     <div class="o-list-layout o-list-layout--md-2">
@@ -195,7 +194,7 @@ eleventyExcludeFromCollections: true
 
 
 <!-- Upplevelser i Bingsjö -->
-<div class="o-block o-block--margin-medium prose">
+<div class="o-block o-block--margin-large prose">
     <h2>{{ copy.experiencesHeadline }}</h2>
     {{ copy.experiencesText | markdown | safe }}
     <div class="o-list-layout o-list-layout--md-2 o-list-layout--lg-3">

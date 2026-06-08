@@ -1,8 +1,9 @@
 export default {
   title: "Camping",
   hero: {
-    imageId: "2026/lattaltet_s1y8lg",
-    imageAlt: "Besökare och tält på området under Bingsjöstämman.",
+    imageId: "2026/camping2025_coe1po",
+    imageAlt: "EN spelman provar sin fiol inne under tältduken på campingen.",
+    maskOpacity: "62%",
     slots: [
       {
         type: "eyebrow",
@@ -23,7 +24,7 @@ export default {
       }
     ],
     imageOptions: {
-      lqipId: "2026/lattaltet_s1y8lg"
+      lqipId: "2026/camping2025_coe1po"
     }
   },
   intro: `
@@ -42,12 +43,12 @@ Campingbiljetten gäller per ekipage och köps på plats vid infarterna eller i 
 Vi kommer att fylla på den här sidan med mer exakt information om placering, service och tider. Mallen stödjer redan både löpande text och responsiva bilder direkt från innehållsdata.
       `,
       image: {
-        id: "2026/lattaltet_s1y8lg",
-        alt: "Besökare på området under Bingsjöstämman.",
+        id: "2026/camping2010_zp9dv1",
+        alt: "Skyltar markerar var camping är tillåten på stämmoområdet.",
         options: {
           aspect: "4:3",
           sizes: "(min-width: 600px) 40vw, 100vw",
-          lqipId: "2026/lattaltet_s1y8lg"
+          lqipId: "2026/camping2010_zp9dv1"
         }
       }
     },

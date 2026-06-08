@@ -6,13 +6,14 @@
   {% set imageAlt = options.imageAlt or "" %}
   {% set mobileImageId = options.mobileImageId or null %}
   {% set imageOptions = options.imageOptions or {} %}
+  {% set maskOpacity = options.maskOpacity or "" %}
   {% set eyebrow = options.eyebrow %}
   {% set title = options.title %}
   {% set text = options.text %}
   {% set ctaText = options.ctaText %}
   {% set ctaHref = options.ctaHref %}
 
-  <section class="c-hero o-container__breakout o-block o-block--margin-zero t-intent-highlight">
+  <section class="c-hero o-container__breakout o-block o-block--margin-zero t-intent-highlight"{% if maskOpacity %} style="--c-hero-mask-strong: {{ maskOpacity }};"{% endif %}>
     <div class="c-hero__media">
       {{ heroImage(imageId, imageAlt, mobileImageId, imageOptions) }}
     </div>

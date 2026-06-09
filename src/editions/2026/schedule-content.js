@@ -1,6 +1,6 @@
 export default {
   intro: `
-Vårt program för onsdagen omfattar många scener och programpunkter. För att du ska få en överblick över allt som händer under stämman, hittar du här visuella spelscheman. Det finns uppdelade scheman för Dansa, Lyssna respektive Spela & Sjung. Längst ned på sidan finns också ett spelschema där alla scener och programpunkter finns med.
+Vårt program för onsdagen omfattar många scener och programpunkter. För att du ska få en överblick över allt som händer under stämman, hittar du alla spelscheman här. Det finns uppdelade scheman för Dansa, Lyssna respektive Spela & Sjung. Längst ned på sidan finns också ett spelschema där alla scener och programpunkter finns med.
 
 Dra i sidled för att se de scener som inte syns om du använder en smal skärm, som exempelvis en telefon. Använder du skärmläsare som hjälpmedel, eller vill läsa onsdagsprogrammet i sin helhet, se istället det [fullständiga programmet för onsdag 1 juli](/onsdag/).
   `,

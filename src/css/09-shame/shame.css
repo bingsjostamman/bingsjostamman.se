@@ -46,19 +46,19 @@
 }
 
 :where(.prose > * + *) {
-  margin-block-start: var(--size-full);
+  margin-block-start: 1em;
 }
 
 :where(.prose > * + h1),
 :where(.prose > * + h2),
 :where(.prose > * + h3) {
-  margin-block-start: var(--size-quad);
+  margin-block-start: 2em;
 }
 
 :where(.prose > * + h4),
 :where(.prose > * + h5),
 :where(.prose > * + h6) {
-  margin-block-start: var(--size-double);
+  margin-block-start: 2em;
 }
 
 :where(.prose a) {

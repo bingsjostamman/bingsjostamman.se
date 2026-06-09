@@ -97,13 +97,13 @@
     {% endif %}
   {% endif %}
 
-  <div class="o-compound o-block o-block--margin-medium prose">
+  <div class="o-compound o-block o-block--margin-large prose">
     {% if page.title and not (heroContent and (heroContent.title or heroContent.slots)) %}
       <h1>{{ page.title }}</h1>
     {% endif %}
 
     {% if intro %}
-      <div class="page-intro">
+      <div class="page-intro u-anfang">
         {{ intro | markdown | safe }}
       </div>
     {% endif %}
@@ -113,7 +113,7 @@
     {% set rootClass = section.rootClass or "" %}
 
     {% if section.layout == "split" %}
-      <section class="o-split o-block o-block--margin-medium{% if section.uneven %} o-split--uneven{% endif %}{% if rootClass %} {{ rootClass }}{% endif %}">
+      <section class="o-split o-block o-block--margin-large{% if section.uneven %} o-split--uneven{% endif %}{% if rootClass %} {{ rootClass }}{% endif %}">
         <div class="o-split__content prose{% if section.contentClass %} {{ section.contentClass }}{% endif %}">
           {{ renderSectionBody(section) }}
         </div>
@@ -125,7 +125,7 @@
         {% endif %}
       </section>
     {% elif section.layout == "callout" %}
-      <section class="o-compound o-block o-block--margin-medium{% if rootClass %} {{ rootClass }}{% endif %}">
+      <section class="o-compound o-block o-block--margin-large{% if rootClass %} {{ rootClass }}{% endif %}">
         <div class="o-tile{% if section.paddingClass %} {{ section.paddingClass }}{% endif %} {% if section.intentClass %}{{ section.intentClass }}{% else %}t-intent-highlight{% endif %}{% if section.contentClass %} {{ section.contentClass }}{% endif %}">
           <div class="prose">
             {{ renderSectionBody(section, section.titleTag or "h3") }}
@@ -133,7 +133,7 @@
         </div>
       </section>
     {% else %}
-      <section class="o-compound prose o-block o-block--margin-medium{% if rootClass %} {{ rootClass }}{% endif %}">
+      <section class="o-compound prose o-block o-block--margin-large{% if rootClass %} {{ rootClass }}{% endif %}">
         {{ renderSectionBody(section) }}
 
         {% if section.image and section.image.id %}

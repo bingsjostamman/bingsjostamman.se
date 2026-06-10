@@ -8,8 +8,9 @@ eleventyComputed:
 {% from "components/allspel-tunes/allspel-tunes.njk" import allspelTunes %}
 {% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
 {% from "components/image/image.njk" import cloudinaryPicture %}
-{% set regularTunes = tunes | rejectattr("barnens") | list %}
+{% set regularTunes = tunes | rejectattr("barnens") | rejectattr("singing")| list %}
 {% set barnensTunes = tunes | selectattr("barnens") | list %}
+{% set singingTunes = tunes | selectattr("singing") | list %}
 
 <div class="o-split">
   <div class="o-split__content prose">
@@ -37,3 +38,15 @@ eleventyComputed:
 
 {{ allspelTunes(regularTunes) }}
 
+<div class="o-block o-block--margin-large">
+<h2>Allsångslåt</h2>
+
+{% if copy.singingAllspel %}
+<div class="page-intro">
+  {{ copy.singingAllspel | markdown | safe }}
+</div>
+{% endif %}
+
+{{ allspelTunes(singingTunes) }}
+
+</div>

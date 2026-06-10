@@ -167,5 +167,24 @@
         "url": "https://www.dropbox.com/scl/fi/3erzrnqzdbvlxzc0zvkkn/trettondagsmarschen.pdf?rlkey=p8fooxo8ha7f9a2c7avzprq12&st=p1w4kdzd&raw=1"
       }
     ]
+  },
+  {
+    "name": "Östbjörkavisan",
+    "singing": true,
+    "note": "En Östbjörka-variant av *Den blomstertid nu kommer*",
+    "sheetMusic": [
+      {
+        "label": "Melodi och text (PDF)",
+        "url": "https://www.dropbox.com/scl/fi/wa5cdf9gd4o3r8x5tuk2a/2026_ostbjorkavisan.pdf?rlkey=k3w5fx1a44mmhc0gvso399353&st=d22xky3n&raw=1"
+      }
+    ],
+    "audio": [
+      {
+        "label": "Melodi (MP3)",
+        "url": "https://www.dropbox.com/scl/fi/jovt5obz59lhhik6wkds4/2026_ostbjorkavisan.mp3?rlkey=bupnuv4qz0ywxl1f9i840vmy1&st=99i1c5b3&raw=1"
+      }
+    ]
   }
 ]
+
+

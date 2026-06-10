@@ -41,3 +41,8 @@
   --color-background: var(--token-color-white);
   --color-font--text: var(--token-color-black);
 }
+
+:root {
+ --box-border-radius--inner: var(--size-quarter);
+ --box-border-radius--outer: var(--size-half); 
+}

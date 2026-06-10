@@ -3,7 +3,7 @@ export default {
 Allspelet som avslutar invigningsprogrammet på stora scenen är stunden då alla spelmän välkomnas upp på scenen för att tillsammans
 låta hundratals instrument ljuda i ett pärlband av låtar.
 
-I år är det övergripande temat låtar från Bingsjö, och nedan hittar du allspelslåtarna med länkar till noter (PDF) och ljudfiler (MP3) att spela upp.
+I år är det övergripande temat låtar från Bingsjö, och nedan hittar du allspelslåtarna och allsångslåten med länkar till noter (PDF) och ljudfiler (MP3) att spela upp.
 
   `,
   barnensAllspel: `

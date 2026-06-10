@@ -1,5 +1,5 @@
 @define-mixin scheme-white {
-  --color-background: var(--token-color-white-1);
+  --color-background: var(--token-color-white);
   --color-primary: var(--token-color-chestnut);
   --color-secondary: var(--token-color-teal-800);
   --color-link: var(--token-color-chestnut);
@@ -22,7 +22,7 @@
 }
 
 @define-mixin scheme-white-linen {
-  --color-background: var(--token-color-white-2);
+  --color-background: var(--token-color-white-linen);
   --color-primary: var(--token-color-chestnut);
   --color-secondary: var(--token-color-teal-800);
   --color-link: var(--token-color-chestnut);

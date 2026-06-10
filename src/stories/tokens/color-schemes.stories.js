@@ -300,17 +300,98 @@ function renderBindingRow(binding) {
   `;
 }
 
-function parseComputedColor(value) {
-  const numbers = value.match(/\d*\.?\d+/g);
-  if (!numbers || numbers.length < 3) return null;
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
 
-  const [r, g, b, a] = numbers.map(Number);
-  return {
-    r,
-    g,
-    b,
-    a: typeof a === "number" && !Number.isNaN(a) ? a : 1,
-  };
+function parseRgbChannel(token, allowUnitRange = false) {
+  if (!token) return null;
+  const value = token.trim();
+  if (!value) return null;
+
+  if (value.endsWith("%")) {
+    const percent = Number.parseFloat(value.slice(0, -1));
+    if (Number.isNaN(percent)) return null;
+    return clamp((percent / 100) * 255, 0, 255);
+  }
+
+  const numeric = Number.parseFloat(value);
+  if (Number.isNaN(numeric)) return null;
+
+  if (allowUnitRange && numeric >= 0 && numeric <= 1) {
+    return numeric * 255;
+  }
+
+  return clamp(numeric, 0, 255);
+}
+
+function parseAlphaChannel(token) {
+  if (!token) return 1;
+  const value = token.trim();
+  if (!value) return 1;
+
+  if (value.endsWith("%")) {
+    const percent = Number.parseFloat(value.slice(0, -1));
+    if (Number.isNaN(percent)) return 1;
+    return clamp(percent / 100, 0, 1);
+  }
+
+  const numeric = Number.parseFloat(value);
+  if (Number.isNaN(numeric)) return 1;
+  return clamp(numeric, 0, 1);
+}
+
+function parseComputedColor(value) {
+  if (!value || typeof value !== "string") return null;
+  const normalized = value.trim().toLowerCase();
+
+  if (normalized.startsWith("color(")) {
+    const srgbMatch = normalized.match(/^color\(\s*srgb\s+([^)]*)\)$/i);
+    if (!srgbMatch) return null;
+
+    const [rgbPart, alphaPart] = srgbMatch[1].split("/").map((part) => part.trim());
+    const channels = rgbPart.split(/\s+/).filter(Boolean);
+    if (channels.length < 3) return null;
+
+    const r = parseRgbChannel(channels[0], true);
+    const g = parseRgbChannel(channels[1], true);
+    const b = parseRgbChannel(channels[2], true);
+    if (r === null || g === null || b === null) return null;
+
+    return {
+      r,
+      g,
+      b,
+      a: parseAlphaChannel(alphaPart),
+    };
+  }
+
+  if (normalized.startsWith("rgb(" ) || normalized.startsWith("rgba(")) {
+    const rgbMatch = normalized.match(/^rgba?\((.*)\)$/i);
+    if (!rgbMatch) return null;
+
+    const [rgbPart, alphaPart] = rgbMatch[1]
+      .replace(/,/g, " ")
+      .split("/")
+      .map((part) => part.trim());
+
+    const channels = rgbPart.split(/\s+/).filter(Boolean);
+    if (channels.length < 3) return null;
+
+    const r = parseRgbChannel(channels[0], false);
+    const g = parseRgbChannel(channels[1], false);
+    const b = parseRgbChannel(channels[2], false);
+    if (r === null || g === null || b === null) return null;
+
+    return {
+      r,
+      g,
+      b,
+      a: parseAlphaChannel(alphaPart || channels[3]),
+    };
+  }
+
+  return null;
 }
 
 function blendOverBackground(fg, bg) {
@@ -353,6 +434,9 @@ function resolveColorExpression(scheme, expression, property = "color") {
   setSchemeVariables(host, scheme.declarations);
 
   const probe = createElement("div");
+  // Global `*` rules reset custom properties in this project, so the probe
+  // must receive scheme variables directly to keep var() resolution intact.
+  setSchemeVariables(probe, scheme.declarations);
   probe.style[property] = expression;
   host.append(probe);
   document.body.append(host);

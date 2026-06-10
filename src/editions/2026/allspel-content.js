@@ -17,6 +17,6 @@ I år är det övergripande temat låtar från Bingsjö, och nedan hittar du all
   till detta på Danielsgårdens loge. Låtutlärare: Jonas Hjalmarsson, Dan Palmqvist.
 `,
   singingAllspel: `
-Även i år har vi med en allsångslåt på allspelet, då vi tar ned instrumenten och sjunger tillsammans. Ann-Sofi Nilsson ledor oss i allsången.
+Även i år har vi med en allsångslåt på allspelet, då vi tar ned instrumenten och sjunger tillsammans. Ann-Sofi Nilsson leder oss i allsången.
 `,
 };

@@ -120,6 +120,8 @@ const cleaned = rows
       description: row.description || "",
       link: row.link || "",
       longdescription: row.longdescription || "",
+      longdescription2: row.longdescription2 || "",
+      longdescription3: row.longdescription3 || "",
       somedescription: row.somedescription || "",
       eyebrow: row.eyebrow || "",
       image: row.image || "",

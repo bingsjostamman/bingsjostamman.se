@@ -2,7 +2,7 @@ export default {
   title: "Camping",
   hero: {
     imageId: "2026/camping2025_coe1po",
-    imageAlt: "EN spelman provar sin fiol inne under tältduken på campingen.",
+    imageAlt: "En spelman provar sin fiol inne under tältduken på campingen.",
     maskOpacity: "62%",
     slots: [
       {
@@ -27,24 +27,60 @@ Bo på campingen och vakna mitt i spelmansstämman. Här samlar vi information o
   `,
   sections: [
     {
+      id: "practical-info",
+      layout: "callout",
+      title: "Campingbiljetter",
+      slots: [
+        {
+          type: "link",
+          text: "Info om entré och biljetter",
+          href: "/biljetter/",
+          suffixIcon: "arrow-forward",
+          className: "c-button--secondary"
+        }
+      ]
+    },
+    {
+      title: "Var betalar jag campingbiljetten?",
+      body: `
+Till och med tisdag betalas avgiften till markägaren. På onsdagen är det Bingsjöstämman som tar upp campingavgiften. Då betalar du till våra campingvärdar som går runt på campingplatserna, eller så betalar du i Folkmusikens Hus tält vid bystugeområdet. Passa på att köpa entrébandet på samma gång.
+
+Anländer du på onsdagen betalar du campingavgift och entré vid infarterna till stämmoområdet.
+      `,
+      scheduleItems: [
+        {
+          location: "Folkmusikens Hus tält vid bystugeområdet",
+          timeText: "Tisdag från kl 16:00"
+        },
+        {
+          location: "Campingvärdar på campingarna",
+          timeText: "Onsdag från kl 09:00"
+        },
+        {
+          location: "Infarterna till stämmoområdet",
+          timeText: "Vid ankomst på onsdagen"
+        }
+      ]
+    },
+    {
       layout: "split",
       uneven: true,
       title: "Camping på stämmoområdet",
       body: `
-Campingbiljetten gäller per ekipage och köps på plats vid infarterna eller i Folkmusikens Hus tält när entrén öppnar.
+Tänk på att våra campingar är åkrar med viss terräng. Det kan luta lite, det kan vara en stenbumling att se upp med och vid regn finns det risk att det blir lerigt. Det är naturcamping som gäller, kort och gott, med allt vad det innebär. Det finns därmed ingen el till husvagnen eller husbilen. 
 
-Tänk på att våra campingar är åkrar med viss terräng. Det kan luta lite, och vid regn finns det risk att det blir lerigt. Det är naturcampingar, kort och gott, med allt vad det innebär. Det finns därmed ingen el till husvagnen eller husbilen. 
+Vid specifika frågor om olika campingars läge och förutsättningar, kontakta elinore@bingsjostamman.se
 
 ### Vatten och sanitet
 Invid varje camping finns toaletter uppställda, och vatten finns att hämta vid bystugeområdet. Det finns ingen dusch på området, men 3 km söder om byn i riktning mot Falun finns byns badsjö. I närliggande Dalstuga finns möjligheter till bad och bastu.
       `,
       image: {
-        id: "2026/camping2010_zp9dv1",
-        alt: "Skyltar markerar var camping är tillåten på stämmoområdet.",
+        id: "2026/taltcamping2014_fqin9k",
+        alt: "Buskspel bland tälten på campingen.",
         options: {
           aspect: "4:3",
           sizes: "(min-width: 600px) 40vw, 100vw",
-          lqipId: "2026/camping2010_zp9dv1"
+          lqipId: "2026/taltcamping2014_fqin9k"
         }
       }
     },
@@ -70,48 +106,6 @@ Det är viktigt att du som campare följer de anvisningar som finns på plats, b
           lqipId: "2026/camping2010_zp9dv1"
         }
       }
-    },
-    {
-      id: "practical-info",
-      layout: "callout",
-      title: "Praktisk information",
-      slots: [
-        {
-          type: "markdown",
-          text: "Campingavgiften gäller per ekipage och hanteras i samma flöde som entrén när du kommer till området."
-        }
-      ]
-    },
-    {
-      title: "Köp biljett när du kommer",
-      body: "Du kan köpa både entréband och camping när du anländer till stämman.",
-      scheduleItems: [
-        {
-          location: "Folkmusikens Hus tält vid bystugeområdet",
-          timeText: "Tisdag från kl 17:00"
-        },
-        {
-          location: "Infarterna till stämmoområdet",
-          timeText: "Vid ankomst på onsdagen"
-        }
-      ],
-      slots: [
-        {
-          type: "link",
-          text: "Gå till entré och biljetter",
-          href: "/biljetter/#camping",
-          className: "c-button--secondary c-button--mini"
-        }
-      ]
-    },
-    {
-      title: "Bra att veta",
-      slots: [
-        {
-          type: "markdown",
-          text: "- Campingavgiften gäller per ekipage, till exempel tält, husvagn eller husbil.\n- Entréband och camping hanteras i samma flöde när du anländer till området.\n- När årets praktiska detaljer är fastställda kan vi fortsätta lägga in fler textblock eller bilder utan att behöva ändra själva sidmallen."
-        }
-      ]
     }
   ]
 };

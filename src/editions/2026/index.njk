@@ -9,6 +9,7 @@ eleventyComputed:
 
 {% from "components/hero/hero.njk" import hero %}
 {% from "components/frontpage-teasers/frontpage-teasers.njk" import frontpageTeasers %}
+{% from "components/button/button.njk" import button %}
 
 
 
@@ -21,6 +22,12 @@ eleventyComputed:
 
 
 {% include "components/headline-acts/headline-acts.njk" %}
+{{ button("Alla artister på scen", {
+  href: "/scen/" if year == editions.current else "/" ~ year ~ "/scen/",
+  className: "c-button--secondary",
+  suffixIcon: "arrow-forward"
+}) }}
+
 
 {{ frontpageTeasers(year, editions, dates) }}
 

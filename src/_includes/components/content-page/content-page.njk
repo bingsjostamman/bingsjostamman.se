@@ -1,6 +1,7 @@
 {% from "components/hero/hero.njk" import hero %}
 {% from "components/image/image.njk" import cloudinaryPicture %}
 {% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
+{% from "components/button/button.njk" import button %}
 
 {% macro renderSlots(slots=[], options={}) %}
   {% set eyebrowTag = options.eyebrowTag or "p" %}
@@ -10,7 +11,7 @@
   {% set textTag = options.textTag or "p" %}
   {% set textClass = options.textClass or "" %}
   {% set markdownClass = options.markdownClass or textClass %}
-  {% set linkClass = options.linkClass or "c-button" %}
+  {% set linkClass = options.linkClass or "" %}
 
   {% for slot in slots %}
     {% if slot.type == "eyebrow" and slot.text %}
@@ -24,7 +25,20 @@
         {{ slot.text | markdown | safe }}
       </div>
     {% elif slot.type == "link" and slot.text and slot.href %}
-      <a class="{{ linkClass }}{% if slot.className %} {{ slot.className }}{% endif %}" href="{{ slot.href }}">{{ slot.text }}</a>
+      {% set linkClasses = linkClass %}
+      {% if slot.className %}
+        {% set linkClasses = linkClasses ~ " " ~ slot.className %}
+      {% endif %}
+      {{ button(slot.text, {
+        href: slot.href,
+        className: linkClasses,
+        external: slot.external,
+        externalText: slot.externalText,
+        prefixIcon: slot.prefixIcon,
+        suffixIcon: slot.suffixIcon,
+        target: slot.target,
+        rel: slot.rel
+      }) }}
     {% endif %}
   {% endfor %}
 {% endmacro %}
@@ -36,13 +50,6 @@
 
   {% if section.body %}
     {{ section.body | markdown | safe }}
-  {% endif %}
-
-  {% if section.slots %}
-    {{ renderSlots(section.slots, {
-      titleTag: section.slotTitleTag or titleTag,
-      linkClass: section.linkClass or "c-button"
-    }) }}
   {% endif %}
 
   {% if section.price and section.price.amount %}
@@ -73,6 +80,13 @@
       {% endfor %}
     </ul>
   {% endif %}
+
+  {% if section.slots %}
+    {{ renderSlots(section.slots, {
+      titleTag: section.slotTitleTag or titleTag,
+      linkClass: section.linkClass or ""
+    }) }}
+  {% endif %}
 {% endmacro %}
 
 {% macro contentPage(page={}) %}
@@ -89,7 +103,7 @@
           titleClass: "c-hero__title",
           textClass: "c-hero__text",
           markdownClass: "c-hero__text",
-          linkClass: "c-button c-button--ghost c-hero__cta"
+          linkClass: "c-button--ghost c-hero__cta"
         }) }}
       {% endcall %}
     {% else %}
@@ -113,7 +127,7 @@
     {% set rootClass = section.rootClass or "" %}
 
     {% if section.layout == "split" %}
-      <section class="o-split o-block o-block--margin-large{% if section.uneven %} o-split--uneven{% endif %}{% if rootClass %} {{ rootClass }}{% endif %}">
+      <div class="o-split o-block o-block--margin-large{% if section.uneven %} o-split--uneven{% endif %}{% if rootClass %} {{ rootClass }}{% endif %}">
         <div class="o-split__content prose{% if section.contentClass %} {{ section.contentClass }}{% endif %}">
           {{ renderSectionBody(section) }}
         </div>
@@ -123,17 +137,17 @@
             {{ cloudinaryPicture(section.image.id, section.image.alt, section.image.options or {}) }}
           </div>
         {% endif %}
-      </section>
+      </div>
     {% elif section.layout == "callout" %}
-      <section class="o-compound o-block o-block--margin-large{% if rootClass %} {{ rootClass }}{% endif %}">
+      <div class="o-compound o-block o-block--margin-large{% if rootClass %} {{ rootClass }}{% endif %}">
         <div class="o-tile{% if section.paddingClass %} {{ section.paddingClass }}{% endif %} {% if section.intentClass %}{{ section.intentClass }}{% else %}t-intent-highlight{% endif %}{% if section.contentClass %} {{ section.contentClass }}{% endif %}">
           <div class="prose">
             {{ renderSectionBody(section, section.titleTag or "h3") }}
           </div>
         </div>
-      </section>
+      </div>
     {% else %}
-      <section class="o-compound prose o-block o-block--margin-large{% if rootClass %} {{ rootClass }}{% endif %}">
+      <div class="o-compound prose o-block o-block--margin-large{% if rootClass %} {{ rootClass }}{% endif %}">
         {{ renderSectionBody(section) }}
 
         {% if section.image and section.image.id %}
@@ -145,7 +159,7 @@
             {% endif %}
           </figure>
         {% endif %}
-      </section>
+      </div>
     {% endif %}
   {% endfor %}
 {% endmacro %}

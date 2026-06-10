@@ -8,12 +8,13 @@ eleventyComputed:
 {% from "components/image/image.njk" import cloudinaryPicture %}
 {% from "components/workshops-list/workshops-list.njk" import workshopsList %}
 
+<div class="prose">
     <h1>Kurser</h1>
 
     <div class="page-intro">
       {{ copy.intro | markdown | safe }}
     </div>
-
+</div>
 
 
 {{ workshopsList(workshops) }}

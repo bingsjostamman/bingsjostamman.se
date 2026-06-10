@@ -18,14 +18,6 @@
   margin: 0;
 }
 
-.c-workshops-list__teacher {
-  margin: var(--size-half) 0 0;
-}
-
-.c-workshops-list__description {
-  margin: var(--size-half) 0 0;
-}
-
 .c-workshops-list__body {
   padding: var(--size-full);
   order: 1;
@@ -34,7 +26,6 @@
 .c-workshops-list__meta {
   display: grid;
   gap: var(--size-quarter);
-  margin-top: var(--size-full);
 }
 
 .c-workshops-list__meta-item {

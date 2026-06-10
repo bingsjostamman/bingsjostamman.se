@@ -44,8 +44,14 @@ eleventyComputed:
 
   <div class="artist-split o-split o-split--uneven">
   {% if artist.longdescription %}
-    <div class="artist-longdescription u-anfang">
+    <div class="artist-longdescription u-anfang prose">
       <p>{{ artist.longdescription }}</p>
+    {% if artist.longdescription2 %}
+        <p>{{ artist.longdescription2 }}</p>
+    {% endif %}
+    {% if artist.longdescription3 %}
+        <p>{{ artist.longdescription3 }}</p>
+    {% endif %}
     </div>
   {% endif %}
 
@@ -75,7 +81,7 @@ eleventyComputed:
     <div>
       {{ button("Besök webbplats", {
         href: artist.link,
-        className: "artist-link",
+        className: "c-button--secondary",
         external: true
       }) }}
     </div>

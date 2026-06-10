@@ -41,12 +41,12 @@ eleventyComputed:
 <div class="o-block o-block--margin-large prose">
 <h2>Allsångslåt</h2>
 
-{% if copy.singingAllspel %}
-<div class="page-intro">
-  {{ copy.singingAllspel | markdown | safe }}
+  {% if copy.singingAllspel %}
+  <div class="page-intro">
+    {{ copy.singingAllspel | markdown | safe }}
+  </div>
+  {% endif %}
 </div>
-{% endif %}
 
 {{ allspelTunes(singingTunes) }}
 
-</div>

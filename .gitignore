@@ -12,3 +12,4 @@ public/assets/css/styles.css
 .env.development
 .env.production
 src/_data/axecore.json
+data/~*.*

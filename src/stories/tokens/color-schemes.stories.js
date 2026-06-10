@@ -2,6 +2,10 @@
 
 import "../../css/01-settings/_config.css";
 import "../../css/03-generic/_fonts.css";
+import "../../_includes/components/button/button.css";
+import "../../_includes/components/icon/icon.css";
+import securityIconSource from "../../_includes/icons/security.svg?raw";
+import informationIconSource from "../../_includes/icons/information.svg?raw";
 import colorSchemesSource from "../../css/01-settings/_color-schemes.css?raw";
 import themesSource from "../../css/05-themes/_themes.css?raw";
 
@@ -75,27 +79,22 @@ function createLink(text) {
   return link;
 }
 
-function createButton(label, variant) {
-  const styles = {
-    default:
-      "background: var(--color-background--hover); color: var(--color-font--text); border: 1px solid var(--color-border--outline);",
-    primary:
-      "background: var(--color-primary); color: var(--color-font--primary); border: 1px solid var(--color-primary);",
-    secondary:
-      "background: var(--color-secondary); color: var(--color-font--secondary); border: 1px solid var(--color-secondary);",
-    ghost:
-      "background: transparent; color: var(--color-link); border: 1px solid var(--color-border--percieve);",
-    naked:
-      "background: transparent; color: var(--color-font--text); border: 1px dashed var(--color-border--decorate);",
-    link:
-      "background: transparent; color: var(--color-link); border: 0; padding-inline: 0; text-decoration: underline;",
+function createButton(label, variant = "primary") {
+  const variantClasses = {
+    primary: "",
+    secondary: "c-button--secondary",
+    ghost: "c-button--ghost"
   };
 
-  return createText(
-    "button",
-    label,
-    `padding: 0.75rem 1rem; border-radius: 999px; font: inherit; cursor: pointer; ${styles[variant]}`
-  );
+  const button = createElement("button");
+  button.type = "button";
+  button.className = `c-button ${variantClasses[variant] || ""}`.trim();
+
+  const buttonLabel = createText("span", label);
+  buttonLabel.className = "c-button__label";
+  button.append(buttonLabel);
+
+  return button;
 }
 
 function createPreviewChip(label, variableName) {
@@ -112,16 +111,20 @@ function createPreviewChip(label, variableName) {
   return chip;
 }
 
-function createIconBadge(background = false) {
+function createIcon(source) {
+  const icon = createElement("span");
+  icon.className = "icon";
+  icon.setAttribute("aria-hidden", "true");
+  icon.innerHTML = source;
+  return icon;
+}
+
+function createIconBadge(background = false, source = securityIconSource) {
   const wrapper = createElement(
     "span",
     `display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 999px; color: ${background ? "var(--color-icon)" : "var(--color-link)"}; background: ${background ? "var(--color-icon-background)" : "transparent"}; border: 1px solid ${background ? "transparent" : "var(--color-border--outline)"};`
   );
-  wrapper.innerHTML = `
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-      <path d="M12 2 3 6v6c0 5 3.8 9.7 9 10 5.2-.3 9-5 9-10V6l-9-4Zm0 2.2 6.8 3v4.8c0 3.8-2.7 7.4-6.8 8-4.1-.6-6.8-4.2-6.8-8V7.2l6.8-3Zm-1.2 11.3 5.4-5.4-1.4-1.4-4 4-1.8-1.8-1.4 1.4 3.2 3.2Z"/>
-    </svg>
-  `;
+  wrapper.append(createIcon(source));
   return wrapper;
 }
 
@@ -157,6 +160,7 @@ function renderSchemeShowcase(scheme) {
     "article",
     "padding: 1.5rem; border-radius: 1.25rem; border: 1px solid var(--color-border--outline); background: var(--color-background); color: var(--color-font--text); box-shadow: 0 1.2rem 2.5rem -2rem var(--color-elevation-box-shadow--level-2); display: grid; gap: 1.25rem;"
   );
+  article.classList.add("prose");
   setSchemeVariables(article, scheme.declarations);
 
   const heading = createElement("div", "display: grid; gap: 0.75rem;");
@@ -237,19 +241,19 @@ function renderSchemeShowcase(scheme) {
   buttonSection.append(createText("h4", "Buttons", "margin: 0; color: var(--color-font--heading);"));
   const buttons = createElement("div", "display: flex; flex-wrap: wrap; gap: 0.75rem;");
   buttons.append(
-    createButton("Button", "default"),
     createButton("Primary button", "primary"),
     createButton("Secondary button", "secondary"),
     createButton("Ghost button", "ghost"),
-    createButton("Naked button", "naked"),
-    createButton("Link button", "link")
   );
   buttonSection.append(buttons);
 
   const iconSection = createElement("section", "display: grid; gap: 0.75rem;");
   iconSection.append(createText("h4", "Icons", "margin: 0; color: var(--color-font--heading);"));
   const icons = createElement("div", "display: flex; gap: 0.75rem; align-items: center;");
-  icons.append(createIconBadge(false), createIconBadge(true));
+  icons.append(
+    createIconBadge(false, securityIconSource),
+    createIconBadge(true, informationIconSource)
+  );
   iconSection.append(icons);
 
   const borderSection = createElement("section", "display: grid; gap: 0.8rem;");
@@ -296,17 +300,98 @@ function renderBindingRow(binding) {
   `;
 }
 
-function parseComputedColor(value) {
-  const numbers = value.match(/\d*\.?\d+/g);
-  if (!numbers || numbers.length < 3) return null;
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
 
-  const [r, g, b, a] = numbers.map(Number);
-  return {
-    r,
-    g,
-    b,
-    a: typeof a === "number" && !Number.isNaN(a) ? a : 1,
-  };
+function parseRgbChannel(token, allowUnitRange = false) {
+  if (!token) return null;
+  const value = token.trim();
+  if (!value) return null;
+
+  if (value.endsWith("%")) {
+    const percent = Number.parseFloat(value.slice(0, -1));
+    if (Number.isNaN(percent)) return null;
+    return clamp((percent / 100) * 255, 0, 255);
+  }
+
+  const numeric = Number.parseFloat(value);
+  if (Number.isNaN(numeric)) return null;
+
+  if (allowUnitRange && numeric >= 0 && numeric <= 1) {
+    return numeric * 255;
+  }
+
+  return clamp(numeric, 0, 255);
+}
+
+function parseAlphaChannel(token) {
+  if (!token) return 1;
+  const value = token.trim();
+  if (!value) return 1;
+
+  if (value.endsWith("%")) {
+    const percent = Number.parseFloat(value.slice(0, -1));
+    if (Number.isNaN(percent)) return 1;
+    return clamp(percent / 100, 0, 1);
+  }
+
+  const numeric = Number.parseFloat(value);
+  if (Number.isNaN(numeric)) return 1;
+  return clamp(numeric, 0, 1);
+}
+
+function parseComputedColor(value) {
+  if (!value || typeof value !== "string") return null;
+  const normalized = value.trim().toLowerCase();
+
+  if (normalized.startsWith("color(")) {
+    const srgbMatch = normalized.match(/^color\(\s*srgb\s+([^)]*)\)$/i);
+    if (!srgbMatch) return null;
+
+    const [rgbPart, alphaPart] = srgbMatch[1].split("/").map((part) => part.trim());
+    const channels = rgbPart.split(/\s+/).filter(Boolean);
+    if (channels.length < 3) return null;
+
+    const r = parseRgbChannel(channels[0], true);
+    const g = parseRgbChannel(channels[1], true);
+    const b = parseRgbChannel(channels[2], true);
+    if (r === null || g === null || b === null) return null;
+
+    return {
+      r,
+      g,
+      b,
+      a: parseAlphaChannel(alphaPart),
+    };
+  }
+
+  if (normalized.startsWith("rgb(" ) || normalized.startsWith("rgba(")) {
+    const rgbMatch = normalized.match(/^rgba?\((.*)\)$/i);
+    if (!rgbMatch) return null;
+
+    const [rgbPart, alphaPart] = rgbMatch[1]
+      .replace(/,/g, " ")
+      .split("/")
+      .map((part) => part.trim());
+
+    const channels = rgbPart.split(/\s+/).filter(Boolean);
+    if (channels.length < 3) return null;
+
+    const r = parseRgbChannel(channels[0], false);
+    const g = parseRgbChannel(channels[1], false);
+    const b = parseRgbChannel(channels[2], false);
+    if (r === null || g === null || b === null) return null;
+
+    return {
+      r,
+      g,
+      b,
+      a: parseAlphaChannel(alphaPart || channels[3]),
+    };
+  }
+
+  return null;
 }
 
 function blendOverBackground(fg, bg) {
@@ -349,6 +434,9 @@ function resolveColorExpression(scheme, expression, property = "color") {
   setSchemeVariables(host, scheme.declarations);
 
   const probe = createElement("div");
+  // Global `*` rules reset custom properties in this project, so the probe
+  // must receive scheme variables directly to keep var() resolution intact.
+  setSchemeVariables(probe, scheme.declarations);
   probe.style[property] = expression;
   host.append(probe);
   document.body.append(host);

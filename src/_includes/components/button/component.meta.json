@@ -1,14 +1,42 @@
 {
   "title": "Components/Button",
-  "description": "A simple button component used throughout the site.",
-  "status": "ready",
+  "description": "Shared button styles for anchors and semantic buttons. Primary is the default variant.",
+  "status": "beta",
   "tags": ["UI", "form", "interactive"],
-  "class": "button",
+  "macro": true,
+  "class": "c-button",
   "examples": {
-    "Default": { "buttonText": "Click me" },
-    "Primary": {
-      "buttonText": "Submit",
-      "variant": "primary"
+    "Default": { "buttonText": "Primary button" },
+    "Mini": {
+      "buttonText": "Mini button",
+      "size": "mini"
+    },
+    "Jumbo": {
+      "buttonText": "Jumbo button",
+      "size": "jumbo"
+    },
+    "PrefixIcon": {
+      "buttonText": "Book ticket",
+      "prefixIcon": "ticket"
+    },
+    "SuffixIcon": {
+      "buttonText": "Visit website",
+      "external": true,
+      "suffixIcon": "open-in-new",
+      "href": "/"
+    },
+    "Secondary": {
+      "buttonText": "Secondary button",
+      "variant": "secondary",
+      "href": "/"
+    },
+    "Ghost": {
+      "buttonText": "Ghost button",
+      "variant": "ghost",
+      "href": "/"
+    },
+    "Semantic": {
+      "buttonText": "Semantic button"
     }
   }
 }

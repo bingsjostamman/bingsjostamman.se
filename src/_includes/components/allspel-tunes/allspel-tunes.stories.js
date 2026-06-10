@@ -13,9 +13,9 @@ export const Default = () => `
 
   <ul class="c-tunes-tunes u-list-unstyled">
     <li class="c-tunes-tune o-tile t-intent-emphasis">
-      <div class="c-tunes-info">
+      <div class="c-tunes-info prose">
         <h3 class="c-tunes-name">Bingsjöpolskan</h3>
-        <span class="c-tunes-note">Melodi + andrastämma</span>
+        <p class="c-tunes-note">Melodi + andrastämma</p>
       </div>
       <div class="c-tunes-media">
 
@@ -44,7 +44,7 @@ export const Default = () => `
       </div>
     </li>
     <li class="c-tunes-tune o-tile t-intent-emphasis">
-      <div class="c-tunes-info">
+      <div class="c-tunes-info prose">
         <h3 class="c-tunes-name">Gammelvals</h3>
       </div>
       <div class="c-tunes-media">

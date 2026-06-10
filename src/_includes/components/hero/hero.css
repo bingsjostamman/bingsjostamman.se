@@ -24,7 +24,13 @@
   inset: 0;
   /* display: flex; */
   align-items: center;
-  background: linear-gradient(to top, rgb(0 0 0 / 60%), rgb(0 0 0 / 15%) 50%, transparent);
+  background: linear-gradient(
+    to top,
+    rgb(0 0 0 / var(--c-hero-mask-strong, 60%)),
+    rgb(0 0 0 / 15%) 50%,
+    transparent
+  );
+  background: rgb(0 0 0 / var(--c-hero-mask-strong, 60%));
 }
 
 .c-hero__content {
@@ -49,6 +55,7 @@
   margin: 0;
   font-size: var(--font-size-7);
   color: var(--token-color-white-linen);
+  color: var(--token-color-bronze);
   font-family: 'Alegreya', 'Alegreya Sans', sans-serif;
   text-transform: uppercase;
   font-weight: 500;

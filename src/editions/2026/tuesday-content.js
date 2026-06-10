@@ -16,7 +16,7 @@ export default {
       title: "Folkmusikens hus",
       text: "Här i tältet kan du köpa entrébiljetter, folkmusikskivor, nothäften, biljetter till kapellkonserterna, kursbiljetter m.m.",
       location: "Framför bystugeområdet",
-      starttime: "17:00",
+      starttime: "16:00",
       endtime: "22:00"
     }
   ],

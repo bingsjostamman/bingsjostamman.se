@@ -1,0 +1,41 @@
+---
+layout: layouts/base
+overviewSocialImage:
+eleventyComputed:
+  title: "Spelshema Onsdag {{ dates.onsdag | swedishDate }} {{ year }}"
+  description: "Visuellt spelschema över onsdagsprogrammet för Bingsjöstämman {{ year }}."
+  socialImage: "{{ overviewSocialImage or site.defaultImage }}"
+  permalink: "{% if year == editions.current %}/spelscheman/index.html{% else %}/{{ year }}/spelscheman/index.html{% endif %}"
+---
+{% from "components/timeline/timeline.njk" import timeline %}
+{% from "components/icon/icon.njk" import icon %}
+{% from "components/hero/hero.njk" import hero %}
+
+
+
+{{ hero({
+  imageId: "2026/spelschema_nrrjoi",
+  imageAlt: "Spel till dans",
+  eyebrow: "Onsdagens program",
+  title: "Spelscheman",
+  text: "Få en överblick på allt som händer under stämmodagen",
+  maskOpacity: "68%"
+}) }}
+
+  <div class="o-compound page-intro o-block o-block--margin-large prose u-anfang">
+    {{ copy.intro | markdown | safe }}
+  </div>
+
+{%- for section in copy.sections -%}
+<div class="prose{% if section.breakout %} o-container__breakout o-container{% endif %} o-block o-block--margin-large">
+  <h2 class="c-schedule__section-heading"><span class="c-frontpage-teasers__icon-wrap c-schedule__section-heading-icon-wrap" aria-hidden="true">{{ icon(section.titleIcon or "schedule", "c-frontpage-teasers__icon") }}</span>{{ section.title }}</h2>
+  {% if section.description %}
+  {{ section.description | markdown | safe }}
+  {% endif %}
+  {% if section.breakout %}<div class="o-container__breakout o-block o-block--margin-zero">{% endif %}
+  {{ timeline(lineup, section.timeline) }}
+  {% if section.breakout %}</div>{% endif %}
+
+</div>
+{%- endfor -%}
+

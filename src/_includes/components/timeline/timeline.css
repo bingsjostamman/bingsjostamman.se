@@ -6,17 +6,43 @@
 .c-timeline {
   --_cols: var(--timeline-cols, 3);
   --_rows: var(--timeline-rows, 24);
-  --_row-h: 1rem;
+  --_row-h: 1em;
 
   display: grid;
   /* col 1 = time labels, remaining = one per stage */
-  grid-template-columns: 4rem repeat(var(--_cols), 1fr);
+  /* grid-template-columns: 4rem repeat(var(--_cols), 1fr); */
+  grid-template-columns: 4rem repeat(var(--_cols), minmax(11rem, 1fr));
+
+
   grid-template-rows: auto repeat(var(--_rows), var(--_row-h));
   gap: 0;
   position: relative;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   min-width: 0;
+  border-start-start-radius: var(--size-full);
+}
+
+.c-schedule__section-heading {
+  display: flex;
+  align-items: center;
+}
+
+.c-schedule__section-heading-icon-wrap {
+  margin-inline-end: var(--size-half);
+}
+
+.c-timeline::before {
+  content: "";
+  position: sticky;
+  left: 0;
+  grid-column: 1;
+  grid-row: 1 / -1;
+  width: 100%;
+  background: var(--color-bg, #fff);
+  box-shadow: 0.55rem 0 0.9rem -0.75rem rgba(0, 0, 0, 0.25);
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* ── Header row ──────────────────────────────────────────── */
@@ -28,38 +54,64 @@
 .c-timeline__corner {
   grid-column: 1;
   grid-row: 1;
+  position: sticky;
+  left: 0;
+  background: var(--color-bg, #fff);
+  z-index: 3;
 }
 
 .c-timeline__stage-label {
   grid-row: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-quarter);
   padding: 0.25rem 0.5rem;
-  font-weight: 700;
-  font-size: 0.85rem;
+  font-weight: 600;
+  font-size: var(--font-size--2);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   text-align: center;
   border-bottom: 2px solid currentColor;
   position: sticky;
   top: 0;
-  background: var(--color-bg, #fff);
+  background: var(--timeline-col-bg, var(--color-bg, #fff));
   z-index: 2;
+}
+
+.c-timeline__stage-label .icon {
+  width: 0.95em;
+  height: 0.95em;
+  flex: 0 0 auto;
+  color: var(--color-icon);
+  margin-block-start: 0.1em;
+}
+
+.c-timeline__stage-label--col-b {
+  --timeline-col-bg: var(--token-color-teal-050);
 }
 
 /* ── Time labels (left column) ───────────────────────────── */
 
 .c-timeline__time {
   grid-column: 1;
-  font-size: 0.75rem;
+  font-size: var(--font-size--1);
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   text-align: right;
   padding-right: 0.5rem;
-  transform: translateY(-0.5em);
+  transform: translateY(-0.3em);
   color: var(--color-muted, #666);
-  z-index: 1;
+  position: sticky;
+  left: 0;
+  background: var(--color-bg, #fff);
+  z-index: 2;
 }
 
 /* ── Hour grid lines ─────────────────────────────────────── */
 
 .c-timeline__hour-line {
-  border-top: 1px solid var(--color-border, #ddd);
+  border-top: 1px solid var(--color-border--decorate);
   pointer-events: none;
   z-index: 0;
 }
@@ -67,69 +119,73 @@
 /* ── Act blocks ──────────────────────────────────────────── */
 
 .c-timeline__act {
+  --timeline-act-bg: var(--color-background);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   padding: 0.15rem 0.35rem;
   margin: 1px;
   border-radius: 3px;
-  font-size: 0.75rem;
+  font-size: var(--font-size-0);
   line-height: 1.25;
   overflow: hidden;
-  z-index: 1;
-  background: var(--color-act-bg, #e8e4df);
-  border-left: 3px solid var(--color-act-accent, #8b7355);
+  background: var(--timeline-act-bg);
+  border-left: 3px solid var(--timeline-act-accent, var(--color-border--outline));
 }
 
 .c-timeline__act-time {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-quarter);
   font-variant-numeric: tabular-nums;
-  font-size: 0.65rem;
-  opacity: 0.7;
+  font-size: var(--font-size--1);
+}
+
+.c-timeline__act-time .icon {
+  width: 0.9em;
+  height: 0.9em;
+  flex: 0 0 auto;
+  color: var(--color-icon);
+  margin-block-start: 0.3em;
 }
 
 .c-timeline__act-name {
-  font-weight: 600;
+  font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* ── Type modifiers ──────────────────────────────────────── */
+/* ── Stripe modifiers ────────────────────────────────────── */
 
-.c-timeline__act--dansa {
-  --color-act-bg: #fce4ec;
-  --color-act-accent: #c62828;
+.c-timeline__act--col-b.c-timeline__act--slot-a {
+  --timeline-act-bg: var(--color-background--set);
+  --timeline-act-accent: var(--color-primary);
 }
 
-.c-timeline__act--lyssna {
-  --color-act-bg: #e3f2fd;
-  --color-act-accent: #1565c0;
+.c-timeline__act--col-b.c-timeline__act--slot-b {
+  --timeline-act-bg: var(--color-background--hover);
 }
 
-.c-timeline__act--spela {
-  --color-act-bg: #e8f5e9;
-  --color-act-accent: #2e7d32;
+.c-timeline__act--col-a.c-timeline__act--slot-a {
+  --timeline-act-bg: var(--token-color-teal-150);
+  --timeline-act-accent: var(--token-color-teal-600);
 }
 
-.c-timeline__act--sjung {
-  --color-act-bg: #fff3e0;
-  --color-act-accent: #e65100;
-}
-
-.c-timeline__act--utställning {
-  --color-act-bg: #f3e5f5;
-  --color-act-accent: #6a1b9a;
+.c-timeline__act--col-a.c-timeline__act--slot-b {
+  --timeline-act-bg: rgb(from var(--token-color-teal-050) r g b / 0.82);
+  --timeline-act-bg: var(--token-color-teal-050);
 }
 
 /* ── Responsive: ensure minimum column width ─────────────── */
 
 @media (max-width: 40rem) {
   .c-timeline {
-    --_row-h: 0.85rem;
-    grid-template-columns: 3rem repeat(var(--_cols), minmax(5rem, 1fr));
+    /* --_row-h: 0.85rem; */
+    grid-template-columns: 3.5rem repeat(var(--_cols), minmax(11rem, 1fr));
   }
 
-  .c-timeline__act-name {
-    font-size: 0.65rem;
-  }
+  /* .c-timeline__act-name {
+    font-size: var(--font-size-0);
+  } */
 }

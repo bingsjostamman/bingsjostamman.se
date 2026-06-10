@@ -40,20 +40,46 @@
 
 
 
+
     {% if not env.isProd %}
+    <style>
+    .c-footer__dev-links {
+      text-align: center;
+      opacity: 0.5;
+    }
+    .c-footer__dev-links a + a::before {
+      content: " | ";
+    }
+    .c-footer__debug {
+      text-align: center;
+      opacity: 0.5;
+    }
+    </style>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    <p class="c-footer__debug">env.isProd = {{ env.isProd }} | env.name = {{ env.name }}</p>
     <nav class="c-footer__dev-links" aria-label="Testsidor">
       <a href="/components/">Components</a>
-      <a href="/start/">Start</a>
-      <a href="/test/accessibility/">Accessibility</a>
-      <a href="/test/pagespeed/">Page Speed</a>
+      <a href="/upplagor/">Editions</a>
+      <a href="/test/accessibility/">Accessibility Audit</a>
+      <a href="/test/pagespeed/">Page Speed Audit</a>
       <a href="/test/carbon/">Website Carbon Footprint</a>
+      <a href="/404/">404</a>
+      <hr />
+      <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.bingsjostamman.se%2F">HTML validation</a>
+      <a href="https://jigsaw.w3.org/css-validator/validator?uri=bingsjostamman.se&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en">CSS validation</a>
+      <a href="https://search.google.com/test/rich-results">Rich data result test</a>
+      <a href="https://www.experte.com/page-experience">Page experience</a>
+      <a href="https://yellowlab.tools/result/hj6rnsn3es">Yellow Lab Tools</a>
+      <a href="https://www.ssllabs.com/ssltest/analyze.html?d=bingsjostamman.se&latest">SSL Report</a>
+      <a href="https://wave.webaim.org/report#/https%3A//bingsjostamman.se">WebAim WAVE</a>
+      <a href="https://securityheaders.com/?q=https%3A//bingsjostamman.se">Security Headers</a>
+      <a href="https://seositecheckup.com/seo-audit/hsts-test/bingsjostamman.se">HSTS check</a>
+      <p>&nbsp;</p>
     </nav>
     {% endif %}
 
 
-    {% if not env.isProd %}
-    <p class="c-footer__debug">env.isProd = {{ env.isProd }} | env.name = {{ env.name }}</p>
-    {% endif %}
 
   </div>
 

@@ -45,8 +45,26 @@
     object-fit: cover;
 }
 
-:where(.prose) * + * {
-    margin-block-start: var(--size-full);
+:where(.prose > * + *) {
+  margin-block-start: 1em;
+}
+
+:where(.prose > * + h1),
+:where(.prose > * + h2),
+:where(.prose > * + h3) {
+  margin-block-start: 2em;
+}
+
+:where(.prose > * + h4),
+:where(.prose > * + h5),
+:where(.prose > * + h6) {
+  margin-block-start: 2em;
+}
+
+:where(.prose a) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 :where(.o-tile) {

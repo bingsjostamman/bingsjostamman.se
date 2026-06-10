@@ -22,10 +22,10 @@
 
     {%- for tune in tunes %}
     <li class="c-tunes-tune o-tile t-intent-emphasis">
-      <div class="c-tunes-info">
+      <div class="c-tunes-info prose">
         <h3 class="c-tunes-name">{{ tune.name }}</h3>
         {%- if tune.note %}
-        <span class="c-tunes-note">{{ tune.note }}</span>
+        <p class="c-tunes-note">{{ tune.note }}</p>
         {%- endif %}
       </div>
       <div class="c-tunes-media">

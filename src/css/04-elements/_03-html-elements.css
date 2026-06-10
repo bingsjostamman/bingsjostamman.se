@@ -1,5 +1,9 @@
 /* html elements */
 
+main {
+  position: relative;
+  z-index: 0;
+}
 img {
   max-width: 100%;
 }
@@ -32,7 +36,7 @@ h4 {
   font-family: "Playfair Display", "Alegreya", serif;
 }
 
-p {
+:where(p) {
   margin-block: 0;
 }
 

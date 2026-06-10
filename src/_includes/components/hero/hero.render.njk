@@ -1,3 +1,5 @@
+{% from "components/button/button.njk" import button %}
+
 <section class="c-hero o-container__breakout">
   <div class="c-hero__media">
     <picture>
@@ -26,7 +28,11 @@
       {% endif %}
 
       {% if ctaText and ctaHref %}
-        <a class="c-hero__cta" href="{{ ctaHref }}">{{ ctaText }}</a>
+        {{ button(ctaText, {
+          href: ctaHref,
+          variant: "ghost",
+          className: "c-hero__cta"
+        }) }}
       {% endif %}
     </div>
   </div>

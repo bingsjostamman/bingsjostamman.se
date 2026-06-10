@@ -15,6 +15,7 @@ eleventyComputed:
 {% from "components/image/image-hero.njk" import heroImage %}
 {% from "components/icon/icon.njk" import icon %}
 {% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
+{% from "components/button/button.njk" import button %}
 
 
 <article class="artist">
@@ -43,8 +44,14 @@ eleventyComputed:
 
   <div class="artist-split o-split o-split--uneven">
   {% if artist.longdescription %}
-    <div class="artist-longdescription u-anfang">
+    <div class="artist-longdescription u-anfang prose">
       <p>{{ artist.longdescription }}</p>
+    {% if artist.longdescription2 %}
+        <p>{{ artist.longdescription2 }}</p>
+    {% endif %}
+    {% if artist.longdescription3 %}
+        <p>{{ artist.longdescription3 }}</p>
+    {% endif %}
     </div>
   {% endif %}
 
@@ -72,7 +79,11 @@ eleventyComputed:
 
   {% if artist.link %}
     <div>
-      <a class="artist-link" href="{{ artist.link }}" target="_blank" rel="external noopener noreferrer">Besök webbplats <span class="u-visually-hidden">(Öppnas i nytt fönster)</span>{{ icon("open-in-new")}}</a>
+      {{ button("Besök webbplats", {
+        href: artist.link,
+        className: "c-button--secondary",
+        external: true
+      }) }}
     </div>
   {% endif %}
 

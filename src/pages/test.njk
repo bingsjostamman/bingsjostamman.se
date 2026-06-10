@@ -1,0 +1,46 @@
+---
+layout: layouts/base
+permalink: /test/
+title: Tekniska tester av webbplatsen
+eleventyExcludeFromCollections: true
+---
+
+{% from "components/icon/icon.njk" import icon %}
+
+<div class="o-compound prose" lang="en">
+    <h1>Technical tests</h1>
+    <p>This page contains links to tests and resources for verifying the state of this website.</p>
+
+    <h2>Network and Security</h2>
+    <ul>
+        <li>
+            <h3>Security headers</h3>
+            <a href="https://securityheaders.com/?q=https%3A%2F%2Fwww.bingsjostamman.se%2F">securityheaders.com</a>
+        </li>
+        <li>
+            <h3>HSTS</h3>
+            <a href="https://seositecheckup.com/seo-audit/hsts-test/bingsjostamman.se">seositecheckup.com</a>
+        </li>
+        <li>
+            <h3>SSL Report</h3>
+            <a href="https://www.ssllabs.com/ssltest/analyze.html?d=bingsjostamman.se">ssllabs.com</a>
+        </li>
+    </ul>
+
+
+    <h2>Code Quality</h2>
+    <ul>
+        <li>
+            <h3>HTML Validation</h3>
+            <a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fwww.bingsjostamman.se%2F">validator.w3.org</a>
+        </li>
+        <li>
+            <h3>CSS Validation</h3>
+            <a href="https://jigsaw.w3.org/css-validator/validator?uri=bingsjostamman.se&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en">jigsaw.w3.org</a>
+        </li>
+    </ul>
+</div>
+
+
+
+

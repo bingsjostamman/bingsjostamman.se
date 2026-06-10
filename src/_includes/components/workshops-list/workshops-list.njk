@@ -15,6 +15,7 @@
 
 {% from "components/icon/icon.njk" import icon %}
 {% from "components/image/image-card.njk" import cardImage %}
+{% from "components/button/button.njk" import button %}
 {% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
 
 {%- macro workshopsList(workshops) -%}
@@ -23,7 +24,7 @@
   <ul class="c-workshops-list__list u-list-unstyled">
     {%- for workshop in workshops %}
     <li class="c-workshops-list__item o-split">
-      <div class="o-split__content c-workshops-list__body">
+      <div class="o-split__content c-workshops-list__body prose">
         <h2 class="c-workshops-list__name">{{ workshop.name }}</h2>
         {%- if workshop.teacher %}
         <p class="c-workshops-list__teacher"><strong>Kursledare:</strong> {{ workshop.teacher }}</p>
@@ -44,12 +45,16 @@
 
         {%- if workshop.link %}
         <p class="c-workshops-list__link-wrap">
-          <a class="c-workshops-list__link artist-link" 
-            href="{{ workshop.link }}" 
-            data-track-event="workshop_link_click"
-            data-track-label="{{ link.label }}"
-            data-track-context="workshops-page"
-            target="_blank" rel="external noopener noreferrer">Läs mer och anmäl dig <span class="u-visually-hidden">till {{ workshop.name }} (Öppnas i ett nytt fönster)</span>{{ icon("open-in-new")}}</a>
+          {{ button("Läs mer och anmäl dig", {
+            href: workshop.link,
+            variant: "secondary",
+            external: true,
+            suffixIcon: "open-in-new",
+            className: "c-workshops-list__link",
+            target: "_blank",
+            rel: "external noopener noreferrer"
+          }) }}
+          <span class="u-visually-hidden"> till {{ workshop.name }}</span>
         </p>
         {%- endif %}
       </div>

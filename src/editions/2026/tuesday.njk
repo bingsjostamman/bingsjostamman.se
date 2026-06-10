@@ -8,22 +8,30 @@ eleventyExcludeFromCollections: true
 {% from "components/stage-card/stage-card.njk" import stageCard %}
 {% from "components/icon/icon.njk" import icon %}
 {% from "components/schedule-item/schedule-item.njk" import scheduleItem %}
-{% from "components/image/image.njk" import cloudinaryPicture %}
+{% from "components/hero/hero.njk" import hero %}
 
 
-<div class="o-split">
-    <div class="o-split__content prose">
-        <h1>Förstämma tisdag {{ dates.tisdag | swedishDate }}</h1>
-        <p>&nbsp;</p>
-        <div class="page-intro u-anfang">
-            {%- for paragraph in copy.intro %}
-            <p>{{ paragraph }}</p>
-            <p>&nbsp;</p>
-            {%- endfor %}
-        </div>
+{{ hero({
+  imageId: "2026/logen-spel_u2fim5",
+  imageAlt: "Spontant spel på logen.",
+  eyebrow: "Förstämmans program",
+  title: "Tisdag " ~ (dates.tisdag | swedishDate),
+  text: "Tjuvstarta stämman med förstämma, konserter, spontanspel och dans",
+  maskOpacity: "68%"
+}) }}
 
+<div class="o-compound o-block o-block--margin-medium prose u-anfang">
+    <div class="page-intro u-anfang">
+        {%- for paragraph in copy.intro %}
+        <p>{{ paragraph }}</p>
+        {%- endfor %}
+    </div>
+</div>
+
+<div class="o-block o-block--margin-large prose">
+    <div class="o-split">
         {%- for item in copy.shoutouts %}
-        <div class="c-artist-list__item t-intent-shoutout">
+        <div class="o-split__content c-artist-list__item t-intent-shoutout">
             <div class="c-artist-list__body">
                 <h3 class="c-artist-list__name flex">
                     {{ icon(item.icon) }}{{ item.title }}
@@ -37,46 +45,37 @@ eleventyExcludeFromCollections: true
         </div>
         {%- endfor %}
     </div>
-
-    <div class="o-split__image o-split__content">
-        <div class="o-split__image o-split__content">
-            {{ cloudinaryPicture("2026/logen-spel_u2fim5", "Spontant spel på logen.") }}
-        </div>
-    </div>
-
 </div>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
 
+<div class="o-block o-block--margin-large prose">
     <h2>{{ copy.programHeadline }}</h2>
-    <p>&nbsp;</p>
 
     <div class="o-list-layout o-list-layout--md-2 o-list-layout--lg-3">
 
-    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
-        {{ stageCard(copy.stages.nygardsgarden.stageName, lineup, "tisdag", "", {
-            stageDescription: copy.stages.nygardsgarden.description,
-            imageSrc: copy.stages.nygardsgarden.imageSrc,
-            imageAlt: copy.stages.nygardsgarden.imageAlt
-        }) }}
-    </div>
+        <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+            {{ stageCard(copy.stages.nygardsgarden.stageName, lineup, "tisdag", "", {
+                stageDescription: copy.stages.nygardsgarden.description,
+                imageSrc: copy.stages.nygardsgarden.imageSrc,
+                imageAlt: copy.stages.nygardsgarden.imageAlt
+            }) }}
+        </div>
 
-    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
-        {{ stageCard(copy.stages.bystuguscenen.stageName, lineup, "tisdag", "", {
-            stageDescription: copy.stages.bystuguscenen.description,
-            imageSrc: copy.stages.bystuguscenen.imageSrc,
-            imageAlt: copy.stages.bystuguscenen.imageAlt
-        }) }}
-    </div>
+        <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+            {{ stageCard(copy.stages.bystuguscenen.stageName, lineup, "tisdag", "", {
+                stageDescription: copy.stages.bystuguscenen.description,
+                imageSrc: copy.stages.bystuguscenen.imageSrc,
+                imageAlt: copy.stages.bystuguscenen.imageAlt
+            }) }}
+        </div>
 
-    <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
-        {{ stageCard(copy.stages.dansladu.stageName, lineup, "tisdag", "", {
-            stageDescription: copy.stages.dansladu.description,
-            imageSrc: copy.stages.dansladu.imageSrc,
-            imageAlt: copy.stages.dansladu.imageAlt
-        }) }}
-    </div>
+        <div class="o-tile o-tile--padding-half t-intent-emphasis o-list-layout__item">
+            {{ stageCard(copy.stages.dansladu.stageName, lineup, "tisdag", "", {
+                stageDescription: copy.stages.dansladu.description,
+                imageSrc: copy.stages.dansladu.imageSrc,
+                imageAlt: copy.stages.dansladu.imageAlt
+            }) }}
+        </div>
 
     </div>
-
+</div>
 

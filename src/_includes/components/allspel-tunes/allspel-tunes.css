@@ -30,7 +30,7 @@
     text-transform: uppercase;
     font-size: var(--font-size--1);
     font-weight: 600;
-    color: var(--token-color-chestnut);
+    color: var(--color-link);
 }
 
 * + .c-tunes-media-label {

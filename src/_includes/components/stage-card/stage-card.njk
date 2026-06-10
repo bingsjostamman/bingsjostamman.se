@@ -13,6 +13,7 @@
       - imageSrc: string (optional)
       - imageAlt: string (optional)
       - includeType: string (optional)
+      - includePlacement: string (optional)
       - headingTag: heading tag (default "h3")
       - rootClass: string (optional)
       - splitSlotsOnNarrow: boolean (default false)
@@ -29,6 +30,7 @@
   {%- set imageSrc = options and options.imageSrc -%}
   {%- set imageAlt = (options and options.imageAlt) or stageName -%}
   {%- set includeType = options and options.includeType -%}
+  {%- set includePlacement = options and options.includePlacement -%}
   {%- set headingTag = (options and options.headingTag) or "h3" -%}
   {%- set splitSlotsOnNarrow = options and options.splitSlotsOnNarrow -%}
   {%- set rootClass = "c-stage-card" -%}
@@ -53,6 +55,7 @@
       {{ stageList(stageName, lineup, day, excludeType, {
         rootClass: "c-stage-card__slots",
         includeType: includeType,
+        includePlacement: includePlacement,
         splitSlotsOnNarrow: splitSlotsOnNarrow
       }) }}
     </div>

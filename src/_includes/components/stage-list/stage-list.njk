@@ -12,6 +12,7 @@
     - excludeType: string (optional) – exclude acts of this type
     - options: object (optional)
       - includeType: string (optional)
+      - includePlacement: string (optional)
       - rootClass: string (optional)
       - splitSlotsOnNarrow: boolean (default false)
 #}
@@ -22,9 +23,10 @@
 {%- macro stageList(stageName, lineup, day, excludeType, options) -%}
 {%- set acts = [] -%}
 {%- set includeType = options and options.includeType -%}
+{%- set includePlacement = options and options.includePlacement -%}
 {%- for act in lineup -%}
   {%- if act.day == day and act.stage == stageName -%}
-    {%- if (not includeType or act.type == includeType) and (not excludeType or act.type != excludeType) -%}
+    {%- if (not includeType or act.type == includeType) and (not includePlacement or act.placement == includePlacement) and (not excludeType or act.type != excludeType) -%}
       {%- set acts = (acts.push(act), acts) -%}
     {%- endif -%}
   {%- endif -%}

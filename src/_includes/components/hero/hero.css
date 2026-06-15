@@ -33,6 +33,10 @@
   background: rgb(0 0 0 / var(--c-hero-mask-strong, 60%));
 }
 
+.c-hero__overlay--none {
+  background: transparent;
+}
+
 .c-hero__content {
   width: 100%;
   background: transparent;

@@ -6,6 +6,7 @@
   {% set imageAlt = options.imageAlt or "" %}
   {% set mobileImageId = options.mobileImageId or null %}
   {% set imageOptions = options.imageOptions or {} %}
+  {% set overlay = options.overlay if options.overlay is defined else true %}
   {% set maskOpacity = options.maskOpacity or "" %}
   {% set eyebrow = options.eyebrow %}
   {% set title = options.title %}
@@ -18,7 +19,7 @@
       {{ heroImage(imageId, imageAlt, mobileImageId, imageOptions) }}
     </div>
 
-    <div class="c-hero__overlay o-container">
+    <div class="c-hero__overlay o-container{% if not overlay %} c-hero__overlay--none{% endif %}">
       <div class="c-hero__content">
         {% if caller %}
           {{ caller() }}

@@ -64,6 +64,10 @@
   font-weight: 500;
 }
 
+.c-hero__overlay--none .c-hero__title {
+  color: var(--color-font--text);
+}
+
 .c-hero__text {
   margin: 0.5rem 0 0;
   font-size: var(--font-size-4);

@@ -211,6 +211,7 @@ Practical rule: a prepared future edition can be reachable by direct URL and by 
     - `schedule-content.js`
 7. Update imagery, hero copy, and any hard-coded artist or CTA references.
 8. Add the new year to `src/_data/editions.json` `years` if archive navigation or year listings should know about it before launch.
+9. In `src/_data/prices.json`, set `hidden` to `true` so prices stay hidden until the new edition is ready to publish them.
 
 At this stage, do not change `current` yet if the old edition should remain live at `/`.
 
@@ -283,6 +284,7 @@ Use this when the next edition is already prepared and you are ready to make it 
 - Confirm the new edition builds cleanly under `/{year}/`.
 - Confirm the outgoing edition at `/` is in the exact state you want to archive.
 - Check that important shared pages such as tickets, contact, travel, and information pages are updated for the new season if needed.
+- If ticket prices should be visible at launch, set `hidden` to `false` in `src/_data/prices.json` and verify the values and note text.
 - Make sure any required env vars for production builds are available, especially `PSI_API_KEY` if you want fresh PSI data.
 
 ### Go live

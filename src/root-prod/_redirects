@@ -8,6 +8,8 @@
 /lineup-2025/          /2025/lineup/   301
 /schedule-2025/        /2025/schedule/ 301
 /kontakt.html          /kontakt/       301
+/scen/vadur            /scen/vaedur/   301
+/scen/vadur/           /scen/vaedur/   301
 
 # Add any other old → new mappings here
 # /old-url/            /new-url/       301

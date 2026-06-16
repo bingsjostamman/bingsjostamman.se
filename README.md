@@ -214,6 +214,29 @@ Practical rule: a prepared future edition can be reachable by direct URL and by 
 
 At this stage, do not change `current` yet if the old edition should remain live at `/`.
 
+### Keep unfinished pages as drafts
+
+Eleventy will build any page it can see, so `eleventyExcludeFromCollections` is not enough by itself to hide a page from output.
+
+The edition folder now decides the published URL automatically. For pages in the next edition that are not ready yet, use a tiny draft convention like this:
+
+```yaml
+---
+draft: true
+---
+```
+
+Practical rules:
+
+- keep the page in the correct edition folder so the structure is ready early
+- set `draft: true` while the page is unfinished
+- do not add anything else unless the page is ready to publish
+- once the page is ready, remove `draft: true` and give it real content
+
+If you want a visible stub for the upcoming edition, use the edition root page (`index.njk`) as the teaser page and keep the rest of the edition pages as drafts. That gives you one public entry point while the inner pages still 404 until launch.
+
+If you prefer to prepare a whole section privately, you can also keep a draft-only subfolder inside the edition folder and move the pages out of it when they are ready. The important part is that unfinished pages should not get a public draft-free page yet.
+
 ### Switch the new edition live at root
 
 1. Edit `src/_data/editions.json`.

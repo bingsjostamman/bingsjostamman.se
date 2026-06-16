@@ -2,7 +2,6 @@
 layout: layouts/base
 eleventyComputed:
   title: "Onsdag {{ dates.onsdag | swedishDate }} {{ year }}"
-  permalink: "{% if year == editions.current %}/onsdag/index.html{% else %}/{{ year }}/onsdag/index.html{% endif %}"
 eleventyExcludeFromCollections: true
 ---
 {% from "components/stage-card/stage-card.njk" import stageCard %}

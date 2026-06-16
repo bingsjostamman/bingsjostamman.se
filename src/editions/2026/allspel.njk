@@ -3,7 +3,6 @@ layout: layouts/base
 description: "Allspelslåtar for Bingsjöstämman {{ year }}."
 eleventyComputed:
   title: "Allspel {{ year }}"
-  permalink: "{% if year == editions.current %}/allspel/index.html{% else %}/{{ year }}/allspel/index.html{% endif %}"
 ---
 {% from "components/allspel-tunes/allspel-tunes.njk" import allspelTunes %}
 {% from "components/schedule-item/schedule-item.njk" import scheduleItem %}

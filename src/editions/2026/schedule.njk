@@ -5,7 +5,6 @@ eleventyComputed:
   title: "Spelshema Onsdag {{ dates.onsdag | swedishDate }} {{ year }}"
   description: "Visuellt spelschema över onsdagsprogrammet för Bingsjöstämman {{ year }}."
   socialImage: "{{ overviewSocialImage or site.defaultImage }}"
-  permalink: "{% if year == editions.current %}/spelscheman/index.html{% else %}/{{ year }}/spelscheman/index.html{% endif %}"
 ---
 {% from "components/timeline/timeline.njk" import timeline %}
 {% from "components/icon/icon.njk" import icon %}

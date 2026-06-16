@@ -2,7 +2,7 @@ import { createRequire } from "module";
 import lodgingContent from "./lodging-content.js";
 
 const require = createRequire(import.meta.url);
-const prices = require("../_data/prices.json");
+const prices = require("../../_data/prices.json");
 
 const pageContent = {
   ...lodgingContent,

@@ -1,0 +1,41 @@
+name: Content-only guard
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  content-only-guard:
+    if: contains(github.event.pull_request.title, '[content-only]') || contains(github.event.pull_request.labels.*.name, 'content-only')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enforce content-only paths
+        run: npm run check:content-only -- origin/main
+
+  system-change-guard:
+    if: contains(github.event.pull_request.title, '[system-change]') || contains(github.event.pull_request.labels.*.name, 'system-change')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enforce system-change paths
+        run: npm run check:system-change -- origin/main

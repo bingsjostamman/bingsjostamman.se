@@ -23,6 +23,8 @@
     "prebuild": "node scripts/prebuild-stories.js && node scripts/scan-used-components.js",
     "carbon": "node scripts/fetch-websitecarbon.js",
     "psi": "node scripts/fetch-psi.js",
+    "check:content-only": "bash scripts/check-content-only-change.sh",
+    "check:system-change": "bash scripts/check-system-change.sh",
     "test:a11y": "node scripts/test-accessibility.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "npx puppeteer browsers install chrome",

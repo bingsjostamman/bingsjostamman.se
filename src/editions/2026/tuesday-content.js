@@ -9,7 +9,7 @@ export default {
       text: "I Bystugans servering finns fika, mat och dryck. Försäljning sker både utanför och inomhus. På området framför bystugen och även på verandan finns gott om plats för samtal, musicerande och glädje.",
       location: "Bystugan",
       starttime: "16:00",
-      endtime: "22:00"
+      endtime: "23:00"
     },
     {
       icon: "store",
@@ -17,7 +17,7 @@ export default {
       text: "Här i tältet kan du köpa entrébiljetter, folkmusikskivor, nothäften, biljetter till kapellkonserterna, kursbiljetter m.m.",
       location: "Framför bystugeområdet",
       starttime: "16:00",
-      endtime: "22:00"
+      endtime: "23:00"
     }
   ],
   programHeadline: "Tisdagens program",

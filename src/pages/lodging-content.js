@@ -106,6 +106,16 @@ Det är viktigt att du som campare följer de anvisningar som finns på plats, b
           lqipId: "2026/camping2010_zp9dv1"
         }
       }
+    },
+    {
+      title: "Campingplatser på stämmoområdet",
+      body: `
+Campingplatserna är markerade på kartan nedan. Dagarna innan onsdagen letar du upp lämplig camping att ställa husbil eller husvagn eller sätta upp ditt tält på. Notera att alla campingar har en bokstav på skylten vid respektive infart. På onsdagen blir du anvisad en lämplig campingplats utifrån beläggningen för stunden.
+
+Har du en extra lång eller tung husbil finns en mindre ställplats på grus vid markeringen O på kartan. Övriga campingar är åkrar.
+
+![Campingplatser på stämmoområdet](/assets/images/camping_2026.svg)
+      `
     }
   ]
 };

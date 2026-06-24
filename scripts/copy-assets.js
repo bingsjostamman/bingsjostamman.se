@@ -12,8 +12,8 @@ function syncAssets() {
     return;
   }
 
-  fs.mkdirSync(path.dirname(destinationDir), { recursive: true });
-  fs.rmSync(destinationDir, { recursive: true, force: true });
+  // Keep Vite output (css/js/manifest) and only sync static assets on top.
+  fs.mkdirSync(destinationDir, { recursive: true });
   fs.cpSync(sourceDir, destinationDir, { recursive: true });
   console.log(`📦 Synced assets → ${destinationDir}`);
 }
@@ -37,8 +37,22 @@ if (isWatchMode) {
     }, 100);
   };
 
+  const removeDestinationPath = (changedPath) => {
+    const relativePath = path.relative(sourceDir, changedPath);
+    const destinationPath = path.join(destinationDir, relativePath);
+
+    fs.rmSync(destinationPath, { recursive: true, force: true });
+    console.log(`🗑️ Removed asset → ${destinationPath}`);
+  };
+
   watcher.on("all", (eventName, changedPath) => {
     console.log(`🔄 Asset ${eventName}: ${changedPath}`);
+
+    if (eventName === "unlink" || eventName === "unlinkDir") {
+      removeDestinationPath(changedPath);
+      return;
+    }
+
     scheduleSync();
   });
 

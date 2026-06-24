@@ -5,6 +5,7 @@ import { loadEnv } from "./scripts/env.js";
 export default ({ mode }) => {
   // Determine production mode from Vite's mode
   const isProd = mode === "production";
+  const isWatch = process.argv.includes("--watch");
   console.log("Vite config mode:", mode, { isProd });
 
   const env = loadEnv();
@@ -13,7 +14,7 @@ export default ({ mode }) => {
     publicDir: false, // Eleventy handles static files
     build: {
       outDir: "public/assets",
-      emptyOutDir: true,
+      emptyOutDir: isProd && !isWatch,
       manifest: isProd ? "manifest.json" : false,
       sourcemap: !isProd,
       minify: isProd,

@@ -98,6 +98,32 @@ export const Default = () => `
         <li class="c-menu__item">
           <a
             class="c-menu__link"
+            href="/allspel/" 
+            data-track-event="menu_link_click"
+            data-track-label="Allspel"
+            data-track-context="main-menu"
+            
+          >
+            Allspel
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
+            href="/kurser/" 
+            data-track-event="menu_link_click"
+            data-track-label="Kurser"
+            data-track-context="main-menu"
+            
+          >
+            Kurser
+          </a>
+        </li>
+      
+        <li class="c-menu__item">
+          <a
+            class="c-menu__link"
             href="/biljetter/" 
             data-track-event="menu_link_click"
             data-track-label="Entré och biljetter"
@@ -124,26 +150,13 @@ export const Default = () => `
         <li class="c-menu__item">
           <a
             class="c-menu__link"
-            href="/allspel/" 
+            href="/hitta-hit/" 
             data-track-event="menu_link_click"
-            data-track-label="Allspel"
+            data-track-label="Hitta till Bingsjö"
             data-track-context="main-menu"
             
           >
-            Allspel
-          </a>
-        </li>
-      
-        <li class="c-menu__item">
-          <a
-            class="c-menu__link"
-            href="/kurser/" 
-            data-track-event="menu_link_click"
-            data-track-label="Kurser"
-            data-track-context="main-menu"
-            
-          >
-            Kurser
+            Hitta till Bingsjö
           </a>
         </li>
       

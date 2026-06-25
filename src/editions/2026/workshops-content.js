@@ -11,7 +11,7 @@ Alla kurser arrangeras av Folkmusikens Hus under Stämmoveckan och anmälan sker
       name: "Kurs i sälgflöjt",
       teacher: "Säde Tatar",
       description:
-        "Ett flera tusen år gammalt instrument med rötter djupt i den skandinaviska valltraditionen. Har galler mottot: kan man blåsa kan man spela sälgflöjt. Tillsammans utforskar vi sälgflöjtens spelteknik, dess magiska klangvärld och botaniserar i övertonskalan. Tidigare erfarenhet krävs inte och instrument kan man låna på plats. Deltagare kan efter kursen välja att köpa med sig ett instrument.",
+        "Ett flera tusen år gammalt instrument med rötter djupt i den skandinaviska valltraditionen. Har gäller mottot: kan man blåsa kan man spela sälgflöjt. Tillsammans utforskar vi sälgflöjtens spelteknik, dess magiska klangvärld och botaniserar i övertonskalan. Tidigare erfarenhet krävs inte och instrument kan man låna på plats. Deltagare kan efter kursen välja att köpa med sig ett instrument.",
       location: "Levande Ladan",
       time: "Onsdag 9:30-11:45",
       photoUrl: "2026/sade_epuvzg.jpg",

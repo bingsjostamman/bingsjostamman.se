@@ -16,6 +16,11 @@ eleventyComputed:
   <div class="o-split__content prose">
     <h1>Allspelslåtar {{ year }}</h1>
 
+      {{ scheduleItem("Stora scenen vid Dansbanan", "18:00", "18:45", {
+        rootClass: "",
+        infoClass: ""
+      }) }}
+
     <div class="page-intro prose">
       {{ copy.intro | markdown | safe }}
     </div>
@@ -24,16 +29,6 @@ eleventyComputed:
       {{ copy.shoutoutText | markdown | safe }}
 
       {{ scheduleItem("Logen", "15:30", "16:30", {
-        rootClass: "",
-        infoClass: ""
-      }) }}
-    </div>
-
-    <div class="o-tile t-intent-highlight prose o-block o-block--margin-medium">
-      <h3>{{ copy.shoutout2Headline | markdown | safe }}</h3>
-      {{ copy.shoutout2Text | markdown | safe }}
-
-      {{ scheduleItem("Dansbanan", "18:00", "18:45", {
         rootClass: "",
         infoClass: ""
       }) }}

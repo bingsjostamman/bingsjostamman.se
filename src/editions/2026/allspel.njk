@@ -16,10 +16,10 @@ eleventyComputed:
   <div class="o-split__content prose">
     <h1>Allspelslåtar {{ year }}</h1>
 
-      {{ scheduleItem("Stora scenen vid Dansbanan", "18:00", "18:45", {
-        rootClass: "",
-        infoClass: ""
-      }) }}
+    {{ scheduleItem("Stora scenen vid Dansbanan", "18:00", "18:45", {
+      rootClass: "",
+      infoClass: ""
+    }) }}
 
     <div class="page-intro prose">
       {{ copy.intro | markdown | safe }}
@@ -61,11 +61,12 @@ eleventyComputed:
 
   {% if copy.barnensAllspel %}
   <div class="page-intro prose">
+    {{ scheduleItem("Dansladu", "14:00", "14:30", {
+      rootClass: "",
+      infoClass: ""
+    }) }}
+
     {{ copy.barnensAllspel | markdown | safe }}
-          {{ scheduleItem("Dansladu", "14:00", "14:30", {
-        rootClass: "",
-        infoClass: ""
-      }) }}
 
   </div>
   {% endif %}

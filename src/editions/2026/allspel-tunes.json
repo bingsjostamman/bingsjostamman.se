@@ -49,6 +49,12 @@
   },
   {
     "name": "Gånglåt från Äppelbo",
+    "sheetMusic": [
+      {
+        "label": "Melodi (PDF)",
+        "url": "https://www.dropbox.com/scl/fi/xg3q7ceozejnpgbpob1i4/2026_appelbo_ganglat.pdf?rlkey=y8htg8k9e5tgc8ez8asc4ily8&st=haekwh1w&raw=1"
+      }
+    ],
     "audio": [
       {
         "label": "Melodi (MP3)",
@@ -182,6 +188,70 @@
       {
         "label": "Melodi (MP3)",
         "url": "https://www.dropbox.com/scl/fi/jovt5obz59lhhik6wkds4/2026_ostbjorkavisan.mp3?rlkey=bupnuv4qz0ywxl1f9i840vmy1&st=99i1c5b3&raw=1"
+      }
+    ]
+  },
+  {
+    "name": "Gärdebylåten",
+    "barnens": true,
+    "sheetMusic": [
+      {
+        "label": "Melodi, stämma och ackord (PDF)",
+        "url": "https://www.dropbox.com/scl/fi/lwqtiuylaaqrg07oae242/gardebylaten.pdf?rlkey=ix3zjygkzqi9lnpwudals5skp&st=lzng27my&raw=1"
+      }
+    ]
+  },
+  {
+    "name": "Gånglåt från Äppelbo",
+    "barnens": true,
+    "sheetMusic": [
+      {
+        "label": "Melodi (PDF)",
+        "url": "https://www.dropbox.com/scl/fi/xg3q7ceozejnpgbpob1i4/2026_appelbo_ganglat.pdf?rlkey=y8htg8k9e5tgc8ez8asc4ily8&st=haekwh1w&raw=1"
+      }
+    ],
+    "audio": [
+      {
+        "label": "Melodi (MP3)",
+        "url": "https://www.dropbox.com/scl/fi/9nt4avy75c7l647gluofn/2026_ganglat_f_appelbo.mp3?rlkey=znhrrvn6bwfzoytkd8r4jwppp&st=4y47pton&raw=1"
+      }
+    ]
+  },
+  {
+    "name": "Schottis från Blyberg",
+    "barnens": true,
+    "note": "Älvdalen",
+    "sheetMusic": [
+      {
+        "label": "Melodi och ackord (PDF)",
+        "url": "https://www.dropbox.com/scl/fi/xw304iyx9n7rn5aeelb5g/2026_schottis_f_blyberg.pdf?rlkey=nl8t2x6vsuanit9w16ff48wxx&st=xegishrv&raw=1"
+      }
+    ],
+    "audio": [
+      {
+        "label": "Melodi (MP3)",
+        "url": "https://www.dropbox.com/scl/fi/m0fjsdt2fiwzofajjvfbp/2026_schottis_f_blyberg.mp3?rlkey=mmkqvaa1rula071np5sv7m1jn&st=hfa3mp38&raw=1"
+      }
+    ]
+  },
+  {
+    "name": "Polka i pulk",
+    "barnens": true,
+    "note": "Inspelning leder till SoundCloud",
+    "audio": [
+      {
+        "label": "Melodi, arrangemang (MP3)",
+        "url": "https://soundcloud.com/sturlaeide-music/polka-i-pulk"
+      }
+    ]
+  },
+  {
+    "name": "Hia hia svärmor",
+    "barnens": true,
+    "audio": [
+      {
+        "label": "Melodi och stämma (MP3)",
+        "url": "https://www.dropbox.com/scl/fi/wifg7tjmyghr2gtzbj9jg/2026_hia_hia.pdf?rlkey=7k8gxdmbep0vm92sy0of5pdd6&st=bvw7s9xf&raw=1"
       }
     ]
   }

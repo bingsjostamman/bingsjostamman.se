@@ -29,6 +29,16 @@ eleventyComputed:
       }) }}
     </div>
 
+    <div class="o-tile t-intent-highlight prose o-block o-block--margin-medium">
+      <h3>{{ copy.shoutout2Headline | markdown | safe }}</h3>
+      {{ copy.shoutout2Text | markdown | safe }}
+
+      {{ scheduleItem("Dansbanan", "18:00", "18:45", {
+        rootClass: "",
+        infoClass: ""
+      }) }}
+    </div>
+
   </div>
   <div class="o-split__image o-split__content">
     {{ cloudinaryPicture("v1748295028/allspel_2024_zchx2s", "Allspel på stora scenen") }}
@@ -49,4 +59,23 @@ eleventyComputed:
 </div>
 
 {{ allspelTunes(singingTunes) }}
+
+
+<div class="o-block o-block--margin-large prose">
+<h2>Barnens allspel</h2>
+
+  {% if copy.barnensAllspel %}
+  <div class="page-intro prose">
+    {{ copy.barnensAllspel | markdown | safe }}
+          {{ scheduleItem("Dansladu", "14:00", "14:30", {
+        rootClass: "",
+        infoClass: ""
+      }) }}
+
+  </div>
+  {% endif %}
+</div>
+
+
+{{ allspelTunes(barnensTunes) }}
 

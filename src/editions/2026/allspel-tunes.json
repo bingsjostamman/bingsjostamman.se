@@ -223,35 +223,52 @@
     "note": "Älvdalen",
     "sheetMusic": [
       {
-        "label": "Melodi och ackord (PDF)",
-        "url": "https://www.dropbox.com/scl/fi/xw304iyx9n7rn5aeelb5g/2026_schottis_f_blyberg.pdf?rlkey=nl8t2x6vsuanit9w16ff48wxx&st=xegishrv&raw=1"
+        "label": "Melodi och komp (PDF)",
+        "url": "https://www.dropbox.com/scl/fi/tbl8i1pba1nwnsnilsy5z/2026_schottis_fran_blyberg_m_komp.pdf?rlkey=bwi07e6dggw41ei3olerbu5dq&st=xlazesuw&raw=1"
       }
     ],
     "audio": [
       {
-        "label": "Melodi (MP3)",
-        "url": "https://www.dropbox.com/scl/fi/m0fjsdt2fiwzofajjvfbp/2026_schottis_f_blyberg.mp3?rlkey=mmkqvaa1rula071np5sv7m1jn&st=hfa3mp38&raw=1"
+        "label": "Melodi och komp (MP3)",
+        "url": "https://www.dropbox.com/scl/fi/o965q332ufmdb3w5fi682/2026_schottis_f_blyberg_m_komp.mp3?rlkey=ruu0qnrzhxkcg6x9dj8f4f6qz&st=8o40r4uh&raw=1"
       }
     ]
   },
   {
     "name": "Polka i pulk",
     "barnens": true,
-    "note": "Inspelning leder till SoundCloud",
+    "note": "Länken för ljudinspelningen leder till SoundCloud",
     "audio": [
       {
-        "label": "Melodi, arrangemang (MP3)",
+        "label": "Melodi, arrangemang (Länk till SoundCloud)",
         "url": "https://soundcloud.com/sturlaeide-music/polka-i-pulk"
       }
     ]
   },
   {
-    "name": "Hia hia svärmor",
+    "name": "Hia hia svärmoder",
     "barnens": true,
     "sheetMusic": [
       {
-        "label": "Melodi och stämma (PDF)",
-        "url": "https://www.dropbox.com/scl/fi/wifg7tjmyghr2gtzbj9jg/2026_hia_hia.pdf?rlkey=7k8gxdmbep0vm92sy0of5pdd6&st=bvw7s9xf&raw=1"
+        "label": "Melodi, stämma & oktav(PDF)",
+        "url": "https://www.dropbox.com/scl/fi/oza1t2vy4saonygoga1jc/2026_hia-hia-svarmoder-mel-stam-oktav.pdf?rlkey=jiagkdftfk1ze5czd5wxzgcqf&st=xxc7peb6&raw=1"
+      }
+    ],
+    "audio": [
+      {
+        "label": "Melodi & stämma (MP3)",
+        "url": "https://www.dropbox.com/scl/fi/fjlzalskzkkd1kdu024gw/2026_hia-hia.mp3?rlkey=7jw81h6nydya7pt3tvnb1a0ql&st=0dqyzqlx&raw=1"
+      }
+    ]
+  },
+  {
+    "name": "Fusk Olle",
+    "barnens": true,
+    "note": "Den här låten lärs ut på Barnens Bingsjö och kan lyssnas på i förväg. Länken leder till YouTube.",
+    "audio": [
+      {
+        "label": "Melodi, arrangemang (Länk till YouTube)",
+        "url": "https://www.youtube.com/watch?v=ne-HYbz1OjE"
       }
     ]
   }

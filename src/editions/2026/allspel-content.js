@@ -9,7 +9,7 @@ Barnens Bingsjö har ett eget allspel, noter och inspelningar finns längst ned 
 
   `,
   barnensAllspel: `
-Även på **Barnens Bingsjö** har vi ett allspel – här hittar du låtarna med noter och ljudfiler.
+På **Barnens Bingsjö** har vi också ett allspel – här hittar du låtarna med noter och ljudfiler. Dessutom finns det en låt som kommer att läras ut under eftermiddagen.
 `,
   shoutoutHeadline: `
   Träna in allspelslåtarna

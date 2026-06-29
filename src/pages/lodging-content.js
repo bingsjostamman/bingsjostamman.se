@@ -67,7 +67,7 @@ Anländer du på onsdagen betalar du campingavgift och entré vid infarterna til
       uneven: true,
       title: "Camping på stämmoområdet",
       body: `
-Tänk på att våra campingar är åkrar med viss terräng. Det kan luta lite, det kan vara en stenbumling att se upp med och vid regn finns det risk att det blir lerigt. Det är naturcamping som gäller, kort och gott, med allt vad det innebär. Det finns därmed ingen el till husvagnen eller husbilen. 
+Tänk på att våra campingar är åkrar med viss terräng. Det kan luta lite, det kan vara en stenbumling att se upp med och vid regn finns det risk att det blir lerigt. Det finns ingen el till husvagnen eller husbilen. 
 
 Vid specifika frågor om olika campingars läge och förutsättningar, kontakta elinore@bingsjostamman.se
 

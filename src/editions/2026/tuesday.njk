@@ -47,6 +47,21 @@ eleventyExcludeFromCollections: true
     </div>
 </div>
 
+{% if copy.programCallout %}
+<div class="o-compound o-block o-block--margin-large">
+    <div class="o-tile t-intent-highlight">
+        <div class="prose">
+            <h3>{{ copy.programCallout.title }}</h3>
+            <p>{{ copy.programCallout.text }}</p>
+            {{ scheduleItem(copy.programCallout.location, copy.programCallout.starttime, copy.programCallout.endtime, {
+                rootClass: "c-artist-list__meta",
+                infoClass: "c-artist-list__meta-info"
+            }) }}
+        </div>
+    </div>
+</div>
+{% endif %}
+
 <div class="o-block o-block--margin-large prose">
     <h2>{{ copy.programHeadline }}</h2>
 

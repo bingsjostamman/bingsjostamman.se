@@ -1762,5 +1762,26 @@
     "endtime": "00:20",
     "startMinutes": 1420,
     "endMinutes": 1460
+  },
+  {
+    "day": "tisdag",
+    "stage": "Dansbanan",
+    "type": "dansa",
+    "placement": "",
+    "page": "artist",
+    "name": "Malungs Folkhögskola",
+    "ref": "72",
+    "description": "",
+    "link": "",
+    "longdescription": "",
+    "longdescription2": "",
+    "longdescription3": "",
+    "somedescription": "",
+    "eyebrow": "",
+    "image": "",
+    "starttime": "21:00",
+    "endtime": "21:00",
+    "startMinutes": 1260,
+    "endMinutes": 1260
   }
 ]

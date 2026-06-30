@@ -20,6 +20,13 @@ export default {
       endtime: "23:00"
     }
   ],
+  programCallout: {
+    title: "Malungs FSK på Dansbanan",
+    text: "Malungs Folkhögskola bjuder upp till dans. Alla gamla och nya elever och ledare är välkomna att vara med och spela."
+    ,location: "Dansbanan"
+    ,starttime: "21:00"
+    ,endtime: "22:00"
+  },
   programHeadline: "Tisdagens program",
   stages: {
     nygardsgarden: {
